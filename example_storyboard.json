@@ -1,0 +1,67 @@
+{
+  "_comment": "TEMPLATE (Pass-2 / enriched form). Built in TWO passes: Pass 1 = narrative only (type, duration, scene_type, motion, texts, narration_segment) for your review; Pass 2 = add image_prompt + animation_prompt + file paths AFTER the story is approved. Scene 1 below shows the image_prompt field. See pipeline_automation.md → Storyboard JSON Schema for which field belongs to which pass. 'animated' scenes need animated_clip; 'static' scenes use Ken Burns via 'motion'.",
+  "base_dir": "./projects/001_roman_aqueducts",
+  "voiceover": "audio/voiceover.mp3",
+  "background_music": "audio/ambient.mp3",
+  "music_volume": 0.08,
+  "scenes": [
+    {
+      "image": "images/scene_01.png",
+      "type": "animated",
+      "animated_clip": "clips/scene_01_animated.mp4",
+      "duration": 8,
+      "scene_type": "establishing",
+      "image_prompt": "[STYLE CARD] Isometric flat-design technical illustration of a Roman aqueduct (Pont du Gard) spanning a valley, wide establishing view, three tiers of arches, warm golden-hour light, muted earth tones with terracotta (#B85C38) highlights, warm parchment background, no text, no people.",
+      "animation_prompt": "subtle parallax, clouds drifting slowly, water visible in the channel at top",
+      "texts": [
+        { "text": "Pont du Gard — 50 km of gravity-fed flow", "start": 2, "end": 7, "position": "bottom" }
+      ],
+      "narration_segment": "For a boy hauling water up the hill each dawn, the arches rising across the valley must have looked like the work of gods. They were not."
+    },
+    {
+      "image": "images/scene_02.png",
+      "type": "static",
+      "duration": 14,
+      "motion": "pan_right",
+      "scene_type": "cross_section",
+      "texts": [
+        { "text": "Three tiers of arches", "start": 2, "end": 6, "position": "top" },
+        { "text": "Each bearing the weight above", "start": 7, "end": 13, "position": "bottom" }
+      ],
+      "narration_segment": "The real problem was never lifting the stone. It was carrying water downhill so gently it barely knew it was moving."
+    },
+    {
+      "image": "images/scene_03.png",
+      "type": "animated",
+      "animated_clip": "clips/scene_03_animated.mp4",
+      "duration": 6,
+      "scene_type": "detail",
+      "animation_prompt": "water gently flowing right-to-left through the channel, subtle ripples",
+      "texts": []
+    },
+    {
+      "image": "images/scene_04.png",
+      "type": "static",
+      "duration": 12,
+      "motion": "zoom_detail",
+      "focus_x": 0.5,
+      "focus_y": 0.45,
+      "scene_type": "detail",
+      "texts": [
+        { "text": "A drop of just 17 metres", "start": 2, "end": 6, "position": "top" },
+        { "text": "over 50 kilometres", "start": 7, "end": 11, "position": "bottom" }
+      ]
+    },
+    {
+      "image": "images/scene_05.png",
+      "type": "animated",
+      "animated_clip": "clips/scene_05_animated.mp4",
+      "duration": 8,
+      "scene_type": "scale_comparison",
+      "animation_prompt": "subtle parallax depth, tiny birds drifting in the background",
+      "texts": [
+        { "text": "As tall as a 15-story building", "start": 2, "end": 7, "position": "center" }
+      ]
+    }
+  ]
+}

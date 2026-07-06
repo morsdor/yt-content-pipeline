@@ -1,5 +1,10 @@
 # Animation Strategy: 50% Animated from Day 1
 
+> **Revised context (July 6, 2026 — see `strategy_review.md`):**
+> - **The old cadence contradiction is resolved.** This doc's "quality from day 1, slower output" now *agrees* with the strategy doc, because cadence dropped to **2 videos/month**. At that pace you have ample time for 50% animation without it fighting a publishing treadmill. Quality is the whole point.
+> - **Graceful degradation is built in.** Any scene tagged "animated" can fall back to Ken Burns + text overlay (pure ffmpeg, zero AI) if the AI animation won't come out right. Worst realistic case: a clean stills-plus-motion-overlay video, still fully shippable. You're never betting the channel on one AI tool.
+> - **No self-hosted GPU model (Wan/Hunyuan on RunPod/Modal).** At ~54 clips/month, Kling on an entry plan (~₹1,000–1,500/mo) is cheaper *in total cost of ownership* than the tens of engineering hours self-hosting would demand — and open models render your flat/isometric style worse than photoreal styles. Revisit only at 30+ videos/month.
+
 ## What Dinzo and Bound Actually Do (It's Not What You Think)
 
 These channels do NOT use frame-by-frame character animation. That would cost $500–$5,000 per minute and take weeks. What they actually use is **6 layers of motion on top of illustrated stills** — and most of these layers are now automatable with AI.
@@ -166,7 +171,7 @@ For a 10-minute video with ~54 scenes:
 | Assembly (ffmpeg/moviepy) | $0.00 | 1 | $0.00 |
 | **Total per video** | | | **~$7.00** |
 
-**Monthly cost at 2 videos/week (8 videos):** ~$56 in animation + image credits, plus ₹2,000 Claude Pro + ~₹920 ElevenLabs = **~₹7,600/month** (~$91).
+**Monthly cost at 2 videos/month:** ~$14 in animation + image credits, plus ₹2,000 Claude Pro (self-recorded voice = free) = **~₹3,000–3,500/month** (~$40). The low cadence is exactly what keeps this cheap and keeps you inside entry-tier limits.
 
 ### Growth path (quality, not quantity):
 
@@ -203,8 +208,8 @@ Step 4: PARTICLE OVERLAYS                       ← Stock composites
   └─ Select ~10 scenes for atmosphere
   └─ Apply dust/sparks/rain overlays in assembly
 
-Step 5: VOICEOVER                               ← ElevenLabs (voice clone)
-  └─ Full script → single audio file
+Step 5: VOICEOVER                               ← YOU record (mic + Audacity)
+  └─ Fact-checked script → single audio file (AI clone = pickup fallback only)
 
 Step 6: ASSEMBLY                                ← video_assembler.py
   └─ Static scenes: Ken Burns + text overlays
@@ -308,4 +313,4 @@ At 50% animation from day 1, your channel establishes itself as a **high-product
 
 **The tradeoff is speed, not quality:** Early on, each video will take longer to produce (~4–6 hours total vs ~2 hours for pure Ken Burns). But the channel's identity is locked in from video #1, which is worth more than a few extra videos published early.
 
-*Last updated: July 5, 2026*
+*Last updated: July 6, 2026 — revised: cadence contradiction resolved (2 videos/month makes 50% animation comfortable), graceful-degradation fallback added, self-recorded narration, no self-hosted GPU model needed. See `strategy_review.md`.*

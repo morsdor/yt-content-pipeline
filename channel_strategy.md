@@ -44,27 +44,33 @@
 | Materials & metallurgy | $6–$10 | Niche but loyal audience |
 | Systems & logistics | $8–$15 | Business-adjacent, attracts B2B advertisers |
 
+> **Read this table carefully — two important caveats:**
+>
+> 1. **This is a general engineering-history channel, not a CS channel.** The content is a *mix* of pillars (see §4): physical builds, failures, logistics, inventions, with "Ancient Code" (CS) as roughly one-sixth of output. The high-CPM CS/systems rows are a nice premium *slice*, not the core. Your realistic blended CPM is dominated by the physical-infrastructure and engineering-disaster rows ($5–12), not the $20 top end.
+> 2. **CPM ≠ what you earn. RPM does.** These are *CPM* (advertiser-facing) figures for a *Tier-1* audience. Your actual **RPM** — what lands in your account — is roughly **40–55% of CPM** after YouTube's 45% cut and unmonetized views. And a new, India-based channel covering global topics **will skew India / Tier-2/3 for the first 6–12 months**, where RPM is ~$0.5–1.5, not $4–6. Tier-1 RPM is *earned* as your audience mix shifts to the US/UK over time — it is not the starting condition. See §5 for the honest RPM/audience-tier progression and the revenue math.
+
 ---
 
 ## 2. Voice Strategy
 
-### Phase 1 (Months 1–6): AI Voice Clone
+> **Decision (revised):** Self-narration from **day 1**. The original plan started with an AI voice clone and switched to real voice at month 6. That's backwards for the 2026 market — your real voice is both a differentiation lever *and* an authenticity signal to YouTube's monetization systems (see §4a). At 2 videos/month, recording ~10–12 minutes of narration is a trivial time cost, so there's no reason to wait.
 
-- Clone your own voice using ElevenLabs (30-second voice sample → synthetic version)
-- Benefits: consistency, speed, your unique timbre without recording sessions
-- Narration style: calm, measured, authoritative. ~140–150 words per minute. Think documentary narrator, not podcast host.
-- Tone: curious, not lecturing. "Here's something fascinating" rather than "let me teach you."
+### Primary: Record your own narration (from video #1)
 
-### Phase 2 (Months 6–12): Own Voice Recording
+- **Narration style:** calm, measured, authoritative. ~140–150 words per minute. Documentary narrator, not podcast host.
+- **Tone:** curious, not lecturing. "Here's something fascinating" rather than "let me teach you."
+- **Your accent is not a barrier** — clarity and pacing matter, and your experience with international remote teams at JPMC means your English is already calibrated for global comprehension.
+- **Equipment:** USB condenser mic (~₹4,000), quiet room, Audacity or Adobe Podcast (free) for noise removal. This is the entire setup.
+- **Workflow:** read the fact-checked script in one or two takes, drop obvious flubs, done. Budget ~20–30 min/video including light cleanup.
 
-- Transition to recording narration yourself
-- Your accent is not a barrier — clarity and pacing matter, and your experience with international remote teams at JPMC means your English is already calibrated for global comprehension
-- Equipment: USB condenser mic (~₹4,000), quiet room, Audacity or Adobe Podcast for noise removal
-- Keep using AI clone as backup for quick turnaround videos
+### Optional fallback only: AI voice clone
 
-### Why this order matters:
+- Keep an ElevenLabs clone of your own voice available **purely for pickups** — a mispronounced name, a sentence you want to change after recording, or a re-record you don't want to redo the whole session for. Splice these in sparingly.
+- The clone is a convenience tool, **not** the narration source. If it ever becomes the default, you've drifted into exactly the "AI narration without human context" profile YouTube now demonetizes.
 
-The clone lets you ship fast and focus on learning the algorithm (titles, thumbnails, topics). Once you know what works, you invest the extra 20 minutes per video to record live — and that's when the channel starts to *feel* different from every other faceless channel.
+### Why real voice from the start matters:
+
+A real, consistent human voice is the single cheapest thing that makes the channel *feel* different from every faceless AI channel — and it's the clearest authenticity signal you can send. Combined with your original engineering perspective (§4), it's what keeps you monetizable and memorable while competitors get swept up in policy enforcement.
 
 ---
 
@@ -236,10 +242,13 @@ Mood: awe-inspiring, educational, quietly dramatic
 
 ### Publishing Cadence
 
-- **Target:** 1–2 videos per week (long-form, 10–12 minutes, ~54 scenes each)
-- **Ramp-up:** Start with 1/week while building animation speed, scale to 2/week by month 2–3
-- **Batch production:** Script 4–6 videos in one session, generate images in batch, animate in batch, record/clone voice, assemble
-- **Schedule:** Tuesday + Friday (data suggests best performance for educational content)
+> **Decision (revised): 2 videos per month, quality over quantity.** The original 1–2/week target was incompatible with a full-time JPMC job once real research and fact-checking are included, and — more importantly — high-volume templated output is exactly what YouTube's 2026 inauthentic-content enforcement now penalizes (§4a). A steady stream of genuinely good videos beats a flood of mediocre ones. Consistency compounds; burnout does not.
+
+- **Target:** **2 videos per month** (roughly one every 10–14 days), long-form, 10–12 minutes, ~54 scenes each.
+- **Each video is fully researched, fact-checked, and carries your own perspective** — not an AI first draft published as-is.
+- **Scale up later, deliberately:** increase cadence only after you've (a) learned what actually performs, (b) sped up your workflow with templates/LoRA, and (c) confirmed you have the time. Never trade quality for a number.
+- **This lower cadence also collapses your costs** — 2 videos/month fits comfortably inside existing Pro-tier / entry-plan limits, which removes any need for self-hosted video models (see pipeline doc).
+- **Schedule:** publish on a consistent day/time (e.g., Saturday morning US time) so returning viewers and the algorithm learn your rhythm. Consistency of *timing* matters more than the specific day at low volume.
 
 ### Title Formula
 
@@ -253,107 +262,146 @@ Every title follows one of these proven patterns:
 
 ---
 
-## 5. Growth Projections
+## 4a. Authenticity & YouTube Policy — the moat AND the compliance rule
 
-> [!NOTE]
-> These are projections based on comparable channels in the educational/engineering niche. Actual results depend on execution quality, consistency, and algorithmic factors.
+> This section didn't exist in the original plan. It's the highest-severity gap, so it's now front and center.
 
-### Subscriber Growth
+In 2026 YouTube renamed its "repetitious content" rule to **"inauthentic content"** and began actively demonetizing channels that publish **mass-produced, templated, or machine-made videos without genuine human input.** Enforcement has been real — thousands of faceless AI channels suspended, including large ones. The targeted profile is: *AI narration over AI images, batch-produced from a repeating template, with minimal human review.* That is precisely what an un-modified automated pipeline produces.
 
-| Month | Videos Published (cumulative) | Projected Subscribers | Milestone |
+**The reframe that makes this a strength, not a threat:** your automated pipeline is a **cost-saver, not the product.** The product is **your judgment** — the engineering perspective you bring to each story. Do this and the same features that would sink a slop channel become your moat.
+
+**Non-negotiables, from video #1:**
+
+1. **Original perspective in every video.** Lead with a real insight only *you* would frame this way — the systems-design or engineering lens on the problem ("here's the actual constraint they were solving for"). This is your differentiation, your authenticity signal, and your accuracy engine, all at once. It cannot wait for a later phase.
+2. **Real research and fact-checking, not AI-summarized Wikipedia.** Engineering-history audiences are expert and punish errors in the comments (which tanks engagement signals). AI drafts the script; **you verify every date, tonnage, mechanism, and attribution** against real sources. Budget 1–2 hours per video for this.
+3. **Genuine variation** between videos — different structures, framings, pacing. Not 50 clones of one template.
+4. **Record your own voice** (§2) — the clearest human-authenticity signal available.
+5. **Disclose AI-assisted narration/visuals** via the **"Altered content"** checkbox in YouTube Studio on upload. Non-disclosure is itself a removal risk. (Relevant mainly if/when you use the AI voice-clone fallback or AI-generated visuals prominently.)
+
+**Bottom line:** the plan's original instinct — "automate everything, maximize volume" — is the single most dangerous idea in it, because it's the exact profile YouTube now penalizes. Automation keeps your costs near zero; *your brain* is what earns the views and the money.
+
+---
+
+## 5. Growth Projections (Realistic)
+
+> [!IMPORTANT]
+> **These replace the earlier optimistic projections, which were ~3–6× too high** (they implied 500–2,000 subs by month 3 and 15,000–50,000 by month 12 — a top-decile outcome presented as the expected case). The numbers below are the *median* case for a well-executed channel at **2 videos/month**. Plan for these; be delighted if you beat them. Do **not** quit at month 4 with 300 subscribers and ₹0 earned — that is completely normal, and it's the exact point where most people give up right before the flywheel starts.
+
+### Subscriber Growth (2 videos/month, median case)
+
+| Month | Videos (cumulative) | Realistic Subscribers | Reality check |
 |:---|:---|:---|:---|
-| 3 | 24 | 500–2,000 | YPP Early Access eligible |
-| 6 | 48 | 2,000–8,000 | YPP Full Monetization eligible |
-| 9 | 72 | 5,000–20,000 | First sponsorship inquiries |
-| 12 | 96 | 15,000–50,000 | Established channel |
-| 18 | 144 | 40,000–150,000 | Authority in niche |
-| 24 | 192 | 100,000–400,000 | Major channel |
+| 3 | 6 | 50–300 | Most videos <100 views. Pre-revenue. Normal. |
+| 6 | 12 | 300–1,000 | Approaching, maybe hitting, the 1,000-sub + 4,000-hour bar |
+| 12 | 24 | 1,000–5,000 | Monetized; first payouts $30–300/mo as back-catalog compounds |
+| 18 | 36 | 3,000–15,000 | Finding winning formats; first sponsor conversations possible |
+| 24 | 48 | 8,000–40,000 | Established niche channel; sponsorships become the real income lever |
+| 36 | 72 | 25,000–120,000 | Authority; diversified revenue can approach salary-replacement |
 
-### CPM Expectations by Phase
+*Top-decile execution can beat these meaningfully — but build your plan and your morale around the median, not the ceiling.*
 
-| Phase | Audience Mix | Blended CPM | Notes |
+### RPM & Audience-Tier Progression (the honest version)
+
+RPM is what you actually earn per 1,000 views (≈40–55% of the CPM figures in §1). A new India-based channel on global topics **starts India/Tier-2/3-heavy and shifts toward Tier-1 over time** — so your RPM climbs as the audience mix matures, not from day 1.
+
+| Phase | Realistic audience mix | Blended **RPM** (earned) | Notes |
 |:---|:---|:---|:---|
-| Phase 1 (Mo 1–6) | 50% Tier 1, 50% Tier 2/3 | $3–$6 | Building audience, mixed geography |
-| Phase 2 (Mo 6–12) | 55% Tier 1, 45% Tier 2/3 | $5–$8 | Better SEO, more targeted titles |
-| Phase 3 (Mo 12–18) | 60% Tier 1, 40% Tier 2/3 | $6–$12 | Sponsorship-quality audience, CS content pushing CPM up |
-| Phase 4 (Mo 18+) | 65% Tier 1, 35% Tier 2/3 | $8–$15 | Established authority, premium sponsor rates |
+| Mo 1–6 | ~20% Tier 1, 80% Tier 2/3 (India-heavy) | **$0.8–2.0** | New channel, mixed/local audience. Low is normal. |
+| Mo 6–12 | ~35% Tier 1 | **$1.5–3.5** | Better titles/SEO pull more US/UK viewers |
+| Mo 12–24 | ~50% Tier 1 | **$3–6** | Sponsorship-quality audience forming |
+| Mo 24+ | ~60%+ Tier 1 | **$4–8** | Mature; CS/systems slice nudges the top end up |
+
+### Revenue Math — what "replace my salary" actually requires
+
+Target: replace ₹2.10 L/mo take-home ≈ **$2,500/mo** on **ad revenue alone**:
+
+| Blended RPM | Monetized views/month needed | Reality |
+|:---|:---|:---|
+| $2 (early, realistic) | 1,250,000 | Impossible on 2 new videos alone — needs a large compounding library |
+| $4 (mid, Tier-1-ish) | 625,000 | Requires a strong evergreen back-catalog (~150K+ sub channel) |
+| $5 (mature) | 500,000 | Achievable at authority scale, ~2.5–4 yrs in |
+
+**Conclusion:** Ad revenue *alone* replacing your salary is a **3–5 year, high-variance, not-guaranteed** outcome. The realistic salary-replacement path is a **diversified business** — ad revenue as passive background income, **sponsorships as the primary lever** (they pay far more per view than ads in this niche), plus **an email list and a product once you have genuine traction.** See §6, where the revenue emphasis is now flipped accordingly.
 
 ---
 
 ## 6. Business Evolution Phases
 
-### Phase 1: The Machine (Months 1–6)
+### Phase 1: Find the Formula (Months 1–9)
 
-**Goal:** Ship consistently, learn the algorithm, hit monetization.
+**Goal:** Ship consistently, learn what resonates, reach monetization.
 
-- AI-assisted pipeline (AI voice clone + AI images + 50% AI-animated scenes + automated assembly)
-- 1–2 videos/week, ~4–6 hours human time per video (includes animation review)
-- Focus on: which topics get views, which titles get clicks, which videos get watch time
-- Voice: AI clone of your voice
-- Human effort per video: ~4–6 hours (scripting review + animation QA + final review)
-- Speed increases as you build templates and animation muscle memory
+- AI-assisted pipeline (**your own recorded voice** + AI images + ~50% AI-animated scenes + automated assembly)
+- **2 videos/month**, each fully researched, fact-checked, and carrying your perspective
+- Focus on: which topics get views, which titles get clicks, which videos hold watch time
+- Human effort per video: ~5–7 hours (research + fact-check + script rewrite + narration + animation QA). This is real work — that's the point; it's what keeps you monetizable.
+- Speed increases as you build templates, a reference-anchor image library, and eventually a LoRA
 
-**Key metric:** Watch time per video (not views, not subscribers)
-
----
-
-### Phase 2: The Voice (Months 6–12)
-
-**Goal:** Differentiate from the clone army. Build recognizable identity.
-
-- Transition to recording your own narration
-- Add editorial perspective: "Here's what most people miss about this..." — your distributed-systems thinking applied to historical problems
-- Script process: LLM writes draft → you rewrite the hook + 2–3 insight paragraphs → rest stays AI-assisted
-- Human effort per video: ~30–45 minutes
-
-**Key metric:** Subscriber-to-view ratio (are people subscribing, not just watching?)
+**Key metric:** Watch time / retention per video (not views, not subscribers)
 
 ---
 
-### Phase 3: The Face (Months 12–18)
+### Phase 2: The Perspective (Months 9–18)
 
-**Goal:** Build trust and community. Launch first product.
+**Goal:** Deepen your editorial identity. Become known for a *take*, not just topics.
 
-- Selective face-to-camera intros on ~25% of videos (highest-effort ones)
-- Launch community (Discord or YouTube community tab)
-- First digital product based on analytics data (which topics resonate most)
-- Start building email list (lead magnet: free PDF atlas or engineering timeline poster)
-- Human effort per video: ~1–2 hours for face-reveal videos, ~30 min for standard
+- Voice is already yours (from day 1) — now sharpen the *perspective* it delivers
+- Lean harder into your signature angle: "Here's what most people miss about this..." — your distributed-systems / SWE thinking applied to historical engineering problems
+- Script process: LLM writes draft → **you fact-check everything** and rewrite the hook + 2–3 genuine-insight paragraphs → rest stays AI-assisted
+- Start capturing an email list (lead magnet: free PDF atlas or engineering timeline)
+- Human effort per video: still ~5–7 hours, but more of it goes into insight and less into figuring out the pipeline
 
-**Key metric:** Email list size (your owned audience, algorithm-independent)
+**Key metric:** Subscriber-to-view ratio + email signups (are people committing, not just watching?)
 
 ---
 
-### Phase 4: The Business (Month 18+)
+### Phase 3: Trust & First Product (Months 18–30)
 
-**Goal:** YouTube becomes the marketing engine, not the product.
+**Goal:** Build community and launch your *first* product — **only once you have genuine traction.**
 
-Revenue stack:
+- Optional selective face-to-camera intros on your highest-effort videos (builds trust; entirely optional)
+- Launch a community (Discord or YouTube community tab)
+- **First digital product, driven by analytics** (which topics actually resonate) — e.g., an illustrated "Engineering History Atlas" ebook. Don't build a product before the audience tells you what they want; that's why it's Phase 3, not Phase 1.
+- Grow the email list actively — your owned, algorithm-independent asset
+
+**Key metric:** Email list size + first product revenue (owned income, not ad-dependent)
+
+---
+
+### Phase 4: The Business (Month 30+)
+
+**Goal:** YouTube becomes the marketing engine, not the product. This is where salary-replacement actually happens — through the *diversified stack*, not ads.
+
+Revenue stack, **ordered by how much of your salary-replacement it realistically carries:**
 
 ```
 YouTube (free content — the top of funnel)
     │
-    ├── Ad revenue (passive background income)
+    ├── 1. Sponsorships  ← PRIMARY income lever
+    │      (Brilliant, Ground News, NordVPN, CuriosityStream, engineering SaaS)
+    │      Pays far more per view than ads. Kicks in once you have a
+    │      credible, Tier-1-leaning audience (~10K+ subs, growing).
     │
-    ├── Sponsorships (Brilliant, CuriosityStream, Squarespace, engineering tools)
+    ├── 2. Email list → Digital products  ← SECOND lever (Phase 3 onward)
+    │      • "The Engineering History Atlas" (illustrated ebook)
+    │      • Template / research packs
+    │      • Community membership (exclusive deep-dives, early access)
+    │      Built only after analytics tell you what the audience wants.
     │
-    ├── Email list (owned asset — direct relationship with audience)
-    │   │
-    │   ├── Digital products
-    │   │   • "The Engineering History Atlas" (illustrated ebook)
-    │   │   • "Build Your Own AI YouTube Pipeline" (course — leverages your SWE background)
-    │   │   • Template packs (Notion research templates, script frameworks)
-    │   │
-    │   └── Community membership
-    │       • Exclusive deep-dives, early access, behind-the-scenes of the pipeline
+    ├── 3. Ad revenue  ← passive BACKGROUND income, not the main event
+    │      Nice, reliable-ish, but the lowest-margin and slowest-scaling piece.
     │
-    └── The meta-product: teaching others how to build automated channels
-        • This leverages your unique position: SWE who actually built the system
+    └── 4. (Optional, much later) The meta-product
+           • Teaching others how you built the pipeline — a course/consulting
+             line that leverages your SWE background. Only if you enjoy it and
+             the channel itself is already stable.
 ```
 
-**The two-business model:** By this phase, you have two distinct businesses operating from one audience:
-1. The channel itself (historical engineering content → ads + sponsors)
-2. The knowledge of how you built it (the AI pipeline → courses + consulting)
+> **Deliberate re-ordering:** the original plan led with ad revenue and treated products as a bonus. That's backwards. **Ads are the least reliable, lowest-margin income here.** Sponsorships + owned audience (email/products) are what realistically replace ₹2.1 L/mo. Products are correctly deferred until you have genuine traction and data — don't build them speculatively.
+
+**The two-business model** (a Phase-4 *option*, not a requirement):
+1. The channel itself (engineering-history content → sponsors + ads + products)
+2. The knowledge of how you built it (the AI pipeline → optional course/consulting)
 
 ---
 
@@ -436,4 +484,4 @@ YouTube (free content — the top of funnel)
 
 ---
 
-*Last updated: July 5, 2026*
+*Last updated: July 6, 2026 — revised after strategy review (see `strategy_review.md`). Key changes: self-narration from day 1, cadence dropped to 2 videos/month, realistic growth/RPM/revenue projections, added authenticity/policy section (§4a), revenue emphasis flipped toward sponsors + products with ads as background income.*

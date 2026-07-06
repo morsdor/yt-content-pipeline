@@ -5,11 +5,15 @@ video_assembler.py — Automated Ken Burns + Text Overlay Video Assembly
 Takes a storyboard.json + images + voiceover audio → produces a finished video.
 
 Dependencies:
-    pip install moviepy pillow
+    pip install "moviepy==1.0.3" pillow
 
 Also requires:
     - ffmpeg installed (brew install ffmpeg)
-    - ImageMagick installed for text rendering (brew install imagemagick)
+
+Note: Text overlays are rendered with Pillow — NO ImageMagick needed. Drop your
+brand fonts into assets/fonts/ (IBMPlexSans-Bold.ttf, Fraunces-Bold.ttf); the
+assembler falls back to a system font if they're absent. Edit FONT_CANDIDATES
+to reorder preference.
 
 Usage:
     python video_assembler.py --storyboard storyboard.json --output final_video.mp4
@@ -30,12 +34,21 @@ import numpy as np
 
 RESOLUTION = (1920, 1080)
 FPS = 30
-FONT = "Arial-Bold"          # change to your preferred font
-FONT_SIZE = 42
-FONT_COLOR = "white"
-TEXT_BG_COLOR = (0, 0, 0)    # black background for text
+
+# Text is rendered with Pillow (NOT ImageMagick/TextClip) so it works everywhere
+# without an ImageMagick install or a magic "Arial-Bold" font name.
+# Brand fonts: drop the .ttf files into assets/fonts/. First existing path wins.
+FONT_CANDIDATES = [
+    "assets/fonts/IBMPlexSans-Bold.ttf",
+    "assets/fonts/Fraunces-Bold.ttf",
+    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",   # macOS
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", # Linux fallback
+]
+FONT_SIZE = 46
+FONT_COLOR = (250, 247, 242)   # brand cream #FAF7F2
+TEXT_BG_COLOR = (44, 44, 44)   # brand charcoal #2C2C2C
 TEXT_BG_OPACITY = 0.6
-CROSSFADE_DURATION = 0.5     # seconds of crossfade between scenes
+CROSSFADE_DURATION = 0.5       # seconds of crossfade between scenes
 
 
 # ── Motion Functions ─────────────────────────────────────────────────────────
@@ -149,6 +162,57 @@ MOTIONS = {
 DEFAULT_MOTION_CYCLE = ["zoom_in", "pan_right", "zoom_out", "pan_left", "pan_up", "zoom_in"]
 
 
+# ── Text Rendering (Pillow — no ImageMagick needed) ──────────────────────────
+
+from PIL import ImageFont, ImageDraw
+
+
+def _load_font(size: int):
+    for path in FONT_CANDIDATES:
+        try:
+            return ImageFont.truetype(path, size)
+        except Exception:
+            continue
+    return ImageFont.load_default()
+
+
+def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
+                    color=FONT_COLOR, bg_color=TEXT_BG_COLOR,
+                    bg_opacity: float = TEXT_BG_OPACITY, pad: int = 26) -> np.ndarray:
+    """Render wrapped, centered text on a rounded translucent bar → RGBA array."""
+    from PIL import Image
+    font = _load_font(fontsize)
+    measure = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+
+    # word-wrap to max_width
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        test = (cur + " " + w).strip()
+        if measure.textlength(test, font=font) <= max_width or not cur:
+            cur = test
+        else:
+            lines.append(cur); cur = w
+    if cur:
+        lines.append(cur)
+
+    line_h = fontsize + 10
+    text_w = max((measure.textlength(l, font=font) for l in lines), default=1)
+    W = int(text_w) + pad * 2
+    H = line_h * len(lines) + pad * 2
+
+    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    if bg_color is not None:
+        d.rounded_rectangle([0, 0, W - 1, H - 1], radius=14,
+                            fill=(bg_color[0], bg_color[1], bg_color[2], int(255 * bg_opacity)))
+    y = pad
+    for l in lines:
+        lw = measure.textlength(l, font=font)
+        d.text(((W - lw) / 2, y), l, font=font, fill=(color[0], color[1], color[2], 255))
+        y += line_h
+    return np.array(img)
+
+
 # ── Scene Builder ────────────────────────────────────────────────────────────
 
 def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
@@ -207,44 +271,35 @@ def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
         text_str = txt_info.get("text")
         if not text_str:
             continue
-            
+
         t_start = txt_info.get("start", 0.5)
         t_end = txt_info.get("end", duration - 0.5)
         t_pos = txt_info.get("position", "bottom")
         t_dur = t_end - t_start
-        
+
         if t_dur <= 0:
             continue
 
+        # Render text + background bar in one Pillow image (no ImageMagick).
+        arr = make_text_image(text_str, max_width=RESOLUTION[0] - 300)
         txt_clip = (
-            TextClip(
-                text_str, fontsize=FONT_SIZE, color=FONT_COLOR, font=FONT,
-                size=(RESOLUTION[0] - 200, None), method="caption", align="center",
-            )
+            ImageClip(arr, transparent=True)
             .set_duration(t_dur)
             .set_start(t_start)
             .crossfadein(0.3)
             .crossfadeout(0.3)
         )
-        
+
+        th = txt_clip.h
         if t_pos == "bottom":
-            txt_clip = txt_clip.set_position(("center", RESOLUTION[1] - 120))
+            txt_clip = txt_clip.set_position(("center", RESOLUTION[1] - th - 80))
         elif t_pos == "top":
-            txt_clip = txt_clip.set_position(("center", 40))
-        elif t_pos == "center":
+            txt_clip = txt_clip.set_position(("center", 60))
+        else:  # center
             txt_clip = txt_clip.set_position("center")
-        
-        txt_bg = (
-            ColorClip(size=(RESOLUTION[0], txt_clip.h + 30), color=TEXT_BG_COLOR)
-            .set_opacity(TEXT_BG_OPACITY)
-            .set_duration(t_dur)
-            .set_start(t_start)
-            .set_position(("center", txt_clip.pos(0)[1] - 15))
-            .crossfadein(0.3)
-            .crossfadeout(0.3)
-        )
-        layers.extend([txt_bg, txt_clip])
-    
+
+        layers.append(txt_clip)
+
     return CompositeVideoClip(layers, size=RESOLUTION).set_duration(duration)
 
 
