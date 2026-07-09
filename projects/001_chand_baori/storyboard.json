@@ -1,8 +1,17 @@
 {
-  "_comment": "LEAN storyboard — each scene holds only its scene-specific image_prompt (subject), optional accent target, and (animated) animation_prompt (motion). Style-card prefix, scene_type recipe and accent_hex are applied at generation time by generate_assets.py — no boilerplate stored per scene.",
+  "_comment": "LEAN storyboard — each scene holds only its scene-specific image_prompt (subject), optional accent target, and (animated) animation_prompt (motion). scene_recipes + accent_hex below are THIS video's source of truth; the style-card prefix and these recipes are applied at generation time by prompt_builder.py / generate_assets.py — no boilerplate stored per scene.",
   "civilization": "Indian",
   "accent_hex": "#D4812A",
   "style_anchor_strength": 0.7,
+  "scene_recipes": {
+    "establishing": "wide establishing view, the full structure in frame with sky/horizon context and a strong sense of scale",
+    "cross_section": "architectural cutaway/section — ground sliced open to reveal strata and the water/level line, shown in clean profile, educational-diagram clarity",
+    "detail": "tight isometric close-up on a single element, shallow depth, texture and craft emphasis",
+    "scale_comparison": "the subject beside a scale reference (tiny human silhouettes and/or storey markers), measured diagrammatic framing",
+    "map": "top-down cartographic schematic, muted regional context, thin technical linework",
+    "title": "hero-wide composition with generous clean negative space reserved for a title wordmark overlay",
+    "outro": "calm, receding wide composition with clean negative space reserved for a subscribe card overlay"
+  },
   "base_dir": "./projects/001_chand_baori",
   "voiceover": "audio/voiceover.mp3",
   "background_music": "audio/ambient.mp3",

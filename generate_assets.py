@@ -2,21 +2,17 @@
 """
 generate_assets.py — code-driven asset generation for The Engineering Atlas.
 
-storyboard.json is the source of truth, and it stays LEAN: each scene carries only
-its *scene-specific* prompt —
-    image_prompt      : what to draw in THIS scene (the subject), no boilerplate
-    accent (optional) : where the single accent highlight goes
-    animation_prompt  : the motion for THIS scene (animated scenes only)
-The shared brand boilerplate is applied HERE, at generation time:
-    * the style-card prefix is read from style_card.txt (single source of truth)
-    * the scene_type recipe comes from SCENE_RECIPES below (brand-level)
-    * the accent hex comes from storyboard.json -> accent_hex (per video)
-    * composition hints are derived from `texts` + `motion`
-So there is no separate "enrich" step and no repeated prefix in the JSON.
+storyboard.json is the source of truth and stays LEAN: each scene carries only its
+scene-specific `image_prompt` (subject), optional `accent`, and (animated) `animation_prompt`.
+The full prompts are composed at generation time by prompt_builder.py
+(style_card.txt prefix + scene_recipes + accent_hex + composition) — nothing boilerplate
+is stored in the JSON.
 
 Outputs the assembler expects:
     images/scene_NN.png          (all scenes)   — Gemini "nano banana" (Interactions API)
     clips/scene_NN_animated.mp4  (animated)     — Kling image-to-video (REST)
+
+To preview the fully-composed prompts:  python prompt_builder.py <storyboard.json>
 
 Setup
 -----
@@ -26,7 +22,6 @@ Setup
 Usage (from repo root)
 ----------------------
     SB=projects/001_chand_baori/storyboard.json
-    python generate_assets.py --storyboard $SB --dump-prompts        # write the composed prompt sheet
     python generate_assets.py --storyboard $SB --only image --scenes 1   # the anchor; eyeball it
     python generate_assets.py --storyboard $SB --only image             # the rest, referencing scene 1
     python generate_assets.py --storyboard $SB --only anim              # Kling clips from the stills
@@ -35,6 +30,8 @@ Usage (from repo root)
 
 import argparse, base64, json, os, time
 from pathlib import Path
+
+from prompt_builder import context_from, compose_image_prompt, compose_animation_prompt
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -45,87 +42,6 @@ KLING_MODEL         = os.environ.get("KLING_MODEL", "kling-v2-6")
 POLL_INTERVAL_S     = 10
 POLL_TIMEOUT_S      = 600
 KLING_RETRIES       = 2                                  # then flag for static fallback
-
-# ── Brand-level visual DNA (applies to EVERY video, not per-scene) ────────────
-# scene_type -> the recipe fragment injected into that scene's prompt.
-SCENE_RECIPES = {
-    "establishing":     "wide establishing view, the full structure in frame with sky/horizon context and a strong sense of scale",
-    "cross_section":    "architectural cutaway/section — ground sliced open to reveal strata and the water/level line, shown in clean profile, educational-diagram clarity",
-    "detail":           "tight isometric close-up on a single element, shallow depth, texture and craft emphasis",
-    "scale_comparison": "the subject beside a scale reference (tiny human silhouettes and/or storey markers), measured diagrammatic framing",
-    "map":              "top-down cartographic schematic, muted regional context, thin technical linework",
-    "title":            "hero-wide composition with generous clean negative space reserved for a title wordmark overlay",
-    "outro":            "calm, receding wide composition with clean negative space reserved for a subscribe card overlay",
-}
-
-# Fallback if style_card.txt can't be read.
-DEFAULT_STYLE_PREFIX = (
-    "Isometric flat-design technical illustration. Clean vector aesthetic, warm parchment "
-    "background (#F5F0E8), precise geometric lines, charcoal dark elements (#2C2C2C), cream "
-    "light elements (#FAF7F2). Architectural cross-section / cutaway style where relevant. "
-    "Warm golden-hour ambient lighting with soft directional shadows. No humans visible (or "
-    "tiny silhouettes for scale only). No text in image. High architectural precision. "
-    "Educational diagram aesthetic. Quietly dramatic, awe-inspiring mood."
-)
-
-
-# ── Prompt composition (the "dynamic enhancement" happens here) ──────────────
-def load_style_prefix(path):
-    """Extract the prefix block from style_card.txt (everything from the
-    'Isometric...' line up to the PER-SCENE ADD-ONS separator)."""
-    try:
-        body = Path(path).read_text().split("--- PER-SCENE")[0]
-    except Exception:
-        return DEFAULT_STYLE_PREFIX
-    lines = [l.strip() for l in body.splitlines()]
-    start = next((i for i, l in enumerate(lines) if l.startswith("Isometric")), None)
-    if start is None:
-        return DEFAULT_STYLE_PREFIX
-    return " ".join(l for l in lines[start:] if l)
-
-
-def composition_hint(scene):
-    pos = {t.get("position", "bottom") for t in scene.get("texts", [])}
-    parts = []
-    if "top" in pos:    parts.append("keep the upper third clear for a callout")
-    if "bottom" in pos: parts.append("keep the lower third clear for a callout")
-    if "center" in pos: parts.append("keep the central band uncluttered for a centered callout")
-    neg = "; ".join(parts) if parts else "balanced composition"
-    if scene.get("type") == "animated":
-        return f"{neg}; compose as a starting frame that anticipates the described motion"
-    move = {
-        "zoom_detail": f"one clear focal point near ({scene.get('focus_x',0.5)}, {scene.get('focus_y',0.4)})",
-        "pan_right":   "wide horizontal composition with interest across the frame",
-        "pan_left":    "wide horizontal composition with interest across the frame",
-        "pan_up":      "tall vertical composition, detail top-to-bottom",
-        "zoom_in":     "centered composition with headroom",
-        "zoom_out":    "rich full-frame composition",
-    }.get(scene.get("motion", "zoom_in"), "centered composition")
-    return f"{neg}; {move}"
-
-
-def compose_image_prompt(scene, accent_hex, style_prefix, anchor_strength):
-    st = scene.get("scene_type", "detail")
-    recipe = SCENE_RECIPES.get(st, "isometric technical illustration")
-    subject = (scene.get("image_prompt") or "").strip()
-    acc = scene.get("accent")
-    if acc:
-        accent_clause = (f"Accent: {accent_hex} used sparingly as a single highlight on {acc}; "
-                         "everything else stays in the neutral base palette.")
-    else:
-        accent_clause = (f"Neutral base palette only (no accent this frame; the {accent_hex} "
-                         "accent is reserved for key scenes).")
-    return (f"{style_prefix} || Scene [{st}] — {recipe}. || Subject: {subject}. || "
-            f"{accent_clause} || Composition: {composition_hint(scene)}. || Consistency: pass a "
-            f"style anchor (~{anchor_strength} strength); keep palette, line-weight and isometric "
-            f"angle identical across all scenes.")
-
-
-def compose_animation_prompt(scene, idx):
-    motion = (scene.get("animation_prompt") or "subtle parallax").strip()
-    return (f"{motion}. Duration ~{scene['duration']}s. Image-to-video from the generated still "
-            f"images/scene_{idx:02d}.png — add motion only, do NOT restyle; keep the isometric "
-            f"look, palette and accent locked to the starting frame.")
 
 
 # ── .env loader + scene selection ────────────────────────────────────────────
@@ -206,22 +122,6 @@ def kling_animate(still_path, prompt, duration_s, mode, out_path):
     raise TimeoutError(f"kling task {task_id} did not finish in {POLL_TIMEOUT_S}s")
 
 
-# ── Human-readable prompt sheet (composed on demand; nothing stored in JSON) ──
-def write_prompt_sheet(scenes, accent_hex, anchor_strength, style_prefix, out_path):
-    L = [f"# Composed prompt sheet ({len(scenes)} scenes)",
-         f"*Built at generation time from lean storyboard + style_card.txt + accent {accent_hex}. "
-         "Regenerate with `generate_assets.py --dump-prompts`.*", ""]
-    for i, s in enumerate(scenes, 1):
-        L += [f"### Scene {i:02d} — {s['scene_type']} · {s['type']} · {s['duration']}s",
-              f"**IMAGE → `{s['image']}`**", "```",
-              compose_image_prompt(s, accent_hex, style_prefix, anchor_strength), "```"]
-        if s["type"] == "animated":
-            L += [f"**ANIMATION → `{s['animated_clip']}`**", "```",
-                  compose_animation_prompt(s, i), "```"]
-        L.append("")
-    Path(out_path).write_text("\n".join(L))
-
-
 # ── Main ─────────────────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser(description="Generate images + Kling clips from a lean storyboard.json")
@@ -234,8 +134,6 @@ def main():
     ap.add_argument("--mode", choices=["std", "pro"], default="std", help="Kling quality/cost mode")
     ap.add_argument("--force", action="store_true", help="regenerate even if the output exists")
     ap.add_argument("--dry-run", action="store_true", help="print the plan + one sample composed prompt; no API calls")
-    ap.add_argument("--dump-prompts", nargs="?", const="", default=None,
-                    help="write the composed prompt sheet (default: <project>/prompts.md) and exit")
     args = ap.parse_args()
 
     sb_path = Path(args.storyboard).resolve()
@@ -244,17 +142,7 @@ def main():
     sb = json.loads(sb_path.read_text())
     scenes = sb["scenes"]
     sel = parse_scene_selection(args.scenes, len(scenes))
-
-    accent_hex = sb.get("accent_hex", "#3D5A80")
-    anchor_strength = sb.get("style_anchor_strength", 0.7)
-    style_prefix = load_style_prefix(args.style_card)
-
-    # --dump-prompts: compose the full prompts into a review sheet and exit.
-    if args.dump_prompts is not None:
-        out = Path(args.dump_prompts) if args.dump_prompts else (root / "prompts.md")
-        write_prompt_sheet(scenes, accent_hex, anchor_strength, style_prefix, out)
-        print(f"wrote {out}")
-        return
+    ctx = context_from(sb, args.style_card)    # accent_hex + recipes (from storyboard) + style prefix
 
     manifest_path = root / "assets_manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.is_file() else {}
@@ -271,7 +159,7 @@ def main():
                 print(f"  scene {i:02d}  skip (exists)"); continue
             ref = args.ref or (str(root / "images/scene_01.png") if i != 1 else "")
             model = s.get("image_model", args.model)     # per-scene override (hero frames)
-            prompt = compose_image_prompt(s, accent_hex, style_prefix, anchor_strength)
+            prompt = compose_image_prompt(s, ctx)
             print(f"  scene {i:02d}  image -> {s['image']}"
                   + (f"  [ref={Path(ref).name}]" if ref else "  [no ref]")
                   + (f"  [{model}]" if model != args.model else ""))

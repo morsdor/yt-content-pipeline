@@ -1,5 +1,5 @@
 # Composed prompt sheet (54 scenes)
-*Built at generation time from lean storyboard + style_card.txt + accent #D4812A. Regenerate with `generate_assets.py --dump-prompts`.*
+*Generated at runtime by prompt_builder.py from the lean storyboard + style_card.txt + accent #D4812A. Not stored in the JSON; regenerate anytime.*
 
 ### Scene 01 — establishing · animated · 7s
 **IMAGE → `images/scene_01.png`**

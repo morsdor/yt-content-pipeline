@@ -51,15 +51,15 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 **1b — Storyboard (ONE fully-populated file, `scene_type` prepopulated)  ← REVIEW GATE**
 - [ ] Claude writes a **single** `storyboard.json` (~54 scenes) with **every field populated at once** — including `scene_type` from the start. No narrative-only pass, no separate enrich pass, no second file.
 - [ ] Each scene stays **lean** — only scene-specific content: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt` (**just the subject — what to draw this scene, no boilerplate**), optional `accent` (where the single highlight goes), `texts[]`, `narration_segment`. **Animated** scenes also carry `animated_clip` + `animation_prompt` (**just the motion**).
-- [ ] The shared boilerplate is **NOT stored in the JSON.** `generate_assets.py` composes the full prompt at generation time: `style_card.txt` prefix + the `scene_type` recipe + the scene's subject + the `accent_hex` **variable** + a composition hint derived from `texts`/`motion`. Keeps every scene of a type consistent, the accent swappable, and the file small.
+- [ ] The shared boilerplate is **NOT stored in the JSON.** `prompt_builder.py` composes the full prompt at generation time: `style_card.txt` prefix + the `scene_type` recipe (from the storyboard's `scene_recipes`) + the scene's subject + the `accent_hex` **variable** + a composition hint derived from `texts`/`motion`. Keeps every scene of a type consistent, the accent swappable, and the file small.
 - [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each subject + motion reads right. It's one file; change freely.
-- [ ] Preview the fully-composed prompts anytime with `python generate_assets.py --storyboard <sb> --dump-prompts` (writes a readable `prompts.md`). There is **no enrich step** — write the storyboard lean; the generator does the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
+- [ ] Preview the fully-composed prompts anytime with `python prompt_builder.py <sb>` (writes a readable `prompts.md` into the video folder — gitignored, regenerated on demand, never stored in the JSON). There is **no enrich step** — write the storyboard lean; `prompt_builder.py` + `generate_assets.py` do the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
 
 #### Storyboard format (the standard — `scene_type` prepopulated, single pass)
 
-Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video from brand_guide §3 — e.g. Indian `#D4812A`), `style_anchor_strength`, `base_dir`, `voiceover`, `background_music`, `music_volume`, `scenes[]`. (The `scene_type` recipe table lives in `generate_assets.py` as brand-level config, applied at generation — not copied into every video.)
+Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video from brand_guide §3 — e.g. Indian `#D4812A`), `style_anchor_strength`, `scene_recipes` (the `scene_type` → recipe map — **this video's source of truth**, editable per video), `base_dir`, `voiceover`, `background_music`, `music_volume`, `scenes[]`. (`prompt_builder.py` reads `scene_recipes` from the storyboard, falling back to built-in defaults only if absent.)
 
-**`scene_type` is a fixed vocabulary; `generate_assets.py` maps each to a locked recipe fragment when it composes that scene's prompt:**
+**`scene_type` is a fixed vocabulary; `prompt_builder.py` maps each to its recipe fragment (from the storyboard's `scene_recipes`) when composing that scene's prompt:**
 
 | scene_type | recipe fragment (visual DNA) |
 |:---|:---|
