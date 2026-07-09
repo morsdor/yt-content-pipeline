@@ -16,13 +16,16 @@ Civilization / accent: {{CIVILIZATION}} ({{ACCENT_HEX}}).
 Work through it in gated steps and STOP for my sign-off at each gate — don't run ahead:
 1. Phase 0 — research + fact-check: show me your sources and the key facts
    ({{KEY_FACTS_TO_VERIFY}}) so I can verify BEFORE you write anything.
+   Also build the reference pack: 5–15 real photos/plans into references/ (with
+   source URLs) + references/visual_facts.md with the visually checkable claims.
 2. Script: draft it in the witness + engineer + wit voice; I'll rewrite the hook
    and my perspective paragraphs.
-3. Storyboard, two passes: first a NARRATIVE-only storyboard.json (~54 scenes) with
-   story fields only — no image or animation prompts yet — for my review. After I
-   approve, enrich it with image_prompt / animation_prompt and file paths.
+3. Storyboard (~54 scenes): populate visual_facts + reference_image on every scene
+   that depicts the real structure, and give me the title + a one-sentence
+   thumbnail concept with it — no thumbnail concept, no approval.
 
-Save to projects/{{PROJECT_FOLDER}}/. I'll generate the images and record narration myself.
+Save to projects/{{PROJECT_FOLDER}}/. I'll generate the images (with the accuracy
+gate before any animation) and record narration myself.
 ```
 
 ### Placeholder key
@@ -46,13 +49,17 @@ Work through it in gated steps and STOP for my sign-off at each gate — don't r
 1. Phase 0 — research + fact-check: show me your sources and the key facts
    (build date/era, depth and number of steps, dimensions, the water-table engineering,
    the geometry) so I can verify BEFORE you write anything.
+   Also build the reference pack: 5–15 real photos/plans into references/ (with
+   source URLs) + references/visual_facts.md (e.g. "three stepped sides, one pavilion
+   side", "steps in paired V-flights forming a diamond lattice", "13 visible storeys").
 2. Script: draft it in the witness + engineer + wit voice; I'll rewrite the hook
    and my perspective paragraphs.
-3. Storyboard, two passes: first a NARRATIVE-only storyboard.json (~54 scenes) with
-   story fields only — no image or animation prompts yet — for my review. After I
-   approve, enrich it with image_prompt / animation_prompt and file paths.
+3. Storyboard (~54 scenes): populate visual_facts + reference_image on every scene
+   that depicts the real stepwell, and give me the title + a one-sentence
+   thumbnail concept with it — no thumbnail concept, no approval.
 
-Save to projects/001_chand_baori/. I'll generate the images and record narration myself.
+Save to projects/001_chand_baori/. I'll generate the images (with the accuracy
+gate before any animation) and record narration myself.
 ```
 
 ---

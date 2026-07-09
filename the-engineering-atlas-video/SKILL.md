@@ -12,8 +12,11 @@ description: >-
 # The Engineering Atlas — Per-Video Production Checklist
 
 The repeatable core process for every video. **2 videos/month, quality over quantity.**
-Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` (tech),
-`animation_upgrade.md` (motion), `channel_strategy.md` (titles, pillars, topic list).
+Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` (tech hub →
+links into `docs/`), `animation_upgrade.md` (motion), `channel_strategy.md` (titles, pillars,
+topic list). Companion skills: `asset-generation` (Phases 2+3: stills → gate → Kling animation),
+`visual-accuracy-gate` (still/clip validation), `thumbnail-workflow` (packaging gate +
+candidates + A/B + log).
 
 > **Three rules that override everything:** (1) You research and fact-check — AI drafts, you verify.
 > (2) You record your own narration. (3) You add a perspective only you would. These are what keep
@@ -36,6 +39,7 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 ### Phase 0 — Topic + Research + Fact-Check  ⏱ 2–4 hrs · HUMAN GATE
 - [ ] Pick topic from the 50-topic list (`channel_strategy.md §7`) or a new one; note its **civilization accent color**
 - [ ] Gather real sources — books, papers, museum/engineering references — not just an AI summary
+- [ ] **Reference pack:** collect 5–15 real photos/plans of the structure into `projects/NNN_topic/references/` (Wikimedia, ASI/UNESCO, papers — keep source URLs) and write `references/visual_facts.md`: the *visually checkable* claims (geometry, counts, patterns, materials, orientation). These feed the storyboard's `visual_facts` fields and the Phase-2 accuracy gate.
 - [ ] Write research notes: the **constraint** (why it was hard), the **mechanism** (how it worked), the **numbers** (verified), the **human angle** (who the witness is)
 - [ ] Decide the **"what most people miss"** insight — your engineer's-eye take
 - [ ] ✅ Gate: every date, tonnage, dimension, name, and mechanism is checked against a real source
@@ -51,9 +55,11 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 **1b — Storyboard (ONE fully-populated file, `scene_type` prepopulated)  ← REVIEW GATE**
 - [ ] Claude writes a **single** `storyboard.json` (~54 scenes) with **every field populated at once** — including `scene_type` from the start. No narrative-only pass, no separate enrich pass, no second file.
 - [ ] Each scene stays **lean** — only scene-specific content: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt` (**just the subject — what to draw this scene, no boilerplate**), optional `accent` (where the single highlight goes), `texts[]`, `narration_segment`. **Animated** scenes also carry `animated_clip` + `animation_prompt` (**just the motion**).
+- [ ] **Accuracy fields:** scenes depicting the real structure get `visual_facts` (copied from `references/visual_facts.md` — must-be-true claims, not prompts) and `reference_image` (best-matching photo in `references/`). `prompt_builder.py` injects the facts into both image and animation prompts; `generate_images.py` passes the photo as a geometry reference alongside the style anchor (anchor = LOOK, photo = GEOMETRY). Abstract scenes (maps, force diagrams) get facts only, or neither.
+- [ ] **Packaging-first gate (`thumbnail-workflow` skill, Stage 1):** before approving the storyboard, write the title + a one-sentence thumbnail concept ("dominant object + 3–4 words"). No compelling thumbnail concept = weak framing — fix the angle now, before any generation spend.
 - [ ] The shared boilerplate is **NOT stored in the JSON.** `prompt_builder.py` composes the full prompt at generation time: `style_card.txt` prefix + the `scene_type` recipe (from the storyboard's `scene_recipes`) + the scene's subject + the `accent_hex` **variable** + a composition hint derived from `texts`/`motion`. Keeps every scene of a type consistent, the accent swappable, and the file small.
 - [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each subject + motion reads right. It's one file; change freely.
-- [ ] Preview the fully-composed prompts anytime with `python prompt_builder.py <sb>` (writes a readable `prompts.md` into the video folder — gitignored, regenerated on demand, never stored in the JSON). There is **no enrich step** — write the storyboard lean; `prompt_builder.py` + `generate_images.py` do the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
+- [ ] Preview the fully-composed prompts anytime with `python prompt_builder.py <sb>` (writes a readable `prompts.md` into the video folder — gitignored, regenerated on demand, never stored in the JSON). There is **no enrich step** — write the storyboard lean; `prompt_builder.py` + `generate_images.py` do the rest. (Field reference: `docs/storyboard_schema.md`.)
 
 #### Storyboard format (the standard — `scene_type` prepopulated, single pass)
 
@@ -75,20 +81,14 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 - **Still-first for Kling.** *Every* scene gets a still `image` first (pass a style anchor on each call for cross-scene consistency). For `animated` scenes that still is Kling's **starting frame** — `animation_prompt` adds motion only, never restyles. `static` scenes use Ken Burns via `motion`.
 - **`texts` are overlaid by the assembler, not drawn into the image** (`style_card.txt` says "no text in image"). In the prompt, `texts` only dictate where to leave clean negative space.
 
-### Phase 2 — Images  ⏱ 1–2 hrs
-- [ ] Run `python generate_images.py --storyboard projects/NNN_topic/storyboard.json` (Gemini "nano banana"; composes prompts from the lean storyboard + `style_card.txt`). Do scene 1 first as the in-video reference (`--scenes 1`), eyeball it, then generate the rest.
-- [ ] **Video #1:** `style_card.txt` prefix only (no anchors exist yet). **Video #2+:** also pass a matching style anchor on every call (locks the look)
-- [ ] Same session, same model version for within-video consistency
-- [ ] Review; regenerate off-style frames; upscale static-scene images to 4K for Ken Burns headroom
+### Phases 2 + 3 — Asset Generation (stills → gate → animation)  ⏱ 3–5 hrs
+**→ Run the `asset-generation` skill** — it owns the whole chain; the stages below are the summary, the skill is the source of truth.
+- [ ] **Stage 0 — Preflight:** `.env` key present; Kling MCP `who_am_i` + **credits check (blocking)** — estimate the batch from `--anim-jobs` total seconds before generating anything. Anchor rule: **video #1** = `style_card.txt` only; **video #2+** = pass a style anchor on every call.
+- [ ] **Stage A — Stills:** `generate_images.py` — dry-run → scene 1 (eyeball) → rest. Same session, same model version. Scenes with `reference_image` get the real photo as geometry reference automatically.
+- [ ] **Stage B — ✅ VISUAL ACCURACY GATE (hard gate):** `visual-accuracy-gate` Layer 2 — vision compare, you confirm, delta-prompt fixes, `validation_report.md`. **No still goes to Kling unvalidated.**
+- [ ] **Stage C — Animation via the Kling MCP:** `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: `file_upload` → `image_to_video` (duration bias 6s; `enable_audio` false) → `query_tasks` → **download within 24h** → scrub-check (Layer 3) → one retry → Ken Burns fallback (retag `type:"static"`).
+- [ ] **Stage D:** upscale static-scene images to 4K for Ken Burns headroom.
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
-
-### Phase 3 — Animation (~27 scenes, via the Kling MCP)  ⏱ 2–3 hrs
-Run **by Claude through the connected Kling MCP** (custom connector) — MCP tools are agent-invoked, not a script. The still is Kling's starting frame (image-to-video).
-- [ ] Prep: `python prompt_builder.py projects/NNN_topic/storyboard.json --anim-jobs` → `anim_jobs.json` (each animated scene's still, duration, composed motion prompt) + total seconds. Review scope + credits (Kling bills per second; check with the MCP's `query_membership_and_credits`).
-- [ ] Claude calls `who_am_i` to read the current tier's `image_to_video` model + allowed durations/args (defaults change by membership — confirm the plan is what you expect).
-- [ ] For each job Claude: `file_upload` the still (PNG/JPG, <4K, ≤30MB, aspect ≤1:2) → gets a Kling URL → `image_to_video` (model, prompt = the job's motion prompt, duration) → polls `query_tasks` → saves the mp4 to `clips/scene_NN_animated.mp4`. **Result URLs expire in 24h — download promptly.**
-- [ ] **Every job is charged — no trial runs.** Confirm the batch before submitting; on any failure keep the user informed and only resubmit when they ask.
-- [ ] **Graceful degradation:** if a clip is blocked by moderation or won't come out right after ~2 tries, retag that scene `type:"static"` — Ken Burns covers it. A clean Ken Burns beats a glitchy animation. You always ship.
 
 ### Phase 4 — Particles + Overlays  ⏱ 20 min
 - [ ] Tag ~10 scenes for dust/sparks/rain stock overlays (atmosphere, ~20–30% opacity)
@@ -106,8 +106,9 @@ Run **by Claude through the connected Kling MCP** (custom connector) — MCP too
 
 ### Phase 7 — QA + Disclosure + Publish  ⏱ 30–45 min
 - [ ] Watch it **fully** at least once (facts + feel, not just glitches)
-- [ ] Thumbnail: one hero object 60%+, ≤4 words in Fraunces bold, structure-left/text-right, accent color (brand_guide §7)
+- [ ] Thumbnails: **run the `thumbnail-workflow` skill, Stages 2–5** — 3 candidates varying ONE axis, 120-px squint test, Fraunces bold added locally (never AI text), YouTube **Test & Compare**, and the `assets/thumbnails_log.md` entry.
 - [ ] Title (per formula, `channel_strategy.md §4`) + description (hook → chapters → **sources** → subscribe)
+- [ ] Cut **2–3 Shorts** from self-contained beats (cross-section reveal, scale comparison, detail zoom): 9:16 crop, 15–45s, hook overlay in the first second, end-card to the full video. Drip them between uploads; judge by subs gained + long-form click-through, not Shorts views.
 - [ ] ✅ **Tick "Altered content"** on upload (AI-assisted visuals/voice)
 - [ ] Schedule for your consistent slot (e.g., Saturday AM US)
 
@@ -115,12 +116,13 @@ Run **by Claude through the connected Kling MCP** (custom connector) — MCP too
 
 ## Definition of Done (the brand test)
 
-Do not publish unless all four are true:
+Do not publish unless all five are true:
 
 1. **Look** — on-brand palette, fonts, isometric style, consistent across all scenes
 2. **Sound** — your real voice, witness+engineer braid, dry wit, clean audio, sign-off
 3. **Accuracy** — every fact verified against a real source
-4. **Perspective** — a genuine "what most people miss" insight only you would frame this way
+4. **Visual truth** — every depiction of the real structure passed the reference-photo check; no invented geometry survived to render
+5. **Perspective** — a genuine "what most people miss" insight only you would frame this way
 
 Missing any one = not ready. Quality over the calendar.
 
@@ -128,5 +130,5 @@ Missing any one = not ready. Quality over the calendar.
 
 ## Time budget
 
-~5–7 hrs/video → ~10–14 hrs/month for 2 videos. Sustainable alongside a full-time job.
-If a step balloons, cut scope (fewer scenes, more Ken Burns) — never cut the four human gates.
+~8–12 hrs/video → ~16–24 hrs/month for 2 videos (the phases above sum to this; the first 3–5 videos will run longer). Sustainable alongside a full-time job **at this cadence only**.
+If a step balloons, cut scope (fewer scenes, more Ken Burns) — never cut the human gates.
