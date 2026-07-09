@@ -88,6 +88,19 @@ def composition_hint(scene):
     return f"{neg}; {move}"
 
 
+def facts_clause(scene):
+    """Visual-accuracy constraints from the storyboard's per-scene `visual_facts`
+    (verified against the project's references/ pack). Empty string if none."""
+    facts = scene.get("visual_facts") or []
+    if not facts:
+        return ""
+    clause = f" || Factual constraints (must be visually accurate): {'; '.join(facts)}."
+    if scene.get("reference_image"):
+        clause += (" A real reference photo is provided: take GEOMETRY and PROPORTIONS from it, "
+                   "take STYLE only from the style anchor.")
+    return clause
+
+
 def compose_image_prompt(scene, ctx):
     st = scene.get("scene_type", "detail")
     recipe = ctx["recipes"].get(st, "isometric technical illustration")
@@ -99,7 +112,8 @@ def compose_image_prompt(scene, ctx):
     else:
         accent_clause = (f"Neutral base palette only (no accent this frame; the "
                          f"{ctx['accent_hex']} accent is reserved for key scenes).")
-    return (f"{ctx['style_prefix']} || Scene [{st}] — {recipe}. || Subject: {subject}. || "
+    return (f"{ctx['style_prefix']} || Scene [{st}] — {recipe}. || Subject: {subject}."
+            f"{facts_clause(scene)} || "
             f"{accent_clause} || Composition: {composition_hint(scene)}. || Consistency: pass a "
             f"style anchor (~{ctx['anchor']} strength); keep palette, line-weight and isometric "
             f"angle identical across all scenes.")
@@ -107,9 +121,12 @@ def compose_image_prompt(scene, ctx):
 
 def compose_animation_prompt(scene, idx):
     motion = (scene.get("animation_prompt") or "subtle parallax").strip()
+    facts = scene.get("visual_facts") or []
+    hold = (f" Structure must stay true to: {'; '.join(facts)}." if facts else "")
     return (f"{motion}. Duration ~{scene['duration']}s. Image-to-video from the generated still "
-            f"images/scene_{idx:02d}.png — add motion only, do NOT restyle; keep the isometric "
-            f"look, palette and accent locked to the starting frame.")
+            f"images/scene_{idx:02d}.png — add motion only, do NOT restyle; do not add, remove, "
+            f"or deform any structural element; keep the isometric look, palette and accent "
+            f"locked to the starting frame.{hold}")
 
 
 def write_prompt_sheet(sb, ctx, out_path):

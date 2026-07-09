@@ -58,14 +58,20 @@ def parse_scene_selection(spec, n):
     return {i for i in out if 1 <= i <= n}
 
 
-def generate_image(prompt, out_path, ref_path=None, model=IMAGE_MODEL_DEFAULT):
-    """Gemini Interactions API. Passing a reference image locks the look across scenes."""
+def generate_image(prompt, out_path, ref_paths=(), model=IMAGE_MODEL_DEFAULT):
+    """Gemini Interactions API. ref_paths, in order: the style anchor (locks the LOOK
+    across scenes), then optionally a real reference photo (locks the GEOMETRY —
+    the prompt's facts clause tells the model which image plays which role)."""
     from google import genai  # lazy import so --dry-run/--help need no deps
     client = genai.Client()   # reads GEMINI_API_KEY from env
-    if ref_path and Path(ref_path).is_file():
-        ref_b64 = base64.b64encode(Path(ref_path).read_bytes()).decode("utf-8")
-        payload = [{"type": "text", "text": prompt},
-                   {"type": "image", "data": ref_b64, "mime_type": "image/png"}]
+    refs = [Path(p) for p in ref_paths if p and Path(p).is_file()]
+    if refs:
+        payload = [{"type": "text", "text": prompt}]
+        for p in refs:
+            mime = "image/jpeg" if p.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+            payload.append({"type": "image",
+                            "data": base64.b64encode(p.read_bytes()).decode("utf-8"),
+                            "mime_type": mime})
     else:
         payload = prompt
     interaction = client.interactions.create(model=model, input=payload)
@@ -104,10 +110,12 @@ def main():
         if out.is_file() and not args.force:
             print(f"  scene {i:02d}  skip (exists)"); continue
         ref = args.ref or (str(root / "images/scene_01.png") if i != 1 else "")
+        geo = str(root / s["reference_image"]) if s.get("reference_image") else ""
         model = s.get("image_model", args.model)     # per-scene override (hero frames)
         prompt = compose_image_prompt(s, ctx)
         print(f"  scene {i:02d}  image -> {s['image']}"
               + (f"  [ref={Path(ref).name}]" if ref else "  [no ref]")
+              + (f"  [geo={Path(geo).name}]" if geo else "")
               + (f"  [{model}]" if model != args.model else ""))
         if args.dry_run:
             if not sample_shown:
@@ -115,7 +123,7 @@ def main():
                 sample_shown = True
             continue
         try:
-            generate_image(prompt, out, ref_path=ref, model=model)
+            generate_image(prompt, out, ref_paths=(ref, geo), model=model)
             manifest.setdefault(f"scene_{i:02d}", {})["image"] = str(out)
         except Exception as e:
             print(f"    ERROR scene {i:02d} image: {e}")

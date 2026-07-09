@@ -5,6 +5,12 @@
 > - **Narration is your own recorded voice** from day 1 (AI clone is a pickup-only fallback). See the Voice section below.
 > - **Two mandatory human steps are now part of the pipeline: a real fact-check pass, and the "Altered content" disclosure on upload.** These are non-optional — they're what keeps the channel monetizable under YouTube's 2026 inauthentic-content policy.
 > - **Graceful degradation:** if AI animation ever fails on a clip, that scene falls back to Ken Burns + text overlay (pure ffmpeg, zero AI). You always have a shippable video even if every animation attempt disappoints — so you are never existentially dependent on one AI tool.
+>
+> **Corrections (July 10, 2026 — second review):**
+> - **Visual accuracy is now a gated pipeline step.** Every project keeps a `references/` pack of real photos + a `visual_facts.md`; facts are injected into generation prompts by `prompt_builder.py`, and **no still goes to Kling until it passes the reference check** (see "Visual Accuracy" section below). Animation is the expensive step and inherits every error in the still.
+> - **Kling budget corrected ~2×.** The earlier ~₹1,000–1,500/mo figure assumed 5s text-to-video rates. At this spec (6–10s image-to-video, ~37 clips/video incl. retries) you need the **Pro tier (~₹2,050/mo annual, ₹3,100 monthly)**, occasionally with top-ups. All-in monthly is **~₹5,000–7,000**, not ₹3,000–3,500.
+> - **Time per video corrected: ~8–12 hrs**, not 5–7 — that's what the sessions below actually sum to. Two videos ≈ 16–24 hrs/month.
+> - **Thumbnails are a first-class session** (concept at the storyboard gate, 3 candidates, YouTube Test & Compare) — see Session 5b.
 
 ---
 
@@ -147,6 +153,10 @@ yt video ideas/
 │   ├── 001_roman_aqueducts/
 │   │   ├── storyboard.json     ← scene list + metadata (~54 scenes)
 │   │   ├── script.md           ← full narration script
+│   │   ├── references/         ← REAL photos/plans of the actual structure (Wikimedia etc.)
+│   │   │   ├── visual_facts.md ← verifiable visual claims (geometry, materials, orientation)
+│   │   │   ├── ref_01.jpg
+│   │   │   └── ...
 │   │   ├── images/             ← AI-generated stills (~55 images)
 │   │   │   ├── scene_01.png
 │   │   │   └── ...
@@ -163,7 +173,9 @@ yt video ideas/
 │   │   │   └── ambient.mp3
 │   │   ├── output/
 │   │   │   ├── final_video.mp4
-│   │   │   └── thumbnail.png
+│   │   │   ├── thumb_a.png     ← 3 thumbnail candidates for Test & Compare
+│   │   │   ├── thumb_b.png
+│   │   │   └── thumb_c.png
 │   │   └── metadata.json       ← title, description, tags for upload
 │   │
 │   ├── 002_mohenjo_daro/
@@ -200,6 +212,11 @@ This is the contract between the script stage and the assembly stage:
         { "text": "50 km of gravity-fed water flow", "start": 4.5, "end": 7.5, "position": "bottom" }
       ],
       "scene_type": "establishing",
+      "visual_facts": [
+        "three tiers of arches, the smallest tier on top carrying the water channel",
+        "lower tier has 6 arches, middle tier 11, top tier 35"
+      ],
+      "reference_image": "references/ref_01.jpg",
       "animation_prompt": "subtle parallax, clouds drifting, water visible in channel",
       "narration_segment": "In 19 BCE, Roman engineers completed something..."
     },
@@ -244,6 +261,8 @@ This is the contract between the script stage and the assembly stage:
 | `focus_x`, `focus_y` | 1 | number | ❌ | For `zoom_detail` only (0.0–1.0, default center) |
 | `texts` | 1 | array | ❌ | Array of text objects: `[{"text": "...", "start": 2, "end": 6, "position": "bottom"}]`. Set to `[]` for no text |
 | `narration_segment` | 1 | string | ❌ | Narration text for this scene (reference only) |
+| `visual_facts` | 1 | array | ❌ | Must-be-true *visually checkable* claims for this scene, drawn from `references/visual_facts.md` (e.g. `"steps descend in paired V-flights"`). Injected into the image AND animation prompts by `prompt_builder.py`, and doubles as the accuracy checklist at the validation gate. Write these in Pass 1 — they're facts, not prompts. |
+| `reference_image` | 2 | string | ❌ | Path to a real photo in `references/` for this scene. `generate_images.py` passes it alongside the style anchor (anchor = LOOK, reference = GEOMETRY) and it's the comparison image at the validation gate. Use for scenes depicting real, verifiable structures; omit for abstract diagrams/maps. |
 | `image_prompt` | 2 | string | ❌ | Full still-image prompt (style card + subject + accent + composition). Added after Pass 1 approval. |
 | `image` | 2 | string | ✅* | Relative path to the generated scene image (*required at assembly time) |
 | `animation_prompt` | 2 | string | ❌ | Prompt for Kling AI (used during the animation step) |
