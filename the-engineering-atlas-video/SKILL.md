@@ -50,16 +50,16 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 
 **1b — Storyboard (ONE fully-populated file, `scene_type` prepopulated)  ← REVIEW GATE**
 - [ ] Claude writes a **single** `storyboard.json` (~54 scenes) with **every field populated at once** — including `scene_type` from the start. No narrative-only pass, no separate enrich pass, no second file.
-- [ ] Each scene carries: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt`, `texts[]`, `narration_segment`. **Animated** scenes additionally carry `animated_clip` + `animation_prompt`.
-- [ ] `image_prompt`s are composed **by rule**: `style_card.txt` prefix + the scene's `scene_type` recipe (table below) + the scene subject (from its narration) + the video's `accent_hex` **variable** + a composition hint. This is what keeps all scenes of a type visually consistent and the accent swappable.
-- [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each `image_prompt` / `animation_prompt` reads right. It's one file; change freely.
-- [ ] (Optional helper: an `enrich_storyboard.py`-style builder can compose the file by rule from a per-scene subject list, keeping `accent_hex` + `scene_recipes` as variables. Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
+- [ ] Each scene stays **lean** — only scene-specific content: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt` (**just the subject — what to draw this scene, no boilerplate**), optional `accent` (where the single highlight goes), `texts[]`, `narration_segment`. **Animated** scenes also carry `animated_clip` + `animation_prompt` (**just the motion**).
+- [ ] The shared boilerplate is **NOT stored in the JSON.** `generate_assets.py` composes the full prompt at generation time: `style_card.txt` prefix + the `scene_type` recipe + the scene's subject + the `accent_hex` **variable** + a composition hint derived from `texts`/`motion`. Keeps every scene of a type consistent, the accent swappable, and the file small.
+- [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each subject + motion reads right. It's one file; change freely.
+- [ ] Preview the fully-composed prompts anytime with `python generate_assets.py --storyboard <sb> --dump-prompts` (writes a readable `prompts.md`). There is **no enrich step** — write the storyboard lean; the generator does the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
 
 #### Storyboard format (the standard — `scene_type` prepopulated, single pass)
 
-Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video from brand_guide §3 — e.g. Indian `#D4812A`), `style_anchor_strength`, `scene_recipes`, `base_dir`, `voiceover`, `background_music`, `music_volume`, `scenes[]`.
+Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video from brand_guide §3 — e.g. Indian `#D4812A`), `style_anchor_strength`, `base_dir`, `voiceover`, `background_music`, `music_volume`, `scenes[]`. (The `scene_type` recipe table lives in `generate_assets.py` as brand-level config, applied at generation — not copied into every video.)
 
-**`scene_type` is a fixed vocabulary; each maps to a locked recipe fragment injected into every `image_prompt` of that type:**
+**`scene_type` is a fixed vocabulary; `generate_assets.py` maps each to a locked recipe fragment when it composes that scene's prompt:**
 
 | scene_type | recipe fragment (visual DNA) |
 |:---|:---|
@@ -71,12 +71,13 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 | `title` | hero-wide with clean negative space reserved for the wordmark |
 | `outro` | calm receding wide with clean space for the subscribe card |
 
-- **Accent is a variable, never hardcoded.** Set `accent_hex` once; use it **sparingly** — one targeted highlight on the key element per scene, neutral base elsewhere. Re-skinning for another civilization = change one value.
+- **Accent is a variable, applied at generation — never hardcoded per scene.** Set `accent_hex` once; the generator highlights each scene's `accent` target with it, **sparingly** (neutral base elsewhere). Re-skinning for another civilization = change one value.
 - **Still-first for Kling.** *Every* scene gets a still `image` first (pass a style anchor on each call for cross-scene consistency). For `animated` scenes that still is Kling's **starting frame** — `animation_prompt` adds motion only, never restyles. `static` scenes use Ken Burns via `motion`.
 - **`texts` are overlaid by the assembler, not drawn into the image** (`style_card.txt` says "no text in image"). In the prompt, `texts` only dictate where to leave clean negative space.
 
 ### Phase 2 — Images  ⏱ 1–2 hrs
-- [ ] Generate ~55 stills. **Video #1:** `style_card.txt` prefix only (no anchors exist yet). **Video #2+:** also pass a matching style anchor on every call (locks the look)
+- [ ] Run `python generate_assets.py --storyboard projects/NNN_topic/storyboard.json --only image` (Gemini "nano banana"; composes prompts from the lean storyboard + `style_card.txt`). Do scene 1 first as the in-video reference, eyeball it, then generate the rest.
+- [ ] **Video #1:** `style_card.txt` prefix only (no anchors exist yet). **Video #2+:** also pass a matching style anchor on every call (locks the look)
 - [ ] Same session, same model version for within-video consistency
 - [ ] Review; regenerate off-style frames; upscale static-scene images to 4K for Ken Burns headroom
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
