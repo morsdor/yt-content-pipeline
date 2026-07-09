@@ -126,16 +126,34 @@ def write_prompt_sheet(sb, ctx, out_path):
     Path(out_path).write_text("\n".join(L))
 
 
+def anim_jobs(sb):
+    """The per-scene Kling image_to_video requests (animated scenes only)."""
+    return [{"scene": i, "still": s["image"], "clip": s["animated_clip"],
+             "duration": s["duration"], "prompt": compose_animation_prompt(s, i)}
+            for i, s in enumerate(sb["scenes"], 1) if s["type"] == "animated"]
+
+
 def main():
-    ap = argparse.ArgumentParser(description="Compose prompts.md from a lean storyboard, on demand.")
+    ap = argparse.ArgumentParser(description="Compose prompts.md — or the Kling animation job list — from a lean storyboard.")
     ap.add_argument("storyboard", help="path to the video's storyboard.json")
     ap.add_argument("--style-card", default=str(SCRIPT_DIR / "style_card.txt"))
-    ap.add_argument("--out", default=None, help="output path (default: <project>/prompts.md)")
+    ap.add_argument("--out", default=None, help="output path (default: <project>/prompts.md or anim_jobs.json)")
+    ap.add_argument("--anim-jobs", action="store_true",
+                    help="emit the Kling MCP animation job list (animated scenes) instead of prompts.md")
     args = ap.parse_args()
 
     sb_path = Path(args.storyboard).resolve()
     sb = json.loads(sb_path.read_text())
     ctx = context_from(sb, args.style_card)
+
+    if args.anim_jobs:
+        jobs = anim_jobs(sb)
+        out = Path(args.out) if args.out else sb_path.parent / "anim_jobs.json"
+        out.write_text(json.dumps(jobs, indent=2, ensure_ascii=False))
+        total = sum(j["duration"] for j in jobs)
+        print(f"wrote {out} — {len(jobs)} animation jobs, ~{total}s total to generate via the Kling MCP")
+        return
+
     out = Path(args.out) if args.out else sb_path.parent / "prompts.md"
     write_prompt_sheet(sb, ctx, out)
     print(f"wrote {out} — {len(sb['scenes'])} scenes")

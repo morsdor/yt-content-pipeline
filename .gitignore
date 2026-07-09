@@ -5,3 +5,4 @@ __pycache__/
 assets_manifest.json
 .venv/
 prompts.md
+anim_jobs.json

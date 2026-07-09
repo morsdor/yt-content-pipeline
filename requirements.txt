@@ -1,9 +1,8 @@
 # The Engineering Atlas — pipeline dependencies
-# Install into a venv (see below), then:  pip install -r requirements.txt
+# venv:  python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 # System dependency (NOT pip): ffmpeg  →  macOS: brew install ffmpeg
 moviepy==1.0.3       # video_assembler.py
 numpy                # video_assembler.py (Ken Burns transforms)
 pillow               # text overlays + image handling
-google-genai         # generate_assets.py — Gemini "nano banana" images
-pyjwt                # generate_assets.py — Kling JWT auth
-requests             # generate_assets.py — Kling REST + downloads
+google-genai         # generate_images.py — Gemini "nano banana" images
+# Animation runs through the Kling MCP (agent-driven) — no Python HTTP deps needed.

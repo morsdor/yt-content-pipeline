@@ -26,7 +26,7 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 - [ ] Fonts installed in `assets/fonts/` (Fraunces, IBM Plex Sans, IBM Plex Mono)
 - [ ] Style anchors: **none needed upfront.** Use `style_card.txt` alone for video #1, then promote its 8–10 best frames into `assets/style_anchors/` (see anchor_prompts.md)
 - [ ] `style_card.txt` present (master prompt prefix)
-- [ ] Kling + Gemini image + filesystem MCPs connected; mic + Audacity/Adobe Podcast ready
+- [ ] **Kling MCP** connected (custom connector via `https://kling.ai/mcp`) + **Gemini image API key** in `.env`; mic + Audacity/Adobe Podcast ready
 - [ ] `video_assembler.py` runs on the example storyboard without errors
 
 ---
@@ -53,7 +53,7 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 - [ ] Each scene stays **lean** — only scene-specific content: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt` (**just the subject — what to draw this scene, no boilerplate**), optional `accent` (where the single highlight goes), `texts[]`, `narration_segment`. **Animated** scenes also carry `animated_clip` + `animation_prompt` (**just the motion**).
 - [ ] The shared boilerplate is **NOT stored in the JSON.** `prompt_builder.py` composes the full prompt at generation time: `style_card.txt` prefix + the `scene_type` recipe (from the storyboard's `scene_recipes`) + the scene's subject + the `accent_hex` **variable** + a composition hint derived from `texts`/`motion`. Keeps every scene of a type consistent, the accent swappable, and the file small.
 - [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each subject + motion reads right. It's one file; change freely.
-- [ ] Preview the fully-composed prompts anytime with `python prompt_builder.py <sb>` (writes a readable `prompts.md` into the video folder — gitignored, regenerated on demand, never stored in the JSON). There is **no enrich step** — write the storyboard lean; `prompt_builder.py` + `generate_assets.py` do the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
+- [ ] Preview the fully-composed prompts anytime with `python prompt_builder.py <sb>` (writes a readable `prompts.md` into the video folder — gitignored, regenerated on demand, never stored in the JSON). There is **no enrich step** — write the storyboard lean; `prompt_builder.py` + `generate_images.py` do the rest. (Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
 
 #### Storyboard format (the standard — `scene_type` prepopulated, single pass)
 
@@ -76,16 +76,19 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 - **`texts` are overlaid by the assembler, not drawn into the image** (`style_card.txt` says "no text in image"). In the prompt, `texts` only dictate where to leave clean negative space.
 
 ### Phase 2 — Images  ⏱ 1–2 hrs
-- [ ] Run `python generate_assets.py --storyboard projects/NNN_topic/storyboard.json --only image` (Gemini "nano banana"; composes prompts from the lean storyboard + `style_card.txt`). Do scene 1 first as the in-video reference, eyeball it, then generate the rest.
+- [ ] Run `python generate_images.py --storyboard projects/NNN_topic/storyboard.json` (Gemini "nano banana"; composes prompts from the lean storyboard + `style_card.txt`). Do scene 1 first as the in-video reference (`--scenes 1`), eyeball it, then generate the rest.
 - [ ] **Video #1:** `style_card.txt` prefix only (no anchors exist yet). **Video #2+:** also pass a matching style anchor on every call (locks the look)
 - [ ] Same session, same model version for within-video consistency
 - [ ] Review; regenerate off-style frames; upscale static-scene images to 4K for Ken Burns headroom
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
 
-### Phase 3 — Animation (~27 scenes)  ⏱ 2–3 hrs
-- [ ] For each `animated` scene: upload still to Kling, use the storyboard's animation prompt, get a 5–8s clip
-- [ ] **Graceful degradation:** if a clip won't come out right after ~2 tries, retag the scene `static` and let it be Ken Burns + overlay. A clean Ken Burns beats a glitchy animation. You always ship.
-- [ ] Save clips to `projects/NNN_topic/clips/`
+### Phase 3 — Animation (~27 scenes, via the Kling MCP)  ⏱ 2–3 hrs
+Run **by Claude through the connected Kling MCP** (custom connector) — MCP tools are agent-invoked, not a script. The still is Kling's starting frame (image-to-video).
+- [ ] Prep: `python prompt_builder.py projects/NNN_topic/storyboard.json --anim-jobs` → `anim_jobs.json` (each animated scene's still, duration, composed motion prompt) + total seconds. Review scope + credits (Kling bills per second; check with the MCP's `query_membership_and_credits`).
+- [ ] Claude calls `who_am_i` to read the current tier's `image_to_video` model + allowed durations/args (defaults change by membership — confirm the plan is what you expect).
+- [ ] For each job Claude: `file_upload` the still (PNG/JPG, <4K, ≤30MB, aspect ≤1:2) → gets a Kling URL → `image_to_video` (model, prompt = the job's motion prompt, duration) → polls `query_tasks` → saves the mp4 to `clips/scene_NN_animated.mp4`. **Result URLs expire in 24h — download promptly.**
+- [ ] **Every job is charged — no trial runs.** Confirm the batch before submitting; on any failure keep the user informed and only resubmit when they ask.
+- [ ] **Graceful degradation:** if a clip is blocked by moderation or won't come out right after ~2 tries, retag that scene `type:"static"` — Ken Burns covers it. A clean Ken Burns beats a glitchy animation. You always ship.
 
 ### Phase 4 — Particles + Overlays  ⏱ 20 min
 - [ ] Tag ~10 scenes for dust/sparks/rain stock overlays (atmosphere, ~20–30% opacity)
