@@ -40,9 +40,7 @@ Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` 
 - [ ] Decide the **"what most people miss"** insight — your engineer's-eye take
 - [ ] ✅ Gate: every date, tonnage, dimension, name, and mechanism is checked against a real source
 
-### Phase 1 — Script + Storyboard (TWO PASSES)  ⏱ 1–2 hrs
-
-Build the story first; attach visual prompts only after the story is locked.
+### Phase 1 — Script + Storyboard  ⏱ 1–2 hrs
 
 **1a — Script**
 - [ ] Claude drafts a 10–12 min script **from your research notes**, following the §6 beat sheet (witness cold-open → problem → how → scale → your-take → callback → sign-off)
@@ -50,15 +48,32 @@ Build the story first; attach visual prompts only after the story is locked.
 - [ ] Confirm the **witness/engineer/wit** braid (brand_guide §5); wit ≈ 1 dry beat / 60–90s, never gags
 - [ ] Save `script.md` to `projects/NNN_topic/`
 
-**1b — Narrative storyboard (NO generation prompts yet)  ← REVIEW GATE**
-- [ ] Claude writes `storyboard.json` with ~54 scenes containing **only Pass-1 fields**: `type` (animated/static), `duration`, `scene_type`, `motion`, `texts[]`, `narration_segment`
-- [ ] **Do NOT include `image_prompt` or `animation_prompt` yet** — you're reviewing the *story, pacing, and animated/static split*, not visuals
-- [ ] ✅ Gate: read it end-to-end; finalize scene order, durations, on-screen text, and the ~27/~27 animated/static balance. Change freely here — it's cheap.
+**1b — Storyboard (ONE fully-populated file, `scene_type` prepopulated)  ← REVIEW GATE**
+- [ ] Claude writes a **single** `storyboard.json` (~54 scenes) with **every field populated at once** — including `scene_type` from the start. No narrative-only pass, no separate enrich pass, no second file.
+- [ ] Each scene carries: `image`, `type` (animated/static), `duration`, `scene_type`, `motion`/`focus` (static only), `image_prompt`, `texts[]`, `narration_segment`. **Animated** scenes additionally carry `animated_clip` + `animation_prompt`.
+- [ ] `image_prompt`s are composed **by rule**: `style_card.txt` prefix + the scene's `scene_type` recipe (table below) + the scene subject (from its narration) + the video's `accent_hex` **variable** + a composition hint. This is what keeps all scenes of a type visually consistent and the accent swappable.
+- [ ] ✅ Gate: read the one file end-to-end — scene order, durations, on-screen `texts`, the ~27/~27 animated/static split, and that each `image_prompt` / `animation_prompt` reads right. It's one file; change freely.
+- [ ] (Optional helper: an `enrich_storyboard.py`-style builder can compose the file by rule from a per-scene subject list, keeping `accent_hex` + `scene_recipes` as variables. Field reference: `pipeline_automation.md` → Storyboard JSON Schema.)
 
-**1c — Attach generation prompts (only AFTER 1b is approved)**
-- [ ] Claude enriches each scene with **Pass-2 fields**: `image_prompt` (style card + subject + civilization accent + composition), plus `animation_prompt` for animated scenes, and sets `image` / `animated_clip` paths
-- [ ] Save the finalized `storyboard.json` to `projects/NNN_topic/`
-- [ ] (Field reference + which field belongs to which pass: `pipeline_automation.md` → Storyboard JSON Schema)
+#### Storyboard format (the standard — `scene_type` prepopulated, single pass)
+
+Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video from brand_guide §3 — e.g. Indian `#D4812A`), `style_anchor_strength`, `scene_recipes`, `base_dir`, `voiceover`, `background_music`, `music_volume`, `scenes[]`.
+
+**`scene_type` is a fixed vocabulary; each maps to a locked recipe fragment injected into every `image_prompt` of that type:**
+
+| scene_type | recipe fragment (visual DNA) |
+|:---|:---|
+| `establishing` | wide view, full structure in frame, sky/horizon context, sense of scale |
+| `cross_section` | cutaway/section — ground sliced open, strata + water/level line visible, profile clarity (the channel's signature) |
+| `detail` | tight isometric close-up on one element, shallow depth, texture emphasis |
+| `scale_comparison` | subject beside a reference (tiny silhouettes / storey markers), measured framing |
+| `map` | top-down cartographic schematic, muted region context, thin linework |
+| `title` | hero-wide with clean negative space reserved for the wordmark |
+| `outro` | calm receding wide with clean space for the subscribe card |
+
+- **Accent is a variable, never hardcoded.** Set `accent_hex` once; use it **sparingly** — one targeted highlight on the key element per scene, neutral base elsewhere. Re-skinning for another civilization = change one value.
+- **Still-first for Kling.** *Every* scene gets a still `image` first (pass a style anchor on each call for cross-scene consistency). For `animated` scenes that still is Kling's **starting frame** — `animation_prompt` adds motion only, never restyles. `static` scenes use Ken Burns via `motion`.
+- **`texts` are overlaid by the assembler, not drawn into the image** (`style_card.txt` says "no text in image"). In the prompt, `texts` only dictate where to leave clean negative space.
 
 ### Phase 2 — Images  ⏱ 1–2 hrs
 - [ ] Generate ~55 stills. **Video #1:** `style_card.txt` prefix only (no anchors exist yet). **Video #2+:** also pass a matching style anchor on every call (locks the look)
