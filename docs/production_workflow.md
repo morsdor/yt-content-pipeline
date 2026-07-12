@@ -67,11 +67,16 @@ For the project:
        structural elements" clause + the scene's visual_facts automatically)
      → Generate clip (bias toward 6s — duration is the main cost lever; a 10s
        clip costs ~2× a 6s one)
-     → SCRUB-CHECK (visual-accuracy-gate skill, Layer 3): first / middle / last
-       frame; compare last frame to the source still. Kling's residual failure
-       mode is morphing geometry mid-motion. ~20 seconds per clip.
+     → SCRUB-CHECK (visual-accuracy-gate skill, Layer 3), two passes:
+       3a ACCURACY — first / middle / last frame; compare last frame to the
+          source still. Kling's residual failure mode is morphing geometry
+          mid-motion. ~20 seconds per clip.
+       3b POLISH — does it look sloppy? shimmer, uncanny/too-fast motion, cut
+          pops, wandering accent. Run `python flicker_check.py clips/*.mp4`;
+          scenes scoring >3 (dense lattice/steps in motion) get re-generated at
+          1080p — the free upscaler can't fix that shimmer.
      → Review: accept, or ONE retry with tightened motion ("parallax and drifting
-       haze only")
+       haze only") / a 1080p re-gen for a flicker fail
      → GRACEFUL DEGRADATION: after the one retry, retag that scene as "static"
        and let it be Ken Burns + overlay. The fallback is accurate by
        construction — it IS the validated still. A clean Ken Burns scene beats
@@ -128,6 +133,10 @@ For the video (concept was already approved at the Session-1 packaging gate):
 For the video:
   → Watch it FULLY (not 2x) at least once — you're checking facts and feel, not just glitches
   → Check: animation glitches, audio errors, factual claims, on-screen text
+  → FEEL/POLISH (the "does this look sloppy?" pass — the per-clip version was
+    Layer 3b): motion reads as intended (no warping/melt), cuts land clean, text
+    timing tracks the narration, music sits under the voice, pacing doesn't drag.
+    A video can be 100% accurate and still feel cheap — this is where you catch that.
   → On upload: TICK the "Altered content" checkbox (AI-assisted visuals/voice) — required
   → Write title (per formula) + description + tags
   → Publish/schedule on your consistent day/time (e.g., Saturday AM US)

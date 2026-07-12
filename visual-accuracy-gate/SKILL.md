@@ -74,12 +74,28 @@ Optionally pass the failed render back as a third image. Naming the delta is wha
 
 ## Layer 3 — Animation scrub-check (after clip delivery)
 
-Image-to-video inherits accuracy from the validated still, so the *residual* risk is Kling **morphing geometry during motion** — steps multiplying, arches appearing, edges melting.
+A delivered clip can fail two different ways, and they need different eyes: it can be **inaccurate** (geometry morphed — *is it true?*) or it can be **sloppy** (technically correct but cheap-looking — *does it feel good?*). Check both, per clip, on delivery.
+
+### 3a — Accuracy: geometry morphing (the hard failure)
+
+Image-to-video inherits accuracy from the validated still, so the *residual* accuracy risk is Kling **morphing geometry during motion** — steps multiplying, arches appearing, edges melting.
 
 1. The composed animation prompt already forbids it ("add motion only… do not add, remove, or deform any structural element" + the facts clause) — subtle motion (parallax, water, dust) rarely triggers morphing in the first place.
-2. On delivery, **extract and inspect first / middle / last frame** (`ffmpeg -i clip.mp4 -vf "select=eq(n\,0)" …` or scrub manually); compare the **last frame to the source still**. Structural drift is almost always visible by the final frame. ~20 seconds per clip.
-3. **One retry maximum**, with tightened motion scope (e.g. "parallax and drifting haze only") — every Kling job is charged.
-4. Second failure → **fall back to Ken Burns**: retag the scene `type:"static"`. The fallback is accurate *by construction* — it IS the validated still. Append the outcome to `validation_report.md`.
+2. **Extract and inspect first / middle / last frame** (`ffmpeg -i clip.mp4 -vf "select=eq(n\,0)" …` or scrub manually); compare the **last frame to the source still**. Structural drift is almost always visible by the final frame. ~20 seconds per clip.
+
+### 3b — Polish: does it feel sloppy? (the soft failure)
+
+Passing 3a means it's *true*, not that it *looks good*. Scrub each clip once more for the "cheap AI video" tells — these are what make an otherwise-accurate video feel amateur:
+
+- **Shimmer / flicker** — run `python flicker_check.py projects/NNN/clips/*.mp4`. Fine repeating geometry in motion (our step-lattice) shimmers frame-to-frame; scores **>3** → re-generate *that scene* at **1080p** (it's structural aliasing the free upscaler can't fix — see [upscaling.md](../docs/upscaling.md)). Measure, don't pre-judge by scene type: a "lattice" wide can be perfectly smooth.
+- **Motion feel** — the drift should read as intended parallax/haze/water, not warping, breathing edges, or a slow "melt." Motion that's too fast or too uniform reads uncanny; our house default is *subtle*.
+- **Cut pop** — the last frame shouldn't jump or lurch where it crossfades into the next scene.
+- **In-clip consistency** — accent color and lighting shouldn't wander over the clip's duration.
+
+### The ladder (applies to either failure)
+
+- **One retry maximum**, with tightened motion scope (e.g. "parallax and drifting haze only"), or a 1080p re-gen for a flicker fail — every Kling job is charged.
+- Second failure → **fall back to Ken Burns**: retag the scene `type:"static"`. The fallback is accurate *and* clean *by construction* — it IS the validated still. Append the outcome to `validation_report.md`.
 
 **Worst case per scene is one paid rerender — by design.**
 

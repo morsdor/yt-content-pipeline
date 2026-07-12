@@ -90,7 +90,7 @@ Via the `kling-cli`, that's: `kling image_to_video --model kling-video-v3_0 --im
 5. **Download immediately** to `projects/NNN_topic/clips/scene_NN_animated.mp4` — **result URLs expire in 24h.**
 6. Record in `assets_manifest.json` under `scene_NN.clip`.
 
-**Scrub-check (run `visual-accuracy-gate`, Layer 3):** first/middle/last frame per clip; compare last frame to the source still (~20s each).
+**Scrub-check (run `visual-accuracy-gate`, Layer 3):** two passes per clip — **3a accuracy** (first/middle/last frame; compare last frame to the source still — catches geometry morphing, ~20s each) and **3b polish** (does it look *sloppy*? shimmer, uncanny/too-fast motion, cut pops, wandering accent). The shimmer sub-check is the flicker hybrid below — `flicker_check.py` flags dense-lattice scenes to re-gen at 1080p.
 
 **Failure ladder per scene (hard rules):**
 - 1st bad result → **one retry** with tightened motion ("parallax and drifting haze only"). Confirm with the user first — the retry is also charged.
