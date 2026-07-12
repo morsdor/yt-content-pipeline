@@ -219,7 +219,7 @@ Step 6: ASSEMBLY                                ← video_assembler.py
   └─ Particle overlays composited
   └─ Audio: voiceover + ambient music mixed
   └─ Crossfade transitions between all scenes
-  └─ Export 1080p h264 MP4
+  └─ Export h264 MP4 — 1080p for review, --resolution 2160p for the 4K publish master
 
 Step 7: QA + UPLOAD                             ← Manual (~2 min)
 ```

@@ -17,6 +17,13 @@ to reorder preference.
 
 Usage:
     python video_assembler.py --storyboard storyboard.json --output final_video.mp4
+    python video_assembler.py --storyboard storyboard.json --output master.mp4 --resolution 2160p
+
+Resolution: 1080p is the fast default for review renders. Render the PUBLISH MASTER
+at 2160p (4K) — feed it the 4K-upscaled clips (upscale_video.py) and 4K stills so
+YouTube gets a true 4K upload (it allocates 4K uploads more bitrate, so even 1080p
+playback looks cleaner). Font size, Ken Burns headroom, text offsets and the encode
+bitrate all scale with the chosen resolution.
 """
 
 import json
@@ -32,8 +39,38 @@ import numpy as np
 
 # ── Style Constants ──────────────────────────────────────────────────────────
 
-RESOLUTION = (1920, 1080)
+# Output resolution — selectable via --resolution. RESOLUTION/BITRATE are reassigned
+# by set_output_resolution() in __main__ before assembly; the rest of the module
+# reads these globals and scales pixel constants off RESOLUTION[1] via _px().
+RESOLUTIONS = {
+    "1080p": (1920, 1080),
+    "1440p": (2560, 1440),
+    "2160p": (3840, 2160),
+}
+RESOLUTION_ALIASES = {"4k": "2160p", "uhd": "2160p", "hd": "1080p", "qhd": "1440p",
+                      "1080": "1080p", "1440": "1440p", "2160": "2160p"}
+# x264 target bitrate per resolution (scales ~with pixel count; 4K needs ~5× 1080p).
+BITRATE_BY_RES = {"1080p": "8000k", "1440p": "16000k", "2160p": "40000k"}
+
+RESOLUTION = RESOLUTIONS["1080p"]   # default; reassigned from --resolution in __main__
 FPS = 30
+BITRATE = BITRATE_BY_RES["1080p"]   # reassigned alongside RESOLUTION
+
+
+def _px(base_1080: float) -> int:
+    """Scale a pixel constant authored at 1080p to the current RESOLUTION height."""
+    return max(1, int(round(base_1080 * RESOLUTION[1] / 1080)))
+
+
+def set_output_resolution(name: str) -> str:
+    """Set the module-level RESOLUTION + BITRATE from a --resolution value (e.g. '2160p', '4k')."""
+    global RESOLUTION, BITRATE
+    key = RESOLUTION_ALIASES.get(name.lower(), name.lower())
+    if key not in RESOLUTIONS:
+        raise SystemExit(f"unknown --resolution '{name}'; choose {', '.join(RESOLUTIONS)} (alias '4k' = 2160p)")
+    RESOLUTION = RESOLUTIONS[key]
+    BITRATE = BITRATE_BY_RES[key]
+    return key
 
 # Text is rendered with Pillow (NOT ImageMagick/TextClip) so it works everywhere
 # without an ImageMagick install or a magic "Arial-Bold" font name.
@@ -178,9 +215,13 @@ def _load_font(size: int):
 
 def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
                     color=FONT_COLOR, bg_color=TEXT_BG_COLOR,
-                    bg_opacity: float = TEXT_BG_OPACITY, pad: int = 26) -> np.ndarray:
-    """Render wrapped, centered text on a rounded translucent bar → RGBA array."""
+                    bg_opacity: float = TEXT_BG_OPACITY, pad: int = None) -> np.ndarray:
+    """Render wrapped, centered text on a rounded translucent bar → RGBA array.
+    pad/radius/line spacing scale with fontsize so the bar looks right at any resolution."""
     from PIL import Image
+    if pad is None:
+        pad = int(fontsize * 0.56)          # ~26 at the 1080p base fontsize (46)
+    radius = max(8, int(fontsize * 0.3))    # ~14 at base
     font = _load_font(fontsize)
     measure = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
 
@@ -195,7 +236,7 @@ def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
     if cur:
         lines.append(cur)
 
-    line_h = fontsize + 10
+    line_h = fontsize + int(fontsize * 0.22)   # ~56 at base
     text_w = max((measure.textlength(l, font=font) for l in lines), default=1)
     W = int(text_w) + pad * 2
     H = line_h * len(lines) + pad * 2
@@ -203,7 +244,7 @@ def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     if bg_color is not None:
-        d.rounded_rectangle([0, 0, W - 1, H - 1], radius=14,
+        d.rounded_rectangle([0, 0, W - 1, H - 1], radius=radius,
                             fill=(bg_color[0], bg_color[1], bg_color[2], int(255 * bg_opacity)))
     y = pad
     for l in lines:
@@ -234,13 +275,14 @@ def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
         image_path = os.path.join(base_dir, scene["image"])
         motion_type = scene.get("motion", DEFAULT_MOTION_CYCLE[index % len(DEFAULT_MOTION_CYCLE)])
         
+        headroom = _px(200)   # extra pixels beyond the frame that Ken Burns crops into
         img_clip = (
             ImageClip(image_path)
             .set_duration(duration)
-            .resize(height=RESOLUTION[1] + 200)
+            .resize(height=RESOLUTION[1] + headroom)
         )
-        if img_clip.w < RESOLUTION[0] + 200:
-            img_clip = img_clip.resize(width=RESOLUTION[0] + 200)
+        if img_clip.w < RESOLUTION[0] + headroom:
+            img_clip = img_clip.resize(width=RESOLUTION[0] + headroom)
         
         # 2. Apply Ken Burns motion
         motion_kwargs = {}
@@ -281,7 +323,8 @@ def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
             continue
 
         # Render text + background bar in one Pillow image (no ImageMagick).
-        arr = make_text_image(text_str, max_width=RESOLUTION[0] - 300)
+        arr = make_text_image(text_str, max_width=RESOLUTION[0] - _px(300),
+                              fontsize=_px(FONT_SIZE))
         txt_clip = (
             ImageClip(arr, transparent=True)
             .set_duration(t_dur)
@@ -292,9 +335,9 @@ def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
 
         th = txt_clip.h
         if t_pos == "bottom":
-            txt_clip = txt_clip.set_position(("center", RESOLUTION[1] - th - 80))
+            txt_clip = txt_clip.set_position(("center", RESOLUTION[1] - th - _px(80)))
         elif t_pos == "top":
-            txt_clip = txt_clip.set_position(("center", 60))
+            txt_clip = txt_clip.set_position(("center", _px(60)))
         else:  # center
             txt_clip = txt_clip.set_position("center")
 
@@ -349,10 +392,10 @@ def assemble_video(storyboard_path: str, output_path: str):
         else:
             final = final.set_audio(music)
     
-    print(f"Rendering to {output_path}...")
+    print(f"Rendering to {output_path} at {RESOLUTION[0]}x{RESOLUTION[1]} @ {BITRATE}...")
     final.write_videofile(
         output_path, fps=FPS, codec="libx264", audio_codec="aac",
-        bitrate="8000k", preset="medium", threads=4,
+        bitrate=BITRATE, preset="medium", threads=4,
     )
     print(f"Done! Output: {output_path}")
 
@@ -361,5 +404,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Assemble video from storyboard JSON")
     parser.add_argument("--storyboard", required=True, help="Path to storyboard.json")
     parser.add_argument("--output", default="output.mp4", help="Output video path")
+    parser.add_argument("--resolution", default="1080p",
+                        help="1080p (fast review default) | 2160p / 4k (publish master, feed 4K assets) | 1440p")
     args = parser.parse_args()
+    key = set_output_resolution(args.resolution)
+    print(f"Output resolution: {key} {RESOLUTION[0]}x{RESOLUTION[1]}")
     assemble_video(args.storyboard, args.output)

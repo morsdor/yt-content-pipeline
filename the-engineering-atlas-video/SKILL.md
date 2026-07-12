@@ -102,7 +102,7 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 - [ ] Save `audio/voiceover.mp3`
 
 ### Phase 6 — Assemble  ⏱ ~10 min
-- [ ] `python video_assembler.py --storyboard ./projects/NNN_topic/storyboard.json --output ./projects/NNN_topic/output/final_video.mp4`
+- [ ] `python video_assembler.py --storyboard ./projects/NNN_topic/storyboard.json --output ./projects/NNN_topic/output/final_video.mp4` — default **1080p** for a fast review render; add **`--resolution 2160p`** for the 4K publish master (feed it the Stage-D 4K clips + stills, else the 4K work is downscaled away). 4K assembly is ~4× slower.
 - [ ] Check crossfades, text timing, music at ~8%
 
 ### Phase 7 — QA + Disclosure + Publish  ⏱ 30–45 min

@@ -98,9 +98,15 @@ For the project:
 ## Session 5: Assembly (automated, ~8 min)
 
 ```bash
+# review render (fast, 1080p default)
 python video_assembler.py \
   --storyboard "./projects/XXX/storyboard.json" \
-  --output "./projects/XXX/output/final_video.mp4"
+  --output "./projects/XXX/output/review.mp4"
+
+# publish master (4K — feed the Stage-D 4K clips/stills)
+python video_assembler.py \
+  --storyboard "./projects/XXX/storyboard.json" \
+  --output "./projects/XXX/output/final_video.mp4" --resolution 2160p
 ```
 
 ## Session 5b: Thumbnails (~30–45 min — this is a growth lever, not an afterthought)
