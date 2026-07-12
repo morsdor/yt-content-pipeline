@@ -7,3 +7,21 @@ assets_manifest.json
 prompts.md
 anim_jobs.json
 .DS_Store
+
+# Vendored Real-ESRGAN upscaler (binary + weights, ~76MB, re-downloadable — see docs/upscaling.md)
+tools/realesrgan/
+
+# Generated & large media — regenerable. Git tracks the pipeline (code, prompts,
+# storyboards, docs), not its heavy outputs. Hand-curated INPUT media stays tracked:
+#   projects/*/references/  = accuracy-gate ground truth (small, curated, hard to reproduce)
+#   assets/style_anchors/   = brand look anchors
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.avi
+projects/*/images/
+projects/*/images_4k/
+projects/*/clips/
+projects/*/videos/
+projects/*/review/
