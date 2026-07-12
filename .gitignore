@@ -6,3 +6,4 @@ assets_manifest.json
 .venv/
 prompts.md
 anim_jobs.json
+.DS_Store

@@ -59,24 +59,26 @@ def parse_scene_selection(spec, n):
 
 
 def generate_image(prompt, out_path, ref_paths=(), model=IMAGE_MODEL_DEFAULT):
-    """Gemini Interactions API. ref_paths, in order: the style anchor (locks the LOOK
-    across scenes), then optionally a real reference photo (locks the GEOMETRY —
-    the prompt's facts clause tells the model which image plays which role)."""
-    from google import genai  # lazy import so --dry-run/--help need no deps
-    client = genai.Client()   # reads GEMINI_API_KEY from env
-    refs = [Path(p) for p in ref_paths if p and Path(p).is_file()]
-    if refs:
-        payload = [{"type": "text", "text": prompt}]
-        for p in refs:
-            mime = "image/jpeg" if p.suffix.lower() in (".jpg", ".jpeg") else "image/png"
-            payload.append({"type": "image",
-                            "data": base64.b64encode(p.read_bytes()).decode("utf-8"),
-                            "mime_type": mime})
-    else:
-        payload = prompt
-    interaction = client.interactions.create(model=model, input=payload)
+    """Gemini image generation via google-genai `models.generate_content`. ref_paths, in
+    order: the style anchor (locks the LOOK across scenes), then optionally a real
+    reference photo (locks the GEOMETRY — the prompt's facts clause tells the model
+    which image plays which role)."""
+    from google import genai            # lazy import so --dry-run/--help need no deps
+    from google.genai import types
+    client = genai.Client()             # reads GEMINI_API_KEY from env
+    parts = [types.Part.from_text(text=prompt)]
+    for p in (Path(x) for x in ref_paths if x and Path(x).is_file()):
+        mime = "image/jpeg" if p.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+        parts.append(types.Part.from_bytes(data=p.read_bytes(), mime_type=mime))
+    resp = client.models.generate_content(model=model, contents=parts)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_bytes(base64.b64decode(interaction.output_image.data))
+    for cand in (resp.candidates or []):
+        for part in (getattr(cand.content, "parts", None) or []):
+            data = getattr(getattr(part, "inline_data", None), "data", None)
+            if data:
+                out_path.write_bytes(base64.b64decode(data) if isinstance(data, str) else data)
+                return
+    raise RuntimeError("no image returned (check model output modality / safety block)")
 
 
 def main():
