@@ -4,5 +4,6 @@
 moviepy==1.0.3       # video_assembler.py
 numpy                # video_assembler.py (Ken Burns transforms)
 pillow               # text overlays + image handling
-google-genai         # generate_images.py — Gemini "nano banana" images
-# Animation runs through the Kling MCP (agent-driven) — no Python HTTP deps needed.
+google-genai         # generate_images.py / generate_asset.py — Gemini images
+# Animation is hand-built in After Effects (docs/after_effects_workflow.md) —
+# no generative-video deps needed.

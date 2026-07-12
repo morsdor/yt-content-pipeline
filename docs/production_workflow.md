@@ -37,7 +37,7 @@ For the topic (using your fact-checked research notes from Session 0):
 
 ## Session 2: Image Generation (1–2 hours, can run while doing other work)
 
-*Sessions 2 + 3 are executable end-to-end as the [`asset-generation` skill](../asset-generation/SKILL.md) — say "generate the assets" after storyboard approval.*
+*Session 2 and the Session-3 prep are executable as the [`asset-generation` skill](../asset-generation/SKILL.md) — say "generate the assets" after storyboard approval. The AE build itself is yours.*
 
 ```
 For the project:
@@ -53,36 +53,43 @@ For the project:
      → You confirm the flags (~15–20 min for a full video)
      → Failures: regenerate with a corrective DELTA prompt naming the error —
        one pass usually fixes it
-     → NO still goes to Kling unvalidated (animation inherits every still error)
-  → Upscale accepted static-scene images to 4K
+     → NO still is animated unvalidated (animation inherits every still error)
+  → Upscale accepted images to 4K (Ken Burns headroom + AE-ready plates)
 ```
 
-## Session 3: Animation (2–3 hours, semi-automated)
+## Session 3: Animation in After Effects (3–5 hours, hand-built — this is the craft session)
+
+*Full reference: [after_effects_workflow.md](after_effects_workflow.md). AI preps everything;
+you build. AE transforms the art but never redraws it, so scenes stay sharp and accurate
+by construction.*
 
 ```
-For the project:
-  → For each "animate" scene in storyboard (~27):
-     → Upload VALIDATED still to Kling AI (web UI or API) — never an unvalidated one
-     → Set animation prompt from storyboard (carries the "do not add/remove/deform
-       structural elements" clause + the scene's visual_facts automatically)
-     → Generate clip (bias toward 6s — duration is the main cost lever; a 10s
-       clip costs ~2× a 6s one)
-     → SCRUB-CHECK (visual-accuracy-gate skill, Layer 3), two passes:
-       3a ACCURACY — first / middle / last frame; compare last frame to the
-          source still. Kling's residual failure mode is morphing geometry
-          mid-motion. ~20 seconds per clip.
-       3b POLISH — does it look sloppy? shimmer, uncanny/too-fast motion, cut
-          pops, wandering accent. Run `python flicker_check.py clips/*.mp4`;
-          scenes scoring >3 (dense lattice/steps in motion) get re-generated at
-          1080p — the free upscaler can't fix that shimmer.
-     → Review: accept, or ONE retry with tightened motion ("parallax and drifting
-       haze only") / a 1080p re-gen for a flicker fail
-     → GRACEFUL DEGRADATION: after the one retry, retag that scene as "static"
-       and let it be Ken Burns + overlay. The fallback is accurate by
-       construction — it IS the validated still. A clean Ken Burns scene beats
-       a glitchy animation, and you always ship.
-     → Save to projects/XXX/clips/
-  → Tip: queue all animations at once, review after all complete
+Prep (Claude, ~15 min):
+  → python prompt_builder.py <sb> --motion-briefs
+     → motion_briefs.md: per animated scene — what moves, how far, how slow,
+       what must NOT move (from the storyboard's animation_prompt + visual_facts)
+  → Shopping list: Claude diffs scene needs vs assets_library/INDEX.md and
+    generates only the MISSING assets (generate_asset.py — style bible enforced)
+  → For repetitive builds, ask Claude for a JSX script (ae_scripts/) or an
+    expression instead of doing it by hand
+
+Build (you, in AE — duplicate template.aep per video):
+  → For each "animated" scene (~27), per its motion brief, on the ladder:
+     RUNG 1 — camera move (every scene): scale 100→104–106% or slow pan,
+              Easy Ease (F9) on every keyframe pair
+     RUNG 2 — parallax (3–5 hero scenes): separated layers, bg moves ~0.25×
+              of fg distance
+     RUNG 3 — element motion (2–3 scenes max): water level, light sweep,
+              map arrow, character gesture
+  → MOTION-CRAFT QC per scene (visual-accuracy-gate skill, Layer 3):
+     eased keyframes everywhere, ≤2 moving elements, subtle speeds, clean
+     first/last frames (no cut pop), same asset files across scenes
+  → Save each finished scene type as a TEMPLATE COMP — next video you swap
+    art, not rebuild (first scene ~2 hrs, tenth ~15 min)
+  → GRACEFUL DEGRADATION: any scene not worth AE time gets retagged "static"
+    and covered by Ken Burns + overlays. The fallback is accurate by
+    construction — it IS the validated still. You always ship.
+  → Render to projects/XXX/clips/scene_NN_animated.mp4 (native 4K, 30fps)
 ```
 
 ## Session 4: Voice Recording (~30 min)
@@ -139,13 +146,14 @@ For the video (concept was already approved at the Session-1 packaging gate):
 For the video:
   → Watch it FULLY (not 2x) at least once — you're checking facts and feel, not just glitches
   → Check: animation glitches, audio errors, factual claims, on-screen text
-  → FEEL/POLISH (the "does this look sloppy?" pass — the per-clip version was
-    Layer 3b): motion reads as intended (no warping/melt), cuts land clean, text
-    timing tracks the narration, music sits under the voice, pacing doesn't drag.
-    A video can be 100% accurate and still feel cheap — this is where you catch that.
+  → FEEL/POLISH (the "does this look sloppy?" pass — the per-clip version is
+    Layer 3): motion reads as intended (eased, subtle, nothing linear), cuts land
+    clean, text timing tracks the narration, music sits under the voice, pacing
+    doesn't drag. A video can be 100% accurate and still feel cheap — this is
+    where you catch that.
   → On upload: TICK the "Altered content" checkbox (AI-assisted visuals/voice) — required
   → Write title (per formula) + description + tags
   → Publish/schedule on your consistent day/time (e.g., Saturday AM US)
 ```
 
-**Time per video:** ~8–12 hours end to end, spread across the two-week cycle (that's what the sessions above actually sum to — the first 3–5 videos will run longer while the pipeline shakes out). Two videos ≈ **16–24 hours/month** — sustainable alongside a full-time job *only* at this 2/month cadence; this number is the real reason not to scale up early.
+**Time per video:** ~10–14 hours end to end, spread across the two-week cycle (the first 2–3 videos will run longer while the AE muscle builds — the asset library and template comps are what pull it back down toward ~8–10). Two videos ≈ **20–28 hours/month** — sustainable alongside a full-time job *only* at this 2/month cadence; this number is the real reason not to scale up early.

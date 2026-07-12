@@ -1,5 +1,16 @@
 # Strategy Review: Historical Engineering YouTube Channel
 
+> **⚠️ Historical document — the animation stack it discusses has since been replaced.**
+> This review (July 6, 2026) evaluated a pipeline whose animation stage was generative
+> image-to-video (Kling). On **July 12, 2026** that approach was dropped after measurement —
+> ~70% of a full clip batch degraded the flat isometric art (softened lines, warped geometry) —
+> and animation moved to **hand-built After Effects motion over AI stills + a reusable asset
+> library** (see [docs/after_effects_workflow.md](docs/after_effects_workflow.md)). §3's
+> "keep Kling, don't self-host" recommendation is therefore moot: both options lost to a third
+> one it didn't consider. The review's *core* conclusions — judgment over automation, quality
+> over volume, diversified revenue — all survive and, if anything, the pivot strengthens them.
+> Everything below is retained unedited for the record.
+
 *A critical stress-test of the three planning docs, focused on four questions you asked: is the income realistic, does the pipeline/cost model hold up, what are the algorithm/market risks, and is the content actually differentiated. Written to be useful, which means it's more skeptical than the source docs.*
 
 *Prepared July 6, 2026. Currency assumption: ₹84 = $1, so your after-tax salary of ₹2.10 L/mo ≈ **$2,500/mo (~$30K/yr)**.*

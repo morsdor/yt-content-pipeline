@@ -15,7 +15,7 @@
 **What it IS:**
 - Engineering education through historical case studies
 - A global perspective on infrastructure, systems, and invention
-- A visual, animated experience (50% AI-animated scenes via Kling AI, 50% Ken Burns motion on AI-illustrated stills)
+- A visual, animated experience (~50% of scenes hand-animated in After Effects from AI-illustrated stills + a reusable asset library, ~50% Ken Burns motion)
 - An authoritative voice with a distributed-systems engineering perspective
 
 **Category positioning:** This sits at the intersection of three YouTube categories — none of which own this exact space:
@@ -115,7 +115,7 @@ Every video uses a mix of these 5 scene types. Each has a distinct visual treatm
 **What:** Wide isometric view of the complete structure or system
 **When:** Opening of the video, and whenever you need to reset context
 **Visual:** Full structure visible, small scale, warm ambient light, slight atmospheric haze in background
-**Motion:** AI-animated parallax + element motion via Kling AI (6–10 seconds), OR slow zoom in for static version (10–15 seconds with layered text/element changes every ~4s)
+**Motion:** hand-built in After Effects — eased push-in + drifting clouds/haze parallax (6–10 seconds), OR slow zoom in for static version (10–15 seconds with layered text/element changes every ~4s)
 
 ```
 AI Prompt Pattern:
@@ -143,7 +143,7 @@ precise geometric lines, educational diagram aesthetic, no text"
 **What:** Overhead/bird's-eye cartographic view showing routes, distances, geographic context
 **When:** Logistics topics, trade routes, supply chains, scale of construction
 **Visual:** Clean stylized map, muted terrain, bold route lines in accent color, distance markers
-**Motion:** AI-animated with route drawing overlay (8–12 seconds), OR slow pan following the route for static version (10–15 seconds with staggered text pop-ups along the way)
+**Motion:** AE route arrow drawing itself along the path (8–12 seconds — a shape-layer trim-path, the Oversimplified staple), OR slow pan following the route for static version (10–15 seconds with staggered text pop-ups along the way)
 
 ```
 AI Prompt Pattern:
@@ -156,7 +156,7 @@ showing [region/route], terrain in muted earth tones, route highlighted in
 **What:** Close-up of a specific mechanism, joint, material, or engineering detail
 **When:** Explaining the "clever bit" — the arch keystone, the valve mechanism, the metallurgical structure
 **Visual:** Tight framing, high detail, slight depth-of-field blur on edges, accent color highlighting the key element
-**Motion:** AI-animated zoom-to-detail with element motion (6–8 seconds), OR Ken Burns zoom-to-detail for static (8–12 seconds with timed callout boxes)
+**Motion:** AE zoom-to-detail with one accent element alive (light sweep, water line — 6–8 seconds), OR Ken Burns zoom-to-detail for static (8–12 seconds with timed callout boxes)
 
 ```
 AI Prompt Pattern:
@@ -170,7 +170,7 @@ engineering diagram aesthetic"
 **What:** Side-by-side or overlay showing the scale of ancient engineering vs modern reference points
 **When:** The "wow" moment — "this was as tall as a 15-story building" or "this canal is longer than the distance from Delhi to Mumbai"
 **Visual:** Split composition or overlay, human silhouette for scale, modern reference object alongside ancient structure
-**Motion:** AI-animated with subtle parallax depth (6–10 seconds), OR Ken Burns pan between elements (10–15 seconds with timed scale-marker overlays)
+**Motion:** AE parallax between the two subjects (6–10 seconds), OR Ken Burns pan between elements (10–15 seconds with timed scale-marker overlays)
 
 ```
 AI Prompt Pattern:
@@ -257,7 +257,7 @@ Mood: awe-inspiring, educational, quietly dramatic
 - **Target:** **2 videos per month** (roughly one every 10–14 days), long-form, 10–12 minutes, ~54 scenes each.
 - **Each video is fully researched, fact-checked, and carries your own perspective** — not an AI first draft published as-is.
 - **Scale up later, deliberately:** increase cadence only after you've (a) learned what actually performs, (b) sped up your workflow with templates/LoRA, and (c) confirmed you have the time. Never trade quality for a number.
-- **This lower cadence also keeps costs modest** — ~₹5,000–7,000/mo all-in (Claude Pro + Kling Pro tier; see the corrected budget in `docs/costs.md`), which removes any need for self-hosted video models.
+- **This lower cadence also keeps costs modest** — ~₹5,000/mo all-in (Claude Pro + After Effects + image generation; see `docs/costs.md`), with animation itself free at the margin since it's built by hand in AE.
 - **Schedule:** publish on a consistent day/time (e.g., Saturday morning US time) so returning viewers and the algorithm learn your rhythm. Consistency of *timing* matters more than the specific day at low volume.
 
 ### Shorts & Discovery (near-zero marginal cost — don't skip this)
@@ -511,4 +511,4 @@ YouTube (free content — the top of funnel)
 
 ---
 
-*Last updated: July 10, 2026 — second review pass. Key changes: thumbnail design workflow with packaging-first gate and Test & Compare A/B (§3), Shorts & discovery strategy (§4), visual-accuracy non-negotiable + audience AI-fatigue risk (§4a), corrected effort (8–12 hrs/video) and monthly budget (~₹5–7K), pre-committed month-9 decision gate with written failure criteria (§6 Phase 1). Previous revision July 6, 2026 — see `strategy_review.md`.*
+*Last updated: July 12, 2026 — animation pivot: scenes are now hand-animated in After Effects from AI stills + a reusable asset library (generative image-to-video dropped for quality — see `docs/after_effects_workflow.md`). Previous revision July 10, 2026 — second review pass. Key changes: thumbnail design workflow with packaging-first gate and Test & Compare A/B (§3), Shorts & discovery strategy (§4), visual-accuracy non-negotiable + audience AI-fatigue risk (§4a), corrected effort (8–12 hrs/video) and monthly budget (~₹5–7K), pre-committed month-9 decision gate with written failure criteria (§6 Phase 1). Previous revision July 6, 2026 — see `strategy_review.md`.*

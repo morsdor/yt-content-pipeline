@@ -1,44 +1,56 @@
 # Costs & Budget
 
-*Part of the [pipeline docs](../pipeline_automation.md). Figures corrected July 10, 2026 (Kling ~2× up from the original estimate; time 8–12 hrs, not 5–7).*
+*Part of the [pipeline docs](../pipeline_automation.md). Revised July 12, 2026 for the
+animation pivot: generative image-to-video (credit-metered) is out; animation is hand-built
+in After Effects (flat subscription, ₹0 marginal). The budget's shape changed — from
+"credits per clip" to "images + your time."*
 
 ## Per-Video Cost Breakdown (50% Animation)
 
 | Component | Unit Cost | Quantity | Total |
 |:---|:---|:---|:---|
-| Script draft (Claude via Pro plan) | Included in sub | 1 | $0.00 |
-| Images (Nano Banana 2 / Gemini 3.1 Flash Image) | **~$0.086/image (~₹7.4)** — measured Jul 2026, not estimated | ~54 + ~10–15% gate regens | **~$5 (~₹450)** |
-| AI animation (Kling `v3_0`, i2v **720p, no native audio**) | **6 cr/s** → 36–48 cr per 6–8s clip (measured: 7s = **42 cr**) | 27 clips + a few retries | **~1,300–1,500 credits** |
-| Upscaling to 4K (Real-ESRGAN, local — stills *and* clips) | $0.00 | all scenes | $0.00 |
-| Voice (self-recorded) | $0.00 | 1 | $0.00 |
-| Particle overlays (stock) | $0.00 | ~10 | $0.00 |
-| ffmpeg/moviepy assembly | $0.00 | 1 | $0.00 |
-| Background music (royalty-free) | $0.00 | 1 | $0.00 |
-| **Marginal cash per video** | | | **~₹450 (images)** — Kling animation is credit-metered under the flat Pro sub (below), not per-clip cash |
-| ⏱️ **Your time per video** (the real cost) | | **~8–12 hrs** | *research + fact-check + accuracy gate + narration + QA + thumbnails* |
+| Script draft (Claude via Pro plan) | Included in sub | 1 | ₹0 |
+| Images (Gemini 3.1 Flash Image / Nano Banana 2) | **~₹7.4/image (~$0.086)** — measured Jul 2026 | ~54 + ~10–15% gate regens | **~₹450** |
+| New `assets_library/` elements | ~₹7.4/asset | video 1: ~40 · video 10: ~5 (library compounds) | **~₹50–300, falling** |
+| Animation (After Effects, hand-built) | ₹0 marginal — sub is monthly, below | ~27 scenes | ₹0 |
+| Upscaling stills to 4K (Real-ESRGAN, local) | ₹0 | all scenes | ₹0 |
+| Voice (self-recorded) | ₹0 | 1 | ₹0 |
+| Particle overlays (stock) | ₹0 | ~10 | ₹0 |
+| ffmpeg/moviepy assembly · royalty-free music | ₹0 | 1 | ₹0 |
+| **Marginal cash per video** | | | **~₹500–750** |
+| ⏱️ **Your time per video** (the real cost) | | **~10–14 hrs** | *research + fact-check + gate + the 3–5 hr AE session + narration + QA + thumbnails; falls toward 8–10 hrs as template comps and the asset library accumulate* |
 
-> **Your time is the binding constraint, not cash.** Kling is a flat monthly sub, so the only per-video cash is images (~₹450); the real budget is **credits**. Two levers keep a video inside ~1,300–1,500 credits: **(1) 720p + no native audio** (`v3_0`, `enable_audio=false`) = **6 cr/s** — turning audio off saves 2 cr/s vs. 8, and we add narration/music at assembly anyway; **(2) bias animated scenes toward 6s** — a 10s clip costs ~2× a 6s one. Then **upscale 720p→4K locally for free** rather than paying for native 1080p (8 cr/s) or Kling 4K (VIP) — **except dense-lattice-in-motion scenes**, which visibly shimmer at 720p and get 1080p (identified by measurement, not guesswork — see [upscaling.md](upscaling.md)); that hybrid runs ~1,440 cr/video, still ~2/mo. Measured rates (Jul 2026, GUI-confirmed):
+> **Your time is the binding constraint, not cash — more than ever.** Animation used to be
+> the biggest cash line and is now ₹0 marginal; what it costs instead is the AE session.
+> Three levers keep that session short: **(1) motion briefs** (`prompt_builder.py
+> --motion-briefs` — no figuring out what to build), **(2) the asset library** (reuse beats
+> regenerate; check `assets_library/INDEX.md` before any new generation), **(3) template
+> comps** (a scene type built once is a ~15-minute art-swap forever after). There are no
+> charged retries anywhere in animation anymore — iteration costs minutes, not money.
 >
-> | | 720p | 1080p |
-> |:--|:--:|:--:|
-> | **no native audio** (`v3_0`, our default) | **6 cr/s** | 8 cr/s |
-> | native audio on / `v3_0_turbo` | 8 cr/s | 10 cr/s |
->
-> ⚠️ **Do not use `kling-video-v3_0_turbo`** — despite the name it bakes in audio (can't disable) and bills at the pricier 10 cr/s. Use **`v3_0` with `enable_audio=false`**, which also has *better element consistency* (less morphing).
->
-> **Image cost, re-measured (Jul 2026, video #1 — Chand Baori):** ₹640 for 87 successful generations = **~₹7.4/image (~$0.086)** — ~4× the old ~$0.02 estimate, because Nano Banana 2 (Gemini 3.1 Flash Image) emits larger, higher-token images (~1,400 output tokens each). That first run was ~87 gens because two *systematic* prompt issues were found and fixed (palace-in-void; style-anchor bleed); with those fixes baked into `visual_facts` + the gate skill, **steady state is ~60 gens ≈ ₹450/video.** ⚠️ **There is no free tier for image models** — the API key's project must have billing enabled (free tier returns `limit: 0`).
+> **Image cost, measured (Jul 2026, video #1 — Chand Baori):** ₹640 for 87 successful
+> generations = **~₹7.4/image (~$0.086)**, because Nano Banana 2 emits larger, higher-token
+> images (~1,400 output tokens each). That first run was ~87 gens because two *systematic*
+> prompt issues were found and fixed (space-filling; style-anchor bleed); with those fixes
+> baked into `visual_facts` + the gate skill, **steady state is ~60 gens ≈ ₹450/video.**
+> ⚠️ **There is no free tier for image models** — the API key's project must have billing
+> enabled (free tier returns `429 limit: 0`; a key restricted to the wrong service returns
+> `403 API_KEY_SERVICE_BLOCKED`). Create the key in **AI Studio** on a **billing-enabled**
+> project (or use Vertex via ADC).
 
 ## Monthly Cost Summary (at 2 videos/month)
 
 | Expense | Cost |
 |:---|:---|
 | Claude Pro (orchestrator + script drafts) | ₹2,000/mo |
-| Kling AI **Pro plan** (3,000 credits/mo) — at 720p no-audio (6 cr/s) a video ≈ 1,300–1,500 cr, so **~2 videos/mo fit** | ~₹2,050/mo (annual) – ₹3,100/mo (monthly) |
-| Google AI Studio images (~120/mo, Gemini 3.1 Flash Image — **paid tier required, no free tier**) | **~₹900/mo (~$10.5)** |
+| **Adobe After Effects** (Single App plan) | **~₹2,000/mo (~$23)** — the animation stage; DaVinci Resolve (Fusion) is a free alternative while trialing |
+| Google AI Studio images (~130/mo incl. library assets — **paid tier required, no free tier**) | ~₹1,000/mo (~$12) |
 | ElevenLabs (optional, pickup fallback only) | Free tier or skip |
-| Self-recorded voice, ffmpeg/moviepy, royalty-free music, **4K upscaling (Real-ESRGAN local)** | Free |
-| **Total** | **~₹5,000–6,000/mo (~$60–72)** |
+| Self-recorded voice, ffmpeg/moviepy, royalty-free music, Real-ESRGAN upscaling, Duik Ángela (rigging) | Free |
+| **Total** | **~₹5,000/mo (~$60)** |
 
-> At 2 videos/month you generate ~110 images and ~54 clips. The Kling **Standard** plan (660 credits) is nowhere near enough — a 720p no-audio clip is ~36–48 cr, so a video's ~30 clips (incl. retries) is ~1,300–1,500 cr. Budget for **Pro** and hold the levers that keep 2 videos inside 3,000 cr: **720p + no native audio (6 cr/s)**, **6s duration bias**, and the [validated-still gate](../visual-accuracy-gate/SKILL.md) + one-retry rule to cap wasted rerenders — then upscale to 4K for free ([upscaling.md](upscaling.md)). **Self-hosting is still not warranted:** even at ~₹3,000/mo variable cost, Wan/Hunyuan on RunPod (~$2.4–2.9/hr) remains a false economy until you're at 30+ videos/month.
->
-> ⚠️ **Gemini image billing (learned the hard way, Jul 2026):** image models have **no free tier** — a free-tier project returns `429 limit: 0` and an API key restricted to the wrong service returns `403 API_KEY_SERVICE_BLOCKED`. Create the key in **AI Studio** on a **billing-enabled** project (or use Vertex via ADC). Images are ~₹900/mo here — small vs. Kling, but no longer "free."
+> The pivot swapped a credit-metered animation subscription for a flat AE subscription at
+> a similar monthly price — but removed *all* variable animation cost and all charged
+> retries. The number that actually scales with ambition now is **hours in AE**, which the
+> library + templates push down every video. Self-hosting video models stays irrelevant:
+> there is no generative video in the pipeline at all.

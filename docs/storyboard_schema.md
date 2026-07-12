@@ -64,7 +64,7 @@
 | Field | Pass | Type | Required | Description |
 |:---|:---|:---|:---|:---|
 | `type` | 1 | string | ✅ | `"animated"` or `"static"` |
-| `duration` | 1 | number | ✅ | Scene duration in seconds. **Animated: default 6s.** Duration is the main Kling cost lever — a 10s clip costs ~2× a 6s one, and the 6s bias is what keeps 2 videos/month inside the 3,000-credit Pro plan ([costs.md](costs.md)). Only go 8–10s when the motion genuinely needs the extra time. **Static (Ken Burns): 10–15s.** Any animated scene that fails the accuracy gate twice falls back to `type:"static"` Ken Burns (accurate by construction, free). |
+| `duration` | 1 | number | ✅ | Scene duration in seconds. **Animated: default 6–8s.** Duration is now a *time*-budget lever, not cash — a longer scene costs more AE build/render time ([costs.md](costs.md)); go 10s+ only when the motion needs it (route arrows, slow reveals). **Static (Ken Burns): 10–15s.** Any animated scene not worth AE time falls back to `type:"static"` Ken Burns (accurate by construction, free). |
 | `scene_type` | 1 | string | ❌ | `establishing`, `cross_section`, `map`, `detail`, `scale_comparison` |
 | `motion` | 1 | string | ❌ | Ken Burns motion for static scenes: `zoom_in`, `zoom_out`, `pan_left`, `pan_right`, `pan_up`, `zoom_detail` |
 | `focus_x`, `focus_y` | 1 | number | ❌ | For `zoom_detail` only (0.0–1.0, default center) |
@@ -74,6 +74,6 @@
 | `reference_image` | 2 | string | ❌ | Path to a real photo in `references/` for this scene. `generate_images.py` passes it alongside the style anchor (anchor = LOOK, reference = GEOMETRY) and it's the comparison image at the validation gate. Use for scenes depicting real, verifiable structures; omit for abstract diagrams/maps. |
 | `image_prompt` | 2 | string | ❌ | Full still-image prompt (style card + subject + accent + composition). Added after Pass 1 approval. |
 | `image` | 2 | string | ✅* | Relative path to the generated scene image (*required at assembly time) |
-| `animation_prompt` | 2 | string | ❌ | Prompt for Kling AI (used during the animation step) |
-| `animated_clip` | 2 | string | ❌ | Path to AI-animated clip (required when type=animated, at assembly time) |
+| `animation_prompt` | 2 | string | ❌ | The scene's **motion intent** — one sentence of what moves, how far, how slow (e.g. `"slow push-in; clouds drift right; water surface breathes"`). `prompt_builder.py --motion-briefs` expands it into the buildable After Effects shot direction, with `visual_facts` as hold-constraints. |
+| `animated_clip` | 2 | string | ❌ | Path to the AE-rendered clip (required when type=animated, at assembly time) |
 | `particle_overlay` | 2 | string | ❌ | Path to particle overlay clip (dust, sparks, rain) |

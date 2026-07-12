@@ -13,10 +13,10 @@ description: >-
 
 The repeatable core process for every video. **2 videos/month, quality over quantity.**
 Companion references: `brand_guide.md` (voice + look), `pipeline_automation.md` (tech hub →
-links into `docs/`), `animation_upgrade.md` (motion), `channel_strategy.md` (titles, pillars,
-topic list). Companion skills: `asset-generation` (Phases 2+3: stills → gate → Kling animation),
-`visual-accuracy-gate` (still/clip validation), `thumbnail-workflow` (packaging gate +
-candidates + A/B + log).
+links into `docs/`), `docs/after_effects_workflow.md` + `animation_upgrade.md` (motion),
+`channel_strategy.md` (titles, pillars, topic list). Companion skills: `asset-generation`
+(Phases 2+3: stills → gate → animation prep → render QC), `visual-accuracy-gate` (still/asset/
+render validation), `thumbnail-workflow` (packaging gate + candidates + A/B + log).
 
 > **Three rules that override everything:** (1) You research and fact-check — AI drafts, you verify.
 > (2) You record your own narration. (3) You add a perspective only you would. These are what keep
@@ -29,7 +29,8 @@ candidates + A/B + log).
 - [ ] Fonts installed in `assets/fonts/` (Fraunces, IBM Plex Sans, IBM Plex Mono)
 - [ ] Style anchors: **none needed upfront.** Use `style_card.txt` alone for video #1, then promote its 8–10 best frames into `assets/style_anchors/` (see anchor_prompts.md)
 - [ ] `style_card.txt` present (master prompt prefix)
-- [ ] **Kling MCP** connected (custom connector via `https://kling.ai/mcp`) + **Gemini image API key** in `.env`; mic + Audacity/Adobe Podcast ready
+- [ ] **After Effects** installed (+ Duik Ángela for characters later), `template.aep` built, and `assets_library/` seeded (STYLE_BIBLE + first batch) — see [docs/after_effects_workflow.md](../docs/after_effects_workflow.md) Phase 0
+- [ ] **Gemini image API key** in `.env`; mic + Audacity/Adobe Podcast ready
 - [ ] `video_assembler.py` runs on the example storyboard without errors
 
 ---
@@ -78,17 +79,17 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 | `outro` | calm receding wide with clean space for the subscribe card |
 
 - **Accent is a variable, applied at generation — never hardcoded per scene.** Set `accent_hex` once; the generator highlights each scene's `accent` target with it, **sparingly** (neutral base elsewhere). Re-skinning for another civilization = change one value.
-- **Still-first for Kling.** *Every* scene gets a still `image` first (pass a style anchor on each call for cross-scene consistency). For `animated` scenes that still is Kling's **starting frame** — `animation_prompt` adds motion only, never restyles. `static` scenes use Ken Burns via `motion`.
+- **Still-first, always.** *Every* scene gets a still `image` first (pass a style anchor on each call for cross-scene consistency). For `animated` scenes that still is the **base plate of the AE comp** — `animation_prompt` states the motion *intent* (what moves, how far, how slow), which `prompt_builder.py --motion-briefs` turns into the buildable AE shot direction. `static` scenes use Ken Burns via `motion`.
 - **`texts` are overlaid by the assembler, not drawn into the image** (`style_card.txt` says "no text in image"). In the prompt, `texts` only dictate where to leave clean negative space.
 
-### Phases 2 + 3 — Asset Generation (stills → gate → animation)  ⏱ 3–5 hrs
-**→ Run the `asset-generation` skill** — it owns the whole chain; the stages below are the summary, the skill is the source of truth.
-- [ ] **Stage 0 — Preflight:** `.env` key present; Kling MCP `who_am_i` + **credits check (blocking)** — estimate the batch from `--anim-jobs` total seconds before generating anything. Anchor rule: **video #1** = `style_card.txt` only; **video #2+** = pass a style anchor on every call.
+### Phases 2 + 3 — Asset Generation (stills → gate → AE animation)  ⏱ 4–6 hrs
+**→ Run the `asset-generation` skill** for everything except the AE build itself — it owns the prep chain; the stages below are the summary, the skill is the source of truth.
+- [ ] **Stage 0 — Preflight:** `.env` key present; storyboard approved. Anchor rule: **video #1** = `style_card.txt` only; **video #2+** = pass a style anchor on every call.
 - [ ] **Stage A — Stills:** `generate_images.py` — dry-run → scene 1 (eyeball) → rest. Same session, same model version. Scenes with `reference_image` get the real photo as geometry reference automatically.
-- [ ] **Stage B — ✅ VISUAL ACCURACY GATE (hard gate):** `visual-accuracy-gate` Layer 2 — vision compare, you confirm, delta-prompt fixes, `validation_report.md`. **No still goes to Kling unvalidated.**
-- [ ] **Stage C — Animation via Kling** (`kling-cli` or MCP): `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: upload still → `image_to_video` with **`--model kling-video-v3_0 --resolution 720p --enable_audio false`** (6 cr/s, no audio, best element consistency; 6s-capable) → **log every `generationId`** (no server-side task list — a lost id orphans a charged job) → `query_tasks` → **download within 24h** → scrub-check (Layer 3: accuracy *and* polish) → one retry → Ken Burns fallback (retag `type:"static"`).
-- [ ] **Stage C.5 — Flicker hybrid (measure, don't guess):** after the batch, `python flicker_check.py projects/NNN_topic/clips/*.mp4` → **re-generate only the flagged (`flicker_HF > 3`) scenes at `--resolution 1080p`** (8 cr/s). Dense lattice/steps in motion shimmer at 720p and the free upscaler can't fix it; smooth scenes stay 720p. ~⅓ of scenes typically cross → ~1,440 cr/video. Details: [docs/upscaling.md](../docs/upscaling.md).
-- [ ] **Stage D:** upscale to 4K locally & free — static stills *and* clips (`python upscale_video.py …`), per [docs/upscaling.md](../docs/upscaling.md). Free substitute for native-4K credits.
+- [ ] **Stage B — ✅ VISUAL ACCURACY GATE (hard gate):** `visual-accuracy-gate` Layer 2 — vision compare, you confirm, delta-prompt fixes, `validation_report.md`. **No still is animated unvalidated.**
+- [ ] **Stage C — Animation prep (Claude, free):** `python prompt_builder.py <sb> --motion-briefs` → per-scene AE shot directions; asset shopping list diffed against `assets_library/INDEX.md` → `generate_asset.py` for the missing ones (STYLE_BIBLE enforced, Layer-2.5 asset gate); layered plates for parallax scenes; JSX comp scaffolds in `ae_scripts/` for anything repetitive; upscale all stills to 4K.
+- [ ] **Stage C' — AE build (YOU, hands-on):** per motion brief, on the ladder — camera move on every scene (eased, F9) → parallax on 3–5 hero scenes → element motion on 2–3 max. Duplicate `template.aep`; save finished scene types as template comps. Render `clips/scene_NN_animated.mp4` (native 4K, 30fps). Full guide: [docs/after_effects_workflow.md](../docs/after_effects_workflow.md).
+- [ ] **Stage D — Render QC:** `visual-accuracy-gate` Layer 3 (motion craft) on each render — easing, restraint, cut discipline, asset consistency. Fixes are free (tweak the comp, re-render); a scene not worth more AE time retags `type:"static"` → Ken Burns.
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
 
 ### Phase 4 — Particles + Overlays  ⏱ 20 min
@@ -107,7 +108,7 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 
 ### Phase 7 — QA + Disclosure + Publish  ⏱ 30–45 min
 - [ ] Watch it **fully** at least once (facts + feel, not just glitches)
-- [ ] **Polish pass** (the "does it look sloppy?" gate — full-video version of accuracy-gate Layer 3b): motion reads as intended (no warp/melt/shimmer), cuts land clean, text timing tracks narration, music sits under the voice, pacing doesn't drag. Accurate ≠ not-cheap; this catches cheap.
+- [ ] **Polish pass** (the "does it look sloppy?" gate — full-video version of accuracy-gate Layer 3): motion reads as intended (eased, subtle, nothing linear or busy), cuts land clean, text timing tracks narration, music sits under the voice, pacing doesn't drag. Accurate ≠ not-cheap; this catches cheap.
 - [ ] Thumbnails: **run the `thumbnail-workflow` skill, Stages 2–5** — 3 candidates varying ONE axis, 120-px squint test, Fraunces bold added locally (never AI text), YouTube **Test & Compare**, and the `assets/thumbnails_log.md` entry.
 - [ ] Title (per formula, `channel_strategy.md §4`) + description (hook → chapters → **sources** → subscribe)
 - [ ] Cut **2–3 Shorts** from self-contained beats (cross-section reveal, scale comparison, detail zoom): 9:16 crop, 15–45s, hook overlay in the first second, end-card to the full video. Drip them between uploads; judge by subs gained + long-form click-through, not Shorts views.

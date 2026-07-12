@@ -6,9 +6,9 @@ temporally stable, purpose-built for line art like our isometric scenes), then
 re-encodes at the source fps. No audio is added: Engineering Atlas clips are silent
 by design (narration + music are mixed at assembly).
 
-Companion to the accuracy gate's Stage D. Free alternative to native-4K Kling credits:
-generate at 720p, upscale here. On flat illustrated content the result is ~indistinguishable
-from native 1080p/4K.
+Legacy/one-off tool: the pipeline now renders animation natively at 4K in After Effects,
+so this only exists to rescue old low-res clips. On flat illustrated content the result
+is ~indistinguishable from native 1080p/4K.
 
 Usage (from repo root):
     python upscale_video.py in.mp4 out.mp4                    # 720p -> 4K (x3, then fit 3840x2160)
