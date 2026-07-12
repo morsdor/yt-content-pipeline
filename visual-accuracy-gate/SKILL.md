@@ -46,7 +46,7 @@ These should already be in place; if missing, stop and fix upstream first:
 
 ## Layer 2 — The validated-still gate (HARD GATE, before any animation spend)
 
-For each still that has `visual_facts` and/or `reference_image`:
+**Build the review artifacts first (automated):** `python review_images.py --storyboard <sb>` writes `projects/XXX/review/` — labeled **contact sheets** of every still, **render-vs-reference pairs** (`pairs/scene_NN.png`, the geometry check side by side), and a **`review_checklist.md`** (subject · facts · ref · empty Verdict column). Read-only; never regenerates. Turns "open 54 files" into a few labeled montages; pass a `--scenes "8-15,29"` subset to rebuild just a group on re-check. Then for each still that has `visual_facts` and/or `reference_image`:
 
 1. **Read three things side by side:** the render, the reference photo, the fact list.
 2. **Check every fact** against the render. Also flag anything structurally invented that no fact covers (extra arches, wrong storey count, impossible geometry) — the facts are a floor, not a ceiling.
@@ -61,6 +61,10 @@ CORRECTION: the previous render showed [observed]; the structure has
 ```
 
 Optionally pass the failed render back as a third image. Naming the delta is what makes one pass usually sufficient — never blind-reroll.
+
+**Two systematic failure modes to expect (both fixed at the prompt, not per-scene):**
+- **Space-filling:** on whole-structure wides/sections the model fills open voids and multiplies signature features (e.g. a stepwell's central pavilion → a palace on every side). Fix in the shared `visual_facts` with *prohibitive* language ("the center is EMPTY open air; three sides are ENTIRELY bare steps; one pavilion on ONE side; no palace/fort/temple"), then regenerate the affected group.
+- **Anchor-bleed:** the style anchor carries *content*, not just look. Scenes that should **not** show the main structure — landscapes, generic/contrast diagrams, other buildings — get it bleed in when their prompt doesn't re-assert the subject. Fix by making the `image_prompt` explicit and exclusionary ("a SIMPLE vertical shaft well — NOT a stepwell, no steps, no buildings") and regenerating. Scenes that already name their subject concretely won't bleed; vague ones ("the same well") will.
 
 **The gate rule: no still goes to Kling unvalidated.** Animation costs ~10–40× a still and inherits every error in its source frame. This gate is where accuracy and budget protection are the same act.
 

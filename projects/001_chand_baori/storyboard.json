@@ -35,8 +35,8 @@
       ],
       "narration_segment": "Every morning, before the sun clears the rooftops of Abhaneri, a woman walks to the edge of a great square pit cut into the earth — and she begins to count.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft).",
         "No modern white pipe railings and no diagonal metal access stair (both are modern additions — omit in period scenes)."
       ],
@@ -84,7 +84,7 @@
       ],
       "narration_segment": "Yesterday it was thirty steps before her clay pot touched water. In the flush weeks after the monsoon, it was barely ten. By the cruelest stretch of summer, it will be nearly a hundred and thirty.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -100,7 +100,7 @@
       "texts": [],
       "narration_segment": "She is not climbing down to the water. The water is rising and falling to meet her —",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -122,8 +122,8 @@
       ],
       "narration_segment": "— and the staircase, three and a half thousand steps of it, was built, stone by stone, around that one stubborn fact.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "Stepped sides are double flights of steps in a tessellated zig-zag diamond lattice — paired V-flights repeating across the terraces; ordered geometry, not random or a single straight staircase.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
@@ -176,8 +176,8 @@
       ],
       "narration_segment": "(Title sting — 2–3s wordmark + topic, music motif only, no narration.)",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft).",
         "No modern white pipe railings and no diagonal metal access stair (both are modern additions — omit in period scenes)."
       ],
@@ -213,7 +213,7 @@
       "animated_clip": "clips/scene_09_animated.mp4",
       "duration": 10,
       "scene_type": "establishing",
-      "image_prompt": "wide arid Rajasthan landscape, a cracked dry riverbed, distant monsoon clouds massing on one horizon",
+      "image_prompt": "wide arid Rajasthan landscape, a cracked dry riverbed, distant monsoon clouds massing on one horizon — empty natural terrain ONLY, absolutely no stepwell, no buildings, no architecture",
       "animation_prompt": "monsoon clouds sweep in then pass; ground shifts damp-to-parched, time-lapse feel",
       "texts": [],
       "narration_segment": "For a few weeks a year the monsoon arrives and the ground drinks its fill. Then, for the long remainder, almost nothing. The rivers thin to ribbons of sand."
@@ -224,7 +224,7 @@
       "animated_clip": "clips/scene_10_animated.mp4",
       "duration": 10,
       "scene_type": "cross_section",
-      "image_prompt": "earth cutaway showing the water-table as a distinct boundary between dry upper strata and saturated lower strata",
+      "image_prompt": "earth cutaway showing the water-table as a distinct boundary between dry upper strata and saturated lower strata — a plain geological cross-section ONLY, no stepwell, no steps, no buildings",
       "accent": "the water-table line",
       "animation_prompt": "the water-table boundary sinks slowly downward through the strata",
       "texts": [
@@ -260,7 +260,7 @@
       "animated_clip": "clips/scene_12_animated.mp4",
       "duration": 8,
       "scene_type": "cross_section",
-      "image_prompt": "the same vertical well, water beginning to drop below the fixed shaft bottom",
+      "image_prompt": "a SIMPLE narrow single vertical shaft well in earth cross-section (the same plain well as before), water beginning to drop below the fixed shaft bottom, rope and bucket — NOT a stepwell, no steps, no staircases, no palace, no buildings",
       "animation_prompt": "water level slips downward, leaving the bucket over dry air",
       "texts": [],
       "narration_segment": "But a well makes one assumption it has no right to make — that the water will stay put. In Abhaneri, it doesn't."
@@ -290,7 +290,7 @@
       "animated_clip": "clips/scene_14_animated.mp4",
       "duration": 9,
       "scene_type": "cross_section",
-      "image_prompt": "a well dug to the summer low, flooded and overtopped after the monsoon, its draw point submerged",
+      "image_prompt": "a SIMPLE narrow single vertical shaft well in earth cross-section, flooded and overtopped after the monsoon with its draw point submerged — NOT a stepwell, no steps, no staircases, no palace, no buildings",
       "accent": "the drowned draw-point",
       "animation_prompt": "water rises and floods over the well mouth",
       "texts": [
@@ -333,8 +333,8 @@
       "texts": [],
       "narration_segment": "That is the real problem at Chand Baori. Not depth. Not even thirst. It's that the thing they needed to reach would not hold still.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
       "reference_image": "references/Chand_Baori_perspective_panorama_(July_2022) (1).jpg"
@@ -358,7 +358,7 @@
       ],
       "narration_segment": "So they stopped trying to reach a point, and built for a range.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -373,7 +373,7 @@
       "texts": [],
       "narration_segment": "Picture the shape: an enormous inverted pyramid cut into the ground — square at the mouth, narrowing as it drops.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "A single small square water tank at the very bottom center, small relative to the wide top opening.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
@@ -402,7 +402,7 @@
       ],
       "narration_segment": "Roughly thirty-five metres to a side, and about twenty metres deep; call it thirteen storeys, straight down.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -423,7 +423,7 @@
       ],
       "narration_segment": "Three of its four walls aren't walls at all. They're staircases — double flights of steps zig-zagging down in a tight lattice, landing after landing after landing.",
       "visual_facts": [
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "Stepped sides are double flights of steps in a tessellated zig-zag diamond lattice — paired V-flights repeating across the terraces; ordered geometry, not random or a single straight staircase.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
@@ -448,7 +448,7 @@
       ],
       "narration_segment": "And here is the elegant part. Because the steps cover the entire descent, there is always — always — a step sitting right at the waterline.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -471,7 +471,7 @@
       ],
       "narration_segment": "In the flush weeks after the rains, the water is high and you barely climb down at all.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -494,7 +494,7 @@
       ],
       "narration_segment": "In the heart of summer, the water has retreated deep into the earth, and you walk down, and down, to meet it.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -510,7 +510,7 @@
       "texts": [],
       "narration_segment": "The building never moves. The water moves. And the staircase quietly guarantees that wherever the water is, a dry footing is waiting for you exactly there.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -550,7 +550,7 @@
       "narration_segment": "That sounds like a shortcut. It's the opposite. A mortarless wall lets groundwater seep through the stone into the tank from every side,",
       "visual_facts": [
         "Dry-laid mortarless sandstone: rectangular coursed blocks with visible open joints, no mortar or cement.",
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom."
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space."
       ]
     },
     {
@@ -618,8 +618,8 @@
       "texts": [],
       "narration_segment": "The machine has exactly one instruction, and it has never once stopped obeying it.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
       "reference_image": "references/Chand_Baori_perspective_panorama_(July_2022) (1).jpg"
@@ -642,7 +642,7 @@
       ],
       "narration_segment": "Stand at the rim and the scale finally lands. Three thousand five hundred steps.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "Stepped sides are double flights of steps in a tessellated zig-zag diamond lattice — paired V-flights repeating across the terraces; ordered geometry, not random or a single straight staircase.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
@@ -713,7 +713,7 @@
       "narration_segment": "The fourth side — the north — breaks the rhythm: a tall pillared gallery rising several storeys, with a pavilion where the local rulers could sit above the water.",
       "visual_facts": [
         "North pavilion: warm ochre sandstone, multi-storey, cusped/pointed arched galleries with a central projecting multi-tier pavilion stepping down toward the water — more ornate than the plain stepped sides.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps."
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side."
       ],
       "reference_image": "references/Abhaneri-Chand_Baori-12-Stufenbrunnen-2018-gje.jpg"
     },
@@ -765,7 +765,7 @@
       "narration_segment": "So the well was also a refuge: a shaded room at the bottom of the heat, where the village gathered,",
       "visual_facts": [
         "A single small square water tank at the very bottom center, small relative to the wide top opening.",
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "No modern white pipe railings and no diagonal metal access stair (both are modern additions — omit in period scenes)."
       ],
       "reference_image": "references/Chand_Baori_2,_Abaneri.jpg"
@@ -851,7 +851,7 @@
       ],
       "narration_segment": "We look at Chand Baori and see a staircase — a beautiful, punishing way down to the water. But the staircase isn't the route to the machine. The staircase is the machine.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "Stepped sides are double flights of steps in a tessellated zig-zag diamond lattice — paired V-flights repeating across the terraces; ordered geometry, not random or a single straight staircase.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
@@ -875,7 +875,7 @@
       ],
       "narration_segment": "A vertical well solves a fixed-depth problem. Chand Baori solves a moving-boundary problem — a water surface that swings up and down through the year — and it solves it with nothing but geometry.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -898,7 +898,7 @@
       ],
       "narration_segment": "Every one of those three and a half thousand steps is a potential waterline, so the structure automatically offers a fresh, dry edge at whatever height the water happens to be that week.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -968,8 +968,8 @@
       "texts": [],
       "narration_segment": "Which brings us back to the woman at the top of the steps, counting.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
       "reference_image": "references/Chand_Baori_perspective_panorama_(July_2022) (1).jpg"
@@ -999,7 +999,7 @@
       "texts": [],
       "narration_segment": "one that has met every generation of her family at the water's edge, wherever that edge happened to fall.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ]
     },
@@ -1038,8 +1038,8 @@
       "texts": [],
       "narration_segment": "That's the quiet genius of Chand Baori. Not that they dug deep — that they built something which never has to be told where the water went.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
       "reference_image": "references/Chand_Baori_perspective_panorama_(July_2022) (1).jpg"
@@ -1054,8 +1054,8 @@
       "texts": [],
       "narration_segment": "Built to last — or built to teach us why it didn't. I'll see you in the next one.",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft)."
       ],
       "reference_image": "references/Chand_Baori_perspective_panorama_(July_2022) (1).jpg"
@@ -1077,8 +1077,8 @@
       ],
       "narration_segment": "(Outro card — subscribe + next-video thumbnail, no narration.)",
       "visual_facts": [
-        "Square plan (~35 m per side), an inverted pyramid open to the sky: widest at the top rim, narrowing to a small square water tank at the bottom.",
-        "Exactly three sides are stepped; the fourth (north) side is a multi-storey pillared pavilion/gallery, NOT steps.",
+        "Square plan (~35 m per side), an inverted pyramid OPEN to the sky: widest at the top rim, narrowing to a single small square water tank at the bottom. The center is EMPTY OPEN AIR (the void) — NO buildings, towers, rooms, temples or palace inside it, nothing but bare stepped walls around empty space.",
+        "Exactly three of the four sides are covered ENTIRELY in bare steps — plain stepped walls with NO buildings, rooms, towers, arches or structures on them. Only the fourth (north) side carries a single modest multi-storey pillared pavilion/gallery. Do NOT fill the well with a palace, fort or temple complex, and do NOT put buildings on more than one side.",
         "About 3,500 steps and ~13 storeys / ~20 m deep — many stacked horizontal terrace landings (not the overstated 30 m / 100 ft).",
         "No modern white pipe railings and no diagonal metal access stair (both are modern additions — omit in period scenes)."
       ],

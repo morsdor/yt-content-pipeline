@@ -68,8 +68,9 @@ def generate_image(prompt, out_path, ref_paths=(), model=IMAGE_MODEL_DEFAULT):
     client = genai.Client()             # reads GEMINI_API_KEY from env
     parts = [types.Part.from_text(text=prompt)]
     for p in (Path(x) for x in ref_paths if x and Path(x).is_file()):
-        mime = "image/jpeg" if p.suffix.lower() in (".jpg", ".jpeg") else "image/png"
-        parts.append(types.Part.from_bytes(data=p.read_bytes(), mime_type=mime))
+        raw = p.read_bytes()                      # sniff real content — Gemini may
+        mime = "image/png" if raw[:8] == b"\x89PNG\r\n\x1a\n" else "image/jpeg"  # return JPEG under a .png name
+        parts.append(types.Part.from_bytes(data=raw, mime_type=mime))
     resp = client.models.generate_content(model=model, contents=parts)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     for cand in (resp.candidates or []):
