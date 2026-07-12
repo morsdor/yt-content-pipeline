@@ -17,7 +17,7 @@
 | **Marginal cash per video** | | | **~₹450 (images)** — Kling animation is credit-metered under the flat Pro sub (below), not per-clip cash |
 | ⏱️ **Your time per video** (the real cost) | | **~8–12 hrs** | *research + fact-check + accuracy gate + narration + QA + thumbnails* |
 
-> **Your time is the binding constraint, not cash.** Kling is a flat monthly sub, so the only per-video cash is images (~₹450); the real budget is **credits**. Two levers keep a video inside ~1,300–1,500 credits: **(1) 720p + no native audio** (`v3_0`, `enable_audio=false`) = **6 cr/s** — turning audio off saves 2 cr/s vs. 8, and we add narration/music at assembly anyway; **(2) bias animated scenes toward 6s** — a 10s clip costs ~2× a 6s one. Then **upscale 720p→4K locally for free** rather than paying for native 1080p (8 cr/s) or Kling 4K (VIP). Measured rates (Jul 2026, GUI-confirmed):
+> **Your time is the binding constraint, not cash.** Kling is a flat monthly sub, so the only per-video cash is images (~₹450); the real budget is **credits**. Two levers keep a video inside ~1,300–1,500 credits: **(1) 720p + no native audio** (`v3_0`, `enable_audio=false`) = **6 cr/s** — turning audio off saves 2 cr/s vs. 8, and we add narration/music at assembly anyway; **(2) bias animated scenes toward 6s** — a 10s clip costs ~2× a 6s one. Then **upscale 720p→4K locally for free** rather than paying for native 1080p (8 cr/s) or Kling 4K (VIP) — **except dense-lattice-in-motion scenes**, which visibly shimmer at 720p and get 1080p (identified by measurement, not guesswork — see [upscaling.md](upscaling.md)); that hybrid runs ~1,440 cr/video, still ~2/mo. Measured rates (Jul 2026, GUI-confirmed):
 >
 > | | 720p | 1080p |
 > |:--|:--:|:--:|

@@ -54,12 +54,23 @@ tools/realesrgan/realesrgan-ncnn-vulkan -i in.png -o out_4k.png \
 
 ---
 
-## When to use which native resolution
+## Resolution hybrid: flicker on dense geometry
 
-| Source | Kling rate | After free 4K upscale | Use when |
-|:---|:--|:--|:--|
-| **720p** (default) | 6 cr/s | ~matches 1080p/4K on line art | always, for this channel |
-| 1080p | 8 cr/s | marginally crisper | a hero shot that must be pixel-perfect |
-| Kling native 4K | VIP | n/a | not worth it — we get 4K free |
+720p→4K ~matches native 1080p/4K on *smooth* content — but **breaks on dense repeating geometry in motion** (the step-lattice). Measured on Chand Baori (`v3_0`, `flicker_HF` = fine-detail shimmer, intended motion filtered out):
 
-See [costs.md](costs.md) for the full credit math.
+| Variant (lattice scene 31) | flicker_HF |
+|:--|:--:|
+| 1080p native | 7.8 (smoothest) |
+| 1080p→4K | 9.1 |
+| 720p native | 9.9 |
+| **720p→4K** | **11.6 (worst)** |
+
+Two compounding effects: Kling's **720p generation** flickers ~25% more than 1080p on dense lattice (smooth scenes show *no* difference), and the **per-frame 4K upscale adds a further ~17%** — structural aliasing (fine lines reconstructed slightly differently each frame), **not filterable**: `hqdn3d` and `atadenoise` temporal denoise both moved it <0.3%.
+
+**The rule (data-driven hybrid — measure, don't guess):**
+1. Generate everything at **720p** (6 cr/s).
+2. `python flicker_check.py projects/NNN/clips/*.mp4` — smooth scenes score ~0.3–1.0, dense-lattice-in-motion ~8–10, **nothing lands between** (threshold 3.0 separates cleanly).
+3. **Re-generate only the flagged (>3) scenes at 1080p** (8 cr/s). Don't pre-classify by scene type — a "lattice" establishing shot can be perfectly smooth (scene 5 was; scene 31 wasn't).
+4. Upscale all to 4K.
+
+Typically ~⅓ of animated scenes cross the line → ~1,440 cr/video, still ~2 videos/mo. Kling's native 4K (VIP) stays not-worth-it. See [costs.md](costs.md) for the full credit math.

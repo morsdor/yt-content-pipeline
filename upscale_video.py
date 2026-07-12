@@ -42,6 +42,7 @@ def main():
     ap.add_argument("--model", default="realesr-animevideov3", help="realesr-animevideov3 | realesrgan-x4plus-anime | realesrgan-x4plus")
     ap.add_argument("--target", default="3840x2160", help="final WxH via lanczos, or 'none' to keep the raw xN size")
     ap.add_argument("--crf", type=int, default=16, help="x264 quality (lower=better, 14-18 sensible)")
+    ap.add_argument("--denoise", default="", help="temporal-denoise filter to suppress per-frame upscale shimmer (e.g. 'hqdn3d=0:0:6:6' or 'atadenoise'); empty=off")
     ap.add_argument("--bin", default=str(REBIN))
     ap.add_argument("--models", default=str(REMODELS))
     ap.add_argument("--jobs", default="2:4:4", help="realesrgan load:proc:save threads")
@@ -68,8 +69,14 @@ def main():
         subprocess.check_call([a.bin, "-i", str(fdir), "-o", str(udir),
                                "-n", a.model, "-s", str(a.scale), "-m", a.models,
                                "-j", a.jobs, "-f", "png"])
-        vf = [] if a.target == "none" else ["-vf", f"scale={a.target.replace('x', ':')}:flags=lanczos"]
-        print(f"[3/3] encoding {'raw xN' if a.target=='none' else a.target} h264 crf{a.crf} @ {fps} ...")
+        filters = []
+        if a.target != "none":
+            filters.append(f"scale={a.target.replace('x', ':')}:flags=lanczos")
+        if a.denoise:
+            filters.append(a.denoise)   # temporal denoise runs on the upscaled frames — kills shimmer the per-frame upscale adds
+        vf = ["-vf", ",".join(filters)] if filters else []
+        print(f"[3/3] encoding {'raw xN' if a.target=='none' else a.target} h264 crf{a.crf} @ {fps}"
+              + (f"  (+denoise {a.denoise})" if a.denoise else "") + " ...")
         subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-framerate", fps,
                                "-i", str(udir / "%08d.png"), *vf,
                                "-c:v", "libx264", "-crf", str(a.crf),
