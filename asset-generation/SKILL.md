@@ -70,7 +70,11 @@ python prompt_builder.py $SB --anim-jobs   # → anim_jobs.json + total seconds
 
 Each job carries: scene #, still path, clip path, duration, and the composed motion prompt (already includes "do not add, remove, or deform any structural element" + the scene's `visual_facts`).
 
-**Model selection (from `who_am_i`, don't hardcode blindly):** prefer a model that supports the storyboard's durations — `kling-video-v3_0` (or `_turbo`) supports **3–15s**, so the 6s cost-bias works; `v2_5`/`v2_6` only allow 5s/10s (a "6" would be invalid — clamp to 5 there). Resolution 720p std. Set `enable_audio` **false** where the model exposes it — narration and music are mixed at assembly.
+**Model selection (verify against `who_am_i`, but the default is settled): use `kling-video-v3_0_turbo`.** Two reasons it's the right default for this channel:
+- **Duration:** it supports **3–15s**, so the 6s cost-bias actually works. `v2_5`/`v2_6` only allow 5s/10s (a "6" is invalid — clamp to 5 there), so they can't hold the 6s bias.
+- **No audio:** its params are exactly `prompt, duration, resolution, imageCount` — it has **no `enable_audio` flag and generates no soundtrack**, which is precisely what we want (narration + music are mixed at assembly). Nothing is spent producing audio we'd discard. By contrast `v2_5`/`v2_6` default `enable_audio=true` (you'd have to remember to disable it), and `v3_0`/`v3_0_omni` expose `enable_audio` (defaults false — leave it off).
+
+Resolution 720p std. If `v3_0_turbo` is ever unavailable, fall back to `kling-video-v3_0` at 6s with `enable_audio` **false** (never `v2_x` unless you accept 5s/10s + a mandatory audio-off flag).
 
 **Confirm before submitting (MANDATORY):** present the batch to the user — number of clips, total seconds, estimated credits vs. available — and get an explicit go. **Every job is charged; there are no trial runs.** Never auto-resubmit a failed/ambiguous job; report and ask.
 

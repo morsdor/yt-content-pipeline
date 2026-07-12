@@ -86,7 +86,7 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 - [ ] **Stage 0 — Preflight:** `.env` key present; Kling MCP `who_am_i` + **credits check (blocking)** — estimate the batch from `--anim-jobs` total seconds before generating anything. Anchor rule: **video #1** = `style_card.txt` only; **video #2+** = pass a style anchor on every call.
 - [ ] **Stage A — Stills:** `generate_images.py` — dry-run → scene 1 (eyeball) → rest. Same session, same model version. Scenes with `reference_image` get the real photo as geometry reference automatically.
 - [ ] **Stage B — ✅ VISUAL ACCURACY GATE (hard gate):** `visual-accuracy-gate` Layer 2 — vision compare, you confirm, delta-prompt fixes, `validation_report.md`. **No still goes to Kling unvalidated.**
-- [ ] **Stage C — Animation via the Kling MCP:** `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: `file_upload` → `image_to_video` (duration bias 6s; `enable_audio` false) → `query_tasks` → **download within 24h** → scrub-check (Layer 3) → one retry → Ken Burns fallback (retag `type:"static"`).
+- [ ] **Stage C — Animation via the Kling MCP:** `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: `file_upload` → `image_to_video` (default model **`kling-video-v3_0_turbo`** — supports the 6s bias and generates no audio; narration/music come at assembly) → `query_tasks` → **download within 24h** → scrub-check (Layer 3) → one retry → Ken Burns fallback (retag `type:"static"`).
 - [ ] **Stage D:** upscale static-scene images to 4K for Ken Burns headroom.
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
 
