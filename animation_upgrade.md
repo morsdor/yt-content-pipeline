@@ -147,7 +147,9 @@ With 50% animation, animated clips tend to be shorter (5–8 seconds from Kling 
 **Target: 50–55 scenes per video.** Generate 50–55 still images, animate ~27 of them via Kling AI, apply Ken Burns to the remaining ~27.
 
 > [!IMPORTANT]
-> Animated clips can be extended by chaining: generate a 5-second Kling clip, then use "extend" to add 3 more seconds. This makes animated scenes 8–10 seconds instead of 5, which would reduce total scene count to ~45–50. Budget for the extra extend credits.
+> **Default animated clips to 6s.** Duration is the main Kling cost lever — a 10s clip costs ~2× a 6s one, and the 6s bias is what keeps 2 videos/month inside the 3,000-credit Pro plan (see [docs/costs.md](docs/costs.md)). You *can* run longer — pick a 10s duration, or chain "extend" onto a 6s clip — but treat that as a deliberate, per-scene spend, not the default. Longer clips also mean fewer scenes (~45–50) for the same runtime.
+>
+> **Fallback:** any animated scene that fails the accuracy gate's scrub-check twice is retagged `type:"static"` and covered by Ken Burns. That fallback is accurate by construction (it IS the validated still) and free — a clean Ken Burns scene beats a third paid Kling roll.
 
 ---
 

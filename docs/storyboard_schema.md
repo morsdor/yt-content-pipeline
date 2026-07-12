@@ -64,7 +64,7 @@
 | Field | Pass | Type | Required | Description |
 |:---|:---|:---|:---|:---|
 | `type` | 1 | string | ✅ | `"animated"` or `"static"` |
-| `duration` | 1 | number | ✅ | Scene duration in seconds. Animated: 6–10s, Static: 10–15s |
+| `duration` | 1 | number | ✅ | Scene duration in seconds. **Animated: default 6s.** Duration is the main Kling cost lever — a 10s clip costs ~2× a 6s one, and the 6s bias is what keeps 2 videos/month inside the 3,000-credit Pro plan ([costs.md](costs.md)). Only go 8–10s when the motion genuinely needs the extra time. **Static (Ken Burns): 10–15s.** Any animated scene that fails the accuracy gate twice falls back to `type:"static"` Ken Burns (accurate by construction, free). |
 | `scene_type` | 1 | string | ❌ | `establishing`, `cross_section`, `map`, `detail`, `scale_comparison` |
 | `motion` | 1 | string | ❌ | Ken Burns motion for static scenes: `zoom_in`, `zoom_out`, `pan_left`, `pan_right`, `pan_up`, `zoom_detail` |
 | `focus_x`, `focus_y` | 1 | number | ❌ | For `zoom_detail` only (0.0–1.0, default center) |
