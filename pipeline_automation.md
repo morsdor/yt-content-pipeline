@@ -80,6 +80,7 @@
 | [docs/storyboard_schema.md](docs/storyboard_schema.md) | The storyboard JSON contract + full field reference (`visual_facts`, `reference_image`, …) | Writing or reviewing a storyboard |
 | [docs/image_generation.md](docs/image_generation.md) | Prompt structure, resolution/upscaling, style-consistency tiers (prefix → anchors → LoRA) | Generating stills; style drift problems |
 | [docs/video_assembly.md](docs/video_assembly.md) | Running `video_assembler.py`, what it does, Ken Burns motion types | Assembling; adding motion to static scenes |
+| [docs/upscaling.md](docs/upscaling.md) | 4K upscaling via Real-ESRGAN (`upscale_video.py`), install + the model-bundle gotcha | Stage D — upscaling stills/clips to 4K |
 | [docs/voice_narration.md](docs/voice_narration.md) | Self-recording workflow, ElevenLabs pickup fallback + settings | Recording narration |
 | [docs/costs.md](docs/costs.md) | Per-video + monthly budget (corrected), cost levers | Budget questions; plan sizing |
 | [docs/production_workflow.md](docs/production_workflow.md) | Sessions 0–6: research → storyboard → images → animation → voice → assembly → thumbnails → publish | The month-to-month operating rhythm |
@@ -99,7 +100,7 @@
 
 ## The one-paragraph version
 
-Research and fact-check yourself (Session 0, incl. the reference pack) → lean storyboard with `visual_facts` + a packaging-first thumbnail gate → `generate_images.py` makes ~55 stills (style anchor = look, reference photo = geometry) → **accuracy gate: no still to Kling unvalidated** → Kling MCP animates ~27 validated stills (6s bias, scrub-check, 1 retry, Ken Burns fallback) → record your own narration → `video_assembler.py` → 3 thumbnails + Test & Compare → full watch, "Altered content" disclosure, publish. **~$15–27 cash and ~8–12 hours of your time per video; ~₹5–7K/month all-in at 2 videos/month.**
+Research and fact-check yourself (Session 0, incl. the reference pack) → lean storyboard with `visual_facts` + a packaging-first thumbnail gate → `generate_images.py` makes ~55 stills (style anchor = look, reference photo = geometry) → **accuracy gate: no still to Kling unvalidated** → Kling animates ~27 validated stills (`v3_0` 720p no-audio = 6 cr/s, 6s bias, scrub-check, 1 retry, Ken Burns fallback) → **4K upscale locally (free)** → record your own narration → `video_assembler.py` → 3 thumbnails + Test & Compare → full watch, "Altered content" disclosure, publish. **~₹450 marginal cash + ~8–12 hrs per video; ~₹5–6K/month all-in (Claude + Kling Pro + images) at 2 videos/month.**
 
 ---
 

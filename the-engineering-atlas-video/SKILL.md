@@ -86,8 +86,8 @@ Top-level keys: `civilization`, `accent_hex` (**one variable**, set per video fr
 - [ ] **Stage 0 — Preflight:** `.env` key present; Kling MCP `who_am_i` + **credits check (blocking)** — estimate the batch from `--anim-jobs` total seconds before generating anything. Anchor rule: **video #1** = `style_card.txt` only; **video #2+** = pass a style anchor on every call.
 - [ ] **Stage A — Stills:** `generate_images.py` — dry-run → scene 1 (eyeball) → rest. Same session, same model version. Scenes with `reference_image` get the real photo as geometry reference automatically.
 - [ ] **Stage B — ✅ VISUAL ACCURACY GATE (hard gate):** `visual-accuracy-gate` Layer 2 — vision compare, you confirm, delta-prompt fixes, `validation_report.md`. **No still goes to Kling unvalidated.**
-- [ ] **Stage C — Animation via the Kling MCP:** `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: `file_upload` → `image_to_video` (default model **`kling-video-v3_0_turbo`** — supports the 6s bias and generates no audio; narration/music come at assembly) → `query_tasks` → **download within 24h** → scrub-check (Layer 3) → one retry → Ken Burns fallback (retag `type:"static"`).
-- [ ] **Stage D:** upscale static-scene images to 4K for Ken Burns headroom.
+- [ ] **Stage C — Animation via Kling** (`kling-cli` or MCP): `--anim-jobs` prep → **user confirms batch + credits (every job charged, no trial runs)** → per job: upload still → `image_to_video` with **`--model kling-video-v3_0 --resolution 720p --enable_audio false`** (6 cr/s, no audio, best element consistency; 6s-capable) → **log every `generationId`** (no server-side task list — a lost id orphans a charged job) → `query_tasks` → **download within 24h** → scrub-check (Layer 3) → one retry → Ken Burns fallback (retag `type:"static"`).
+- [ ] **Stage D:** upscale to 4K locally & free — static stills *and* 720p clips (`python upscale_video.py …`), per [docs/upscaling.md](../docs/upscaling.md). Free substitute for native-4K credits.
 - [ ] (After ~5–8 videos: train a LoRA for cross-video brand lock)
 
 ### Phase 4 — Particles + Overlays  ⏱ 20 min

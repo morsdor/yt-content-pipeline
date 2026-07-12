@@ -30,7 +30,7 @@ Companion skills: [`visual-accuracy-gate`](../visual-accuracy-gate/SKILL.md) (in
 - [ ] **Storyboard is approved** (the parent skill's review gate passed). Scenes depicting the real structure carry `visual_facts` + `reference_image`; `references/` pack exists.
 - [ ] `GEMINI_API_KEY` present in `.env` (repo root or project folder).
 - [ ] **Kling MCP connected:** call `who_am_i` — confirms auth and returns the current tier's models/durations/args. Do not guess parameter values; use what it returns.
-- [ ] **Credits check (BLOCKING):** call `query_membership_and_credits`. Estimate the batch: `python prompt_builder.py <sb> --anim-jobs` prints total seconds; at roughly 6 credits/second (verify against current tier) a ~27-clip batch at 6–10s needs **~1,500–2,200 credits**. If available credits < estimate, **STOP and tell the user** — do not submit a partial batch. (Free tier / 0 credits = stop here.)
+- [ ] **Credits check (BLOCKING):** call `query_membership_and_credits`. Estimate the batch: `python prompt_builder.py <sb> --anim-jobs` prints total seconds; at **6 cr/s** (720p, no native audio — confirmed) a ~27-clip batch ≈ **~1,300–1,500 credits** (with the 6s bias). If available credits < estimate, **STOP and tell the user** — do not submit a partial batch. (Free tier / 0 credits = stop here.)
 - [ ] Style anchor decision: **video #1** → `style_card.txt` only (no anchors exist yet); **video #2+** → pass an anchor from `assets/style_anchors/` on every call.
 
 ## Stage A — Stills (`generate_images.py`)
@@ -70,21 +70,24 @@ python prompt_builder.py $SB --anim-jobs   # → anim_jobs.json + total seconds
 
 Each job carries: scene #, still path, clip path, duration, and the composed motion prompt (already includes "do not add, remove, or deform any structural element" + the scene's `visual_facts`).
 
-**Model selection (verify against `who_am_i`, but the default is settled): use `kling-video-v3_0_turbo`.** Two reasons it's the right default for this channel:
-- **Duration:** it supports **3–15s**, so the 6s cost-bias actually works. `v2_5`/`v2_6` only allow 5s/10s (a "6" is invalid — clamp to 5 there), so they can't hold the 6s bias.
-- **No audio:** its params are exactly `prompt, duration, resolution, imageCount` — it has **no `enable_audio` flag and generates no soundtrack**, which is precisely what we want (narration + music are mixed at assembly). Nothing is spent producing audio we'd discard. By contrast `v2_5`/`v2_6` default `enable_audio=true` (you'd have to remember to disable it), and `v3_0`/`v3_0_omni` expose `enable_audio` (defaults false — leave it off).
+**Model selection (settled empirically): use `kling-video-v3_0`, `enable_audio=false`, resolution `720p`.** Best value *and* accuracy for this channel:
+- **No audio = cheaper.** Turning native audio OFF drops the rate **8→6 cr/s at 720p** (10→8 at 1080p). We mix narration + music at assembly, so native audio is pure waste. `v3_0` declares `enable_audio` (default `false`) — pass it explicitly. ⚠️ **Do NOT use `v3_0_turbo`:** despite the name it has *no* audio flag, **bakes audio in** (can't disable), and bills at the pricier 10 cr/s. `v2_5`/`v2_6` default `enable_audio=true`.
+- **Element consistency.** `v3_0` = *"enhanced native audio, improved element consistency"* — that consistency is exactly our anti-morph property.
+- **Duration.** `v3_0` supports **3–15s**, so the 6s bias works.
+- **Resolution.** Generate at **720p (6 cr/s)**; upscale to 4K locally for free (Stage D). On flat isometric line art the upscale ~matches native 1080p/4K, so native 1080p (8 cr/s) or Kling 4K (VIP) buy little. **Confirmed rate: a 7s 720p no-audio clip = 42 credits.** Full video (~221 animated s) ≈ **1,300–1,500 cr → ~2 videos/month** on the 3,000-credit Pro plan.
 
-Resolution 720p std. If `v3_0_turbo` is ever unavailable, fall back to `kling-video-v3_0` at 6s with `enable_audio` **false** (never `v2_x` unless you accept 5s/10s + a mandatory audio-off flag).
+Via the `kling-cli`, that's: `kling image_to_video --model kling-video-v3_0 --image <still> --duration <d> --resolution 720p --enable_audio false "<prompt>"`.
 
 **Confirm before submitting (MANDATORY):** present the batch to the user — number of clips, total seconds, estimated credits vs. available — and get an explicit go. **Every job is charged; there are no trial runs.** Never auto-resubmit a failed/ambiguous job; report and ask.
 
 **Per job:**
 
-1. `file_upload` the validated still (PNG/JPG, <4K, ≤30MB, aspect ≤1:2) → returns a Kling URL. **Only `file_upload` URLs are accepted as `first_image`** — no local paths, no external URLs.
-2. `image_to_video` — model per above; `first_image` = uploaded URL; `prompt` = the job's motion prompt; `duration` = the job's duration (clamped to the model's allowed values).
-3. Poll `query_tasks` until complete. Batch tip: submit all confirmed jobs, then poll collectively — don't serialize submit→wait→submit.
-4. **Download immediately** to `projects/NNN_topic/clips/scene_NN_animated.mp4` — **result URLs expire in 24h.**
-5. Record in `assets_manifest.json` under `scene_NN.clip`.
+1. Provide the validated still (PNG/JPG, <4K, ≤30MB, aspect ≤1:2). Via the **MCP**: `file_upload` first → use the returned URL as `first_image` (local paths not accepted). Via the **`kling-cli`**: pass the local path to `--image` directly — the CLI auto-uploads.
+2. `image_to_video` with `--model kling-video-v3_0 --resolution 720p --enable_audio false`, `prompt` = the job's motion prompt, `duration` = the job's duration.
+3. **🚨 Capture the `generationId` immediately** — write full submit stdout to a file, parse the id from it, and append to `clips/kling_generations.jsonl`. **Never pipe the submit through a lossy parser** (you'll truncate before the id and orphan a *charged* job). There is **no server-side task-list tool** — a lost `generationId` is unreachable by `query_tasks` and recoverable only from the Kling web history.
+4. Poll `query_tasks <generationId>` until complete. Batch tip: submit all confirmed jobs, then poll collectively — don't serialize submit→wait→submit.
+5. **Download immediately** to `projects/NNN_topic/clips/scene_NN_animated.mp4` — **result URLs expire in 24h.**
+6. Record in `assets_manifest.json` under `scene_NN.clip`.
 
 **Scrub-check (run `visual-accuracy-gate`, Layer 3):** first/middle/last frame per clip; compare last frame to the source still (~20s each).
 
@@ -92,9 +95,13 @@ Resolution 720p std. If `v3_0_turbo` is ever unavailable, fall back to `kling-vi
 - 1st bad result → **one retry** with tightened motion ("parallax and drifting haze only"). Confirm with the user first — the retry is also charged.
 - 2nd bad result, or moderation block → **retag the scene `type:"static"` in the storyboard** and let Ken Burns cover it. The fallback is accurate by construction — it IS the validated still. Append the outcome to `validation_report.md`.
 
-## Stage D — Upscale statics
+## Stage D — Upscale to 4K (local, free)
 
-- [ ] Upscale all `type:"static"` scene images to 4K (`images_4k/`) for Ken Burns zoom headroom (Real-ESRGAN local, free). Animated scenes skip this — Kling output is the deliverable.
+The free alternative to paying Kling credits for native 1080p/4K. Uses the vendored Real-ESRGAN (`realesr-animevideov3` — the temporally-stable illustration *video* model). **One-time install + the model-bundle gotcha: [docs/upscaling.md](../docs/upscaling.md).**
+
+- [ ] **Static stills → 4K** (`images_4k/`) for Ken Burns zoom headroom — `realesrgan-x4plus-anime`.
+- [ ] **Animated 720p clips → 4K** — `python upscale_video.py clips/scene_NN_animated.mp4 clips_4k/scene_NN_4k.mp4` (x3 → 3840×2160, silent, source fps preserved). ~0.6s/frame on CPU under Rosetta, so a full video is a background/overnight pass — as measured on scene 1: 169 frames in ~107s.
+- On flat isometric line art the 720p→4K upscale ~matches native 1080p/4K. **Upload 4K to YouTube regardless of source res** — YouTube gives 4K uploads more bitrate, so even 1080p playback looks cleaner.
 
 ## Final report (always give the user this summary)
 
