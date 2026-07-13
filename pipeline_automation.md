@@ -6,17 +6,24 @@
 
 ## Operating assumptions (the decisions that shape everything)
 
+**Revised July 13, 2026 — the studio pivot (direction-first pre-production):**
+- **The pipeline is a studio, not a prompt chain.** A finished script enters the seven-pass **studio chain** (`studio-director` skill): script-analyzer → film-director → storyboard-artist → scene-composer → asset-planner → motion-director → ae-director. Each pass fills its block in **one accreting `storyboard.json` (schema v2)** — the production document — mirrored by a readable `shot_list.md`. → [docs/storyboard_schema.md](docs/storyboard_schema.md)
+- **Image generation is a derived step, not an independent one.** What gets generated (plates, library assets) falls out of the scene-composer's build decisions (`plate` / `assembly` / `plate+layers`) and the asset-planner's batch. Nothing is prompted ad hoc.
+- **60–80 scenes × 8–12s**, timestamped to the script; **VO is recorded before the AE build** ("animate to track") and scene timings are trued-up to the real read; AE renders carry ~1s handles.
+- **Final conform in Premiere Pro** (clips + VO + music, trim-only); `video_assembler.py` is now the **animatic** tool — a stills+VO rough cut that fixes pacing in the board before AE hours are spent.
+- **Two knowledge canons drive every pass:** [docs/cinematography.md](docs/cinematography.md) (craft: shot grammar, rhythm, staging, continuity — rules cited by ID) and `brand_guide.md` §5 **Motion Identity** (the numeric motion limits).
+
 **Revised July 12, 2026 — the animation pivot:**
 - **Motion is hand-built in After Effects from AI stills.** Generative image-to-video was dropped after measurement: it softens crisp lines, warps precise geometry, and adds uninvited camera moves on our flat isometric style (~70% of a full batch failed the quality bar). AE transforms the art but never redraws it — sharp by construction. → [docs/after_effects_workflow.md](docs/after_effects_workflow.md)
 - **A reusable cross-video asset library** (`assets_library/` — characters, nature, architecture, military, props, diagram elements) feeds AE. AI generates the assets; `STYLE_BIBLE.md` locks the look; `INDEX.md` tracks what exists so nothing is generated twice. Assets compound: video 1 needs ~40, video 10 needs ~5.
-- **AI's three levers in AE:** (1) generating assets, (2) writing per-scene motion briefs + keyframe recipes, (3) writing AE expressions and JSX scripts (`ae_scripts/`) that build comps programmatically.
+- **AI's three levers in AE:** (1) generating assets, (2) directing — the studio passes that fill each scene's numeric motion + build blocks, (3) writing AE expressions and JSX scripts (`ae_scripts/`) that build comps programmatically.
 - **Animation is now free at the margin** — no per-clip credits, no charged retries. The budget shifted from credits to *your AE time*, controlled by templates and the three-rung ladder (camera moves → parallax → element motion).
 
 **Revised July 6, 2026** (see `strategy_review.md`):
 - **Cadence: 2 videos/month**, not 8 — quality over volume, sustainable alongside a full-time job.
 - **Narration is your own recorded voice** from day 1; the AI clone is a pickup-only fallback.
 - **Two mandatory human steps:** a real fact-check pass, and the "Altered content" disclosure on upload — these keep the channel monetizable under YouTube's 2026 inauthentic-content policy.
-- **Graceful degradation:** any scene not worth AE time falls back to Ken Burns + text overlay (pure ffmpeg). You always ship.
+- **Graceful degradation:** any scene not worth AE time simplifies to its Rung-1 camera-only build (validated plate + eased push). You always ship.
 
 **Corrected July 10, 2026** (second review):
 - **Visual accuracy is a gated step:** per-project `references/` pack + `visual_facts`, injected into prompts; **no still is animated unvalidated** → [`visual-accuracy-gate` skill](visual-accuracy-gate/SKILL.md).
@@ -29,42 +36,49 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                    ORCHESTRATOR                               │
-│              Claude (Desktop / Code)                          │
+│              PRE-PRODUCTION — THE STUDIO CHAIN                │
+│         (studio-director skill, ₹0 by construction)           │
 │                                                               │
-│  You type a topic. Claude drives everything scriptable:       │
+│  script.md (yours, fact-checked)                              │
+│   1 script-analyzer   → 60–80 timestamped scenes (8–12s)      │
+│   2 film-director     → shots, sequence, axes   ── GATE       │
+│   3 storyboard-artist → frames (focal, bands, neg. space)     │
+│   4 scene-composer    → plate/assembly builds + layers        │
+│   5 asset-planner     → library diff + batch    ── GATE (₹)   │
+│   6 motion-director   → numeric camera + layer motion         │
+│   7 ae-director       → comp blueprints + JSX   ── GATE       │
 │                                                               │
-│  Step 1: Claude drafts script from YOUR fact-checked notes    │
-│  Step 2: Generate ~55 still images via Gemini                 │
-│         └─ VISUAL ACCURACY GATE (hard gate — skill)           │
-│  Step 3: Prep animation — per-scene MOTION BRIEFS +           │
-│         asset-library shopping list + JSX comp builders       │
-│  Step 4: YOU record narration (AI clone = pickup fallback)    │
-│  Step 5: Output assembler commands                            │
+│  ONE document: storyboard.json v2  (mirror: shot_list.md)     │
 └──────────────────────┬───────────────────────────────────────┘
-                       │
+                       ▼
+        🎙 YOU record VO → true-up timings to the real read
                        ▼
 ┌──────────────────────────────────────────────────────────────┐
-│              ANIMATION (~27 scenes) — AFTER EFFECTS           │
+│            GENERATION (derived from the board)                │
+│                                                               │
+│  generate_images.py → plates (plate scenes only)              │
+│    └─ VISUAL ACCURACY GATE (hard gate — skill)                │
+│  generate_asset.py → approved batch → assets_library/         │
+│    └─ Layer 2.5 asset gate                                    │
+│  video_assembler.py → ANIMATIC (stills + VO pacing check)     │
+└──────────────────────┬───────────────────────────────────────┘
+                       ▼
+┌──────────────────────────────────────────────────────────────┐
+│           ANIMATION (every scene) — AFTER EFFECTS             │
 │                    (hand-built, by YOU)                       │
 │                                                               │
-│  Validated 4K still + assets_library/ elements                │
-│    → build per the motion brief (camera / parallax / element  │
-│      motion), JSX scripts do the repetitive setup             │
+│  Per scene's ae_build blueprint + JSX scaffolds               │
 │    → transforms only, art never redrawn = always sharp        │
-│    → render clips/scene_NN_animated.mp4 (native 4K)           │
+│    → render clips/scene_NN.mp4 (native 4K, ~1s handles)       │
+│    └─ Layer 3 render QC (craft + continuity + comprehension)  │
 └──────────────────────┬───────────────────────────────────────┘
-                       │
                        ▼
 ┌──────────────────────────────────────────────────────────────┐
-│                    ASSEMBLY                                   │
-│              video_assembler.py (local)                       │
+│              CONFORM — PREMIERE PRO (YOU)                     │
 │                                                               │
-│  Static scenes: Ken Burns + text overlays                     │
-│  Animated scenes: import AE clips + text overlays             │
-│  Particle overlays composited on ~10 scenes                   │
-│  Voiceover + ambient music mixed                              │
-│  Crossfade transitions → final_video.mp4                      │
+│  VO + music on the timeline → clips at their t_start marks    │
+│  → trim into the handles, cuts on narration beats             │
+│  → 4K publish master                                          │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -76,11 +90,12 @@
 |:---|:---|:---|
 | [docs/setup.md](docs/setup.md) | Prerequisites, API keys, After Effects + Duik install, file reference | Once, before video #1 |
 | [docs/project_structure.md](docs/project_structure.md) | The per-video folder layout (`references/`, `images/`, `clips/`, `output/`…) | Starting a new project folder |
-| [docs/storyboard_schema.md](docs/storyboard_schema.md) | The storyboard JSON contract + full field reference (`visual_facts`, `animation_prompt` = motion intent, …) | Writing or reviewing a storyboard |
+| [docs/storyboard_schema.md](docs/storyboard_schema.md) | **Schema v2** — the accreting production document: per-scene blocks per studio pass, continuity registry, passes ledger, `--validate` | Writing or reviewing a board; any studio pass |
+| [docs/cinematography.md](docs/cinematography.md) | **The craft canon** — shot grammar, composition, motivated camera, rhythm vs VO, staging/continuity, text choreography (rules cited by ID) | Any direction decision; the studio passes cite it |
 | [docs/image_generation.md](docs/image_generation.md) | Prompt structure, resolution/upscaling, style-consistency tiers (prefix → anchors → LoRA) | Generating stills; style drift problems |
 | [docs/after_effects_workflow.md](docs/after_effects_workflow.md) | **The animation stage**: asset library, motion briefs, the three-rung ladder, JSX/expressions, quality gates, learning curve | Building animated scenes; anything AE |
 | [assets_library/STYLE_BIBLE.md](assets_library/STYLE_BIBLE.md) | Asset-generation rules: palette, view conventions, character design language, cutout pipeline | Generating library assets |
-| [docs/video_assembly.md](docs/video_assembly.md) | Running `video_assembler.py`, what it does, Ken Burns motion types | Assembling; adding motion to static scenes |
+| [docs/video_assembly.md](docs/video_assembly.md) | Running `video_assembler.py` — the **animatic** (stills + VO rough cut); final conform happens in Premiere | Cutting the animatic; pacing checks |
 | [docs/upscaling.md](docs/upscaling.md) | 4K still upscaling via Real-ESRGAN — install + the model-bundle gotcha | Upscaling stills for Ken Burns headroom / AE |
 | [docs/voice_narration.md](docs/voice_narration.md) | Self-recording workflow, ElevenLabs pickup fallback + settings | Recording narration |
 | [docs/costs.md](docs/costs.md) | Per-video + monthly budget, cost levers | Budget questions; plan sizing |
@@ -90,10 +105,13 @@
 
 | Skill | What it does | Invoked when |
 |:---|:---|:---|
-| [`the-engineering-atlas-video`](the-engineering-atlas-video/SKILL.md) | The full per-video production checklist with human gates | "Start a new video…" (see `new_video_prompt_template.md`) |
-| [`asset-generation`](asset-generation/SKILL.md) | Phases 2+3 prep end-to-end: `generate_images.py` stills → accuracy gate → motion briefs + asset-library shopping list + JSX scaffolds → render QC when AE clips land | After storyboard approval — "generate the assets" |
-| [`visual-accuracy-gate`](visual-accuracy-gate/SKILL.md) | Validates renders against real reference photos + `visual_facts`; delta-prompt fixes; motion-craft QC on AE renders; enforces "no unvalidated still is animated" | Between image generation and animation (mandatory), and after AE renders land |
-| [`thumbnail-workflow`](thumbnail-workflow/SKILL.md) | Packaging-first gate → 3 candidates (one axis varied) → 120-px squint test → local typography → Test & Compare → `thumbnails_log.md` | At storyboard approval (gate), and Session 5b (production) |
+| [`the-engineering-atlas-video`](the-engineering-atlas-video/SKILL.md) | The full per-video production checklist with human gates (research → script → studio → VO → generate → animatic → AE → conform → publish) | "Start a new video…" (see `new_video_prompt_template.md`) |
+| [`studio-director`](studio-director/SKILL.md) | **The pre-production orchestrator** — runs the seven passes below on one storyboard.json v2, enforces gates + pass order, `--validate` between passes | Script approved — "board this script" |
+| `script-analyzer` → `film-director` → `storyboard-artist` → `scene-composer` → `asset-planner` → `motion-director` → `ae-director` | The seven studio passes: segmentation+timestamps → shots+sequence → frames → builds+layers → asset sourcing → numeric motion → AE blueprints+JSX. Each fills its block; each SKILL.md carries its role's craft | In order, via studio-director (each also invocable solo for rework) |
+| [`art-director`](art-director/SKILL.md) | Keeper of the bibles — motif kits per civilization, style rulings, consolidation. Consulted, not sequential | New civilization/territory; style questions; drift |
+| [`asset-generation`](asset-generation/SKILL.md) | Executes the board: plates from `plate{}` blocks → accuracy gate → approved batch → asset gate → 4K prep → render QC when AE clips land | Board approved — "generate the assets" |
+| [`visual-accuracy-gate`](visual-accuracy-gate/SKILL.md) | Layer 2 plates vs references/facts · Layer 2.5 assets · Layer 3 renders (motion craft + **continuity registry** + **comprehension QA**); delta-prompt fixes; "no unvalidated plate is animated" | Mandatory gates inside generation, and after AE renders land |
+| [`thumbnail-workflow`](thumbnail-workflow/SKILL.md) | Packaging-first gate → 3 candidates (one axis varied) → 120-px squint test → local typography → Test & Compare → `thumbnails_log.md` | At script approval (gate), and publish (production) |
 
 > **Skills work in both environments:** claude.ai co-work picks them up from these root-level folders when the project folder is connected; Claude Code discovers the same skills via symlinks in `.claude/skills/`. One source of truth, two runtimes.
 
@@ -101,8 +119,8 @@
 
 ## The one-paragraph version
 
-Research and fact-check yourself (Session 0, incl. the reference pack) → lean storyboard with `visual_facts` + a packaging-first thumbnail gate → `generate_images.py` makes ~55 stills (style anchor = look, reference photo = geometry) → **accuracy gate: no still is animated unvalidated** → upscale stills to 4K locally (free) → Claude writes **per-scene motion briefs** + generates any missing `assets_library/` elements → **you build the ~27 animated scenes in After Effects** (camera moves → parallax → element motion; JSX does the repetitive setup; transforms only, so the art stays sharp) → record your own narration → `video_assembler.py` (1080p review, `--resolution 2160p` publish master) → 3 thumbnails + Test & Compare → full watch, "Altered content" disclosure, publish. **~₹450 marginal cash + ~8–12 hrs per video; ~₹5,000/month all-in (Claude + After Effects + images) at 2 videos/month.**
+Research and fact-check yourself (incl. the reference pack) → your approved script enters the **studio chain** (`studio-director`): seven passes turn it into one `storyboard.json` v2 — 60–80 timestamped scenes with shots, frames, plate/assembly builds, sourced assets, numeric motion, and AE blueprints (three human gates; packaging-first thumbnail gate at the script) → **record your own narration** and true-up timings to the real read → generation *derived from the board*: `generate_images.py` plates (**accuracy gate: no unvalidated plate proceeds**) + `generate_asset.py` approved batch (asset gate) → `video_assembler.py` cuts the **animatic** (fix pacing in the board, not in AE) → **you build every scene in After Effects** per its blueprint (JSX scaffolds do the setup; transforms only, so the art stays sharp; ~1s handles) → Layer 3 render QC (craft + continuity + comprehension) → **conform in Premiere Pro** (clips on the VO, cuts on narration beats, 4K master) → 3 thumbnails + Test & Compare → full watch, "Altered content" disclosure, publish. **~₹500–750 marginal cash + ~10–14 hrs per video; ~₹5,000/month all-in (Claude + Adobe + images) at 2 videos/month.**
 
 ---
 
-*Last updated: July 12, 2026 — the animation pivot: generative image-to-video removed from the pipeline; animation is now hand-built in After Effects from AI stills + a reusable asset library. Previous revisions: July 10 (visual accuracy, thumbnails, corrected budget + hours), July 6 (2/month cadence, self-narration, fact-check + disclosure gates — see `strategy_review.md`).*
+*Last updated: July 13, 2026 — the studio pivot: direction-first pre-production (seven-pass studio chain on one storyboard.json v2), image generation now derived, VO before build, Premiere Pro conform, video_assembler repurposed as the animatic. Previous revisions: July 12 (animation pivot — generative i2v removed, AE hand-built motion), July 10 (visual accuracy, thumbnails, corrected budget + hours), July 6 (2/month cadence, self-narration, fact-check + disclosure gates — see `strategy_review.md`).*

@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 """
-video_assembler.py — Automated Ken Burns + Text Overlay Video Assembly
+video_assembler.py — the ANIMATIC builder (stills + VO rough cut, Ken Burns + text).
 
-Takes a storyboard.json + images + voiceover audio → produces a finished video.
+Studio-pivot role (July 2026): the final master is conformed in PREMIERE PRO from the
+AE-rendered clips/scene_NN.mp4 + voiceover — this script no longer produces the publish
+master. Its job is the studio animatic (docs/cinematography.md ANIMATIC-1/2): after the
+plates pass the accuracy gate and the VO is recorded, assemble stills + VO into a rough
+1080p cut and watch it once. Pacing problems get fixed IN THE BOARD (re-time / merge /
+cut scenes via the studio-director) — never improvised later at the AE desk. The
+animatic protects the pipeline's scarcest resource: your AE hours.
+
+Takes a storyboard.json + images + voiceover audio → produces the rough cut.
 
 Dependencies:
     pip install "moviepy==1.0.3" pillow
@@ -16,14 +24,11 @@ assembler falls back to a system font if they're absent. Edit FONT_CANDIDATES
 to reorder preference.
 
 Usage:
-    python video_assembler.py --storyboard storyboard.json --output final_video.mp4
-    python video_assembler.py --storyboard storyboard.json --output master.mp4 --resolution 2160p
+    python video_assembler.py --storyboard storyboard.json --output animatic.mp4
 
-Resolution: 1080p is the fast default for review renders. Render the PUBLISH MASTER
-at 2160p (4K) — feed it the 4K-upscaled clips (upscale_video.py) and 4K stills so
-YouTube gets a true 4K upload (it allocates 4K uploads more bitrate, so even 1080p
-playback looks cleaner). Font size, Ken Burns headroom, text offsets and the encode
-bitrate all scale with the chosen resolution.
+1080p is the right speed/size for an animatic. (The 1440p/2160p paths still exist —
+legacy from when this script rendered the publish master — but the master now comes
+out of Premiere.)
 """
 
 import json
@@ -257,20 +262,33 @@ def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
 # ── Scene Builder ────────────────────────────────────────────────────────────
 
 def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
-    """Build a single scene clip from a storyboard entry."""
-    
-    scene_type = scene.get("type", "static")
+    """Build a single scene clip from a storyboard entry.
+
+    Animatic logic: prefer a finished AE render if one exists (v2 ae_build.render.clip,
+    v1 animated_clip), else the scene's still + Ken Burns. v2 assembly scenes (no plate)
+    get a parchment slate carrying the scene id — pacing is still checkable."""
+
     duration = scene.get("duration", 10)
-    
-    # 1. Load base clip (Video for animated, Image for static)
-    if scene_type == "animated" and "animated_clip" in scene:
-        clip_path = os.path.join(base_dir, scene["animated_clip"])
+    clip_rel = ((scene.get("ae_build") or {}).get("render") or {}).get("clip") \
+        or scene.get("animated_clip")
+    clip_path = os.path.join(base_dir, clip_rel) if clip_rel else None
+
+    # 1. Base: AE render if present → still + Ken Burns → parchment slate (assembly)
+    if clip_path and os.path.isfile(clip_path):
         base_clip = VideoFileClip(clip_path).resize(RESOLUTION)
         # Handle cases where the clip is shorter than requested duration
         if base_clip.duration < duration:
             base_clip = base_clip.fx(vfx.loop, duration=duration)
         else:
             base_clip = base_clip.subclip(0, duration)
+    elif not scene.get("image"):
+        # v2 assembly scene, not yet built in AE: hold a parchment slate
+        base_clip = ColorClip(RESOLUTION, color=(245, 240, 232)).set_duration(duration)
+        slate = (scene.get("id") or f"scene_{index + 1:02d}") + "  [assembly — built in AE]"
+        scene = dict(scene)
+        scene.setdefault("texts", [])
+        scene["texts"] = [{"text": slate, "start": 0.2, "end": max(duration - 0.2, 0.4),
+                           "position": "center"}] + list(scene["texts"])
     else:
         image_path = os.path.join(base_dir, scene["image"])
         motion_type = scene.get("motion", DEFAULT_MOTION_CYCLE[index % len(DEFAULT_MOTION_CYCLE)])

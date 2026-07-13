@@ -88,9 +88,9 @@ After editing, restart Claude Desktop. The tools will appear in your "Search and
 
 | File | Purpose |
 |:---|:---|
-| `video_assembler.py` | Final assembly: Ken Burns, text overlays, audio mix → MP4 (`--resolution 2160p` for the publish master) |
-| `prompt_builder.py` | Composes image prompts + **AE motion briefs** from the lean storyboard (`prompts.md` / `--motion-briefs` → `motion_briefs.md`) |
-| `generate_images.py` | Still-image generation via Gemini (style anchor + geometry reference) |
+| `video_assembler.py` | The **animatic**: stills + VO rough cut for pacing checks before AE (the publish master is conformed in **Premiere Pro**) |
+| `prompt_builder.py` | Composes plate prompts from the board; renders `shot_list.md` (`--shot-list`) and `prompts.md`; validates between studio passes (`--validate`) |
+| `generate_images.py` | Plate generation via Gemini (style anchor + geometry reference; skips `assembly` scenes) |
 | `generate_asset.py` | Library-asset generation → transparent PNGs into `assets_library/` (STYLE_BIBLE rules) |
 | `review_images.py` | Builds the accuracy-gate review artifacts (contact sheets, render-vs-reference pairs) |
 | `ae_scripts/*.jsx` | AE comp builders — run via `File → Scripts → Run Script File…` |

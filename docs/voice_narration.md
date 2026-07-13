@@ -4,16 +4,23 @@
 
 ## Primary: record your own narration (from day 1)
 
-Recording ~10–12 minutes of narration for 2 videos/month is a trivial time cost (~20–30 min/video including cleanup) and is the single strongest authenticity + differentiation signal you can send. This is the default.
+Recording ~10–13 minutes of narration for 2 videos/month is a trivial time cost (~20–30 min/video including cleanup) and is the single strongest authenticity + differentiation signal you can send. This is the default.
+
+> **When: right after the board is approved, BEFORE any generation or AE work** (Session 3
+> of [production_workflow.md](production_workflow.md)). The pipeline *animates to track*
+> (`cinematography.md RHYTHM-1`): scenes are timed to your real read, AE renders carry ~1s
+> handles, and the Premiere conform becomes trim-only. Recording last (the old order) meant
+> animating to estimates and absorbing the drift in the edit.
 
 **Workflow:**
 1. Read the **fact-checked, perspective-added** script into a USB condenser mic (~₹4,000) in a quiet room.
 2. One or two takes; drop obvious flubs.
 3. Clean up with Audacity or Adobe Podcast (free) — noise removal, light leveling.
 4. Export `voiceover.mp3` → `projects/XXX/audio/`.
-5. **Tick the "Altered content" box on upload** if the video uses AI-generated visuals prominently (it does), and always if any AI-voice pickups are spliced in.
+5. **True-up the board:** measure the real read; correct each scene's `t_start`/`t_end`/`duration` in `storyboard.json`; set `vo_duration`; re-run `python prompt_builder.py <sb> --validate`. Scenes shifted >1.5s get their motion re-paced (studio-director).
+6. **Tick the "Altered content" box on upload** if the video uses AI-generated visuals prominently (it does), and always if any AI-voice pickups are spliced in.
 
-**Narration settings to aim for (documentary style):** calm, measured, ~140–150 wpm, curious not lecturing.
+**Narration settings to aim for (documentary style):** calm, measured, ~140–150 wpm, curious not lecturing — let key numbers breathe (the board holds ~1s after data beats, `RHYTHM-3`; give the edit that pause to work with).
 
 ## Fallback only: ElevenLabs clone for pickups
 

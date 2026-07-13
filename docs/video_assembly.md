@@ -1,41 +1,53 @@
-# Video Assembly
+# The Animatic (`video_assembler.py`)
 
-*Part of the [pipeline docs](../pipeline_automation.md). Assembly is fully local and AI-free: `video_assembler.py` (ffmpeg/moviepy).*
+*Part of the [pipeline docs](../pipeline_automation.md). Fully local and AI-free
+(ffmpeg/moviepy).*
 
-## Running the Assembler
+> **Studio-pivot role (July 2026):** this script builds the **animatic** — the stills+VO
+> rough cut every studio makes before animating (`cinematography.md ANIMATIC-1/2`). The
+> **publish master is conformed in Premiere Pro** from the AE renders + VO; this script no
+> longer produces it. The animatic's job: watch the whole video *before* a single AE comp
+> is opened, and fix pacing **in the board** (re-time / merge / cut scenes via the
+> studio-director) — AE hours are the pipeline's scarcest resource, and this is the
+> cheapest place to protect them.
+
+## Running the animatic
 
 ```bash
 cd "/Users/mritunjaymohitesh/dev/yt video ideas"
 
-# Fast review render (default 1080p)
+# After plates pass the accuracy gate and the VO is recorded + trued-up:
 python video_assembler.py \
-  --storyboard ./projects/001_roman_aqueducts/storyboard.json \
-  --output ./projects/001_roman_aqueducts/output/review.mp4
-
-# Publish master — 4K. Feed it the 4K-upscaled clips + 4K stills (Stage D).
-python video_assembler.py \
-  --storyboard ./projects/001_roman_aqueducts/storyboard.json \
-  --output ./projects/001_roman_aqueducts/output/final_video.mp4 \
-  --resolution 2160p
+  --storyboard ./projects/NNN_topic/storyboard.json \
+  --output ./projects/NNN_topic/output/animatic.mp4
 ```
 
-**`--resolution`** — `1080p` (default, fast) · `2160p`/`4k` (publish master) · `1440p`. This is the last mile of the [upscaling](upscaling.md) strategy: upscaling clips/stills to 4K only reaches the viewer if the master is rendered at **2160p** — at 1080p the assembler downscales your 4K assets away. Font size, Ken Burns headroom, text offsets and the encode bitrate (8 Mbps → 40 Mbps at 4K) all scale with the chosen resolution, so overlays stay correctly proportioned. 4K assembly is ~4× the pixels — notably slower in moviepy, so render 1080p while iterating and 2160p once for the upload.
+1080p (the default) is right for an animatic — fast, watchable, disposable. The
+`--resolution 1440p/2160p` paths still exist (legacy from when this script rendered the
+publish master) but there's no reason to use them now.
 
-## What the Assembler Does
+## What it does
 
-For each scene in the storyboard:
-1. Loads the image and scales it up (adds zoom headroom)
-2. Applies the specified Ken Burns motion (or auto-cycles through motions)
-3. Adds staggered/timed text overlays with semi-transparent dark background bars based on the `texts` array
-4. Applies 0.5-second crossfade to next scene
+For each scene in the board:
+1. **AE render exists** (`ae_build.render.clip` / legacy `animated_clip`)? Uses it — so the
+   animatic upgrades toward the final cut as scenes get built.
+2. Else **plate still** → Ken Burns motion (legacy `motion` field or auto-cycle) with zoom
+   headroom.
+3. Else (**v2 assembly scene**, no plate) → a parchment slate carrying the scene id — the
+   timing still plays, so pacing is checkable before the scene exists.
+4. Adds the `texts[]` overlays (timed, semi-transparent bars) and a 0.5s crossfade.
 
-After all scenes:
-5. Concatenates all scene clips
-6. Mixes voiceover audio (full volume)
-7. Mixes background music (8% volume by default)
-8. Exports h264 MP4 at the `--resolution` (default 1080p; `2160p` for the publish master)
+After all scenes: concatenates, mixes voiceover (full volume) + background music (~8%),
+exports h264 MP4.
 
-## Motion Types
+## What to watch for (one full pass, notes open)
+
+- Scenes that **drag** — they'll drag worse animated. Re-time or split in the board.
+- Cuts landing **mid-clause** — nudge `t_start`/`t_end` at the true-up (`RHYTHM-2`).
+- Text overlaps or crowding — fix `texts[]` timing (`TEXT-2/4`).
+- Two dense scenes back-to-back (`RHYTHM-5`) — re-sequence via the film-director pass.
+
+## Legacy: Ken Burns motion types (v1 boards / still-only scenes)
 
 | Motion | Effect | Best for |
 |:---|:---|:---|
@@ -45,3 +57,6 @@ After all scenes:
 | `pan_right` | Slide left → right | Following a path, flow |
 | `pan_up` | Slide bottom → top | Tall structures, vertical reveals |
 | `zoom_detail` | Zoom into specific point (x, y) | Callouts, mechanism close-ups |
+
+(v2 boards express camera intent in `camera{}` — these enum values survive only for
+rendering legacy scenes in the animatic.)

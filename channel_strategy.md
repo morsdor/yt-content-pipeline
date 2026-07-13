@@ -15,7 +15,7 @@
 **What it IS:**
 - Engineering education through historical case studies
 - A global perspective on infrastructure, systems, and invention
-- A visual, animated experience (~50% of scenes hand-animated in After Effects from AI-illustrated stills + a reusable asset library, ~50% Ken Burns motion)
+- A visual, animated experience — every scene hand-animated in After Effects from AI-illustrated stills + a reusable asset library, directed scene-by-scene by the studio pre-production chain, final-cut in Premiere Pro
 - An authoritative voice with a distributed-systems engineering perspective
 
 **Category positioning:** This sits at the intersection of three YouTube categories — none of which own this exact space:
@@ -90,22 +90,9 @@ This is the brand. Every video should be instantly recognizable within 2 seconds
 
 ### Color System
 
-A **warm neutral base** with **civilization-specific accent colors** that subtly signal the geographic region without being heavy-handed:
+A **warm neutral base** with **civilization-specific accent colors** that subtly signal the geographic region without being heavy-handed. One accent per video, chosen by the topic's region.
 
-| Civilization | Accent Color | Hex | Inspired by |
-|:---|:---|:---|:---|
-| **Indian** | Warm saffron/ochre | `#D4812A` | Sandstone, turmeric, temple architecture |
-| **Islamic/Arabian** | Deep teal | `#1A7A6D` | Tilework, geometric patterns, oasis water |
-| **Chinese** | Jade green | `#4A7C59` | Celadon ceramics, jade, bamboo |
-| **European/Roman** | Terracotta | `#B85C38` | Roman brick, Mediterranean earth |
-| **Mesoamerican** | Obsidian purple | `#5C3D6E` | Volcanic stone, Aztec dyes |
-| **General/CS/Cross-civ** | Steel blue | `#3D5A80` | Technical, neutral, modern |
-
-**Base palette (all videos):**
-- Background: warm parchment `#F5F0E8`
-- Dark elements: charcoal `#2C2C2C`
-- Light elements: cream `#FAF7F2`
-- Grid/diagram lines: soft grey `#B8B0A4`
+> **Spec lives in `brand_guide.md` §3** (single source of truth for all hexes — base palette + the six civilization accents). How the brand *moves* is `brand_guide.md` §5 (Motion Identity); the craft behind it is `docs/cinematography.md`.
 
 ### Five Scene Types
 
@@ -115,7 +102,7 @@ Every video uses a mix of these 5 scene types. Each has a distinct visual treatm
 **What:** Wide isometric view of the complete structure or system
 **When:** Opening of the video, and whenever you need to reset context
 **Visual:** Full structure visible, small scale, warm ambient light, slight atmospheric haze in background
-**Motion:** hand-built in After Effects — eased push-in + drifting clouds/haze parallax (6–10 seconds), OR slow zoom in for static version (10–15 seconds with layered text/element changes every ~4s)
+**Motion:** hand-built in After Effects — eased push-in (4–6%) + drifting clouds/haze parallax, 8–12s (`brand_guide.md` §5)
 
 ```
 AI Prompt Pattern:
@@ -129,7 +116,7 @@ light parchment, architectural precision, no text, no people"
 **What:** Cutaway view showing the internal workings of a structure
 **When:** The "how it actually works" moment — the core educational beat
 **Visual:** Clean cutaway with labeled layers visible, slightly exploded view, dotted lines showing hidden elements
-**Motion:** Pan across the cross-section left-to-right (10–15 seconds) — typically static with Ken Burns. *Must layer multiple staggered text callouts* as the pan reveals new information-dense areas.
+**Motion:** eased AE pan across the cross-section (direction persists across scenes — `cinematography.md CAM-3`), 8–12s, with staggered text callouts as the pan reveals new information-dense areas.
 
 ```
 AI Prompt Pattern:
@@ -143,7 +130,7 @@ precise geometric lines, educational diagram aesthetic, no text"
 **What:** Overhead/bird's-eye cartographic view showing routes, distances, geographic context
 **When:** Logistics topics, trade routes, supply chains, scale of construction
 **Visual:** Clean stylized map, muted terrain, bold route lines in accent color, distance markers
-**Motion:** AE route arrow drawing itself along the path (8–12 seconds — a shape-layer trim-path, the Oversimplified staple), OR slow pan following the route for static version (10–15 seconds with staggered text pop-ups along the way)
+**Motion:** AE route arrow drawing itself along the path (a shape-layer trim-path, the Oversimplified staple), 8–12s, with staggered text pop-ups along the way
 
 ```
 AI Prompt Pattern:
@@ -156,7 +143,7 @@ showing [region/route], terrain in muted earth tones, route highlighted in
 **What:** Close-up of a specific mechanism, joint, material, or engineering detail
 **When:** Explaining the "clever bit" — the arch keystone, the valve mechanism, the metallurgical structure
 **Visual:** Tight framing, high detail, slight depth-of-field blur on edges, accent color highlighting the key element
-**Motion:** AE zoom-to-detail with one accent element alive (light sweep, water line — 6–8 seconds), OR Ken Burns zoom-to-detail for static (8–12 seconds with timed callout boxes)
+**Motion:** AE push toward the focal point with one accent element alive (light sweep, water line), 8–12s, timed callout boxes
 
 ```
 AI Prompt Pattern:
@@ -170,7 +157,7 @@ engineering diagram aesthetic"
 **What:** Side-by-side or overlay showing the scale of ancient engineering vs modern reference points
 **When:** The "wow" moment — "this was as tall as a 15-story building" or "this canal is longer than the distance from Delhi to Mumbai"
 **Visual:** Split composition or overlay, human silhouette for scale, modern reference object alongside ancient structure
-**Motion:** AE parallax between the two subjects (6–10 seconds), OR Ken Burns pan between elements (10–15 seconds with timed scale-marker overlays)
+**Motion:** AE parallax between the two subjects, or an eased pan between elements with timed scale-marker overlays, 8–12s
 
 ```
 AI Prompt Pattern:
@@ -209,22 +196,7 @@ dark moody background, detailed and eye-catching, thumbnail style"
 
 ### Style Card (Master Prompt Prefix)
 
-This text block is prepended to EVERY image generation call to maintain consistency:
-
-```
-STYLE CARD v1.0
-───────────────
-Style: Isometric flat-design technical illustration
-Aesthetic: Architectural atlas — clean, precise, educational
-Color base: warm parchment (#F5F0E8), charcoal (#2C2C2C), cream (#FAF7F2)
-Line weight: precise geometric lines, subtle shadow for depth
-Lighting: warm golden-hour ambient, soft directional shadows
-People: none visible (or tiny silhouettes for scale only)
-Text in image: none
-Background: white fading to light warm parchment at edges
-Detail level: high architectural precision
-Mood: awe-inspiring, educational, quietly dramatic
-```
+A master style prefix is prepended to EVERY image generation call to maintain consistency. **The live text is `style_card.txt`** (single source — `prompt_builder.py` reads it at generation time); library-asset art rules live in `assets_library/STYLE_BIBLE.md`.
 
 ---
 
@@ -254,7 +226,7 @@ Mood: awe-inspiring, educational, quietly dramatic
 
 > **Decision (revised): 2 videos per month, quality over quantity.** The original 1–2/week target was incompatible with a full-time JPMC job once real research and fact-checking are included, and — more importantly — high-volume templated output is exactly what YouTube's 2026 inauthentic-content enforcement now penalizes (§4a). A steady stream of genuinely good videos beats a flood of mediocre ones. Consistency compounds; burnout does not.
 
-- **Target:** **2 videos per month** (roughly one every 10–14 days), long-form, 10–12 minutes, ~54 scenes each.
+- **Target:** **2 videos per month** (roughly one every 10–14 days), long-form, 10–13 minutes, **60–80 scenes of 8–12s** each.
 - **Each video is fully researched, fact-checked, and carries your own perspective** — not an AI first draft published as-is.
 - **Scale up later, deliberately:** increase cadence only after you've (a) learned what actually performs, (b) sped up your workflow with templates/LoRA, and (c) confirmed you have the time. Never trade quality for a number.
 - **This lower cadence also keeps costs modest** — ~₹5,000/mo all-in (Claude Pro + After Effects + image generation; see `docs/costs.md`), with animation itself free at the margin since it's built by hand in AE.
@@ -351,7 +323,7 @@ Target: replace ₹2.10 L/mo take-home ≈ **$2,500/mo** on **ad revenue alone**
 
 **Goal:** Ship consistently, learn what resonates, reach monetization.
 
-- AI-assisted pipeline (**your own recorded voice** + AI images + ~50% AI-animated scenes + automated assembly)
+- AI-assisted studio pipeline (**your own recorded voice** + AI-directed pre-production + AI-illustrated stills/assets + hand-built AE animation + Premiere Pro conform)
 - **2 videos/month**, each fully researched, fact-checked, and carrying your perspective
 - Focus on: which topics get views, which titles get clicks, which videos hold watch time
 - Human effort per video: **~8–12 hours** (research + fact-check + script rewrite + visual-accuracy gate + narration + animation QA + thumbnails — this is what the pipeline's sessions actually sum to; the earlier 5–7-hour figure was wishful). Budget **16–24 hrs/month**. This is real work — that's the point; it's what keeps you monetizable.
@@ -511,4 +483,4 @@ YouTube (free content — the top of funnel)
 
 ---
 
-*Last updated: July 12, 2026 — animation pivot: scenes are now hand-animated in After Effects from AI stills + a reusable asset library (generative image-to-video dropped for quality — see `docs/after_effects_workflow.md`). Previous revision July 10, 2026 — second review pass. Key changes: thumbnail design workflow with packaging-first gate and Test & Compare A/B (§3), Shorts & discovery strategy (§4), visual-accuracy non-negotiable + audience AI-fatigue risk (§4a), corrected effort (8–12 hrs/video) and monthly budget (~₹5–7K), pre-committed month-9 decision gate with written failure criteria (§6 Phase 1). Previous revision July 6, 2026 — see `strategy_review.md`.*
+*Last updated: July 13, 2026 — studio pivot: pre-production is now a direction-first studio chain (script → studio-director skills → derived generation; see `pipeline_automation.md`); scene budget 60–80 × 8–12s; final cut in Premiere Pro; palette/style-card specs deduplicated to `brand_guide.md` / `style_card.txt`. Previous revision July 12, 2026 — animation pivot: scenes hand-animated in After Effects from AI stills + a reusable asset library (generative image-to-video dropped for quality — see `docs/after_effects_workflow.md`). Previous revision July 10, 2026 — second review pass. Key changes: thumbnail design workflow with packaging-first gate and Test & Compare A/B (§3), Shorts & discovery strategy (§4), visual-accuracy non-negotiable + audience AI-fatigue risk (§4a), corrected effort (8–12 hrs/video) and monthly budget (~₹5–7K), pre-committed month-9 decision gate with written failure criteria (§6 Phase 1). Previous revision July 6, 2026 — see `strategy_review.md`.*

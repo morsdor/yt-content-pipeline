@@ -99,26 +99,28 @@ assets_library/
 - [ ] After each generation batch, Claude updates `INDEX.md` — before generating anything
       new, check the index first. Reuse beats regenerate for both cost and consistency
 
-## Phase 2 — Per-video process (Session 3 of the production workflow)
+## Phase 2 — Per-video process (Session 5 of the production workflow)
 
-- [ ] Storyboard as before (validated stills through the visual-accuracy gate — unchanged)
-- [ ] Claude writes a **motion brief** per animated scene from `storyboard.json`:
-      layer stack, what moves, direction + pixel distance, duration, easing, what must
-      NOT move. One brief = one buildable recipe
-- [ ] Claude diffs scene needs vs `INDEX.md` → **shopping list** of only the missing assets
-      → generate, cut out, upscale, file them
+- [ ] **The board arrives finished** (studio-director chain, `docs/storyboard_schema.md`):
+      every scene carries its numeric `camera{}` + `layers[].motion{}` specs
+      (motion-director pass) and its `ae_build{}` blueprint — hierarchy, precomps,
+      expressions, render spec (ae-director pass). `shot_list.md` is the readable
+      session plan. The old post-hoc `--motion-briefs` step is gone: **the board IS
+      the brief.** Plates are validated (accuracy gate), assets are in the library,
+      the VO is recorded and timings are trued-up — you animate to track.
 - [ ] Build scenes in AE using the ladder — never skip rungs:
-      - **Rung 1 — camera** (every scene): scale 100→104–106% or slow pan, Easy Ease.
-        This alone ships a full, crafted-looking video
+      - **Rung 1 — camera** (every scene): the board's `camera{}` numbers (push 4–6%,
+        pan 40–80 px/s), Easy Ease. This alone ships a full, crafted-looking video
       - **Rung 2 — parallax** (hero scenes): 3–4 separated layers, background moves less
         than foreground (bg 0.25× of fg distance)
       - **Rung 3 — element motion** (2–3 scenes/video max): water level, light sweep,
         flag ripple, character gesture, map arrow drawing on
-- [ ] Save each finished scene type as a **template comp** ("map + arrow", "parallax push-in",
-      "character talks") — next video, duplicate and swap the art. By video 5 you're
-      assembling, not animating
-- [ ] Render scenes → `projects/XXX/clips/scene_NN_animated.mp4` — assembly
-      (Session 5) is unchanged
+- [ ] Save each finished **build family** as a **template comp** (`fam_map_route`,
+      `fam_plate_push`, `fam_stage`) — next video, duplicate and swap the art. By video 5
+      you're assembling, not animating
+- [ ] Render scenes → `projects/XXX/clips/scene_NN.mp4` — native 4K, 30fps, **~1s handles
+      both ends**. Final conform happens in **Premiere Pro** (Session 6): clips on the VO
+      at their `t_start` marks, trim into the handles, cuts on narration beats
 
 ## Phase 3 — Using AI while you're inside AE
 

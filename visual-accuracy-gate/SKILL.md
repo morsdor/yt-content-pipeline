@@ -1,13 +1,15 @@
 ---
 name: visual-accuracy-gate
 description: >-
-  Use when validating AI-generated visuals against real reference photos — stills
-  before animation, and After Effects renders after they land. Trigger on "run the
-  accuracy gate", "validate the stills/renders", "QC the clips", "check scene N against
-  the reference", or automatically between image generation and animation in any
-  Engineering Atlas video (the gate is mandatory there). Compares each render to its
-  reference photo + visual_facts checklist, produces corrective delta prompts for
-  failures, and enforces the rule that no unvalidated still is ever animated.
+  Use when validating AI-generated visuals against real reference photos — plates
+  before animation, library assets before indexing, and After Effects renders after they
+  land. Trigger on "run the accuracy gate", "validate the stills/renders", "QC the clips",
+  "check scene N against the reference", or automatically between generation and animation
+  in any Engineering Atlas video (the gate is mandatory there). Compares each render to its
+  reference photo + visual_facts checklist, checks renders against the board's
+  continuity_registry (the studio's continuity supervisor) and comprehension rules (the
+  2-second test), produces corrective delta prompts for failures, and enforces the rule
+  that no unvalidated plate is ever animated.
 ---
 
 # Visual Accuracy Gate — Reference-Anchored Validation
@@ -16,7 +18,12 @@ description: >-
 
 **Design goal:** prevent errors at generation, catch survivors before the expensive step (the user's hands-on After Effects time), and make any fix a **single named-delta rerender** — never an open-ended retry loop.
 
-**The failure ladder (cheapest fix wins):** prevented at generation → caught at the still gate for the price of a still → caught at render QC for the price of a comp tweak → shipped as Ken Burns for free.
+**The failure ladder (cheapest fix wins):** prevented at generation → caught at the still gate for the price of a still → caught at render QC for the price of a comp tweak → shipped as the Rung-1 camera-only build for free.
+
+**Studio roles this skill carries** (per the studio pipeline): the **Continuity Director**
+(renders vs. the board's `continuity_registry` — light direction, side/axis assignments,
+recurring asset files) and **Animation QA** (comprehension: the 2-second test, clutter,
+text readability — `docs/cinematography.md` §11).
 
 ---
 
@@ -40,8 +47,8 @@ description: >-
 These should already be in place; if missing, stop and fix upstream first:
 
 - [ ] `references/` pack + `visual_facts.md` exist (Session 0 output)
-- [ ] Scenes depicting the real structure carry `visual_facts` and `reference_image` in the storyboard; abstract scenes (maps, force diagrams) carry facts only, or neither
-- [ ] Prevention is automatic once the fields exist: `prompt_builder.py` injects the facts into image prompts ("Factual constraints") and into the motion briefs ("Must stay true to" — so the AE build knows what may not move or be covered); `generate_images.py` passes the reference photo alongside the style anchor (**anchor = LOOK, photo = GEOMETRY** — the model copies proportions it can *see* far more reliably than proportions described in text)
+- [ ] Scenes depicting the real structure carry `visual_facts` and `reference_image` (v2: inside `plate{}`); abstract scenes (maps, force diagrams) carry facts only, or neither; the board's top-level `continuity_registry` is populated (v2)
+- [ ] Prevention is automatic once the fields exist: `prompt_builder.py` injects the facts into plate prompts ("Factual constraints") and the board carries them as hold-constraints on the motion blocks (so the AE build knows what may not move or be covered); `generate_images.py` passes the reference photo alongside the style anchor (**anchor = LOOK, photo = GEOMETRY** — the model copies proportions it can *see* far more reliably than proportions described in text)
 
 ---
 
@@ -65,7 +72,7 @@ Optionally pass the failed render back as a third image. Naming the delta is wha
 
 **Two systematic failure modes to expect (both fixed at the prompt, not per-scene):**
 - **Space-filling:** on whole-structure wides/sections the model fills open voids and multiplies signature features (e.g. a stepwell's central pavilion → a palace on every side). Fix in the shared `visual_facts` with *prohibitive* language ("the center is EMPTY open air; three sides are ENTIRELY bare steps; one pavilion on ONE side; no palace/fort/temple"), then regenerate the affected group.
-- **Anchor-bleed:** the style anchor carries *content*, not just look. Scenes that should **not** show the main structure — landscapes, generic/contrast diagrams, other buildings — get it bleed in when their prompt doesn't re-assert the subject. Fix by making the `image_prompt` explicit and exclusionary ("a SIMPLE vertical shaft well — NOT a stepwell, no steps, no buildings") and regenerating. Scenes that already name their subject concretely won't bleed; vague ones ("the same well") will.
+- **Anchor-bleed:** the style anchor carries *content*, not just look. Scenes that should **not** show the main structure — landscapes, generic/contrast diagrams, other buildings — get it bleed in when their prompt doesn't re-assert the subject. Fix by making the plate subject explicit and exclusionary ("a SIMPLE vertical shaft well — NOT a stepwell, no steps, no buildings") and regenerating. Scenes that already name their subject concretely won't bleed; vague ones ("the same well") will. Same trap for `plate+layers`: a plate that painted its layered subjects in (a cloud in the "empty" sky) fails the gate — the delta names the exclusion.
 
 **The gate rule: no still is animated unvalidated.** The AE build starts from this frame and inherits its every error — and an error discovered mid-build wastes the user's hands-on time, the pipeline's scarcest resource. This gate is where accuracy and time protection are the same act.
 
@@ -89,24 +96,36 @@ asset "for now."
 
 ---
 
-## Layer 3 — Render QC: motion craft (when AE renders land in `clips/`)
+## Layer 3 — Render QC: motion craft + continuity + comprehension (when AE renders land in `clips/`)
 
 **Accuracy is inherited by construction here** — After Effects transforms the validated
 art but never redraws it, so geometry cannot morph, melt, or invent itself. What CAN still
-go wrong is *craft*: an accurate scene that moves badly reads as cheap. Check each
-delivered `scene_NN_animated.mp4`:
+go wrong is *craft*, *continuity*, and *comprehension*. Check each delivered
+`scene_NN.mp4` against its scene's board blocks:
 
+**Motion craft (vs. the board's numbers):**
+- **Spec fidelity** — the render matches `camera{}` and `layers[].motion{}`: right verb, right amount, right speeds. The board is the contract; "close enough" drifts the brand.
 - **Easing** — every keyframe pair eased (F9); linear motion is the #1 amateur tell.
-- **Restraint** — max 1–2 moving elements; speeds subtle (our house default). Motion should read as intended camera/parallax/element movement, never as busyness.
-- **Cut discipline** — first/last frames sit clean against neighboring scenes (no pop or lurch at the crossfade); 0.5–1s of hold before and after moves.
-- **Consistency** — the same character/object across scenes is the same *file* from `assets_library/`, never a fresh generation; accent color and lighting stable.
-- **Spec** — 3840×2160 @ 30fps; duration matches the storyboard within ~0.5s.
+- **Restraint** — ≤2 moving elements (camera excluded); speeds inside `brand_guide.md` §5 limits. Motion reads as intended movement, never as busyness.
+- **Cut discipline** — first/last frames sit clean against neighboring scenes; 0.5–1s holds at both ends; **~1s handles present** (Premiere conform needs them).
+- **Spec** — 3840×2160 @ 30fps; duration ≈ board within the handles.
+
+**Continuity (the Continuity Director duty — vs. `continuity_registry`):**
+- Light from upper-left in every frame; no sun-jumps between cuts.
+- Side/axis assignments hold (water flows its registered way; opposing sides own their halves; characters travel their established direction).
+- The same character/object across scenes is the same *file* from `assets_library/`; costumes/props match their registry entries; map orientation stable.
 - **Facts respected** — nothing from the scene's `visual_facts` is covered, cropped out, or contradicted by added elements.
+
+**Comprehension (the Animation QA duty — `docs/cinematography.md` §11):**
+- The 2-second test: a glancing viewer grasps the scene instantly (one focal point).
+- Not cluttered: text readable at 1080p playback, ≤2 callouts alive, contrast holds over the moving background.
+- Text timing tracks the narration (enter after the ear, exit before the cut).
+- Nothing static >8s inside the scene; data beats get their ~1s landing hold.
 
 ### The ladder
 
-- **Fixes are free** — note the specific issue ("scale keys not eased", "cloud too fast"), the user tweaks the comp and re-renders. No retry budget: iteration costs minutes, not money.
-- A scene not worth further AE time → **fall back to Ken Burns**: retag `type:"static"`. The fallback is accurate *and* clean *by construction* — it IS the validated still. Append the outcome to `validation_report.md`.
+- **Fixes are free** — note the specific issue ("scale keys not eased", "cloud too fast", "sun flipped"), the user tweaks the comp and re-renders. No retry budget: iteration costs minutes, not money.
+- A scene not worth further AE time → **simplify to its Rung-1 camera-only build** (validated plate + eased push, accurate and clean by construction). Update the scene's board blocks to match what shipped; append the outcome to `validation_report.md`.
 
 **Worst case per scene is a few minutes in the comp — by design.**
 
@@ -114,8 +133,9 @@ delivered `scene_NN_animated.mp4`:
 
 ## Rules that override everything
 
-1. **No unvalidated still is ever animated.** No exceptions for schedule pressure.
+1. **No unvalidated plate is ever animated.** No exceptions for schedule pressure.
 2. **Failures get a named delta, never a blind reroll.**
 3. **No off-style asset enters the library.** One bad asset poisons every video that reuses it.
-4. **Ken Burns fallback is always available.** Ship beats perfect.
+4. **The camera-only fallback is always available.** Ship beats perfect.
 5. **The user confirms verdicts** — the skill flags candidates; a human owns the gate.
+6. **The registry outranks the scene.** A beautiful render that breaks continuity fails.

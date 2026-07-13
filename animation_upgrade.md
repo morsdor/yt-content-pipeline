@@ -1,5 +1,15 @@
-# Animation Strategy: 50% Animated, Hand-Built in After Effects
+# Animation Strategy: Every Scene Hand-Built in After Effects
 
+> **Revised July 13, 2026 — the studio pivot.** The "50% animated / 50% Ken Burns" split
+> this doc was structured around is gone: **every scene is an AE scene now**, from a bare
+> eased camera push to a fully-layered shot — richness is a spectrum, not a type. Scenes
+> are directed by the seven-pass **studio chain** (`studio-director` skill) into one
+> `storyboard.json` v2 (60–80 scenes × 8–12s, timestamped to the pre-recorded VO), built in
+> AE per numeric motion specs, and conformed in **Premiere Pro**. `video_assembler.py`
+> survives as the animatic tool. Where this doc says "animated scenes" read "the richer
+> scenes"; where it says "static/Ken Burns" read "Rung-1 camera-only builds". The
+> layer/rung analysis below — the *why AE wins* — is unchanged and still the foundation.
+>
 > **Revised July 12, 2026 — the animation pivot.** This doc originally proposed generative
 > image-to-video for the animated half of each video. That was tried at full-batch scale and
 > failed the quality bar: ~70% of clips softened the crisp linework, warped precise geometry,

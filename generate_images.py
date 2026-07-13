@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """
-generate_images.py — still-image generation for The Engineering Atlas (Gemini "nano banana").
+generate_images.py — plate generation for The Engineering Atlas (Gemini "nano banana").
 
-Reads the LEAN storyboard.json, composes each scene's full prompt via prompt_builder
-(style_card.txt prefix + scene_recipes + accent_hex + composition), and writes
-images/scene_NN.png. That's it — this script only makes the stills.
+Reads storyboard.json (schema v2 — the studio board; legacy v1 still readable), composes
+each plate scene's full prompt via prompt_builder (style_card.txt prefix + scene_recipes +
+accent_hex + the board's composition), and writes images/scene_NN.png. Scenes with
+`build: "assembly"` are SKIPPED — they have no plate; they're built in AE from
+assets_library/ elements. This script only makes the plates the board specifies.
 
-Animation is NOT done here. Motion is hand-built in After Effects from these validated
-stills (see docs/after_effects_workflow.md). Run
-`python prompt_builder.py <sb> --motion-briefs` to write the per-scene AE shot
-directions; library elements come from generate_asset.py (assets_library/).
+Animation is NOT done here. Motion is hand-built in After Effects per each scene's
+camera{}/layers[].motion{}/ae_build{} blocks (see docs/after_effects_workflow.md;
+`python prompt_builder.py <sb> --shot-list` renders the readable board). Library
+elements come from generate_asset.py (assets_library/).
 
 Setup
 -----
@@ -27,7 +29,7 @@ Usage (from repo root)
 import argparse, base64, json, os
 from pathlib import Path
 
-from prompt_builder import context_from, compose_image_prompt
+from prompt_builder import context_from, compose_image_prompt, scene_build, scene_ref
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 IMAGE_MODEL_DEFAULT = "gemini-3.1-flash-image"          # Nano Banana 2
@@ -109,11 +111,13 @@ def main():
     for i, s in enumerate(scenes, 1):
         if i not in sel:
             continue
+        if scene_build(s) == "assembly" or not s.get("image"):
+            print(f"  scene {i:02d}  skip (assembly — built in AE from library assets)"); continue
         out = root / s["image"]
         if out.is_file() and not args.force:
             print(f"  scene {i:02d}  skip (exists)"); continue
         ref = args.ref or (str(root / "images/scene_01.png") if i != 1 else "")
-        geo = str(root / s["reference_image"]) if s.get("reference_image") else ""
+        geo = str(root / scene_ref(s)) if scene_ref(s) else ""
         model = s.get("image_model", args.model)     # per-scene override (hero frames)
         prompt = compose_image_prompt(s, ctx)
         print(f"  scene {i:02d}  image -> {s['image']}"
@@ -134,7 +138,7 @@ def main():
     if not args.dry_run:
         manifest_path.write_text(json.dumps(manifest, indent=2))
         print(f"\nmanifest -> {manifest_path.name}")
-    print("done. (animation: gate the stills, then `prompt_builder.py <sb> --motion-briefs` → build in AE)")
+    print("done. (next: gate the plates [visual-accuracy-gate Layer 2], then the animatic, then build in AE per the board — `prompt_builder.py <sb> --shot-list`)")
 
 
 if __name__ == "__main__":

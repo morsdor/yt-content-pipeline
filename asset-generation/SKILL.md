@@ -1,46 +1,52 @@
 ---
 name: asset-generation
 description: >-
-  Use when generating a video's visual assets after the storyboard is approved —
-  stills → validation → animation prep → render QC. Trigger on "generate the assets",
-  "run asset generation", "make the images", "prep the animation", or Phase 2–3 of an
-  Engineering Atlas video. Runs generate_images.py for stills, enforces the
-  visual-accuracy-gate before anything is animated, writes the per-scene motion briefs,
-  fills the assets_library shopping list (generate_asset.py), scaffolds JSX comp
-  builders, and QCs the After Effects renders when they land in clips/. Requires
-  GEMINI_API_KEY in .env. The AE build itself is done by the user.
+  Use when executing a boarded video's generation — after the studio-director chain has
+  produced the approved storyboard.json v2. Trigger on "generate the assets", "run asset
+  generation", "make the plates", "execute the board", or Phase 4 of an Engineering Atlas
+  video. Generates exactly what the board specifies: plates from plate{} blocks
+  (generate_images.py), library assets from the asset-planner's approved batch
+  (generate_asset.py), 4K upscale, layered-plate prep — with the visual-accuracy-gate
+  enforced on every plate (Layer 2) and every asset (Layer 2.5) before anything proceeds.
+  Requires GEMINI_API_KEY in .env. The AE build itself is done by the user.
 ---
 
-# Asset Generation — Stills → Gate → Animation Prep → Render QC
+# Asset Generation — Executing the Board (plates → gate → assets → prep)
 
-**What this produces:** `images/scene_NN.png` (~55 validated stills, upscaled to 4K),
-`motion_briefs.md` (per-scene AE shot directions), any missing `assets_library/` elements,
-optional `ae_scripts/` comp builders, and — after the user's AE session — QC'd
-`clips/scene_NN_animated.mp4`. Everything Phase 5 (voice) and Phase 6 (assembly) need.
+**What this produces:** validated 4K `images/scene_NN.png` plates for every `plate`/
+`plate+layers` scene, the approved batch's new `assets_library/` elements (keyed, indexed),
+layered plates where the board separates depth bands — everything the animatic (Phase 5)
+and the user's AE session (Phase 6) need.
 
-**The chain, in order — order is the budget protection:**
+**The contract:** this skill **generates nothing the board doesn't specify.** Subjects,
+references, facts, layers, and the asset batch were all decided by the studio passes
+(scene-composer + asset-planner); this is the illustration department executing a signed-off
+plan. If something seems missing or wrong here, it goes back to the board — not into an
+improvised prompt.
 
 ```
-stills (cheap) → accuracy gate (free) → AE prep (free) → USER builds in AE → render QC (free)
+plates (cheap) → accuracy gate (free) → batch assets + asset gate → AE prep (free)
 ```
 
-Animation itself has **no marginal cost** — no credits, no charged retries. The scarce
-resource is the user's AE time; the prep stages exist to make that time short.
-
-Companion skills: [`visual-accuracy-gate`](../visual-accuracy-gate/SKILL.md) (invoked at two
-points below), `the-engineering-atlas-video` (the parent checklist). Reference:
-[docs/after_effects_workflow.md](../docs/after_effects_workflow.md),
-[assets_library/STYLE_BIBLE.md](../assets_library/STYLE_BIBLE.md).
+Companion skills: `studio-director` (the board that drives this), [`visual-accuracy-gate`](../visual-accuracy-gate/SKILL.md)
+(Layers 2 + 2.5 below), `the-engineering-atlas-video` (the parent checklist). Reference:
+[docs/after_effects_workflow.md](../../../docs/after_effects_workflow.md),
+[assets_library/STYLE_BIBLE.md](../../../assets_library/STYLE_BIBLE.md),
+[docs/storyboard_schema.md](../../../docs/storyboard_schema.md).
 
 ---
 
-## Stage 0 — Preflight (all must pass before anything is generated)
+## Stage 0 — Preflight
 
-- [ ] **Storyboard is approved** (the parent skill's review gate passed). Scenes depicting the real structure carry `visual_facts` + `reference_image`; `references/` pack exists.
+- [ ] Board approved: `passes.ae_director` stamped, the final gate answered, `--validate` clean.
 - [ ] `GEMINI_API_KEY` present in `.env` (repo root or project folder).
-- [ ] Style anchor decision: **video #1** → `style_card.txt` only (no anchors exist yet); **video #2+** → pass an anchor from `assets/style_anchors/` on every call.
+- [ ] Style anchor decision: **video #1** → `style_card.txt` only; **video #2+** → pass an anchor from `assets/style_anchors/` on every call.
+- [ ] VO recorded + true-up done (preferred — the animatic right after this stage needs it).
 
-## Stage A — Stills (`generate_images.py`)
+## Stage A — Plates (`generate_images.py`)
+
+Only `build: "plate"` and `"plate+layers"` scenes generate; `assembly` scenes are skipped
+(they're built in AE from library assets).
 
 ```bash
 SB=projects/NNN_topic/storyboard.json
@@ -51,87 +57,76 @@ python generate_images.py --storyboard $SB --dry-run
 # 2. Scene 1 first — it becomes the in-video reference; eyeball before continuing
 python generate_images.py --storyboard $SB --scenes 1
 
-# 3. The rest (auto-references scene_01; scenes with reference_image also get
+# 3. The rest (auto-references scene_01; scenes with plate.reference_image also get
 #    the real photo passed as a geometry reference — anchor = LOOK, photo = GEOMETRY)
 python generate_images.py --storyboard $SB
 ```
 
-- Same session, same model version for within-video consistency. Per-scene `image_model` override exists for hero frames.
-- Re-generate individual scenes with `--scenes "3,7,12-14" --force`.
-- Failures print per-scene errors and continue; re-run with `--scenes` for the gaps.
+- Prompts compose from `plate.subject` + the scene's recipe + style card + accent + the
+  reserved negative space — the board's decisions, verbatim.
+- **`plate+layers` scenes:** the plate must NOT contain its layered subjects (the
+  scene-composer's subject line excludes them — verify on the render: empty sky where the
+  cloud goes).
+- Same session, same model version; per-scene `image_model` override for hero frames;
+  re-roll with `--scenes "3,7" --force`.
 
-## Stage B — Accuracy gate (HARD GATE — run `visual-accuracy-gate`, Layer 2)
+## Stage B — Plate accuracy gate (HARD — `visual-accuracy-gate` Layer 2)
 
-- [ ] Claude vision compares each still vs. its `reference_image` + `visual_facts`; user confirms the verdict table (~15–20 min).
-- [ ] Failures → regenerate with a **corrective delta prompt naming the error**, via `--scenes N --force`.
-- [ ] Results → `projects/NNN_topic/validation_report.md`.
-- [ ] **Nothing proceeds to Stage C until every animated-type scene's still is validated.** The AE build starts from these frames and inherits their every error — and unlike a prompt fix, a wrong still discovered mid-build wastes the user's hands-on time.
+- [ ] Vision-compare each plate vs. its `plate.reference_image` + `plate.visual_facts`; user confirms the verdict table (~15–20 min).
+- [ ] Failures → **corrective delta prompt naming the error**, `--scenes N --force`.
+- [ ] Results → `validation_report.md`. **No unvalidated plate proceeds** — the AE build inherits every error, and a wrong plate found mid-build wastes the user's craft hours.
 
-## Stage C — Animation prep (agent-driven, free)
+## Stage C — Batch assets + AE prep (free except the approved batch)
 
-**C.1 — Motion briefs:**
+**C.1 — The batch:** run the asset-planner's approved batch —
+`python generate_asset.py --batch assets_library/_batches/batch_NN.json` (magenta bg → 4×
+upscale → keyed alpha → edge bleed → INDEX.md). Every new asset passes the
+**Layer 2.5 asset gate** before its `layers[].asset` reference counts as resolved.
+**Only the approved batch** — a mid-generation "we also need X" goes back through the
+asset-planner's gate.
 
-```bash
-python prompt_builder.py $SB --motion-briefs   # → motion_briefs.md
-```
+**C.2 — Layered plates (Rung-2 parallax scenes):** where `ae_build` separates depth bands
+beyond what layers already provide, generate the clean variant plates ("same scene, empty
+sky") — same Layer 2 gate for real-structure plates.
 
-One brief per animated scene: what moves, direction and distance, duration, easing, and
-what must NOT move (the scene's `visual_facts` ride along as hold-constraints). Review the
-briefs and tighten any that read vague — a good brief is buildable without asking questions.
+**C.3 — 4K upscale** (local, free — [docs/upscaling.md](../../../docs/upscaling.md)):
+`realesrgan-x4plus-anime` on every accepted plate. AE comps are 3840×2160.
 
-**C.2 — Asset shopping list:** diff what the briefs need (characters, props, parallax
-elements, diagram arrows) against `assets_library/INDEX.md`. Generate **only the missing
-assets** with `generate_asset.py` (STYLE_BIBLE rules enforced: flat magenta background →
-4× upscale → keyed alpha → indexed). Reuse beats regenerate — for cost *and* cross-video
-consistency.
+**C.4 — Scaffolds check:** the ae-director already wrote the JSX scaffolds; confirm each
+`ae_build.jsx` path exists and imports resolve against the now-real files.
 
-**C.3 — Layered plates (parallax scenes only):** for scenes getting Rung-2 parallax,
-generate clean plates ("same scene without the tower") so foreground elements become their
-own layers. Same accuracy gate applies to new plates of the real structure.
-
-**C.4 — Upscale stills to 4K** (local, free — [docs/upscaling.md](../docs/upscaling.md)):
-`realesrgan-x4plus-anime` on every accepted still. AE comps are 3840×2160; the assembler's
-Ken Burns wants the headroom too.
-
-**C.5 — JSX scaffolds (optional but cheap):** anything repetitive in the briefs — armies of
-duplicated soldiers, staggered layer imports, a standard push-in comp per scene — gets a
-script in `ae_scripts/` instead of manual clicks. Write them proactively when a brief
-implies more than ~10 identical manual steps.
-
-**Handoff:** tell the user what's ready — briefs, new assets, scaffolds — and which scenes
-are good first builds (simplest motion first). The AE session is theirs.
+**Handoff:** report what's ready (plates n/n validated, batch m/m indexed, scaffolds
+checked), then → **animatic** (`video_assembler.py`, Phase 5), then the AE session is the
+user's, per the ae-director's session plan.
 
 ## Stage D — Render QC (when AE clips land in `clips/`)
 
-Run `visual-accuracy-gate` **Layer 3 (motion craft)** on each delivered
-`scene_NN_animated.mp4`:
+Run `visual-accuracy-gate` **Layer 3 (motion craft)** on each delivered `scene_NN.mp4`:
 
-- [ ] Eased motion everywhere (linear moves are the #1 amateur tell)
-- [ ] ≤2 moving elements per scene; speeds subtle; nothing warps or "breathes"
-- [ ] First/last frames sit clean against the neighboring scenes (no cut pop)
-- [ ] Same asset files across scenes (consistency gate)
-- [ ] Duration matches the storyboard within ~0.5s; 3840×2160 @ 30fps
+- [ ] Motion matches the board's numbers (camera verb/amount, layer speeds, ≤2 moving)
+- [ ] Eased everywhere (linear moves are the #1 amateur tell); nothing warps or "breathes"
+- [ ] First/last frames sit clean against neighbors; **~1s handles present both ends**
+- [ ] Same asset files across scenes; continuity registry respected
+- [ ] 3840×2160 @ 30fps; duration ≈ board within the handles
 
-Fixes are free — note the issue, the user adjusts the comp and re-renders. No retry
-budget, no fallback pressure. A scene that isn't worth more AE time gets retagged
-`type:"static"` (Ken Burns — accurate by construction; you always ship).
+Fixes are free — note the issue, the user adjusts the comp and re-renders. A scene not
+worth more AE time simplifies to its Rung-1 camera-only build. You always ship.
 
 ## Final report (always give the user this summary)
 
 ```
-Stills:       54 generated · 51 passed gate first pass · 3 delta-fixed · all 4K
-Motion prep:  27 briefs written · 6 new library assets (indexed) · 2 JSX scaffolds
-AE build:     27 scenes → 25 accepted · 2 notes sent back for re-render
-Fallbacks:    scene 23 retagged static (not worth AE time this cycle)
-Next:         Phase 4 (particles) → Phase 5 (record narration) → assembly
+Plates:   48 specified · 48 generated · 45 passed gate first pass · 3 delta-fixed · all 4K
+Batch:    9 assets generated · 9 passed asset gate · INDEX.md updated
+Prep:     3 layered plates · 4 JSX scaffolds verified
+Next:     animatic → AE session (session plan in shot_list.md) → Layer 3 QC → Premiere
 ```
 
 ---
 
 ## Rules that override everything
 
-1. **No unvalidated still is ever animated.** The gate is not optional under schedule pressure.
-2. **Check `INDEX.md` before generating any library asset** — a duplicate wastes money; an off-style twin poisons consistency.
-3. **Briefs must be buildable** — if a brief needs interpretation, rewrite the brief, don't make the user guess.
-4. **Ken Burns fallback is always available.** Ship beats perfect.
+1. **No unvalidated plate is ever built on.** The gate is not optional under schedule pressure.
+2. **The board is the spec.** No improvised subjects, no unbatched assets, no "while we're at it."
+3. **Check `INDEX.md` before generating anything** — a duplicate wastes money; an off-style twin poisons consistency.
+4. **The camera-only fallback is always available.** Ship beats perfect.
 5. On generation failures/unexpected results: report to the user and ask; never silently change intent.

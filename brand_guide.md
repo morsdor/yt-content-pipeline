@@ -1,6 +1,6 @@
 # The Engineering Atlas — Brand Guide
 
-*The single source of truth for identity, voice, and look. Every video, thumbnail, and script conforms to this. Version 1.0 — July 6, 2026.*
+*The single source of truth for identity, voice, look — and motion. Every video, thumbnail, and script conforms to this. Version 1.1 — July 13, 2026 (added § 5 Motion Identity for the After Effects pipeline).*
 
 ---
 
@@ -78,7 +78,55 @@ Two free, engineering-appropriate type families. Consistency here is 30% of "loo
 
 ---
 
-## 5. Narration Style — "The Witness and the Engineer"
+## 5. Motion Identity — How the Brand Moves
+
+> Look and type say "Engineering Atlas" in a still frame; this section says it in motion.
+> The brand moves like a **surveyor, not a drone**: slow, weighty, deliberate, precise.
+> Craft rationale lives in `docs/cinematography.md`; these are the *numbers*. The
+> motion-director and ae-director skills treat them as hard limits.
+
+**Frame spec (every scene):** 3840×2160 @ 30fps · rendered with **~1s handles** at both ends
+(Premiere conform is trim-only) · target clip `clips/scene_NN.mp4`.
+
+### Camera
+
+| Move | Spec | Notes |
+|:---|:---|:---|
+| Push-in (default) | **4–6% scale** over the scene; ≤8% only for emphasis beats | one move per scene, spans full duration |
+| Pull-back (reveal) | 6–10% | budget 2–3 per video — the scale-payoff move |
+| Pan | **40–80 px/s** at 4K | wide compositions only; direction persists across scenes |
+| Easing | Easy Ease minimum; curve influence **40–60%** | keyframed start/end at rest; **0.5–1s hold** at both ends |
+
+### Elements
+
+| Element class | Spec |
+|:---|:---|
+| Ambient drift (clouds, smoke, dust) | 5–15 px/s, ≤2° rotation; loops de-synced across instances |
+| Water / light sweeps | position/mask oscillation ≤10px amplitude, period ≥4s |
+| Character gestures | one attitude change per scene; walk = position drift + subtle 2–3° rock, no full walk-cycle rigs until Duik is comfortable |
+| Diagram arrows / build-ons | draw-on 0.5–1s, eased; never "typewriter" strokes |
+| Moving-element budget | **≤2 moving elements** per scene (camera excluded), of which ≤1 is secondary/ambient |
+
+### Text
+
+- In: **~300ms fade + 8px rise**. Out: **~200ms fade**. Nothing else — no bounce, typewriter, per-word cascade.
+- Emphasis = accent color on the single key word/number (§4), never motion.
+- On screen ≥2.5s; gone ≥0.5s before the cut (`cinematography.md TEXT-2`).
+
+### Transitions
+
+- **Cut** is the default (≥90%). **Crossfade 0.5s** = time passing only. **Match-cut** = concept link, 2–3 per video.
+- **Forbidden:** whips, spins, zoom-blurs, glitches, star wipes, any preset that performs.
+
+### Physics of the brand
+
+- Nothing bounces, overshoots, or wobbles. Exception: at most **one** deliberate comedic character beat per video (the Oversimplified wink), and never during an engineering explanation.
+- Weight through timing: stone/water = long eases and slow speeds; birds/dust = quicker, lighter.
+- Motion blur ON for element motion, unnecessary for slow camera moves.
+
+---
+
+## 6. Narration Style — "The Witness and the Engineer"
 
 > This is the heart of the brand and the answer to "storytelling without losing authority." It braids two registers. **Story frames, engineering explains, wit seasons.**
 
@@ -117,7 +165,7 @@ Authority comes from **accuracy and clarity**, not from being humorless. Real En
 
 ---
 
-## 6. Video Structure Template (~10–12 min, ~54 scenes)
+## 7. Video Structure Template (~10–13 min, 60–80 scenes)
 
 A repeatable beat sheet. Keeps every video recognizable and paced.
 
@@ -132,12 +180,13 @@ A repeatable beat sheet. Keeps every video recognizable and paced.
 | **Callback + close** | 10:00–11:00 | Return to the witness; resolve the opening. Sign-off. | Witness → sign-off |
 | **Outro card** | last 5–8s | Subscribe + next-video thumbnail. | — |
 
-- **Retention rule (from `animation_upgrade.md`):** no visual element static >5s; a scene change or new callout at least every 8s.
+- **Scene budget:** 60–80 scenes of **8–12s** each, cut against the pre-recorded VO in Premiere Pro (`docs/cinematography.md RHYTHM-6`).
+- **Retention rule:** no visual configuration unchanged >8s; a scene change or new callout at least every 8s (`cinematography.md RHYTHM-4`).
 - **CTA:** one subscribe ask, woven in naturally around the 60–70% mark or at the outro — never a hard mid-roll beg.
 
 ---
 
-## 7. Thumbnail Conventions
+## 8. Thumbnail Conventions
 
 Fixed rules so your thumbnails are recognizable as a set:
 
@@ -150,7 +199,7 @@ Fixed rules so your thumbnails are recognizable as a set:
 
 ---
 
-## 8. Audio & Music
+## 9. Audio & Music
 
 - **Background music:** ambient, low, non-distracting; **8% volume** under narration (per assembler default). Sourced royalty-free (Pixabay, Uppbeat, YouTube Audio Library). Keep a small consistent palette of 3–4 tracks so the channel has a sonic identity.
 - **Title sting:** one short, consistent 2–3s musical/audio motif on every intro.
@@ -158,7 +207,7 @@ Fixed rules so your thumbnails are recognizable as a set:
 
 ---
 
-## 9. Metadata & Consistency
+## 10. Metadata & Consistency
 
 - **Episode naming:** internal project folders `NNN_topic` (e.g., `001_roman_aqueducts`). Public titles follow the §4 title formulas in `channel_strategy.md`.
 - **Description template:** 2–3 sentence hook → chapter timestamps → sources/further reading → subscribe line → social links. (Sources build authority and trust — always cite.)
@@ -167,10 +216,10 @@ Fixed rules so your thumbnails are recognizable as a set:
 
 ---
 
-## 10. The One-Sentence Brand Test
+## 11. The One-Sentence Brand Test
 
 Before publishing, ask: *"Does this look, sound, and think like The Engineering Atlas — a real engineer telling a real story, accurately, with a dry smile?"* If any of {look, sound, accuracy, perspective} is missing, it's not ready.
 
 ---
 
-*Companion docs: `channel_strategy.md` (niche, projections, business phases), `pipeline_automation.md` (production tech), `animation_upgrade.md` (motion), `strategy_review.md` (the critical review these were revised from). Per-video execution: the `the-engineering-atlas-video` skill.*
+*Companion docs: `channel_strategy.md` (niche, projections, business phases), `docs/cinematography.md` (the craft canon behind § 5), `pipeline_automation.md` (production tech), `animation_upgrade.md` (motion history), `strategy_review.md` (the critical review these were revised from). Per-video execution: the `studio-director` pre-production chain + the `the-engineering-atlas-video` skill.*
