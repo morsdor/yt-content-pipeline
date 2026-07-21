@@ -42,12 +42,25 @@ render validation), `thumbnail-workflow` (packaging gate + candidates + A/B + lo
 ## Per-video workflow
 
 ```
-0 research → 1 script → 2 STUDIO (board) → 3 VO + true-up → 4 generate (derived)
-→ 5 animatic → 6 AE build → 7 render QC → 8 Premiere conform → 9 QA + publish
+−1 PACKAGING (topic from the data · title · thumbnail — LOCKED) → 0 research → 1 script
+→ 2 STUDIO (board) → 3 VO + true-up → 4 generate (derived) → 5 animatic
+→ 6 AE build → 7 render QC → 8 Premiere conform → 9 QA + publish
 ```
 
-### Phase 0 — Topic + Research + Fact-Check  ⏱ 2–4 hrs · HUMAN GATE
-- [ ] Pick topic from the 50-topic list (`channel_strategy.md §7`) or a new one; note its **civilization accent color**
+### Phase −1 — Packaging Gate (topic + title + thumbnail, from the data)  ⏱ 30–45 min · ₹0 · HUMAN GATE
+
+*The idea must prove it can be packaged **before** it earns a single production hour —
+and topics are **sourced from evidence**, not brainstormed and then justified.*
+
+- [ ] **Start from the database:** refresh if stale (`python3 scripts/weekly_refresh.py`), read the current top patterns (`scripts/tag_outliers.py` report — Claude tags new rows in-session for ₹0), and scan `data/outliers.csv` for breakouts adjacent to our lane (`docs/outlier_system.md`)
+- [ ] **Precedent check (hard):** the concept needs a **≥3× outlier precedent** on a comparable channel — in the CSV, or found live via vidIQ. No precedent anywhere → **park it** (back to the `channel_strategy.md §7` list) and pick again. Parked ≠ killed: the weekly refresh promotes late bloomers.
+- [ ] **Titles:** ~25 candidates from `formula_library.md` (weighted toward the tagger's top-3 patterns) → adversarial pass as a bored scroller — kill anything that needs context, over-promises, or reads as homework → **3 survivors**
+- [ ] **Thumbnail concept:** one sentence — *"dominant object + 3–4 words"* — plus a quick 120-px mock check (`thumbnail-workflow` Stage 1). No compelling thumbnail = weak framing → fix the angle or park the topic.
+- [ ] **Lock it:** `projects/NNN_topic/packaging.md` — chosen title (+2 alternates), formula id, precedent rows (video id + multiple from the CSV), thumbnail concept. **No `packaging.md`, no Phase 0.**
+- [ ] ✅ Gate: precedent shown · title locked · thumbnail articulated — packaging is now the brief the script must serve
+
+### Phase 0 — Research + Fact-Check  ⏱ 2–4 hrs · HUMAN GATE
+- [ ] Topic arrives **already validated** from Phase −1 (precedent + locked packaging); note its **civilization accent color**
 - [ ] If the topic enters a new civilization/visual territory: **consult the `art-director` skill** — motif kit into the bibles before boarding
 - [ ] Gather real sources — books, papers, museum/engineering references — not just an AI summary
 - [ ] **Reference pack:** collect 5–15 real photos/plans into `projects/NNN_topic/references/` (Wikimedia, ASI/UNESCO, papers — keep source URLs) and write `references/visual_facts.md`: the *visually checkable* claims (geometry, counts, patterns, materials, orientation). These feed the board's `plate.visual_facts` and the accuracy gate.
@@ -59,7 +72,7 @@ render validation), `thumbnail-workflow` (packaging gate + candidates + A/B + lo
 - [ ] Claude drafts a 10–13 min script **from your research notes**, following the beat sheet (brand_guide §7: witness cold-open → problem → how → scale → your-take → callback → sign-off)
 - [ ] **You rewrite** the hook and the 2–3 perspective paragraphs in your own voice
 - [ ] Confirm the **witness/engineer/wit** braid (brand_guide §6); wit ≈ 1 dry beat / 60–90s, never gags
-- [ ] **Packaging-first gate (`thumbnail-workflow` skill, Stage 1):** title + one-sentence thumbnail concept before anything is boarded. No compelling thumbnail = weak framing — fix the angle now.
+- [ ] **Packaging drift check:** the script still delivers what the locked `packaging.md` (Phase −1) promises. If research pulled the story elsewhere, update the packaging *deliberately* — re-run the Phase −1 checks on the new angle — never let title and video drift apart silently.
 - [ ] Save `script.md` to `projects/NNN_topic/` · ✅ Gate: the script is final enough to record
 
 ### Phase 2 — STUDIO PRE-PRODUCTION (the board)  ⏱ 2–3 hrs · 3 HUMAN GATES
@@ -104,7 +117,7 @@ verdicts), Layer 2.5 on every library asset. **No unvalidated art proceeds.**
 - [ ] Watch it **fully** at least once (facts + feel, not just glitches)
 - [ ] **Polish pass** (the "does it look sloppy?" gate): motion reads as intended (eased, subtle, nothing linear or busy), cuts land clean, text timing tracks narration, music sits under the voice, pacing doesn't drag
 - [ ] Thumbnails: **`thumbnail-workflow` Stages 2–5** — 3 candidates varying ONE axis, 120-px squint test, Fraunces bold added locally (never AI text), YouTube **Test & Compare**, log entry
-- [ ] Title (per formula, `channel_strategy.md §4`) + description (hook → chapters → **sources** → subscribe)
+- [ ] Title = the one locked in `packaging.md` at Phase −1 (formulas: `formula_library.md`; verify it still matches the final cut) + description (hook → chapters → **sources** → subscribe)
 - [ ] Cut **2–3 Shorts** from self-contained beats (cross-section reveal, scale comparison, detail zoom): 9:16, 15–45s, hook overlay first second, end-card to the full video
 - [ ] ✅ **Tick "Altered content"** on upload (AI-assisted visuals/voice)
 - [ ] Schedule for your consistent slot (e.g., Saturday AM US)

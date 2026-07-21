@@ -4,7 +4,7 @@ description: >-
   Use when creating, testing, or reviewing thumbnails for an Engineering Atlas video.
   Trigger on "make the thumbnails", "thumbnail candidates", "run the thumbnail
   workflow", "packaging gate", Session 5b of the production workflow, or the
-  packaging-first check at storyboard approval. Produces 3 candidates varying one
+  Phase −1 packaging-first check that precedes all research spend. Produces 3 candidates varying one
   axis, applies the 120-px squint test, prepares them for YouTube Test & Compare,
   and logs outcomes to assets/thumbnails_log.md so CTR learning compounds.
 ---
@@ -17,11 +17,12 @@ Brand rules live in `brand_guide.md` §7; strategy rationale in `channel_strateg
 
 ---
 
-## Stage 1 — Packaging-first gate (at storyboard approval, BEFORE any production spend)
+## Stage 1 — Packaging-first gate (Phase −1: BEFORE research, script, or any other spend)
 
-- [ ] Write the **title** (per the §4 title formulas) and a **one-sentence thumbnail concept**: *"dominant object + 3–4 words"* — e.g. "the stepwell cross-section glowing saffron + 'HOW DEEP?'".
-- [ ] **Rule: no compelling thumbnail concept = weak framing.** Don't wordsmith the thumbnail — fix the video's *angle*, then return. This gate blocks storyboard approval.
-- [ ] Record the concept in the storyboard review notes; Session 5b executes it later.
+- [ ] **Precedent first:** the concept has a **≥3× outlier precedent** on a comparable channel (`data/outliers.csv`, or live via vidIQ — see `docs/outlier_system.md`). No precedent → park the topic; don't package it.
+- [ ] Write the **title** (from `formula_library.md`, weighted toward the tagger's current top-3 patterns) and a **one-sentence thumbnail concept**: *"dominant object + 3–4 words"* — e.g. "a glowing aqueduct cross-section + 'HOW HIGH?'".
+- [ ] **Rule: no compelling thumbnail concept = weak framing.** Don't wordsmith the thumbnail — fix the video's *angle* (or park the topic), then return. This gate blocks research spend.
+- [ ] Lock title + concept into `projects/NNN_topic/packaging.md`; Session 5b executes the concept later.
 
 ## Stage 2 — Generate 3 candidates (`output/thumb_a/b/c.png`)
 
@@ -72,7 +73,7 @@ magick output/thumb_a.png \
 ```markdown
 | # | Video | Concept ("object + words") | Axis varied | Winner | CTR @7d | CTR @28d | Lesson |
 |:--|:------|:---------------------------|:------------|:-------|:--------|:---------|:-------|
-| 001 | Chand Baori | stepwell cutaway + "HOW DEEP?" | crop tightness | b (tight) | 4.2% | 3.8% | tighter crop wins in this niche |
+| NNN | (video) | glowing aqueduct cutaway + "HOW HIGH?" | crop tightness | b (tight) | 4.2% | 3.8% | e.g. "tighter crop wins in this niche" |
 ```
 
 - [ ] **The log is the point.** At 24 videos/year it becomes the channel's most valuable dataset — the niche's visual language, learned instead of guessed. Fill in the 7/28-day CTR retroactively (calendar reminder or ask during the next video's Session 5b).
@@ -82,7 +83,7 @@ magick output/thumb_a.png \
 
 ## Rules that override everything
 
-1. **The packaging gate blocks storyboard approval** — no concept, no production spend.
+1. **The packaging gate blocks research spend** (Phase −1) — no precedent + no concept = no production hours, not even research.
 2. **One axis per A/B** — an untestable test is wasted traffic.
 3. **Typography is always local and human** — AI text in thumbnails reads as slop at a glance.
 4. **Log every run** — a thumbnail without a log entry taught you nothing.

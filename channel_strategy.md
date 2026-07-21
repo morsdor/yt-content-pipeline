@@ -188,7 +188,7 @@ dark moody background, detailed and eye-catching, thumbnail style"
 
 **The workflow (per video):**
 
-1. **Packaging-first gate (at storyboard approval, before any production spend):** write the title and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle before generating a single image.
+1. **Packaging-first gate (Phase −1 — before research, script, or any production spend):** confirm a **≥3× outlier precedent** (`data/outliers.csv` / vidIQ), then write the title (from `formula_library.md`) and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle — or park the topic — before a single research hour is spent.
 2. **Three candidates** (`thumb_a/b/c.png`), varying **one axis at a time** — focal object, crop tightness, or accent intensity. Vary all three at once and the test teaches you nothing.
 3. **The 120-px squint test** — shrink each candidate to inbox size and check: one instantly-recognizable dominant object · text readable · focal point survives the shrink · pops on both dark and light YouTube UI · curiosity gap intact.
 4. **A/B with YouTube "Test & Compare"** — upload all 3; YouTube picks the winner by watch-time share.
