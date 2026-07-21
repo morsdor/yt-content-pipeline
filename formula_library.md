@@ -1,4 +1,4 @@
-# Formula Library — v1.0
+# Formula Library — v1.1
 
 *Part of the [pipeline docs](pipeline_automation.md). Added July 21, 2026 with the
 packaging-research system. This is the **one canonical list** of title formulas:
@@ -38,6 +38,7 @@ exist as far as the pipeline is concerned.*
 | F9 | The Hidden X That Runs Y | "The Hidden [X] That Runs/Built [Y]" | Invisible infrastructure revealed under a familiar surface | The Hidden Waterways That Built the Netherlands | Calling something hidden that the audience already knows about |
 | F10 | Why X Is Dying | "Why [X] Is Dying/Disappearing" | Loss aversion + urgency — see it before it's gone | Why the World's Great Canals Are Disappearing | Pure nostalgia with no stakes; a channel-wide morbid drumbeat if overused |
 | F11 | The Question Hook | "How Did [Civilization] [Impossible-Sounding Feat]?" | The curiosity gap stated as a literal question the viewer can't answer but feels they should | How Did Venice Build a City on Water? | A weak question reads as homework — the feat must sound impossible yet graspable |
+| F12 | How It Works (The Cutaway Reveal) | "How [Machine/System] Works" / "How [X] Is Made" | Mechanism curiosity — you've used or seen it but never inside it; the promise is to cut it open and show how it functions | How a Roman Aqueduct Moved Water Over a Valley | Needs real hidden complexity + a strong cutaway; a simple mechanism or a talking head reveals nothing. (Distinct from F8: no wrong belief to correct, just an unopened box.) |
 
 **Tag by mechanism, not by string.** The formula is the *hook mechanism*, not a word
 template — "The Crazy Engineering of Venice" (a real 3.6× outlier in the CSV) is F1's
@@ -67,5 +68,9 @@ library as follows — one list, no duplicates:
 
 **Version history:**
 
+- v1.1 — July 21, 2026: added **F12 How It Works (The Cutaway Reveal)** on evidence —
+  12 of 21 new outliers from the animated-engineering comps (Animagraffs, Branch
+  Education, Sabin Civil, Jared Owen) shared this hook while tagging `none`. It is the
+  channel's native cutaway format. See `data/outliers.csv`.
 - v1.0 — July 21, 2026: seeded F1–F10 (packaging-research spec) + F11 (the house
   Question Hook, §4's original #1).
