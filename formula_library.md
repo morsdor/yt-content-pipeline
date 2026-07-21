@@ -1,0 +1,71 @@
+# Formula Library — v1.0
+
+*Part of the [pipeline docs](pipeline_automation.md). Added July 21, 2026 with the
+packaging-research system. This is the **one canonical list** of title formulas:
+`channel_strategy.md` §4 points here, the Phase −1 packaging gate generates title
+candidates from here, and `scripts/tag_outliers.py` labels every row of
+`data/outliers.csv` against these ids. If a pattern isn't in this table, it doesn't
+exist as far as the pipeline is concerned.*
+
+## How the library is used
+
+1. **Choosing what to make (Phase −1).** Topic selection starts from the data, not a
+   blank page: after a refresh, `scripts/tag_outliers.py` prints the **top-3 formulas**
+   currently breaking out across the comp set ([outlier_system.md](docs/outlier_system.md)).
+   Generate ~25 title candidates across several formulas, weighted toward those top-3 —
+   the concept only earns production hours once one of those titles survives the gate.
+2. **Tagging evidence.** The tagger sends the table below to Claude and writes a
+   `formula_tag` + one-line `why` per outlier — over time `data/outliers.csv` becomes a
+   per-formula scoreboard of what actually earns clicks around our niche.
+3. **Growing the library.** When the tagger keeps returning `none` for a repeating kind
+   of title, that's a new pattern knocking — add it as the next F-id (rules below).
+
+## The formulas
+
+<!-- MACHINE-READABLE: scripts/tag_outliers.py parses rows matching `^| F<n> |` and
+     reads the first three columns (id, name, pattern). Keep F-ids in THIS table only. -->
+
+| ID | Name | Pattern | Psychological driver | Example (our niche) | Failure mode |
+|:--|:--|:--|:--|:--|:--|
+| F1 | The Insane Logistics | "The Insane Logistics/Engineering of [X]" | Scale invisibility — a familiar-sounding thing hides absurd numbers | The Insane Logistics of Feeding Ancient Rome | The subject is merely large, not insane — the title over-promises and the video under-delivers |
+| F2 | Why X Is/Isn't Y | "Why [X] Is/Isn't [Y]" | Resolves a tension the viewer half-noticed but never got answered | Why Roman Concrete Outlasts Ours | Dead on arrival if the viewer never felt the tension — it must pre-exist the click |
+| F3 | How X Almost Broke Y | "How [X] Almost Destroyed/Broke [Y]" | Near-miss stakes — survival was contingent, not inevitable | How One Flood Almost Erased Venice | An "almost" that was never actually close burns trust with an expert audience |
+| F4 | The $N Billion X | "The $[N] Billion [X] That [Y]" | A hard number anchors scale and stakes before the click | The $2 Billion Canal Nobody Uses | A figure that's unverifiable, unremarkable — or quoted in rupees the Tier-1 audience can't feel |
+| F5 | X's Y Problem | "[X]'s [Y] Problem" | An admired thing with one named structural weakness | The Suez Canal's Sand Problem | "Problem" left vague — it must be specific, structural, and real |
+| F6 | The Last/Only/Largest X | "The Last/Only/Largest [X] (Ever Built)" | Superlative scarcity — the one member of the category that matters | The Largest Machine the Ancient World Ever Built | A contestable superlative — one wrong "only" and the comment section becomes the video |
+| F7 | Why Nobody Can X | "Why Nobody Can [Rebuild/Copy/Explain] [X]" | Lost-knowledge mystery — modern capability failing at an old feat | Why Nobody Can Rebuild the Pantheon's Dome | Deflating when the honest answer is mundane (cost, permits, priorities) |
+| F8 | How X Actually Works | "How [X] Actually Works" | "Actually" implies the viewer's mental model is wrong — a correction itch | How a Medieval Windmill Actually Works | Needs an existing wrong prior to correct; obscure subjects have none |
+| F9 | The Hidden X That Runs Y | "The Hidden [X] That Runs/Built [Y]" | Invisible infrastructure revealed under a familiar surface | The Hidden Waterways That Built the Netherlands | Calling something hidden that the audience already knows about |
+| F10 | Why X Is Dying | "Why [X] Is Dying/Disappearing" | Loss aversion + urgency — see it before it's gone | Why the World's Great Canals Are Disappearing | Pure nostalgia with no stakes; a channel-wide morbid drumbeat if overused |
+| F11 | The Question Hook | "How Did [Civilization] [Impossible-Sounding Feat]?" | The curiosity gap stated as a literal question the viewer can't answer but feels they should | How Did Venice Build a City on Water? | A weak question reads as homework — the feat must sound impossible yet graspable |
+
+**Tag by mechanism, not by string.** The formula is the *hook mechanism*, not a word
+template — "The Crazy Engineering of Venice" (a real 3.6× outlier in the CSV) is F1's
+driver wearing different words. Generate and classify accordingly.
+
+## Where §4's original five went
+
+The five patterns that used to live inline in `channel_strategy.md` §4 map into the
+library as follows — one list, no duplicates:
+
+| §4 original | Now lives at |
+|:--|:--|
+| 1. The Question Hook — "How Did [Civilization] [Impossible-Sounding Feat]?" | F11 (kept verbatim — the house pattern) |
+| 2. The Superlative — "The [Oldest/Largest/Most Complex] [Thing] Ever Built" | F6 |
+| 3. The Failure — "The [Structure] That [Failed] Because of [Surprising Cause]" | F3 |
+| 4. The Hidden Story — "The [Everyday Thing] That Was Actually [Mind-Blowing Origin]" | F9 |
+| 5. The Comparison — "Why [Ancient Version] Was Better Than [Modern Equivalent]" | F2 |
+
+## Versioning rules
+
+- **Ids are permanent.** `data/outliers.csv` and packaging docs reference them — never
+  renumber, never reuse. Retire a formula by appending "(retired — date, reason)" to its
+  Name cell; the row stays so old tags keep resolving.
+- **Adding:** append the next F-id and bump the version in the title line. A formula
+  earns a row on **evidence** — several outliers sharing a hook mechanism that tags as
+  `none` — not on brainstorming.
+
+**Version history:**
+
+- v1.0 — July 21, 2026: seeded F1–F10 (packaging-research spec) + F11 (the house
+  Question Hook, §4's original #1).

@@ -241,13 +241,10 @@ A master style prefix is prepended to EVERY image generation call to maintain co
 - **Release rhythm:** drip them in the 10–14 day gap between long-form uploads, so the channel never goes quiet.
 - **Judge them correctly:** Shorts are *discovery*, not the product. The metric is subscribers gained and long-form click-through — not Shorts view counts, which are vanity at best. If a Short's topic pops, that's free audience research for a future long-form video.
 
-Every title follows one of these proven patterns:
-
-1. **The Question Hook:** "How Did [Civilization] [Impossible-Sounding Feat]?"
-2. **The Superlative:** "The [Oldest/Largest/Most Complex] [Thing] Ever Built"
-3. **The Failure:** "The [Structure] That [Dramatic Failure Verb] Because of [Surprising Cause]"
-4. **The Hidden Story:** "The [Everyday Thing] That Was Actually [Mind-Blowing Origin]"
-5. **The Comparison:** "Why [Ancient Version] Was Better Than [Modern Equivalent]"
+Every title comes from **[formula_library.md](formula_library.md)** — the versioned
+canonical formula list (F1–F11) that the Phase −1 packaging gate generates candidates
+from and `scripts/tag_outliers.py` tags competitor outliers against. (The five patterns
+that used to be listed here live on as F11, F6, F3, F9 and F2.)
 
 ---
 
