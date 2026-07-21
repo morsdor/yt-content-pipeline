@@ -27,6 +27,13 @@ The multiple — *not* raw views — is the signal: 40M views on RealLifeLore is
 | `scripts/weekly_refresh.py` | Same scan restricted to the last 30 days + a "what's new" summary. The Monday habit. | ₹0 |
 | `scripts/tag_outliers.py` | Labels untagged rows against `formula_library.md`; prints the **top-3 patterns** among ≥5× outliers of the last 90 days. | **charged** (~$0.02/50 rows on Haiku) — gated behind `--dry-run` / `--yes` |
 
+> [!TIP]
+> **The ₹0 tagging path:** in a Claude Code session, Claude *is* the model — it tags new
+> rows directly (same contract: F-ids from the library or `none`, one-line `why`) at no
+> extra cost. The script's API path exists only for **unattended** runs (the weekly
+> Action), and even there it self-skips without a key; untagged rows simply accumulate
+> until the next working session.
+
 ## Setup (one-time)
 
 1. [console.cloud.google.com](https://console.cloud.google.com) → create/select a project
@@ -35,7 +42,8 @@ The multiple — *not* raw views — is the signal: 40M views on RealLifeLore is
 2. Add `YOUTUBE_API_KEY=...` to `.env` at the repo root.
    ⚠️ This is a **different key** from the Gemini one: the YouTube Data API's free tier
    (10,000 units/day) needs **no billing**. Don't reuse the AI Studio key.
-3. Optional (tagging): `ANTHROPIC_API_KEY` in `.env` + `pip install anthropic`.
+3. Optional (unattended tagging only): `ANTHROPIC_API_KEY` in `.env` + `pip install
+   anthropic`. Skip this if Claude tags in-session (the ₹0 path above).
 4. First run: `python3 scripts/fetch_outliers.py` — **eyeball the channel-resolution
    table it prints** (handle → channel title): a wrong handle would silently track the
    wrong channel forever. Resolutions are cached in `data/.channels_cache.json`

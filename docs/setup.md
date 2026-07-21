@@ -33,7 +33,7 @@ brew install node
 | **Google AI Studio** | [aistudio.google.com](https://aistudio.google.com) → "Get API key" | **Paid tier required for image models** (no free tier — see [costs.md](costs.md)) |
 | **YouTube Data API v3** (outlier research) | [console.cloud.google.com](https://console.cloud.google.com) → enable "YouTube Data API v3" → Credentials → API key | **Free** — 10,000 units/day, no billing (a *different* key from the Gemini one; see [outlier_system.md](outlier_system.md)) |
 | **ElevenLabs** (optional) | [elevenlabs.io](https://elevenlabs.io) → Settings → API Key | Free tier fine (pickups only) |
-| **Anthropic** (optional — headless scripting + `tag_outliers.py`) | [console.anthropic.com](https://console.anthropic.com) | Pay-per-use (tagging ≈ $0.02/run, gated) |
+| **Anthropic** (optional — *unattended* `tag_outliers.py` runs only; in-session Claude tags for free) | [console.anthropic.com](https://console.anthropic.com) | Pay-per-use (tagging ≈ $0.02/run, gated) |
 
 > [!IMPORTANT]
 > Your Google AI Plus subscription does NOT provide API access. The API key comes from
