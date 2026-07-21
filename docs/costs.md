@@ -31,7 +31,7 @@ in After Effects (flat subscription, ₹0 marginal). The budget's shape changed 
 > anymore — iteration costs minutes, not money. The studio chain itself is ₹0: the only
 > charged step it triggers is the asset batch, behind a human gate.
 >
-> **Image cost, measured (Jul 2026, video #1 — Chand Baori):** ₹640 for 87 successful
+> **Image cost, measured (Jul 2026, on the first — since scrapped — project):** ₹640 for 87 successful
 > generations = **~₹7.4/image (~$0.086)**, because Nano Banana 2 emits larger, higher-token
 > images (~1,400 output tokens each). That first run was ~87 gens because two *systematic*
 > prompt issues were found and fixed (space-filling; style-anchor bleed); with those fixes

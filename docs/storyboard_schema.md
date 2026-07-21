@@ -183,8 +183,8 @@ An assembly scene (no AI plate — built from library assets on a simple backgro
 | `image_prompt` | → `plate.subject`. |
 | top-level two-pass note | → the seven studio passes + `passes` ledger. |
 
-`prompt_builder.py` and `generate_images.py` retain v1 fallbacks while
-`projects/001_chand_baori` completes its retro-direction; new projects are v2-only.
+`prompt_builder.py` and `generate_images.py` retain v1 fallbacks for legacy boards;
+all new projects are v2-only.
 
 ---
 

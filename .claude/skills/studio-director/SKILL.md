@@ -73,7 +73,7 @@ user's AE session (per ae_build + scaffolds) → Layer 3 render QC → Premiere 
 
 ## Enrichment mode (retro-directing a v1 board)
 
-For a project mid-production on v1 (e.g. `001_chand_baori`): run the same chain with each
+For a project mid-production on a v1 board: run the same chain with each
 pass in its documented enrichment mode — keep scene boundaries, durations, and existing
 stills; derive skeletons from what exists; audit rather than redesign the sequence; describe
 the real rendered frames; add layers only as additions; convert motion intent to numbers;
