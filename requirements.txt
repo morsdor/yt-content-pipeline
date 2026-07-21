@@ -7,3 +7,5 @@ pillow               # text overlays + image handling
 google-genai         # generate_images.py / generate_asset.py — Gemini images
 # Animation is hand-built in After Effects (docs/after_effects_workflow.md) —
 # no generative-video deps needed.
+pyyaml               # scripts/fetch_outliers.py — competitor channel list
+# anthropic          # optional: scripts/tag_outliers.py (formula tagging) — install if you use it

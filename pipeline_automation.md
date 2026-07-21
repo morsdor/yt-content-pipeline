@@ -100,6 +100,8 @@
 | [docs/voice_narration.md](docs/voice_narration.md) | Self-recording workflow, ElevenLabs pickup fallback + settings | Recording narration |
 | [docs/costs.md](docs/costs.md) | Per-video + monthly budget, cost levers | Budget questions; plan sizing |
 | [docs/production_workflow.md](docs/production_workflow.md) | Sessions 0–6: research → storyboard → images → animation → voice → assembly → thumbnails → publish | The month-to-month operating rhythm |
+| [docs/outlier_system.md](docs/outlier_system.md) | **Competitor outlier database** — free YouTube Data API scan of the 15-channel comp set → `data/outliers.csv`, formula tagging, weekly Action | Setting up / running packaging research; the Phase −1 precedent check |
+| [docs/packaging_system_audit.md](docs/packaging_system_audit.md) | Task-0 audit that preceded the packaging-research build — premises verified with file:line evidence | Historical record; why these pieces exist |
 
 ## The skills (agent-executed procedures)
 
@@ -123,4 +125,4 @@ Research and fact-check yourself (incl. the reference pack) → your approved sc
 
 ---
 
-*Last updated: July 13, 2026 — the studio pivot: direction-first pre-production (seven-pass studio chain on one storyboard.json v2), image generation now derived, VO before build, Premiere Pro conform, video_assembler repurposed as the animatic. Previous revisions: July 12 (animation pivot — generative i2v removed, AE hand-built motion), July 10 (visual accuracy, thumbnails, corrected budget + hours), July 6 (2/month cadence, self-narration, fact-check + disclosure gates — see `strategy_review.md`).*
+*Last updated: July 13, 2026 (second pass) — packaging-research system, part 1: competitor outlier database (`scripts/fetch_outliers.py` + `weekly_refresh.py` + `tag_outliers.py`, `data/comp_channels.yaml` with the 15-channel comp set, weekly GitHub Action; see `docs/outlier_system.md` and `docs/packaging_system_audit.md`). Earlier the same day — the studio pivot: direction-first pre-production (seven-pass studio chain on one storyboard.json v2), image generation now derived, VO before build, Premiere Pro conform, video_assembler repurposed as the animatic. Previous revisions: July 12 (animation pivot — generative i2v removed, AE hand-built motion), July 10 (visual accuracy, thumbnails, corrected budget + hours), July 6 (2/month cadence, self-narration, fact-check + disclosure gates — see `strategy_review.md`).*
