@@ -58,3 +58,32 @@ channels:
   - name: Fall of Civilizations
     handle: "@FallofCivilizations"
     why: "topic lane — long-form ancient-history storytelling; our historical-depth audience overlap"
+
+  # ── Candidates added 2026-07-21 — VERIFY each @handle before the first scan ──
+  # A wrong handle silently tracks the WRONG channel, so correct these first, then
+  # tell me to run the scan. All are animated engineering / historical-engineering
+  # channels — squarely on the core strategy, no drift into general pop-history.
+  - name: Jared Owen
+    handle: "@JaredOwen"   
+    why: "format lane — 3D-animated how-it-works of machines and historic structures; closest visual + topic twin to our isometric cutaways"
+  - name: Sabin Civil Engineering
+    handle: "@SabinCivil"                
+    why: "format lane — 3D-animated engineering how-it-works at massive scale; proof the mechanism-explainer format sells"
+  - name: Branch Education
+    handle: "@BranchEducation"     
+    why: "format lane — premium 3D-animated how-it-works (chips, GPS, infrastructure); an explainer-animation quality benchmark"
+  - name: Animagraffs
+    handle: "@animagraffs"    
+    why: "format lane — animated exploded-view cutaways; the exact 'how it works' craft we hand-build in After Effects"
+  - name: The Efficient Engineer
+    handle: "@TheEfficientEngineer"  
+    why: "format lane — clean single-concept engineering explainers; disciplined topic and title focus worth studying"
+  - name: toldinstone
+    handle: "@toldinstone"           
+    why: "topic lane — Roman engineering and daily life (aqueducts, roads, the Colosseum); our historical-engineering core exactly"
+  - name: Historia Civilis
+    handle: "@HistoriaCivilis"     
+    why: "topic lane — minimalist-animated ancient history; schematic motion plus strong, restrained title craft"
+  - name: Ancient Architects
+    handle: "@AncientArchitects"
+    why: "topic lane — ancient construction and archaeology; 'how did they build it' mysteries in our subject space"
