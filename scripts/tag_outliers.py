@@ -6,7 +6,7 @@ Reads untagged rows (empty formula_tag) from data/outliers.csv, sends them to
 Claude in batches with the formula table from formula_library.md, and writes
 back a formula_tag (F1..Fn, or "none") plus a one-sentence "why it worked".
 Then prints the top-3 winning formulas among big outliers (>=5x, last 90 days)
-— the "what's working right now" read for the Phase -1 packaging gate.
+— the "what's working right now" read for the Packaging gate.
 
 !! CHARGED STEP — this calls the Anthropic API (pay-per-use). The cost is tiny
    (~$0.02 / 50 rows on Haiku) but per house rules nothing charged runs without

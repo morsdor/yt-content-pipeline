@@ -11,14 +11,16 @@ or shallow fact-checking, and the templated-batch signature is what YouTube's
 inauthentic-content enforcement flags.
 
 ```
-S−1 packaging (topic from the data) → S0 research → S1 script → S2 studio (board)
-→ S3 VO + true-up → S4 generate + animatic → S5 AE build → S6 conform in Premiere
-→ S6b thumbnails → S7 QA + publish
+PRE-PRODUCTION  packaging (topic from the data) → research → script → studio (board)
+PRODUCTION      VO + true-up → generate + animatic → AE build
+DELIVERY        conform in Premiere → thumbnails → QA + publish
 ```
 
-## Session −1: Packaging (30–45 min, ₹0 — the topic earns its production hours here)
+## PRE-PRODUCTION
 
-*Executable versions: Phase −1 of the `the-engineering-atlas-video` skill +
+### Packaging (30–45 min, ₹0 — the topic earns its production hours here)
+
+*Executable versions: the Packaging gate of the `the-engineering-atlas-video` skill +
 `thumbnail-workflow` Stage 1. Evidence base: [outlier_system.md](outlier_system.md).*
 
 ```
@@ -32,10 +34,10 @@ Before ANY research hour is spent:
   → One-sentence thumbnail concept ("dominant object + 3–4 words") + 120-px mock
   → LOCK projects/NNN_topic/packaging.md: title + 2 alternates, formula id,
     precedent rows (video id + multiple), thumbnail concept.
-    No packaging.md → no Session 0.
+    No packaging.md → no research.
 ```
 
-## Session 0: Research + Fact-Check (2–4 hours, non-negotiable)
+### Research + Fact-Check (2–4 hours, non-negotiable)
 
 ```
 For the topic:
@@ -48,19 +50,19 @@ For the topic:
   → Decide the "what most people miss" insight — your engineer's-eye take
 ```
 
-## Session 1: Script (1–2 hours)
+### Script (1–2 hours)
 
 ```
-Using your fact-checked research notes from Session 0:
+Using your fact-checked research notes from the Research stage:
   → Claude drafts a 10–13 min script on the beat sheet (brand_guide §7)
   → YOU rewrite the hook + 2–3 perspective paragraphs in your own voice
   → PACKAGING DRIFT CHECK: the script still delivers what packaging.md
-    (Session −1) promises. Story moved during research? Update the packaging
-    deliberately (re-run the Session −1 checks) — never drift silently.
+    (from Packaging) promises. Story moved during research? Update the packaging
+    deliberately (re-run the Packaging checks) — never drift silently.
   → Save script.md. The script is now FINAL enough to record.
 ```
 
-## Session 2: The Studio — boarding (2–3 hours, ₹0)
+### The Studio — boarding (2–3 hours, ₹0)
 
 *Run the `studio-director` skill. Seven passes fill ONE `storyboard.json` (schema v2),
 mirrored by `shot_list.md`. Craft: [cinematography.md](cinematography.md); numbers:
@@ -77,7 +79,9 @@ mirrored by `shot_list.md`. Craft: [cinematography.md](cinematography.md); numbe
   → python prompt_builder.py <sb> --validate between passes
 ```
 
-## Session 3: Voice Recording + True-Up (~45 min)
+## PRODUCTION
+
+### Voice Recording + True-Up (~45 min)
 
 ```
 BEFORE any generation or AE work — the pipeline animates to track:
@@ -89,7 +93,7 @@ BEFORE any generation or AE work — the pipeline animates to track:
     set vo_duration; re-run --validate; scenes shifted >1.5s get a motion re-pace
 ```
 
-## Session 4: Generation + Animatic (1–2 hours wall-clock, can run alongside other work)
+### Generation + Animatic (1–2 hours wall-clock, can run alongside other work)
 
 *Run the [`asset-generation` skill](../.claude/skills/asset-generation/SKILL.md) — it executes
 the board, never improvises.*
@@ -107,7 +111,7 @@ the board, never improvises.*
     (re-time/merge/cut via studio-director) — never at the AE desk.
 ```
 
-## Session 5: Animation in After Effects (the craft hours, hand-built)
+### Animation in After Effects (the craft hours, hand-built)
 
 *Full reference: [after_effects_workflow.md](after_effects_workflow.md). The board preps
 everything; you build. AE transforms the art but never redraws it, so scenes stay sharp
@@ -131,7 +135,9 @@ Build (you, in AE — duplicate template.aep per video):
     camera-only build — validated plate + eased push. You always ship.
 ```
 
-## Session 6: Conform in Premiere Pro (~1 hour)
+## DELIVERY
+
+### Conform in Premiere Pro (~1 hour)
 
 ```
 For the video (this replaces the old automated final assembly):
@@ -144,12 +150,12 @@ For the video (this replaces the old automated final assembly):
   → Export the 4K publish master (H.264, YouTube 2160p preset)
 ```
 
-## Session 6b: Thumbnails (~30–45 min — a growth lever, not an afterthought)
+### Thumbnails (~30–45 min — a growth lever, not an afterthought)
 
 *Executable version: the [`thumbnail-workflow` skill](../.claude/skills/thumbnail-workflow/SKILL.md).*
 
 ```
-For the video (concept was locked back in Session −1's packaging.md):
+For the video (concept was locked back in Packaging's packaging.md):
   → Generate 3 CANDIDATES (thumb_a/b/c.png), varying ONE axis at a time:
     focal object, crop tightness, or accent intensity
   → The 120-px squint test on each candidate (shrink to inbox size):
@@ -163,7 +169,7 @@ For the video (concept was locked back in Session −1's packaging.md):
     (concept, winner, CTR at 7 and 28 days)
 ```
 
-## Session 7: QA + Disclosure + Publish
+### QA + Disclosure + Publish
 
 ```
 For the video:

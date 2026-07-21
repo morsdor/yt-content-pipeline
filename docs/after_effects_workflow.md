@@ -1,7 +1,7 @@
 # After Effects Workflow — AI-Assisted, Hand-Animated
 
 *Part of the [pipeline docs](../pipeline_automation.md). This IS the animation stage
-(Session 3 of [production_workflow.md](production_workflow.md)). AI generates the assets
+(the Narration stage of [production_workflow.md](production_workflow.md)). AI generates the assets
 and the instructions; you (and AE's deterministic transforms) produce the motion.
 Nothing generative ever touches the moving pixels — that's why it stays sharp.*
 
@@ -99,7 +99,7 @@ assets_library/
 - [ ] After each generation batch, Claude updates `INDEX.md` — before generating anything
       new, check the index first. Reuse beats regenerate for both cost and consistency
 
-## Phase 2 — Per-video process (Session 5 of the production workflow)
+## Phase 2 — Per-video process (the AE build stage of the production workflow)
 
 - [ ] **The board arrives finished** (studio-director chain, `docs/storyboard_schema.md`):
       every scene carries its numeric `camera{}` + `layers[].motion{}` specs
@@ -119,7 +119,7 @@ assets_library/
       `fam_plate_push`, `fam_stage`) — next video, duplicate and swap the art. By video 5
       you're assembling, not animating
 - [ ] Render scenes → `projects/XXX/clips/scene_NN.mp4` — native 4K, 30fps, **~1s handles
-      both ends**. Final conform happens in **Premiere Pro** (Session 6): clips on the VO
+      both ends**. Final conform happens in **Premiere Pro** (the conform stage): clips on the VO
       at their `t_start` marks, trim into the handles, cuts on narration beats
 
 ## Phase 3 — Using AI while you're inside AE

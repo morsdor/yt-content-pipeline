@@ -32,18 +32,18 @@ And the three governing docs disagree among themselves on which gate:
 |:---|:---|:---|
 | `channel_strategy.md:191` | "**Packaging-first gate (at storyboard approval, before any production spend):** write the title and a one-sentence thumbnail concept" | storyboard approval |
 | `thumbnail-workflow/SKILL.md:20,85` | "Stage 1 — Packaging-first gate (**at storyboard approval**, BEFORE any production spend)" · "The packaging gate **blocks storyboard approval**" | storyboard approval |
-| `the-engineering-atlas-video/SKILL.md:62` | "**Packaging-first gate** (…): title + one-sentence thumbnail concept **before anything is boarded**" — listed under *Phase 1 — Script* | script approval |
+| `the-engineering-atlas-video/SKILL.md:62` | "**Packaging-first gate** (…): title + one-sentence thumbnail concept **before anything is boarded**" — listed under *Script* | script approval |
 | `new_video_prompt_template.md` (step 3) | "give me the title + a one-sentence thumbnail concept with it — **no thumbnail concept, no approval**" | storyboard approval |
 
 Two observations:
 
 1. "Before any production spend" in these docs means **cash** (image generation), not
-   **hours**. Phase 0 research (2–4 hrs) and Phase 1 script (1–2 hrs) run before any
+   **hours**. Research (2–4 hrs) and Script (1–2 hrs) run before any
    packaging validation. The task's premise stands: nothing validates the promise before
    research/scripting spend.
 2. The script-vs-storyboard disagreement is an artifact of the July 13 studio pivot
    (the skill moved the gate earlier; strategy + thumbnail docs weren't retimed).
-   **Task 3 resolves both problems with one answer:** validation at Phase −1 (topic
+   **Task 3 resolves both problems with one answer:** validation at Packaging (topic
    selection), execution at thumbnail production — every doc retimed consistently.
    → **Build.**
 
@@ -58,8 +58,8 @@ Two observations:
   no mechanism attached.
 - `strategy_review.md` §1 — same observation, same gap.
 - Zero hits for launch seeding, Hacker News, subreddits, or any geography check in the
-  publish phases (`the-engineering-atlas-video/SKILL.md` Phase 9,
-  `docs/production_workflow.md` Session 7 — neither has a geo item).
+  publish phases (`the-engineering-atlas-video/SKILL.md` Publish,
+  `docs/production_workflow.md` Publish — neither has a geo item).
 
 → **Task 4 builds** (as §4b, next to the §4a non-negotiables, + a publish-phase checkbox).
 
@@ -68,7 +68,7 @@ Two observations:
 **Consistent — no contradiction, no change needed.**
 
 - `channel_strategy.md:56` (§2): "Self-narration from **day 1**."
-- `the-engineering-atlas-video/SKILL.md:75` (Phase 3): "Record the fact-checked script
+- `the-engineering-atlas-video/SKILL.md:75` (Narration): "Record the fact-checked script
   yourself (**before** any AE work — animate to track, `RHYTHM-1`)."
 - `docs/voice_narration.md:5,27`: "record your own narration (from day 1)" · the ElevenLabs
   clone is "a convenience tool, **never the narration source**."
@@ -96,7 +96,7 @@ Nothing anywhere implies AI narration as default; the clone is pickups-only, con
 |:---|:---|
 | 1 — Outlier database + title research | **Build** — nothing exists |
 | 2 — Formula library | **Build** — reconcile §4's five house patterns into it (one canonical list) |
-| 3 — Phase −1 packaging gate | **Build** — also fixes the 3-way gate-timing inconsistency |
+| 3 — Packaging gate | **Build** — also fixes the 3-way gate-timing inconsistency |
 | 4 — Tier-1 geo rule | **Build** — projections exist, enforcement doesn't |
 | Narration contradiction | **No action** — docs are consistent |
 

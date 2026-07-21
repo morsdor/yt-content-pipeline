@@ -6,7 +6,7 @@ For each channel in data/comp_channels.yaml: pull its recent long-form uploads
 (Shorts excluded by duration), take the channel's MEDIAN views as its baseline,
 compute  multiple = views / baseline,  and record every video at or above the
 threshold (default 3x) into data/outliers.csv — the evidence base for the
-Phase -1 packaging gate ("does this concept have a >=3x precedent?").
+Packaging gate ("does this concept have a >=3x precedent?").
 
 Usage:
     python3 scripts/fetch_outliers.py                  # full run (~65 quota units of 10,000/day)

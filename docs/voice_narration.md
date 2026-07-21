@@ -6,7 +6,7 @@
 
 Recording ~10–13 minutes of narration for 2 videos/month is a trivial time cost (~20–30 min/video including cleanup) and is the single strongest authenticity + differentiation signal you can send. This is the default.
 
-> **When: right after the board is approved, BEFORE any generation or AE work** (Session 3
+> **When: right after the board is approved, BEFORE any generation or AE work** (the Narration stage
 > of [production_workflow.md](production_workflow.md)). The pipeline *animates to track*
 > (`cinematography.md RHYTHM-1`): scenes are timed to your real read, AE renders carry ~1s
 > handles, and the Premiere conform becomes trim-only. Recording last (the old order) meant
