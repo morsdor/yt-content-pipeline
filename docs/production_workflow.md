@@ -176,6 +176,11 @@ For the video:
   → Title (per formula) + description (hook → chapters → sources → subscribe)
   → 2–3 Shorts from self-contained beats; drip between uploads
   → Publish/schedule on your consistent day/time (e.g., Saturday AM US)
+  → SEED where Tier-1 lives (channel_strategy §4b): HN, relevant subreddits,
+    engineering Twitter — NEVER Indian WhatsApp/LinkedIn (early viewers train
+    the lookalike model)
+  → GEOGRAPHY CHECK (§4b): Studio → Audience → Top geographies;
+    US+UK+CA+AU ≥50% by ~video 10 — drifting? correct within two videos
 ```
 
 **Time per video:** ~10–14 hours end to end, spread across the two-week cycle (the first

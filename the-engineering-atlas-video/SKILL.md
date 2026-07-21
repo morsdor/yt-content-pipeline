@@ -121,6 +121,8 @@ verdicts), Layer 2.5 on every library asset. **No unvalidated art proceeds.**
 - [ ] Cut **2–3 Shorts** from self-contained beats (cross-section reveal, scale comparison, detail zoom): 9:16, 15–45s, hook overlay first second, end-card to the full video
 - [ ] ✅ **Tick "Altered content"** on upload (AI-assisted visuals/voice)
 - [ ] Schedule for your consistent slot (e.g., Saturday AM US)
+- [ ] **Seed where Tier-1 lives** (`channel_strategy.md §4b`): HN / relevant subreddits / engineering Twitter — **never** Indian WhatsApp/LinkedIn (the first viewers train the lookalike model)
+- [ ] **Geography check (§4b):** Studio → Audience → Top geographies — US+UK+CA+AU tracking toward **≥50% by ~video 10**; drifting → correct framing/seeding within the next two videos
 
 ---
 
