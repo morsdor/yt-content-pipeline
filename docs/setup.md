@@ -7,7 +7,7 @@
 ```bash
 # Core tools
 brew install ffmpeg imagemagick
-pip install moviepy pillow numpy google-genai rembg
+pip install moviepy pillow numpy google-genai rembg pyyaml
 
 # Node.js (for MCP servers)
 brew install node
@@ -31,8 +31,9 @@ brew install node
 | Service | Where to get it | Cost |
 |:---|:---|:---|
 | **Google AI Studio** | [aistudio.google.com](https://aistudio.google.com) → "Get API key" | **Paid tier required for image models** (no free tier — see [costs.md](costs.md)) |
+| **YouTube Data API v3** (outlier research) | [console.cloud.google.com](https://console.cloud.google.com) → enable "YouTube Data API v3" → Credentials → API key | **Free** — 10,000 units/day, no billing (a *different* key from the Gemini one; see [outlier_system.md](outlier_system.md)) |
 | **ElevenLabs** (optional) | [elevenlabs.io](https://elevenlabs.io) → Settings → API Key | Free tier fine (pickups only) |
-| **Anthropic** (optional, for headless scripting) | [console.anthropic.com](https://console.anthropic.com) | Pay-per-use |
+| **Anthropic** (optional — *unattended* `tag_outliers.py` runs only; in-session Claude tags for free) | [console.anthropic.com](https://console.anthropic.com) | Pay-per-use (tagging ≈ $0.02/run, gated) |
 
 > [!IMPORTANT]
 > Your Google AI Plus subscription does NOT provide API access. The API key comes from
@@ -93,6 +94,9 @@ After editing, restart Claude Desktop. The tools will appear in your "Search and
 | `generate_images.py` | Plate generation via Gemini (style anchor + geometry reference; skips `assembly` scenes) |
 | `generate_asset.py` | Library-asset generation → transparent PNGs into `assets_library/` (STYLE_BIBLE rules) |
 | `review_images.py` | Builds the accuracy-gate review artifacts (contact sheets, render-vs-reference pairs) |
+| `scripts/fetch_outliers.py` | Competitor outlier database — YouTube Data API scan → `data/outliers.csv` ([outlier_system.md](outlier_system.md)) |
+| `scripts/weekly_refresh.py` | Monday pass: last-30-days outliers + what's-new summary (also runs via the GitHub Action) |
+| `scripts/tag_outliers.py` | Labels outlier titles against `formula_library.md` (charged, `--yes`-gated) |
 | `ae_scripts/*.jsx` | AE comp builders — run via `File → Scripts → Run Script File…` |
 | `style_card.txt` | Master prompt prefix for scene stills (single brand source) |
 | `assets_library/STYLE_BIBLE.md` | Asset-generation rules (palette, views, character language, cutout pipeline) |

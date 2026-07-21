@@ -68,7 +68,7 @@ entry. Appends a "Pass 1 — Scene breakdown" table to `shot_list.md`.
 
 ## Enrichment mode (retro-directing an existing v1 board)
 
-When the storyboard already has scenes (e.g. `001_chand_baori`): **do not re-segment.** Keep
+When the storyboard already has scenes (a legacy v1 board): **do not re-segment.** Keep
 existing scene boundaries and durations; add the missing skeleton fields (`id` from position,
 `t_start`/`t_end` cumulative from existing durations, `purpose`, `register`, `needs` derived
 from each scene's `narration_segment` and `scene_type`), set `version: 2`, stamp the ledger.

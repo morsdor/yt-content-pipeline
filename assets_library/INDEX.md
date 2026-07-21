@@ -15,5 +15,5 @@ asset — reuse beats regenerate for cost and consistency. Naming: `category_nam
 | cloud_01 | nature | nature/cloud_01.png | drift slowly with a position expression; duplicate at different scales |
 | rocks_01 | nature | nature/rocks_01.png |  |
 | fort_tower_01 | architecture | architecture/fort_tower_01.png | matches scene-still isometric angle; can sit inside scene compositions |
-| water_pot_01 | props | props/water_pot_01.png | Chand Baori prop; also generic Indian-village dressing |
+| water_pot_01 | props | props/water_pot_01.png | Generic Indian-village dressing (water-carrying prop) |
 | arrow_curved_01 | diagram | diagram/arrow_curved_01.png | Oversimplified-style map arrow; for animated draw-on ask Claude for the stroke-reveal recipe (AE shape layers are the scalable alternative) |

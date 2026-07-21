@@ -23,7 +23,9 @@ from PIL import Image
 SCRIPT_DIR = Path(__file__).resolve().parent
 LIB = SCRIPT_DIR / "assets_library"
 RAW = LIB / "_raw"
-ANCHOR = SCRIPT_DIR / "projects/001_chand_baori/images/scene_01.png"
+# First harvested style anchor, if any (see assets/style_anchors/anchor_prompts.md).
+# None yet -> generate from the STYLE text alone (the anchor clause is suppressed too).
+ANCHOR = next(iter(sorted((SCRIPT_DIR / "assets" / "style_anchors").glob("anchor_*.png"))), None)
 IMAGE_MODEL = "gemini-3.1-flash-image"
 ESRGAN = SCRIPT_DIR / "tools/realesrgan/realesrgan-ncnn-vulkan"
 ESRGAN_MODELS = SCRIPT_DIR / "tools/realesrgan/models"
@@ -67,7 +69,7 @@ def compose_prompt(spec):
     anchor_clause = (
         " || A style reference image is attached: take the palette, line weight and rendering "
         "style from it, but IGNORE its subject and its parchment background entirely."
-        if spec.get("anchor", True) else ""
+        if (spec.get("anchor", True) and ANCHOR) else ""
     )
     return (
         f"{STYLE}{character} || Single isolated asset: {spec['subject'].strip()}. || View: {view} "
@@ -83,7 +85,7 @@ def generate_raw(prompt, out_path, use_anchor=True):
     from google.genai import types
     client = genai.Client()                              # GEMINI_API_KEY from env
     parts = [types.Part.from_text(text=prompt)]
-    if use_anchor:
+    if use_anchor and ANCHOR:
         raw = ANCHOR.read_bytes()
         mime = "image/png" if raw[:8] == b"\x89PNG\r\n\x1a\n" else "image/jpeg"
         parts.append(types.Part.from_bytes(data=raw, mime_type=mime))

@@ -22,7 +22,7 @@ rung of the consistency ladder:
 
 You do **not** need to make swatches upfront. Do this instead:
 
-1. **Video #1 (Chand Baori):** generate images using **`style_card.txt` alone** (the text prefix). That's plenty for one video's internal consistency.
+1. **Video #1:** generate images using **`style_card.txt` alone** (the text prefix). That's plenty for one video's internal consistency.
 2. **After video #1:** pick your **8–10 favorite frames** — the ones that best capture the look you want — and copy them into this folder as `anchor_01.png … anchor_10.png`.
 3. **Video #2 onward:** pass the matching anchor as a style reference (`style_strength ~0.7`) on every generation. Now every future video inherits the look you already proved you like.
 4. **Around video #5–8:** train a LoRA on your 20–30 best images for near-total consistency.
@@ -43,9 +43,10 @@ Try to pick frames that span your scene types, so you have a reference for each 
 
 ## Optional: generate a few swatches upfront (only if you want)
 
-If you'd rather have references *before* video #1, generate a handful. Since video #1 is
-**Chand Baori (Indian, saffron accent #D4812A)**, orient them to that video's needs.
-Paste the top block of `style_card.txt` first, then one prompt:
+If you'd rather have references *before* video #1, generate a handful, oriented to that
+video's civilization and accent color (brand_guide §3). The examples below use an Indian
+water-architecture subject with the saffron accent (#D4812A) — swap subject and accent to
+match your actual first video. Paste the top block of `style_card.txt` first, then one prompt:
 
 **swatch_establishing —** Isometric flat-design technical illustration of a vast square stepwell descending into the earth, wide establishing view, symmetric geometric staircases on all sides, warm golden-hour lighting, muted earth tones with warm saffron/ochre (#D4812A) highlights, warm parchment background, high architectural precision, no text, no people.
 

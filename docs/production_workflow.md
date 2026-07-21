@@ -11,8 +11,28 @@ or shallow fact-checking, and the templated-batch signature is what YouTube's
 inauthentic-content enforcement flags.
 
 ```
-S0 research → S1 script → S2 studio (board) → S3 VO + true-up → S4 generate + animatic
-→ S5 AE build → S6 conform in Premiere → S6b thumbnails → S7 QA + publish
+S−1 packaging (topic from the data) → S0 research → S1 script → S2 studio (board)
+→ S3 VO + true-up → S4 generate + animatic → S5 AE build → S6 conform in Premiere
+→ S6b thumbnails → S7 QA + publish
+```
+
+## Session −1: Packaging (30–45 min, ₹0 — the topic earns its production hours here)
+
+*Executable versions: Phase −1 of the `the-engineering-atlas-video` skill +
+`thumbnail-workflow` Stage 1. Evidence base: [outlier_system.md](outlier_system.md).*
+
+```
+Before ANY research hour is spent:
+  → Refresh the database if stale (scripts/weekly_refresh.py) and read the top
+    patterns (scripts/tag_outliers.py — Claude tags new rows in-session, ₹0)
+  → PRECEDENT CHECK (hard): the concept needs a ≥3× outlier on a comparable
+    channel (data/outliers.csv or vidIQ). None anywhere → PARK it, pick again
+  → ~25 title candidates from formula_library.md (weighted to the top-3
+    patterns) → bored-scroller kill pass → 3 survivors
+  → One-sentence thumbnail concept ("dominant object + 3–4 words") + 120-px mock
+  → LOCK projects/NNN_topic/packaging.md: title + 2 alternates, formula id,
+    precedent rows (video id + multiple), thumbnail concept.
+    No packaging.md → no Session 0.
 ```
 
 ## Session 0: Research + Fact-Check (2–4 hours, non-negotiable)
@@ -34,9 +54,9 @@ For the topic:
 Using your fact-checked research notes from Session 0:
   → Claude drafts a 10–13 min script on the beat sheet (brand_guide §7)
   → YOU rewrite the hook + 2–3 perspective paragraphs in your own voice
-  → PACKAGING-FIRST GATE: write the title + one-sentence thumbnail concept
-    ("dominant object + 3–4 words"). No compelling thumbnail = weak framing —
-    fix the angle NOW, before anything is boarded or generated.
+  → PACKAGING DRIFT CHECK: the script still delivers what packaging.md
+    (Session −1) promises. Story moved during research? Update the packaging
+    deliberately (re-run the Session −1 checks) — never drift silently.
   → Save script.md. The script is now FINAL enough to record.
 ```
 
@@ -129,7 +149,7 @@ For the video (this replaces the old automated final assembly):
 *Executable version: the [`thumbnail-workflow` skill](../.claude/skills/thumbnail-workflow/SKILL.md).*
 
 ```
-For the video (concept was already approved at the Session-1 packaging gate):
+For the video (concept was locked back in Session −1's packaging.md):
   → Generate 3 CANDIDATES (thumb_a/b/c.png), varying ONE axis at a time:
     focal object, crop tightness, or accent intensity
   → The 120-px squint test on each candidate (shrink to inbox size):
@@ -156,6 +176,11 @@ For the video:
   → Title (per formula) + description (hook → chapters → sources → subscribe)
   → 2–3 Shorts from self-contained beats; drip between uploads
   → Publish/schedule on your consistent day/time (e.g., Saturday AM US)
+  → SEED where Tier-1 lives (channel_strategy §4b): HN, relevant subreddits,
+    engineering Twitter — NEVER Indian WhatsApp/LinkedIn (early viewers train
+    the lookalike model)
+  → GEOGRAPHY CHECK (§4b): Studio → Audience → Top geographies;
+    US+UK+CA+AU ≥50% by ~video 10 — drifting? correct within two videos
 ```
 
 **Time per video:** ~10–14 hours end to end, spread across the two-week cycle (the first

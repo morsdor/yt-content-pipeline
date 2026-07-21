@@ -20,7 +20,7 @@ Setup
 
 Usage (from repo root)
 ----------------------
-    SB=projects/001_chand_baori/storyboard.json
+    SB=projects/NNN_topic/storyboard.json
     python generate_images.py --storyboard $SB --scenes 1   # the anchor; eyeball it
     python generate_images.py --storyboard $SB              # the rest, referencing scene 1
     python generate_images.py --storyboard $SB --dry-run    # plan + one sample composed prompt

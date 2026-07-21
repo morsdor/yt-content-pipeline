@@ -12,7 +12,7 @@ Outputs into <project>/review/:
     review_checklist.md    per-scene subject + facts + ref + an empty Verdict column
 
 Usage (from repo root):
-    SB=projects/001_chand_baori/storyboard.json
+    SB=projects/NNN_topic/storyboard.json
     python review_images.py --storyboard $SB                # all scenes
     python review_images.py --storyboard $SB --scenes 8-15  # a subset (one sheet)
 

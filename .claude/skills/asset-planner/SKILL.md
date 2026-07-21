@@ -45,7 +45,7 @@ Asset plan" to `shot_list.md`.
    Follow STYLE_BIBLE generation rules: one element per image, hard-isolation wording,
    flat magenta background, declared view; `"anchor": false` for simple props (the anchor's
    *subject* can leak — the water_pot_01 lesson).
-4. **Name for the future, not the video.** `banyan_01`, not `chand_baori_tree` — assets are
+4. **Name for the future, not the video.** `banyan_01`, not `NNN_topic_tree` — assets are
    cross-video by design. Variants get `_02`, `_03`.
 5. **Register recurrences.** Any asset appearing in 2+ scenes goes into the
    `continuity_registry` with its canonical path (`CONT-2`).

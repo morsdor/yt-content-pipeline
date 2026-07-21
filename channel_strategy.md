@@ -188,7 +188,7 @@ dark moody background, detailed and eye-catching, thumbnail style"
 
 **The workflow (per video):**
 
-1. **Packaging-first gate (at storyboard approval, before any production spend):** write the title and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle before generating a single image.
+1. **Packaging-first gate (Phase −1 — before research, script, or any production spend):** confirm a **≥3× outlier precedent** (`data/outliers.csv` / vidIQ), then write the title (from `formula_library.md`) and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle — or park the topic — before a single research hour is spent.
 2. **Three candidates** (`thumb_a/b/c.png`), varying **one axis at a time** — focal object, crop tightness, or accent intensity. Vary all three at once and the test teaches you nothing.
 3. **The 120-px squint test** — shrink each candidate to inbox size and check: one instantly-recognizable dominant object · text readable · focal point survives the shrink · pops on both dark and light YouTube UI · curiosity gap intact.
 4. **A/B with YouTube "Test & Compare"** — upload all 3; YouTube picks the winner by watch-time share.
@@ -241,13 +241,10 @@ A master style prefix is prepended to EVERY image generation call to maintain co
 - **Release rhythm:** drip them in the 10–14 day gap between long-form uploads, so the channel never goes quiet.
 - **Judge them correctly:** Shorts are *discovery*, not the product. The metric is subscribers gained and long-form click-through — not Shorts view counts, which are vanity at best. If a Short's topic pops, that's free audience research for a future long-form video.
 
-Every title follows one of these proven patterns:
-
-1. **The Question Hook:** "How Did [Civilization] [Impossible-Sounding Feat]?"
-2. **The Superlative:** "The [Oldest/Largest/Most Complex] [Thing] Ever Built"
-3. **The Failure:** "The [Structure] That [Dramatic Failure Verb] Because of [Surprising Cause]"
-4. **The Hidden Story:** "The [Everyday Thing] That Was Actually [Mind-Blowing Origin]"
-5. **The Comparison:** "Why [Ancient Version] Was Better Than [Modern Equivalent]"
+Every title comes from **[formula_library.md](formula_library.md)** — the versioned
+canonical formula list (F1–F11) that the Phase −1 packaging gate generates candidates
+from and `scripts/tag_outliers.py` tags competitor outliers against. (The five patterns
+that used to be listed here live on as F11, F6, F3, F9 and F2.)
 
 ---
 
@@ -274,6 +271,44 @@ In 2026 YouTube renamed its "repetitious content" rule to **"inauthentic content
 
 ---
 
+## 4b. Tier-1 Geographic Targeting — the audience is engineered, not hoped for
+
+> §5's revenue math *assumes* the audience shifts toward the US/UK/CA/AU (Tier-1 RPM $4–8
+> vs India ~$0.5–1.5 — §1 caveat 2). That shift does **not** happen by default for an
+> India-based channel: your own network, early shares, and YouTube's lookalike seeding all
+> pull the other way. So Tier-1 targeting is a written rule with a KPI, enforced from
+> video #1 — not an outcome we wait for.
+
+**The rules (every video):**
+
+1. **Outside-in framing.** Introduce every subject — especially Indian/Asian ones — the way
+   a viewer in Denver or Manchester meets it: locate it on the globe first (the *atlas*
+   move), assume zero local context, expand every local term (never bare "ASI", never
+   "lakh"/"crore"), and anchor scale to things a Tier-1 viewer knows (Hoover Dam,
+   Manhattan, the London Underground).
+2. **Dollars before rupees.** Costs and values in **USD first** (₹ parenthetically at most —
+   cf. `formula_library.md` F4's failure mode). Feet/miles alongside meters when scale is
+   the payoff. Dates in CE.
+3. **Tier-1 precedent bias (Phase −1).** Prefer outlier precedents from the comp set's
+   Tier-1-heavy channels (`data/comp_channels.yaml` is built that way): a title that broke
+   out for Practical Engineering's audience is evidence about the audience we want; one
+   that broke out on a regional channel is not.
+4. **Seed where Tier-1 lives.** Launch pushes go to Hacker News, relevant subreddits
+   (r/InfrastructurePorn, r/EngineeringPorn, r/history), and engineering Twitter/X —
+   **never** Indian WhatsApp groups, LinkedIn circles, or college networks. The first few
+   hundred viewers train YouTube's lookalike model; friendly local traffic teaches the
+   recommender to serve the wrong (low-RPM) audience, and that error compounds.
+5. **KPI + correction loop.** After each publish: YouTube Studio → Analytics → Audience →
+   Top geographies. **Target: US+UK+CA+AU ≥ 50% of views by ~video 10.** Trending below →
+   diagnose (framing? seeding? title idiom?) and correct **within the next two videos**.
+
+This governs what the channel *optimizes* for, not who's welcome — Indian viewers will find
+an Indian-made channel regardless, and that's pure upside in watch time. The rule exists so
+the *marginal* choice — how a fact is framed, where a launch link is posted — always favors
+the audience that funds the channel (§5).
+
+---
+
 ## 5. Growth Projections (Realistic)
 
 > [!IMPORTANT]
@@ -294,7 +329,7 @@ In 2026 YouTube renamed its "repetitious content" rule to **"inauthentic content
 
 ### RPM & Audience-Tier Progression (the honest version)
 
-RPM is what you actually earn per 1,000 views (≈40–55% of the CPM figures in §1). A new India-based channel on global topics **starts India/Tier-2/3-heavy and shifts toward Tier-1 over time** — so your RPM climbs as the audience mix matures, not from day 1.
+RPM is what you actually earn per 1,000 views (≈40–55% of the CPM figures in §1). A new India-based channel on global topics **starts India/Tier-2/3-heavy and shifts toward Tier-1 over time** — so your RPM climbs as the audience mix matures, not from day 1. **§4b is the mechanism:** its framing/seeding rules and the ≥50% Tier-1 KPI exist to *force* this progression (and beat these dates) rather than wait for it.
 
 | Phase | Realistic audience mix | Blended **RPM** (earned) | Notes |
 |:---|:---|:---|:---|
