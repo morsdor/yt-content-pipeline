@@ -31,8 +31,8 @@ text readability — `docs/cinematography.md` §11).
 
 | Input | Where | Made in |
 |:---|:---|:---|
-| Reference pack: 5–15 real photos/plans, source URLs kept | `projects/XXX/references/` | Session 0 (research) |
-| `visual_facts.md`: the structure's *visually checkable* claims | `projects/XXX/references/` | Session 0 |
+| Reference pack: 5–15 real photos/plans, source URLs kept | `projects/XXX/references/` | Research |
+| `visual_facts.md`: the structure's *visually checkable* claims | `projects/XXX/references/` | Research |
 | Per-scene `visual_facts[]` + `reference_image` fields | `storyboard.json` | Storyboard phase |
 | Rendered stills | `projects/XXX/images/` | Image generation |
 | Library assets (for Layer 2.5) | `assets_library/` | Asset generation |
@@ -46,7 +46,7 @@ text readability — `docs/cinematography.md` §11).
 
 These should already be in place; if missing, stop and fix upstream first:
 
-- [ ] `references/` pack + `visual_facts.md` exist (Session 0 output)
+- [ ] `references/` pack + `visual_facts.md` exist (Research output)
 - [ ] Scenes depicting the real structure carry `visual_facts` and `reference_image` (v2: inside `plate{}`); abstract scenes (maps, force diagrams) carry facts only, or neither; the board's top-level `continuity_registry` is populated (v2)
 - [ ] Prevention is automatic once the fields exist: `prompt_builder.py` injects the facts into plate prompts ("Factual constraints") and the board carries them as hold-constraints on the motion blocks (so the AE build knows what may not move or be covered); `generate_images.py` passes the reference photo alongside the style anchor (**anchor = LOOK, photo = GEOMETRY** — the model copies proportions it can *see* far more reliably than proportions described in text)
 

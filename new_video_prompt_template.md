@@ -5,8 +5,8 @@ replace the `{{...}}` placeholders, and send. The `the-engineering-atlas-video` 
 carries the full structure; this prompt just aims it and enforces the review gates.
 
 A topic may arrive two ways: **from the database** (an outlier pattern suggests it —
-the default) or as your own idea (it must still pass the same Phase −1 gate). Either
-way, step 0 runs before any research.
+the default) or as your own idea (it must still pass the same Packaging gate). Either
+way, the Packaging step runs before any research.
 
 ---
 
@@ -18,19 +18,19 @@ Use the `the-engineering-atlas-video` skill and follow `brand_guide.md` and `sty
 Civilization / accent: {{CIVILIZATION}} ({{ACCENT_HEX}}).
 
 Work through it in gated steps and STOP for my sign-off at each gate — don't run ahead:
-0. Phase −1 — packaging: check data/outliers.csv (+ tell me if the CSV is stale)
+1. Packaging — check data/outliers.csv (+ tell me if the CSV is stale)
    for a ≥3× precedent for this concept; if none, say so and suggest what the
    outlier data DOES support instead. Then ~25 titles from formula_library.md
    → kill to 3, one-sentence thumbnail concept, and a draft
    projects/{{PROJECT_FOLDER}}/packaging.md — I lock it BEFORE any research.
-1. Phase 0 — research + fact-check: show me your sources and the key facts
+2. Research + fact-check — show me your sources and the key facts
    ({{KEY_FACTS_TO_VERIFY}}) so I can verify BEFORE you write anything.
    Also build the reference pack: 5–15 real photos/plans into references/ (with
    source URLs) + references/visual_facts.md with the visually checkable claims.
-2. Script: draft it in the witness + engineer + wit voice; I'll rewrite the hook
+3. Script — draft it in the witness + engineer + wit voice; I'll rewrite the hook
    and my perspective paragraphs. Confirm it still delivers what packaging.md
    promises (drift check).
-3. Storyboard (~60–80 scenes): populate visual_facts + reference_image on every
+4. Storyboard (~60–80 scenes) — populate visual_facts + reference_image on every
    scene that depicts the real structure.
 
 Save to projects/{{PROJECT_FOLDER}}/. I'll generate the images (with the accuracy
@@ -55,21 +55,21 @@ Use the `the-engineering-atlas-video` skill and follow `brand_guide.md` and `sty
 Civilization / accent: Indian (#D4812A).
 
 Work through it in gated steps and STOP for my sign-off at each gate — don't run ahead:
-0. Phase −1 — packaging: check data/outliers.csv (+ tell me if the CSV is stale)
+1. Packaging — check data/outliers.csv (+ tell me if the CSV is stale)
    for a ≥3× precedent for ancient-dam / still-in-use infrastructure; if none,
    say so and suggest what the outlier data DOES support instead. Then ~25
    titles from formula_library.md → kill to 3, one-sentence thumbnail concept,
    and a draft projects/001_grand_anicut/packaging.md — I lock it BEFORE any
    research.
-1. Phase 0 — research + fact-check: show me your sources and the key facts
+2. Research + fact-check — show me your sources and the key facts
    (construction era, dimensions, the water-splitting mechanism, what's original
    vs British-era retrofit) so I can verify BEFORE you write anything.
    Also build the reference pack: 5–15 real photos/plans into references/ (with
    source URLs) + references/visual_facts.md with the visually checkable claims.
-2. Script: draft it in the witness + engineer + wit voice; I'll rewrite the hook
+3. Script — draft it in the witness + engineer + wit voice; I'll rewrite the hook
    and my perspective paragraphs. Confirm it still delivers what packaging.md
    promises (drift check).
-3. Storyboard (~60–80 scenes): populate visual_facts + reference_image on every
+4. Storyboard (~60–80 scenes) — populate visual_facts + reference_image on every
    scene that depicts the real structure.
 
 Save to projects/001_grand_anicut/. I'll generate the images (with the accuracy
@@ -83,7 +83,7 @@ gate before any animation) and record narration myself.
 After a few videos you can skip the detail — the skill remembers all of it:
 
 ```
-New Engineering Atlas video: {{TOPIC_OR_CONCEPT}}. Phase −1 packaging first
+New Engineering Atlas video: {{TOPIC_OR_CONCEPT}}. Packaging first
 (precedent + titles + packaging.md), then the gated pipeline, stop at each gate.
 Save to projects/{{PROJECT_FOLDER}}/.
 ```

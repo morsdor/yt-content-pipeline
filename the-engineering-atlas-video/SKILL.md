@@ -42,12 +42,15 @@ render validation), `thumbnail-workflow` (packaging gate + candidates + A/B + lo
 ## Per-video workflow
 
 ```
-−1 PACKAGING (topic from the data · title · thumbnail — LOCKED) → 0 research → 1 script
-→ 2 STUDIO (board) → 3 VO + true-up → 4 generate (derived) → 5 animatic
-→ 6 AE build → 7 render QC → 8 Premiere conform → 9 QA + publish
+PRE-PRODUCTION   PACKAGING (topic from the data · title · thumbnail — LOCKED)
+                 → research → script → STUDIO (board)
+PRODUCTION       VO + true-up → generate (derived) → animatic → AE build → render QC
+DELIVERY         Premiere conform → QA + publish
 ```
 
-### Phase −1 — Packaging Gate (topic + title + thumbnail, from the data)  ⏱ 30–45 min · ₹0 · HUMAN GATE
+## PRE-PRODUCTION
+
+### Packaging Gate (topic + title + thumbnail, from the data)  ⏱ 30–45 min · ₹0 · HUMAN GATE
 
 *The idea must prove it can be packaged **before** it earns a single production hour —
 and topics are **sourced from evidence**, not brainstormed and then justified.*
@@ -56,11 +59,11 @@ and topics are **sourced from evidence**, not brainstormed and then justified.*
 - [ ] **Precedent check (hard):** the concept needs a **≥3× outlier precedent** on a comparable channel — in the CSV, or found live via vidIQ. No precedent anywhere → **park it** (back to the `channel_strategy.md §7` list) and pick again. Parked ≠ killed: the weekly refresh promotes late bloomers.
 - [ ] **Titles:** ~25 candidates from `formula_library.md` (weighted toward the tagger's top-3 patterns) → adversarial pass as a bored scroller — kill anything that needs context, over-promises, or reads as homework → **3 survivors**
 - [ ] **Thumbnail concept:** one sentence — *"dominant object + 3–4 words"* — plus a quick 120-px mock check (`thumbnail-workflow` Stage 1). No compelling thumbnail = weak framing → fix the angle or park the topic.
-- [ ] **Lock it:** `projects/NNN_topic/packaging.md` — chosen title (+2 alternates), formula id, precedent rows (video id + multiple from the CSV), thumbnail concept. **No `packaging.md`, no Phase 0.**
+- [ ] **Lock it:** `projects/NNN_topic/packaging.md` — chosen title (+2 alternates), formula id, precedent rows (video id + multiple from the CSV), thumbnail concept. **No `packaging.md`, no research.**
 - [ ] ✅ Gate: precedent shown · title locked · thumbnail articulated — packaging is now the brief the script must serve
 
-### Phase 0 — Research + Fact-Check  ⏱ 2–4 hrs · HUMAN GATE
-- [ ] Topic arrives **already validated** from Phase −1 (precedent + locked packaging); note its **civilization accent color**
+### Research + Fact-Check  ⏱ 2–4 hrs · HUMAN GATE
+- [ ] Topic arrives **already validated** from the **Packaging** gate (precedent + locked packaging); note its **civilization accent color**
 - [ ] If the topic enters a new civilization/visual territory: **consult the `art-director` skill** — motif kit into the bibles before boarding
 - [ ] Gather real sources — books, papers, museum/engineering references — not just an AI summary
 - [ ] **Reference pack:** collect 5–15 real photos/plans into `projects/NNN_topic/references/` (Wikimedia, ASI/UNESCO, papers — keep source URLs) and write `references/visual_facts.md`: the *visually checkable* claims (geometry, counts, patterns, materials, orientation). These feed the board's `plate.visual_facts` and the accuracy gate.
@@ -68,14 +71,14 @@ and topics are **sourced from evidence**, not brainstormed and then justified.*
 - [ ] Decide the **"what most people miss"** insight — your engineer's-eye take
 - [ ] ✅ Gate: every date, tonnage, dimension, name, and mechanism is checked against a real source
 
-### Phase 1 — Script  ⏱ 1–2 hrs · HUMAN GATE
+### Script  ⏱ 1–2 hrs · HUMAN GATE
 - [ ] Claude drafts a 10–13 min script **from your research notes**, following the beat sheet (brand_guide §7: witness cold-open → problem → how → scale → your-take → callback → sign-off)
 - [ ] **You rewrite** the hook and the 2–3 perspective paragraphs in your own voice
 - [ ] Confirm the **witness/engineer/wit** braid (brand_guide §6); wit ≈ 1 dry beat / 60–90s, never gags
-- [ ] **Packaging drift check:** the script still delivers what the locked `packaging.md` (Phase −1) promises. If research pulled the story elsewhere, update the packaging *deliberately* — re-run the Phase −1 checks on the new angle — never let title and video drift apart silently.
+- [ ] **Packaging drift check:** the script still delivers what the locked `packaging.md` (from Packaging) promises. If research pulled the story elsewhere, update the packaging *deliberately* — re-run the Packaging checks on the new angle — never let title and video drift apart silently.
 - [ ] Save `script.md` to `projects/NNN_topic/` · ✅ Gate: the script is final enough to record
 
-### Phase 2 — STUDIO PRE-PRODUCTION (the board)  ⏱ 2–3 hrs · 3 HUMAN GATES
+### Studio — the board  ⏱ 2–3 hrs · 3 HUMAN GATES
 **→ Run the `studio-director` skill.** Seven passes fill one `storyboard.json` (v2) +
 `shot_list.md`: script-analyzer (60–80 timestamped scenes of 8–12s) → film-director
 (shots, sequence — **gate**) → storyboard-artist (frames) → scene-composer (plate/assembly
@@ -84,40 +87,44 @@ builds + layers — *generation becomes derived here*) → asset-planner (librar
 scaffolds — **final board gate**). Schema: `docs/storyboard_schema.md`. Craft:
 `docs/cinematography.md`. Nothing is generated during boarding.
 
-### Phase 3 — Record Narration + True-Up  ⏱ ~45 min · HUMAN GATE
+## PRODUCTION
+
+### Record Narration + True-Up  ⏱ ~45 min · HUMAN GATE
 - [ ] Record the fact-checked script yourself (**before** any AE work — animate to track, `RHYTHM-1`); ~140–150 wpm; let key numbers breathe; consistent sign-off
 - [ ] Clean up (noise removal, leveling); ElevenLabs clone **only** for pickups → `audio/voiceover.mp3`
 - [ ] **True-up:** measure the real read; correct each scene's `t_start`/`t_end`/`duration`; set `vo_duration`; re-run `--validate`; flag scenes shifted >1.5s for a motion re-pace (studio-director handles)
 
-### Phase 4 — Generation (derived from the board)  ⏱ 2–4 hrs
+### Generation (derived from the board)  ⏱ 2–4 hrs
 **→ Run the `asset-generation` skill.** It executes what the board specifies — plates from
 `plate{}` blocks (`generate_images.py`), library assets from the approved batch
 (`generate_asset.py`), 4K upscale, layered-plate prep — and enforces the
 **visual-accuracy-gate**: Layer 2 on every plate (vision vs reference + facts, your
 verdicts), Layer 2.5 on every library asset. **No unvalidated art proceeds.**
 
-### Phase 5 — Animatic  ⏱ ~20 min
+### Animatic  ⏱ ~20 min
 - [ ] `python video_assembler.py --storyboard <sb> --output <out>` — stills + VO, 1080p rough cut
 - [ ] Watch once, full length. Pacing problems are fixed **in the board** (re-time/merge/cut scenes via studio-director), never at the AE desk (`ANIMATIC-2`)
 
-### Phase 6 — AE Build (YOU, hands-on)  ⏱ the craft hours
+### AE Build (YOU, hands-on)  ⏱ the craft hours
 - [ ] Per scene's `ae_build{}` blueprint + the ae-director's session plan: run JSX scaffolds, build families together, keyframe per the numeric motion specs (brand §5 limits), Rung 1 everywhere / Rung 2 on 3–5 heroes / Rung 3 on 2–3 max
 - [ ] Render `clips/scene_NN.mp4` — native 4K 30fps, **~1s handles both ends**
 - [ ] Full guide: [docs/after_effects_workflow.md](../docs/after_effects_workflow.md)
 
-### Phase 7 — Render QC  ⏱ ~30 min
+### Render QC  ⏱ ~30 min
 - [ ] `visual-accuracy-gate` Layer 3 on each render — easing, restraint (≤2 moving), clean first/last frames, asset consistency, continuity registry, comprehension. Fixes are free (tweak comp, re-render); a scene not worth more AE time simplifies to its Rung-1 camera-only version — you always ship.
 
-### Phase 8 — Premiere Conform  ⏱ ~1 hr
+## DELIVERY
+
+### Premiere Conform  ⏱ ~1 hr
 - [ ] New Premiere project: drop `voiceover.mp3` + music (~8%, brand §9) on the timeline; lay `clips/scene_NN.mp4` in order at their `t_start` marks (shot_list has the column); trim into the handles so every cut lands on the narration beat (`RHYTHM-2`)
 - [ ] Transitions per the board: cuts default; crossfades only where `transition_in` says so; check the match-cuts align
 - [ ] Export the 4K publish master (H.264, YouTube 2160p preset)
 
-### Phase 9 — QA + Disclosure + Publish  ⏱ 30–45 min
+### QA + Disclosure + Publish  ⏱ 30–45 min
 - [ ] Watch it **fully** at least once (facts + feel, not just glitches)
 - [ ] **Polish pass** (the "does it look sloppy?" gate): motion reads as intended (eased, subtle, nothing linear or busy), cuts land clean, text timing tracks narration, music sits under the voice, pacing doesn't drag
 - [ ] Thumbnails: **`thumbnail-workflow` Stages 2–5** — 3 candidates varying ONE axis, 120-px squint test, Fraunces bold added locally (never AI text), YouTube **Test & Compare**, log entry
-- [ ] Title = the one locked in `packaging.md` at Phase −1 (formulas: `formula_library.md`; verify it still matches the final cut) + description (hook → chapters → **sources** → subscribe)
+- [ ] Title = the one locked in `packaging.md` back in **Packaging** (formulas: `formula_library.md`; verify it still matches the final cut) + description (hook → chapters → **sources** → subscribe)
 - [ ] Cut **2–3 Shorts** from self-contained beats (cross-section reveal, scale comparison, detail zoom): 9:16, 15–45s, hook overlay first second, end-card to the full video
 - [ ] ✅ **Tick "Altered content"** on upload (AI-assisted visuals/voice)
 - [ ] Schedule for your consistent slot (e.g., Saturday AM US)

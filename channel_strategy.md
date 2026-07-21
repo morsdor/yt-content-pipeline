@@ -188,7 +188,7 @@ dark moody background, detailed and eye-catching, thumbnail style"
 
 **The workflow (per video):**
 
-1. **Packaging-first gate (Phase −1 — before research, script, or any production spend):** confirm a **≥3× outlier precedent** (`data/outliers.csv` / vidIQ), then write the title (from `formula_library.md`) and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle — or park the topic — before a single research hour is spent.
+1. **Packaging-first gate (before research, script, or any production spend):** confirm a **≥3× outlier precedent** (`data/outliers.csv` / vidIQ), then write the title (from `formula_library.md`) and a one-sentence thumbnail concept — "dominant object + 3–4 words." If you can't articulate a compelling thumbnail, the video's *framing* is weak; fix the angle — or park the topic — before a single research hour is spent.
 2. **Three candidates** (`thumb_a/b/c.png`), varying **one axis at a time** — focal object, crop tightness, or accent intensity. Vary all three at once and the test teaches you nothing.
 3. **The 120-px squint test** — shrink each candidate to inbox size and check: one instantly-recognizable dominant object · text readable · focal point survives the shrink · pops on both dark and light YouTube UI · curiosity gap intact.
 4. **A/B with YouTube "Test & Compare"** — upload all 3; YouTube picks the winner by watch-time share.
@@ -242,7 +242,7 @@ A master style prefix is prepended to EVERY image generation call to maintain co
 - **Judge them correctly:** Shorts are *discovery*, not the product. The metric is subscribers gained and long-form click-through — not Shorts view counts, which are vanity at best. If a Short's topic pops, that's free audience research for a future long-form video.
 
 Every title comes from **[formula_library.md](formula_library.md)** — the versioned
-canonical formula list (F1–F12) that the Phase −1 packaging gate generates candidates
+canonical formula list (F1–F12) that the Packaging gate generates candidates
 from and `scripts/tag_outliers.py` tags competitor outliers against. (The five patterns
 that used to be listed here live on as F11, F6, F3, F9 and F2.)
 
@@ -289,7 +289,7 @@ In 2026 YouTube renamed its "repetitious content" rule to **"inauthentic content
 2. **Dollars before rupees.** Costs and values in **USD first** (₹ parenthetically at most —
    cf. `formula_library.md` F4's failure mode). Feet/miles alongside meters when scale is
    the payoff. Dates in CE.
-3. **Tier-1 precedent bias (Phase −1).** Prefer outlier precedents from the comp set's
+3. **Tier-1 precedent bias (at Packaging).** Prefer outlier precedents from the comp set's
    Tier-1-heavy channels (`data/comp_channels.yaml` is built that way): a title that broke
    out for Practical Engineering's audience is evidence about the audience we want; one
    that broke out on a regional channel is not.

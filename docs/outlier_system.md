@@ -1,7 +1,7 @@
 # The Outlier System — Competitor Research on Autopilot
 
 *Part of the [pipeline docs](../pipeline_automation.md). Added July 13, 2026 with the
-packaging-research system. This is the **evidence base for the Phase −1 packaging gate**:
+packaging-research system. This is the **evidence base for the Packaging gate**:
 before a topic earns research hours, it must show a ≥3× precedent — a video on a
 comparable channel that broke out well above that channel's normal performance.*
 
@@ -82,9 +82,9 @@ thumbnail_url, duration, formula_tag, why`.
   what breaks out across *your named competitors*, refreshed weekly, tagged by formula.
   vidIQ shows you a moment; the CSV accumulates a dataset the channel owns.
 
-## How Phase −1 consumes it
+## How Packaging consumes it
 
-At the packaging gate (`the-engineering-atlas-video` Phase −1):
+At the packaging gate (`the-engineering-atlas-video` Packaging):
 
 1. **Precedent check** — search the CSV for the concept's subject/mechanism keywords
    (`grep -i "canal" data/outliers.csv`). A ≥3× hit on a comparable channel = precedent;

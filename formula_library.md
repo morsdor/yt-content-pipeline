@@ -2,14 +2,14 @@
 
 *Part of the [pipeline docs](pipeline_automation.md). Added July 21, 2026 with the
 packaging-research system. This is the **one canonical list** of title formulas:
-`channel_strategy.md` §4 points here, the Phase −1 packaging gate generates title
+`channel_strategy.md` §4 points here, the Packaging gate generates title
 candidates from here, and `scripts/tag_outliers.py` labels every row of
 `data/outliers.csv` against these ids. If a pattern isn't in this table, it doesn't
 exist as far as the pipeline is concerned.*
 
 ## How the library is used
 
-1. **Choosing what to make (Phase −1).** Topic selection starts from the data, not a
+1. **Choosing what to make (Packaging).** Topic selection starts from the data, not a
    blank page: after a refresh, `scripts/tag_outliers.py` prints the **top-3 formulas**
    currently breaking out across the comp set ([outlier_system.md](docs/outlier_system.md)).
    Generate ~25 title candidates across several formulas, weighted toward those top-3 —

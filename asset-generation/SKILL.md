@@ -3,7 +3,7 @@ name: asset-generation
 description: >-
   Use when executing a boarded video's generation — after the studio-director chain has
   produced the approved storyboard.json v2. Trigger on "generate the assets", "run asset
-  generation", "make the plates", "execute the board", or Phase 4 of an Engineering Atlas
+  generation", "make the plates", "execute the board", or the Generation stage of an Engineering Atlas
   video. Generates exactly what the board specifies: plates from plate{} blocks
   (generate_images.py), library assets from the asset-planner's approved batch
   (generate_asset.py), 4K upscale, layered-plate prep — with the visual-accuracy-gate
@@ -15,8 +15,8 @@ description: >-
 
 **What this produces:** validated 4K `images/scene_NN.png` plates for every `plate`/
 `plate+layers` scene, the approved batch's new `assets_library/` elements (keyed, indexed),
-layered plates where the board separates depth bands — everything the animatic (Phase 5)
-and the user's AE session (Phase 6) need.
+layered plates where the board separates depth bands — everything the animatic (the Animatic stage)
+and the user's AE session (AE build) need.
 
 **The contract:** this skill **generates nothing the board doesn't specify.** Subjects,
 references, facts, layers, and the asset batch were all decided by the studio passes
@@ -96,7 +96,7 @@ sky") — same Layer 2 gate for real-structure plates.
 `ae_build.jsx` path exists and imports resolve against the now-real files.
 
 **Handoff:** report what's ready (plates n/n validated, batch m/m indexed, scaffolds
-checked), then → **animatic** (`video_assembler.py`, Phase 5), then the AE session is the
+checked), then → **animatic** (`video_assembler.py`, the Animatic stage), then the AE session is the
 user's, per the ae-director's session plan.
 
 ## Stage D — Render QC (when AE clips land in `clips/`)
