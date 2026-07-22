@@ -20,8 +20,13 @@ Free tier: 10,000 units/day, NO billing needed (unlike the Gemini image key).
 Read-only against public data. Full docs: docs/outlier_system.md
 
 Re-runs are idempotent: rows are deduped on video id; existing rows get their
-views/baseline/multiple refreshed in place (date_added, formula_tag and why are
-preserved); new outliers are appended. Row order is stable for clean git diffs.
+views/baseline/multiple/velocity refreshed in place (date_added, formula_tag and why
+are preserved); new outliers are appended. Row order is stable for clean git diffs.
+
+Known limitation (tracked, deferred): a row is only refreshed while its video is still
+in the channel's newest `want` uploads; once it ages out its numbers freeze against a
+stale baseline. Fix later by batching every existing CSV id through videos.list (~1 unit
+/ 50). No effect until a channel posts `want` newer long-form videos, so it keeps for weeks.
 """
 
 import argparse
@@ -41,12 +46,23 @@ ROOT = SCRIPT_DIR.parent
 DATA_DIR = ROOT / "data"
 CHANNELS_PATH = DATA_DIR / "comp_channels.yaml"
 CSV_PATH = DATA_DIR / "outliers.csv"
+COMP_CSV_PATH = DATA_DIR / "comp_videos.csv"     # the control group: every long-form video scanned, outlier or not
 CACHE_PATH = DATA_DIR / ".channels_cache.json"
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
 LONGFORM_MIN_SECONDS = 180          # YouTube Shorts run up to 3:00 — longer counts as long-form
+# Two axes, recorded separately.  `multiple` = packaging LIFT (views vs the channel's own
+# median) — did this title beat the channel's normal?  `views_per_day` / `vpd_multiple` =
+# topic DEMAND (raw daily pull, and pull vs the channel's median pull) — does the subject
+# draw people at all?  A row can be high on one and low on the other, so gate on both.
 COLUMNS = ["id", "date_added", "channel", "title", "url", "published", "views",
-           "baseline", "multiple", "thumbnail_url", "duration", "formula_tag", "why"]
+           "baseline", "multiple", "views_per_day", "vpd_multiple",
+           "thumbnail_url", "duration", "formula_tag", "why"]
+# The control group. Without it, counting formulas among outliers is a popularity contest
+# between channel formats (a channel that only makes cutaways has only cutaway outliers, by
+# construction); with it, a formula's share among outliers can be compared to its base rate.
+COMP_COLUMNS = ["id", "channel", "title", "url", "published", "views", "duration",
+                "baseline", "multiple", "views_per_day", "vpd_multiple"]
 
 QUOTA_USED = 0                      # 1 unit per list call — printed at the end
 
@@ -110,6 +126,15 @@ def parse_duration(iso):
         return 0
     h, mi, s = (int(g or 0) for g in m.groups())
     return h * 3600 + mi * 60 + s
+
+
+def views_per_day(views, published_iso):
+    """Raw demand velocity: total views / days since publish (floor 1 day)."""
+    try:
+        days = (date.today() - date.fromisoformat(published_iso)).days
+    except (ValueError, TypeError):
+        return 0.0
+    return round(views / max(days, 1), 1)
 
 
 def load_channels(path):
@@ -230,6 +255,17 @@ def write_csv(path, rows):
         w.writerows(rows)
 
 
+def write_comps(path, comps):
+    """Snapshot the full control group (every scanned long-form video). Fresh each run —
+    base rates are computed against the CURRENT recent window, not an accreting history."""
+    Path(path).parent.mkdir(exist_ok=True)
+    comps = sorted(comps, key=lambda c: (c["channel"], -float(c["multiple"])))
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=COMP_COLUMNS)
+        w.writeheader()
+        w.writerows(comps)
+
+
 def run(channels_path=CHANNELS_PATH, csv_path=CSV_PATH, days=None,
         min_multiple=3.0, only=None, want=30):
     """Scan all channels; merge into the CSV. Returns (new_rows, updated_count)."""
@@ -244,10 +280,13 @@ def run(channels_path=CHANNELS_PATH, csv_path=CSV_PATH, days=None,
 
     channels = resolve_channels(entries)
     rows = read_csv(csv_path)
+    for r in rows:                                       # migrate pre-velocity CSVs to current columns
+        for c in COLUMNS:
+            r.setdefault(c, "")
     by_id = {r["id"]: r for r in rows}
     cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).date().isoformat() if days else None
 
-    new_rows, updated = [], 0
+    new_rows, updated, comps = [], 0, []
     print(f"\nScanning {len(channels)} channels (baseline = median of last {want} long-form):")
     for ch in channels:
         vids = fetch_recent_longform(ch["uploads"], want=want)
@@ -255,12 +294,22 @@ def run(channels_path=CHANNELS_PATH, csv_path=CSV_PATH, days=None,
             print(f"  {ch['name']:24s} only {len(vids)} long-form videos — skipping (sample too small)")
             continue
         baseline = int(median(v["views"] for v in vids))
+        baseline_vpd = median(views_per_day(v["views"], v["published"]) for v in vids) or 1.0
         outliers_here = 0
         for v in vids:
             mult = round(v["views"] / baseline, 2) if baseline else 0.0
+            vpd = views_per_day(v["views"], v["published"])
+            vpd_mult = round(vpd / baseline_vpd, 2) if baseline_vpd else 0.0
+            comps.append({                               # control group: every video, outlier or not
+                "id": v["id"], "channel": ch["name"], "title": v["title"],
+                "url": f"https://www.youtube.com/watch?v={v['id']}", "published": v["published"],
+                "views": str(v["views"]), "duration": str(v["duration"]), "baseline": str(baseline),
+                "multiple": f"{mult:.2f}", "views_per_day": f"{vpd:.1f}", "vpd_multiple": f"{vpd_mult:.2f}",
+            })
             if v["id"] in by_id:                         # refresh live numbers, keep human columns
                 r = by_id[v["id"]]
                 r["views"], r["baseline"], r["multiple"] = str(v["views"]), str(baseline), f"{mult:.2f}"
+                r["views_per_day"], r["vpd_multiple"] = f"{vpd:.1f}", f"{vpd_mult:.2f}"
                 updated += 1
                 continue
             if mult < min_multiple:
@@ -271,7 +320,8 @@ def run(channels_path=CHANNELS_PATH, csv_path=CSV_PATH, days=None,
                 "id": v["id"], "date_added": date.today().isoformat(), "channel": ch["name"],
                 "title": v["title"], "url": f"https://www.youtube.com/watch?v={v['id']}",
                 "published": v["published"], "views": str(v["views"]), "baseline": str(baseline),
-                "multiple": f"{mult:.2f}", "thumbnail_url": v["thumbnail_url"],
+                "multiple": f"{mult:.2f}", "views_per_day": f"{vpd:.1f}", "vpd_multiple": f"{vpd_mult:.2f}",
+                "thumbnail_url": v["thumbnail_url"],
                 "duration": str(v["duration"]), "formula_tag": "", "why": "",
             }
             rows.append(row)
@@ -282,6 +332,8 @@ def run(channels_path=CHANNELS_PATH, csv_path=CSV_PATH, days=None,
               f"{outliers_here} new outlier{'s' if outliers_here != 1 else ''}")
 
     write_csv(csv_path, rows)
+    write_comps(COMP_CSV_PATH, comps)
+    print(f"{COMP_CSV_PATH}: {len(comps)} control-group videos (every long-form scanned, outlier or not).")
     print(f"\n{csv_path}: {len(rows)} rows total — {len(new_rows)} new, {updated} refreshed.")
     if new_rows:
         print("Top new outliers:")

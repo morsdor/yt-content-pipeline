@@ -7,7 +7,7 @@ comparable channel that broke out well above that channel's normal performance.*
 
 ## What it does
 
-Fifteen competitor channels (`data/comp_channels.yaml` — format, topic, audience, and
+Twenty-three competitor channels (`data/comp_channels.yaml` — format, topic, audience, and
 packaging lanes) are scanned via the **free YouTube Data API v3**. For each channel:
 
 1. Pull the last ~30 **long-form** uploads (Shorts excluded by duration ≤ 3:00; live entries skipped).
@@ -16,8 +16,17 @@ packaging lanes) are scanned via the **free YouTube Data API v3**. For each chan
 4. Claude then tags each outlier with the [formula](../formula_library.md) its title uses
    (`formula_tag`) and one sentence on why it earned clicks (`why`).
 
-The multiple — *not* raw views — is the signal: 40M views on RealLifeLore is a Tuesday;
-900K on Plainly Difficult is a breakout worth studying.
+**Two axes, not one.** Raw views are noise (channel size — 40M on RealLifeLore is a Tuesday;
+900K on Plainly Difficult is a breakout). The signal is two normalized numbers, recorded
+*separately* because they answer different questions:
+
+- **`multiple` = packaging LIFT** — views vs the channel's own median. Did this *title* beat
+  the channel's normal? ≥3× = the packaging pulled beyond the subscriber base.
+- **`views_per_day` = topic DEMAND** — raw daily pull (`vpd_multiple` normalizes it against the
+  channel's median pull). Does the *subject* draw people at all?
+
+They routinely disagree — "What Is a Neutron Bomb?" is 16.9× lift but ~13k/day, while "The LA
+Aqueduct is Wild" is 4.5× lift but ~37k/day. A concept worth making ideally clears **both**.
 
 ## The three scripts
 
@@ -54,7 +63,7 @@ The multiple — *not* raw views — is the signal: 40M views on RealLifeLore is
 
 ## Quota math (why this is free forever)
 
-Per full run: ~15 handle resolutions (first run only) + per channel ~1–2
+Per full run: ~23 handle resolutions (first run only) + per channel ~1–2
 `playlistItems.list` pages + 1–2 `videos.list` batches ≈ **~50–80 units**. The free
 daily quota is **10,000**. Even daily runs would use <1% — `search.list` (100 units/call)
 is deliberately never used.
@@ -62,16 +71,38 @@ is deliberately never used.
 ## Reading `outliers.csv`
 
 Columns: `id, date_added, channel, title, url, published, views, baseline, multiple,
-thumbnail_url, duration, formula_tag, why`.
+views_per_day, vpd_multiple, thumbnail_url, duration, formula_tag, why`.
 
-- **`multiple` is the whole point** — how far above the channel's own normal this video
-  performed. ≥3× = audience pulled it beyond the subscriber base; ≥5× = the packaging
-  itself did heavy lifting.
+- **`multiple` is packaging lift** — how far above the channel's own normal this video
+  performed. ≥3× = pulled beyond the subscriber base; ≥5× = the packaging did heavy lifting.
+  Pair it with **`views_per_day`** (topic demand): a high multiple at low views/day is a small
+  channel over-performing a niche, not proof of broad demand — they often disagree.
 - **Young-video bias:** a video published days ago hasn't accumulated views yet, so its
   multiple is *understated*. Outliers surface reliably ~2–4 weeks after publish — the
   weekly refresh updates numbers in place, so late bloomers get promoted automatically.
 - `formula_tag`/`why` are the human-value columns — never overwritten by refreshes.
 - Rows are never deleted; a row whose multiple later sinks below 3× stays as a record.
+
+## The control group (`comp_videos.csv`)
+
+Every scan also writes **every** long-form video it looked at — outlier or not, ~690 rows — to
+`data/comp_videos.csv` (`id, channel, title, url, published, views, duration, baseline, multiple,
+views_per_day, vpd_multiple`). Without it, counting formulas among outliers is a popularity
+contest between channel formats. Three uses:
+
+1. **Base rates.** Animagraffs / Branch / Jared Owen are **80–83% cutaway-titled**, so their F12
+   breakouts are format-native, not proof the hook lifts (see `formula_library.md` caveats). The
+   control group is what separates tautology from signal — a formula earns credit when it's
+   over-represented among a channel's outliers *relative to that channel's normal mix*.
+2. **Disciplined channels made legible.** A flat 3× threshold never fires on tight-distribution
+   channels — Wendover, Johnny Harris, Mustard, RealLifeLore all returned **0** outliers this
+   scan. Their best *relative* videos still live here (sort by `multiple` within a channel):
+   Johnny Harris's is "Is Fascism Back?" (2.1×), Wendover's "How American Cars Got So Bad" (2.9×).
+   That's where you study the packaging benchmarks the outlier file can't show you.
+3. **Re-thresholding & fit** without a re-scan — duration mix, per-channel typical length.
+
+Written fresh each run (a snapshot of the current recent window), so it's "what the comp set
+looks like right now," not an accreting history.
 
 ## Division of labor: vidIQ vs this system
 
