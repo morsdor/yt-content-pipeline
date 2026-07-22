@@ -13,7 +13,6 @@ consumers want the headroom:
 - **The assembler's Ken Burns** zooms crop into static-scene images the same way.
 
 AE renders come out at native 4K, so **no video upscaling is needed in the pipeline**.
-(`upscale_video.py` still exists for one-off legacy 720p clips; it's not a pipeline stage.)
 
 **Model:** `realesrgan-x4plus-anime` — ideal for clean-line flat illustration (far better
 than photographic upscalers here).

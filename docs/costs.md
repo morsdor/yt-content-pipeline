@@ -5,7 +5,7 @@ animation pivot: generative image-to-video (credit-metered) is out; animation is
 in After Effects (flat subscription, ₹0 marginal). The budget's shape changed — from
 "credits per clip" to "images + your time."*
 
-## Per-Video Cost Breakdown (50% Animation)
+## Per-Video Cost Breakdown
 
 | Component | Unit Cost | Quantity | Total |
 |:---|:---|:---|:---|
