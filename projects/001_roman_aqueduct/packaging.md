@@ -8,7 +8,7 @@
 |:--|:--|
 | **Video #** | 001 |
 | **Topic** | How Rome moved water across ~50 miles of terrain (§7 topic #1) |
-| **Status** | ✅ Packaging locked · Research done (2026-07-23) — number locked, cleared to typography + script |
+| **Status** | ✅ Packaging locked · Research done (2026-07-23) · Thumbnails a+c test-ready · Script drafted (2026-07-24, awaiting your voice pass) |
 | **Runtime target** | 10–13 min |
 | **Civilization accent** | Roman — warm ochre/terracotta stone, electric-blue water (final `accent_hex` set at storyboard) |
 | **Locked** | 2026-07-23 |

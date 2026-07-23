@@ -11,7 +11,7 @@
 | **Locked title** | *The Insane Precision of a Roman Aqueduct* (F1) |
 | **Subject pinned** | **The aqueduct of Nîmes (Nemausus) — hero structure: the Pont du Gard** |
 | **Civilization accent** | Roman — warm ochre/terracotta limestone, electric-blue water |
-| **Status** | ✅ Research drafted — facts checked to public sources; ⚠ 4 open items before script gate |
+| **Status** | ✅ Research complete — facts checked; all 4 open items resolved at the script gate (2026-07-24); script drafted |
 | **Date** | 2026-07-23 |
 
 ---
@@ -126,13 +126,19 @@ Swap to the Pont du Gard's own drop, which is solid, visual (it *is* the object 
 
 ---
 
-## Open items to resolve before the Script gate
-- [ ] **Total fall / average gradient** — pick a citation (12.6 m/1-in-4,000 vs 17 m/1-in-3,000) or state the
-      range on-screen. *(Doesn't block the thumbnail — that rides the solid 2.5 cm bridge figure.)*
-- [ ] **Water volume/day** — verify the ~40,000 m³/day figure or cut it.
-- [ ] **Dating** — settle the Augustan-vs-Claudian range for the narration, or acknowledge the debate.
-- [ ] **Build duration / workforce** — verify "~15 years / ~1,000 men" or drop it (currently soft).
-- [ ] Reference pack images pulled into `references/` (see `references/visual_facts.md`).
+## Open items — resolved at the Script gate (2026-07-24)
+- [x] **Total fall / average gradient** — ✅ **resolved by phrasing.** Script states it as an explicit range
+      ("somewhere between twelve and seventeen metres — scholars still argue"), turning the dispute into a
+      virtue rather than asserting a contested single figure. Rides the solid 2.5 cm bridge drop for the hook.
+- [x] **Water volume/day** — ✅ **verified ~40,000 m³/day** (≈9M gal); bonus scale fact: **~27 h source→city**
+      travel time. Sources: [archaeology-travel.com](https://archaeology-travel.com/france/nimes-aqueduct/),
+      [uzes-pontdugard.com](https://www.uzes-pontdugard.com/en/histoire-aqueduc-uzes-nimes/). (Range 30–40k; 40k standard.)
+- [x] **Dating** — ✅ **verified & scripted as a revision, not a single date.** Long credited to Agrippa under
+      Augustus (19 BC); riverbed excavation finds now point to **mid-1st c. AD, ~40–60 AD under Claudius**.
+      Sources: [Britannica](https://www.britannica.com/topic/Pont-du-Gard), [Smarthistory](https://smarthistory.org/pont-du-gard/), [UNRV](https://www.unrv.com/articles/pont-du-gard.php).
+- [x] **Build duration / workforce** — ✅ **dropped** (not asserted). "~15 yrs / ~1,000 men" too soft to cite;
+      the script omits it rather than risk an unverifiable number.
+- [ ] Reference pack images pulled into `references/` (see `references/visual_facts.md`) — *manual, pre-storyboard.*
 
 ---
 
