@@ -8,7 +8,7 @@
 |:--|:--|
 | **Video #** | 001 |
 | **Topic** | How Rome moved water across ~50 miles of terrain (§7 topic #1) |
-| **Status** | ✅ Packaging locked — cleared to Phase 0 research |
+| **Status** | ✅ Packaging locked · Research done (2026-07-23) — number locked, cleared to typography + script |
 | **Runtime target** | 10–13 min |
 | **Civilization accent** | Roman — warm ochre/terracotta stone, electric-blue water (final `accent_hex` set at storyboard) |
 | **Locked** | 2026-07-23 |
@@ -45,7 +45,7 @@ highest-*demand* video in the dataset is a literal aqueduct. Strongest possible 
 
 > **Dominant object:** isometric Roman aqueduct, its water channel a glowing **electric-blue ribbon**
 > running dead-straight to a vanishing point across a valley of **tan/ochre arches**.
-> **Words (≤4):** `25 cm / km`
+> **Words (≤4):** `2.5 cm` (hero) + `across this bridge` (subtext)
 
 - **Design logic (from the 120px precedent study):** the LA-Aqueduct thumbnail (37k/day, *zero text*)
   survived the inbox-size shrink on **blue-water-vs-tan-stone color contrast + one receding line**
@@ -54,12 +54,14 @@ highest-*demand* video in the dataset is a literal aqueduct. Strongest possible 
   dark, moody background. High contrast, one focal point.
 - **Precision rides the number, not a level-line.** A thin slope/level line is the first thing 120px
   destroys (the Channel-Tunnel failure) — keep any level-tick as garnish only.
-- **⚠ Confirm the number in Phase 0.** `25 cm / km` is the famous Nîmes/Pont-du-Gard average; if the
-  video's chosen aqueduct is a longer line (e.g. Aqua Marcia, ~57 mi), headline *that* aqueduct's real
-  figure. F1's failure mode is a number the video can't cash — pin it to the subject before render.
+- **✅ Number locked (Research, 2026-07-23).** Swapped `25 cm / km` → **`2.5 cm`** (+ subtext `across this
+  bridge`). Research pinned the subject to the **Nîmes aqueduct / Pont du Gard**; the whole-aqueduct average
+  gradient is contested (24–34 cm/km), but the Pont du Gard's *own* fall — **2.5 cm over 456 m, 1 in 18,241**
+  — is rock-solid and it's the structure in frame. See `research.md`. (The §7 "50-mile" frame is dropped —
+  Nîmes is 31 mi; the locked title makes no distance claim.)
 
 ### A/B generation plan (Stage 2 — vary ONE axis)
-- **Hold:** the `25 cm / km` number, the blue-on-ochre palette, the vanishing-point composition.
+- **Hold:** the `2.5 cm` number, the blue-on-ochre palette, the vanishing-point composition.
 - **Vary:** **crop tightness** — a/b/c from wide vanishing valley → tight on the channel lip. The test
   teaches "how tight wins in this niche."
 - **Typography:** local only, Fraunces Bold (never AI lettering). Structure one side / text the other —
