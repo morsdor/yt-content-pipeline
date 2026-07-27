@@ -1,414 +1,470 @@
-# 001 · Roman Aqueduct — Shot List
+# Shot list — 73 scenes · ~700s (VO not yet recorded)
+*Rendered by `prompt_builder.py --shot-list` from `storyboard.json` (schema v2) — the board is the source of truth; regenerate this after every studio pass. Craft: `docs/cinematography.md` · numbers: `brand_guide.md` §5.*
 
-> Human-readable mirror of `storyboard.json` v2. Canon: `docs/cinematography.md` · `brand_guide.md` · `docs/storyboard_schema.md`.
-> **Passes 1–5 done** (script-analyzer → film-director → storyboard-artist → scene-composer → asset-planner). Witness=Frontinus, early reveal. 🔴 **CHARGED asset-batch gate** below.
+**Passes:** script_analyzer ✅ 2026-07-24 · film_director ✅ 2026-07-24 · storyboard_artist ✅ 2026-07-24 · scene_composer ✅ 2026-07-24 · asset_planner ✅ 2026-07-24 · motion_director ✅ 2026-07-27 · ae_director ✅ 2026-07-27
 
-**73 scenes · ~11.7 min · accent terracotta `#B85C38` · water azure `#1CA3E0` · 0 validation errors.**
+## Pass 1 — Scene breakdown
+| id | t | dur | register | purpose | needs |
+|---|---|---|---|---|---|
+| scene_01 | 0.0–7.4 | 7.4s | witness | Open on Frontinus — introduce the man whose obsession frames the video. | character |
+| scene_02 | 7.4–19.0 | 11.6s | witness | His actual job — auditing the water, not building it; the year 97. | character, infographic |
+| scene_03 | 19.0–30.6 | 11.6s | witness | The daily obsession — metering, catching pipe-theft, making the numbers add up. | character |
+| scene_04 | 30.6–40.1 | 9.5s | witness | De aquaeductu survives; set up the thesis line. | character |
+| scene_05 | 40.1–45.5 | 5.4s | witness | The thesis — precision as civic conviction. (deliberate <8s: hold on his face.) | character |
+| scene_06 | 45.5–52.9 | 7.4s | witness | The honesty guardrail — he's a lens, not a witness — pivot toward the subject. | character, map |
+| scene_07 | 52.9–63.2 | 10.3s | witness | Hook into the subject — pull to the map of southern Gaul. | map |
+| scene_08 | 63.2–67.2 | 4.0s | data | Title sting: 'The Insane Precision of a Roman Aqueduct'. (no VO.) | — |
+| scene_09 | 67.2–78.0 | 10.8s | engineer | THE hero reveal, brought early. PULL-BACK. The bridge the viewer will spend the video understanding. | architecture |
+| scene_10 | 78.0–87.5 | 9.5s | engineer | Set the misdirection — the famous thing is the wrong thing to admire. | architecture, character |
+| scene_11 | 87.5–100.7 | 13.2s | engineer | Tease the 2.5cm without spending it — promise the payoff. (>12: one continuous settle to the top.) | architecture |
+| scene_12 | 100.7–109.0 | 8.3s | engineer | Place city + spring on the map. | map |
+| scene_13 | 109.0–118.9 | 9.9s | data | The core contrast — 20 km straight vs 50 km built. | map, infographic |
+| scene_14 | 118.9–128.8 | 9.9s | engineer | The detour was deliberate — forced by terrain. | map, nature |
+| scene_15 | 128.8–139.6 | 10.8s | engineer | The single hard constraint — gravity only. | diagram |
+| scene_16 | 139.6–151.2 | 11.6s | engineer | Set up the height budget as the scarce resource. | map, infographic |
+| scene_17 | 151.2–160.3 | 9.1s | data | Land the number as a tangible image — one tall tree. (RHYTHM-3 hold.) | infographic, nature |
+| scene_18 | 160.3–167.7 | 7.4s | data | Reinforce scarcity — that tree over 50 km. (deliberate <8s.) | infographic |
+| scene_19 | 167.7–178.0 | 10.3s | engineer | Failure mode one — too steep scours. | diagram |
+| scene_20 | 178.0–189.6 | 11.6s | engineer | Failure mode two — too flat silts; the modern benchmark. | diagram |
+| scene_21 | 189.6–201.2 | 11.6s | engineer | Collapse the problem to its human absurdity — a trough and a string. | character |
+| scene_22 | 201.2–211.1 | 9.9s | engineer | Reveal the hero instrument. MATCH-CUT 'trough of water and a string' -> the chorobates trough. | architecture, character |
+| scene_23 | 211.1–220.2 | 9.1s | engineer | Anatomy of the chorobates — a labelled section. | architecture, diagram |
+| scene_24 | 220.2–231.0 | 10.8s | engineer | How it's read — plumb-lines and the water-groove fallback. | architecture, diagram |
+| scene_25 | 231.0–243.8 | 12.8s | engineer | Introduce the field surveyors at dawn; cite Vitruvius. (>12: one continuous hold.) | character |
+| scene_26 | 243.8–252.1 | 8.3s | wit | The wit beat — sophistication without jargon. | infographic |
+| scene_27 | 252.1–263.3 | 11.2s | engineer | The groma — alignment and right angles. | architecture |
+| scene_28 | 263.3–274.5 | 11.2s | engineer | The dioptra + the whole spare toolkit. | architecture |
+| scene_29 | 274.5–283.6 | 9.1s | engineer | Name the levellers; pivot from tools to technique. | character, nature |
+| scene_30 | 283.6–293.1 | 9.5s | engineer | The method — thousands of tiny steps. | map, character |
+| scene_31 | 293.1–304.3 | 11.2s | engineer | The leap-frog rhythm down the hills. | character, architecture |
+| scene_32 | 304.3–312.6 | 8.3s | engineer | Introduce error accumulation — why it should fail. | diagram, infographic |
+| scene_33 | 312.6–321.7 | 9.1s | engineer | First-person reframe — repetition without drift is the feat. | diagram, infographic |
+| scene_34 | 321.7–334.1 | 12.4s | engineer | Resolve + tease the payoff — PULL-BACK to the whole achieved line. (>12: continuous reveal.) | architecture, map |
+| scene_35 | 334.1–344.4 | 10.3s | engineer | Reveal the specus at human scale. | architecture, diagram |
+| scene_36 | 344.4–353.9 | 9.5s | engineer | The channel's waterproofing and cover. | architecture, diagram |
+| scene_37 | 353.9–361.8 | 7.9s | engineer | The thing people miss — mostly buried, not arcades. (deliberate <8s.) | map |
+| scene_38 | 361.8–369.7 | 7.9s | engineer | Follow the buried line to the gorge (the turn). (deliberate <8s.) | architecture, nature |
+| scene_39 | 369.7–378.8 | 9.1s | engineer | The land drops; they crossed it head-on. Cue the return. | nature |
+| scene_40 | 378.8–386.2 | 7.4s | engineer | Earned RETURN to the Pont du Gard (revealed early) — push-in, not a fresh reveal. (deliberate <8s.) | architecture |
+| scene_41 | 386.2–394.5 | 8.3s | engineer | Reframe the bridge's true purpose — carrying a slope, not being looked at. | architecture |
+| scene_42 | 394.5–401.1 | 6.6s | engineer | The water hidden along the very top — a section through the bridge crown. (deliberate <8s.) | architecture, diagram |
+| scene_43 | 401.1–414.7 | 13.6s | engineer | Tilt crowd -> waterline, 49m up, still on grade. (>12: single continuous tilt-up.) | character, architecture |
+| scene_44 | 414.7–419.3 | 4.6s | engineer | Held beat before the number. (deliberate <8s.) | architecture |
+| scene_45 | 419.3–430.5 | 11.2s | engineer | Establish the enormous span first — so the tiny drop lands against it. | architecture, infographic |
+| scene_46 | 430.5–439.6 | 9.1s | data | THE headline number pays off — 2.5cm = two coins. (RHYTHM-3 big hold.) | infographic |
+| scene_47 | 439.6–448.3 | 8.7s | data | Translate to slope ratios; push to the flatter extreme. | infographic |
+| scene_48 | 448.3–457.8 | 9.5s | wit | Make the imperceptibility felt. (wit close.) | architecture, nature |
+| scene_49 | 457.8–469.8 | 12.0s | data | The payoff of use — what all that precision delivered. | infographic, architecture |
+| scene_50 | 469.8–482.6 | 12.8s | both | Trace one drop's 27-hour journey. (>12: one continuous route travel.) | map, infographic |
+| scene_51 | 482.6–496.2 | 13.6s | wit | The one woven CTA (~68%), in-voice. (>12: one hold, to-camera feel.) | character |
+| scene_52 | 496.2–502.8 | 6.6s | engineer | The thesis punch of the whole video, held. (deliberate <8s.) | architecture |
+| scene_53 | 502.8–514.4 | 11.6s | engineer | Shrink the famous bridge to a rounding error — PULL-BACK to a tiny segment. | architecture, map |
+| scene_54 | 514.4–525.2 | 10.8s | wit | Argue the arches were the easy, solved part. | architecture, character |
+| scene_55 | 525.2–534.7 | 9.5s | engineer | Name the real feat — the invisible surveyed line — back on the crew. | character |
+| scene_56 | 534.7–546.3 | 11.6s | engineer | Callback the coin-thickness; crystallise why the feat is invisible. | infographic |
+| scene_57 | 546.3–554.2 | 7.9s | engineer | Open the choice — they had an easier option and refused it. (deliberate <8s.) | character |
+| scene_58 | 554.2–563.3 | 9.1s | engineer | Explain the inverted siphon — the alternative. | diagram |
+| scene_59 | 563.3–576.9 | 13.6s | engineer | Prove they had the tech (Aspendos) and it would've been easier. (>12: continuous siphon animation.) | architecture, diagram |
+| scene_60 | 576.9–588.9 | 12.0s | engineer | The pivot — chose the hard way; the first-person thesis: maintenance. | map, architecture |
+| scene_61 | 588.9–597.2 | 8.3s | engineer | Comparison A — the maintainable open channel (LEFT half, STAGE-2). | architecture, diagram |
+| scene_62 | 597.2–606.3 | 9.1s | engineer | Comparison B — the unreachable failing siphon (RIGHT half, STAGE-2). | diagram |
+| scene_63 | 606.3–614.6 | 8.3s | engineer | The verdict — maintainable beat clever; 500 years. | architecture, map |
+| scene_64 | 614.6–621.2 | 6.6s | engineer | Restate the thesis as the section's close, held. (deliberate <8s.) | infographic |
+| scene_65 | 621.2–629.1 | 7.9s | witness | CROSSFADE back to Frontinus; honest distance restated. (deliberate <8s.) | character |
+| scene_66 | 629.1–638.6 | 9.5s | witness | Tie Frontinus's obsession to the aqueduct's real feat. | character |
+| scene_67 | 638.6–649.4 | 10.8s | witness | The widened thesis — civilisation as accumulated precision. | character, infographic |
+| scene_68 | 649.4–656.8 | 7.4s | engineer | The honest dating — the old Agrippa attribution. (deliberate <8s.) | infographic |
+| scene_69 | 656.8–665.9 | 9.1s | engineer | The dating revision — riverbed evidence -> Claudius; the achievement stands. | infographic |
+| scene_70 | 665.9–676.7 | 10.8s | witness | Echo the human act — the anonymous libratore, push-in. | character |
+| scene_71 | 676.7–686.6 | 9.9s | witness | Final number callback — name the title words 'precision' and 'insane'. | architecture, infographic |
+| scene_72 | 686.6–693.6 | 7.0s | witness | The locked channel sign-off, on the bridge at first light. (deliberate <8s.) | architecture |
+| scene_73 | 693.6–699.6 | 6.0s | data | Outro card: subscribe + next-video thumbnail. (no VO; title sting reprise.) | — |
 
----
+## Pass 2 — Sequence design
+| id | size | type | role | transition |
+|---|---|---|---|---|
+| scene_01 | stage | narrative | hook | cut |
+| scene_02 | study | detail | establish | cut |
+| scene_03 | action | detail | beat | cut |
+| scene_04 | stage | narrative | beat | cut |
+| scene_05 | study | detail | beat | cut |
+| scene_06 | stage | narrative | approach | cut |
+| scene_07 | vista | map | hook | cut |
+| scene_08 | abstract | title | establish | cut |
+| scene_09 | vista | establishing | payoff | cut |
+| scene_10 | stage | establishing | beat | cut |
+| scene_11 | study | detail | approach | cut |
+| scene_12 | vista | map | establish | cut |
+| scene_13 | vista | map | approach | cut |
+| scene_14 | stage | establishing | beat | cut |
+| scene_15 | abstract | cross_section | beat | cut |
+| scene_16 | vista | establishing | approach | cut |
+| scene_17 | abstract | scale_comparison | payoff | cut |
+| scene_18 | abstract | scale_comparison | beat | cut |
+| scene_19 | action | cross_section | beat | cut |
+| scene_20 | action | cross_section | beat | cut |
+| scene_21 | study | detail | beat | cut |
+| scene_22 | action | detail | approach | match_cut |
+| scene_23 | study | cross_section | beat | cut |
+| scene_24 | study | detail | beat | cut |
+| scene_25 | action | narrative | beat | cut |
+| scene_26 | abstract | scale_comparison | beat | cut |
+| scene_27 | study | detail | beat | cut |
+| scene_28 | study | cross_section | beat | cut |
+| scene_29 | stage | narrative | establish | cut |
+| scene_30 | vista | map | approach | cut |
+| scene_31 | action | map | beat | cut |
+| scene_32 | abstract | scale_comparison | beat | cut |
+| scene_33 | abstract | scale_comparison | beat | cut |
+| scene_34 | vista | establishing | payoff | cut |
+| scene_35 | study | cross_section | approach | cut |
+| scene_36 | study | cross_section | beat | cut |
+| scene_37 | vista | map | beat | cut |
+| scene_38 | stage | establishing | approach | cut |
+| scene_39 | action | detail | approach | cut |
+| scene_40 | vista | establishing | payoff | cut |
+| scene_41 | stage | establishing | beat | cut |
+| scene_42 | study | cross_section | beat | cut |
+| scene_43 | action | detail | beat | cut |
+| scene_44 | abstract | detail | establish | cut |
+| scene_45 | vista | establishing | approach | cut |
+| scene_46 | abstract | scale_comparison | payoff | cut |
+| scene_47 | abstract | scale_comparison | payoff | cut |
+| scene_48 | stage | establishing | beat | cut |
+| scene_49 | abstract | scale_comparison | payoff | cut |
+| scene_50 | vista | map | beat | cut |
+| scene_51 | stage | narrative | beat | cut |
+| scene_52 | abstract | detail | establish | cut |
+| scene_53 | vista | establishing | beat | cut |
+| scene_54 | stage | establishing | beat | cut |
+| scene_55 | study | detail | approach | cut |
+| scene_56 | abstract | scale_comparison | payoff | cut |
+| scene_57 | stage | narrative | beat | cut |
+| scene_58 | abstract | cross_section | approach | cut |
+| scene_59 | action | scale_comparison | beat | cut |
+| scene_60 | stage | map | beat | cut |
+| scene_61 | study | scale_comparison | approach | cut |
+| scene_62 | study | scale_comparison | payoff | cut |
+| scene_63 | vista | establishing | beat | cut |
+| scene_64 | abstract | detail | close | cut |
+| scene_65 | stage | narrative | close | crossfade |
+| scene_66 | action | narrative | beat | cut |
+| scene_67 | study | detail | beat | cut |
+| scene_68 | study | detail | beat | cut |
+| scene_69 | action | narrative | beat | cut |
+| scene_70 | action | narrative | payoff | cut |
+| scene_71 | study | detail | payoff | cut |
+| scene_72 | stage | establishing | close | cut |
+| scene_73 | abstract | outro | close | cut |
 
-## Pass 1 — Scene breakdown  ·  △ <8s / ▽ >12s deliberate · ⭐ peak
+## Pass 3 — Frames
+| id | frame | focal | neg. space |
+|---|---|---|---|
+| scene_01 | flat stage: Frontinus bent over his writing table under a single oil lamp, scrolls and tablets around him | Frontinus, centre-left | right |
+| scene_02 | close isometric of the desk surface: wax tablets of tally columns, a bronze pipe-gauge, a papyrus ledger, a stylus | the tally columns, centre | top-right |
+| scene_03 | flat stage: Frontinus looking up from the desk, one hand raised, mid-thought | Frontinus's face + raised hand | right |
+| scene_04 | flat stage: Frontinus writing, head down, the report open before him | the report + his hand | top |
+| scene_05 | tight flat study on Frontinus's face, lit from the side by the lamp, still | Frontinus's eyes, centre | none |
+| scene_06 | flat stage: Frontinus half-turned toward a map of Gaul hung on the wall behind him | Frontinus turning + the wall map | right |
+| scene_07 | isometric map of southern Gaul: the Mediterranean coast, Nemausus and Uzès marked, garrigue hills, an azure route hinted | Nemausus, lower-right | top |
+| scene_08 | title card: wordmark + topic title, centred on a dark warm field | the wordmark, dead-centre | center |
+| scene_09 | full isometric elevation of the Pont du Gard revealed whole across the gorge, three tiers | the bridge, centred (statement) | bottom |
+| scene_10 | the bridge from a lower angle, a small tourist cluster dwarfed at the base for scale | the bridge base + the tiny crowd | bottom |
+| scene_11 | tilt-settled framing on the very top tier of the bridge, a hint of the covered channel line | the top-tier crown | top |
+| scene_12 | isometric route map: Nemausus and the spring at Uzès pinned, the winding line between | the two pins | top |
+| scene_13 | same map: a straight ghost line (20 km) vs the real winding route (50 km), azure | the two contrasting lines | top |
+| scene_14 | wide garrigue hills with the winding route threading the contours | the threading route | top |
+| scene_15 | abstract cross-section diagram: one downhill ramp from spring to city, arrow riding it, no pumps | the descending flow arrow | center |
+| scene_16 | elevation schematic: spring height vs city height, a thin vertical sliver marked as the whole budget | the tiny height sliver | top |
+| scene_17 | scale-comparison: the 12-17 m drop drawn as the height of a single tall tree beside the long route | the tree-height bar | top |
+| scene_18 | the same tree-height budget stretched across a 50 km baseline, tiny | the long thin baseline | top |
+| scene_19 | cross-section: too-steep channel, fast azure water scouring and undercutting the mortar bed | the scouring water | top |
+| scene_20 | cross-section: too-flat channel, still azure water silting and stagnating | the silted still water | top |
+| scene_21 | a lone surveyor on a bare hill, tiny against the country, a trough and a string his only tools | the tiny surveyor | top |
+| scene_22 | hero isometric of the chorobates, the water trough along its top catching light | the water groove | bottom |
+| scene_23 | labelled section of the chorobates: bench length, water groove, plumb-lines at each end | the plumb-line + notch | right |
+| scene_24 | detail on one end of the chorobates: the plumb-line hanging dead against its mark; the water groove beside | the plumb-line vs its mark | right |
+| scene_25 | dawn on the hillside: a surveyor at the chorobates, still cold air, long low light | the surveyor at the instrument | top |
+| scene_26 | clean idea-graphic: a bench + a puddle + a finished aqueduct arch, three simple icons, the wit line | the three icons row | center |
+| scene_27 | hero isometric of the groma: cross-staff, four plumb-bobs, offset bracket | the four plumb-bobs | right |
+| scene_28 | the dioptra on its stand, plus the three tools lined up small at the base as 'the whole toolkit' | the dioptra head | right |
+| scene_29 | two libratores on the hillside with their instruments, at work — the levellers named | the working pair | top |
+| scene_30 | map view: the route as a chain of tiny survey steps/stakes marching downhill | the chain of stakes | top |
+| scene_31 | the leap-frog: the bench moved down to the next stake, the pair resetting it — sense of repetition | the bench being reset | top |
+| scene_32 | abstract error diagram: many tiny step-errors stacking into a growing wobble | the growing error wedge | top |
+| scene_33 | split idea: one easy 6 m level (left) vs the same repeated 10,000x (right) — the real problem | the repeated-tiny field | top |
+| scene_34 | grand pull-back: the whole 50 km achieved line laid across the hills, spring to city | the full route arc | top |
+| scene_35 | cutaway of the specus: a person-height channel you could stoop inside, azure water on the floor | the channel interior | right |
+| scene_36 | detail of the channel wall: pink opus signinum lining + layered cream sinter scale | the lining + sinter layers | right |
+| scene_37 | map: most of the route buried/at-grade, only tiny stretches on arches — the 'what people miss' | the mostly-buried line | top |
+| scene_38 | the buried line running quietly toward the lip of the Gardon gorge ahead | the gorge lip ahead | top |
+| scene_39 | the gorge yawns open — the land drops away — cueing the crossing | the gorge void | center |
+| scene_40 | the Pont du Gard again — the earned return, a gentle push framing it in context | the bridge in its gorge | bottom |
+| scene_41 | cutaway logic overlay on the bridge: a slope line crossing the gorge without losing height | the level slope line across | top |
+| scene_42 | section through the bridge crown: the covered specus running along the very top under cap-slabs | the capped channel | right |
+| scene_43 | crowd at the base tilting up to the far-off waterline at the crown, 49 m above | tilt from crowd up to the crown | top |
+| scene_44 | held dark framing on the bridge silhouette, a beat before the number | the bridge silhouette | center |
+| scene_45 | the full 456 m span measured end to end, a tiny figure lost at the far end | the span measure | bottom |
+| scene_46 | the payoff graphic: across that whole span, a 2.5 cm drop = two stacked coins, wildly then truly scaled | the two-coin drop | center |
+| scene_47 | slope-ratio graphic: 1 in 18,000 easing to 1 in 20,000, a line that looks dead flat | the near-flat slope line | top |
+| scene_48 | a long stretch of channel that looks like level ground, azure water quietly moving right | the flat-looking channel | top |
+| scene_49 | the delivery end: azure water arriving at the castellum basin in Nîmes, the city drinking | the castellum outflow | top |
+| scene_50 | map: one glowing drop tracing the whole route, spring to city, a day-night sweep | the travelling drop | top |
+| scene_51 | warm closing-toward-camera framing on the bridge, the CTA moment | the bridge, inviting | bottom |
+| scene_52 | the arches held big and beautiful, then quietly demoted — thesis punch | the arches | center |
+| scene_53 | grand pull-back: the bridge shrinking to a tiny bright segment on the 50 km line | the shrinking bridge dot | top |
+| scene_54 | arches going up easily — masons stacking stone, 'a solved problem' | the rising arch + masons | top |
+| scene_55 | back on the crew with the trough — the invisible line being surveyed | the trough + the sightline | top |
+| scene_56 | idea-graphic: a camera with a red no-symbol over a gradient — 'no monument to a gradient' | the crossed-out camera | center |
+| scene_57 | the choice framed: they knew an easier way — a fork ahead of the surveyor | the fork in the route | top |
+| scene_58 | cutaway of an inverted siphon: water plunging down sealed pipe into a valley and rising the far side | the U of the siphon | top |
+| scene_59 | the Aspendos siphon: a long sealed line with two tall pressure towers, azure water | the pressure towers | top |
+| scene_60 | map: the chosen long gentle contour + bridge vs the ghost of the short steep siphon line | the chosen winding route | top |
+| scene_61 | comparison LEFT half: an open channel a person walks into to inspect and scrape clean | the walkable channel | right |
+| scene_62 | comparison RIGHT half: a buried pressure siphon failing unreachably underground | the buried failing pipe | left |
+| scene_63 | the whole line enduring: the bridge and route standing across 500 years, warm and timeless | the enduring bridge + route | top |
+| scene_64 | close on the bridge crown with '2.5 cm, held by hand' — a decision and a gradient | the crown + the tiny drop | top |
+| scene_65 | crossfade back to Frontinus at his desk, lamp lower, the report now closed under his hand | Frontinus + the closed report | right |
+| scene_66 | Frontinus looking off, connecting his work to the aqueduct — thoughtful | Frontinus's look | right |
+| scene_67 | tight study on Frontinus, the thesis widening — civilisation as accumulated precision | Frontinus's face | top |
+| scene_68 | dating graphic: the old Agrippa/Augustus attribution, ~19 BC, in warm sepia | the Agrippa date | center |
+| scene_69 | the riverbed dig revising it: tools in the Gardon silt, the date moving to Claudius, ~40-60 AD | the dig + the new date | center |
+| scene_70 | push in on the anonymous surveyor at his trough at first light — the human echo | the surveyor's hands at the trough | top |
+| scene_71 | close on the bridge crown at first light, the 2.5 cm held — 'precision, the insane kind' | the tiny held drop | top |
+| scene_72 | the whole bridge at first light for the sign-off, warm and complete | the bridge, whole | bottom |
+| scene_73 | outro card: subscribe prompt + a next-video thumbnail slot on a dark warm field | the subscribe lockup | center |
 
-| id | t | dur | reg | purpose | needs |
-|:--|:--|:--|:--|:--|:--|
-| **— COLD-OPEN — Frontinus (witness) · 0:00 —** | | | | | |
-| 01 | 0:00 | 7.4△ | witness | Open on Frontinus — introduce the man whose obsession frames th… | character |
-| 02 | 0:07 | 11.6 | witness | His actual job — auditing the water, not building it; the year … | character, infographic |
-| 03 | 0:19 | 11.6 | witness | The daily obsession — metering, catching pipe-theft, making the… | character |
-| 04 | 0:30 | 9.5 | witness | De aquaeductu survives; set up the thesis line. | character |
-| 05 | 0:40 | 5.4△ | witness | ⭐ The thesis — precision as civic conviction. (deliberate <8s: ho… | character |
-| 06 | 0:45 | 7.4△ | witness | The honesty guardrail — he's a lens, not a witness — pivot towa… | character, map |
-| 07 | 0:52 | 10.3 | witness | Hook into the subject — pull to the map of southern Gaul. | map |
-| **— TITLE · 1:03 —** | | | | | |
-| 08 | 1:03 | 4.0△ | data | Title sting: 'The Insane Precision of a Roman Aqueduct'. (no VO… | — |
-| **— THE REVEAL (early) · 1:07 —** | | | | | |
-| 09 | 1:07 | 10.8 | engineer | ⭐ THE hero reveal, brought early. PULL-BACK. The bridge the viewe… | architecture |
-| 10 | 1:18 | 9.5 | engineer | Set the misdirection — the famous thing is the wrong thing to a… | architecture, character |
-| 11 | 1:27 | 13.2▽ | engineer | ⭐ Tease the 2.5cm without spending it — promise the payoff. (>12:… | architecture |
-| **— THE STAKES / PROBLEM · 1:40 —** | | | | | |
-| 12 | 1:40 | 8.3 | engineer | Place city + spring on the map. | map |
-| 13 | 1:49 | 9.9 | data | ⭐ The core contrast — 20 km straight vs 50 km built. | map, infographic |
-| 14 | 1:58 | 9.9 | engineer | The detour was deliberate — forced by terrain. | map, nature |
-| 15 | 2:08 | 10.8 | engineer | The single hard constraint — gravity only. | diagram |
-| 16 | 2:19 | 11.6 | engineer | Set up the height budget as the scarce resource. | map, infographic |
-| 17 | 2:31 | 9.1 | data | ⭐ Land the number as a tangible image — one tall tree. (RHYTHM-3 … | infographic, nature |
-| 18 | 2:40 | 7.4△ | data | Reinforce scarcity — that tree over 50 km. (deliberate <8s.) | infographic |
-| 19 | 2:47 | 10.3 | engineer | Failure mode one — too steep scours. | diagram |
-| 20 | 2:58 | 11.6 | engineer | Failure mode two — too flat silts; the modern benchmark. | diagram |
-| 21 | 3:09 | 11.6 | engineer | Collapse the problem to its human absurdity — a trough and a st… | character |
-| **— HOW: THE INSTRUMENT · 3:21 —** | | | | | |
-| 22 | 3:21 | 9.9 | engineer | Reveal the hero instrument. MATCH-CUT 'trough of water and a st… | architecture, character |
-| 23 | 3:31 | 9.1 | engineer | Anatomy of the chorobates — a labelled section. | architecture, diagram |
-| 24 | 3:40 | 10.8 | engineer | How it's read — plumb-lines and the water-groove fallback. | architecture, diagram |
-| 25 | 3:51 | 12.8▽ | engineer | Introduce the field surveyors at dawn; cite Vitruvius. (>12: on… | character |
-| 26 | 4:03 | 8.3 | wit | The wit beat — sophistication without jargon. | infographic |
-| 27 | 4:12 | 11.2 | engineer | The groma — alignment and right angles. | architecture |
-| 28 | 4:23 | 11.2 | engineer | The dioptra + the whole spare toolkit. | architecture |
-| **— HOW: THE TECHNIQUE · 4:34 —** | | | | | |
-| 29 | 4:34 | 9.1 | engineer | Name the levellers; pivot from tools to technique. | character, nature |
-| 30 | 4:43 | 9.5 | engineer | The method — thousands of tiny steps. | map, character |
-| 31 | 4:53 | 11.2 | engineer | The leap-frog rhythm down the hills. | character, architecture |
-| 32 | 5:04 | 8.3 | engineer | Introduce error accumulation — why it should fail. | diagram, infographic |
-| 33 | 5:12 | 9.1 | engineer | First-person reframe — repetition without drift is the feat. | diagram, infographic |
-| 34 | 5:21 | 12.4▽ | engineer | ⭐ Resolve + tease the payoff — PULL-BACK to the whole achieved li… | architecture, map |
-| **— HOW: CHANNEL & CROSSING · 5:34 —** | | | | | |
-| 35 | 5:34 | 10.3 | engineer | Reveal the specus at human scale. | architecture, diagram |
-| 36 | 5:44 | 9.5 | engineer | The channel's waterproofing and cover. | architecture, diagram |
-| 37 | 5:53 | 7.9△ | engineer | The thing people miss — mostly buried, not arcades. (deliberate… | map |
-| 38 | 6:01 | 7.9△ | engineer | Follow the buried line to the gorge (the turn). (deliberate <8s… | architecture, nature |
-| 39 | 6:09 | 9.1 | engineer | The land drops; they crossed it head-on. Cue the return. | nature |
-| 40 | 6:18 | 7.4△ | engineer | Earned RETURN to the Pont du Gard (revealed early) — push-in, n… | architecture |
-| 41 | 6:26 | 8.3 | engineer | Reframe the bridge's true purpose — carrying a slope, not being… | architecture |
-| 42 | 6:34 | 6.6△ | engineer | The water hidden along the very top — a section through the bri… | architecture, diagram |
-| 43 | 6:41 | 13.6▽ | engineer | ⭐ Tilt crowd -> waterline, 49m up, still on grade. (>12: single c… | character, architecture |
-| **— THE SCALE / PAYOFF · 6:54 —** | | | | | |
-| 44 | 6:54 | 4.6△ | engineer | Held beat before the number. (deliberate <8s.) | architecture |
-| 45 | 6:59 | 11.2 | engineer | Establish the enormous span first — so the tiny drop lands agai… | architecture, infographic |
-| 46 | 7:10 | 9.1 | data | ⭐ THE headline number pays off — 2.5cm = two coins. (RHYTHM-3 big… | infographic |
-| 47 | 7:19 | 8.7 | data | Translate to slope ratios; push to the flatter extreme. | infographic |
-| 48 | 7:28 | 9.5 | wit | Make the imperceptibility felt. (wit close.) | architecture, nature |
-| 49 | 7:37 | 12.0 | data | ⭐ The payoff of use — what all that precision delivered. | infographic, architecture |
-| 50 | 7:49 | 12.8▽ | both | Trace one drop's 27-hour journey. (>12: one continuous route tr… | map, infographic |
-| 51 | 8:02 | 13.6▽ | wit | The one woven CTA (~68%), in-voice. (>12: one hold, to-camera f… | character |
-| **— WHAT MOST PEOPLE MISS · 8:16 —** | | | | | |
-| 52 | 8:16 | 6.6△ | engineer | ⭐ The thesis punch of the whole video, held. (deliberate <8s.) | architecture |
-| 53 | 8:22 | 11.6 | engineer | ⭐ Shrink the famous bridge to a rounding error — PULL-BACK to a t… | architecture, map |
-| 54 | 8:34 | 10.8 | wit | Argue the arches were the easy, solved part. | architecture, character |
-| 55 | 8:45 | 9.5 | engineer | Name the real feat — the invisible surveyed line — back on the … | character |
-| 56 | 8:54 | 11.6 | engineer | Callback the coin-thickness; crystallise why the feat is invisi… | infographic |
-| 57 | 9:06 | 7.9△ | engineer | Open the choice — they had an easier option and refused it. (de… | character |
-| 58 | 9:14 | 9.1 | engineer | Explain the inverted siphon — the alternative. | diagram |
-| 59 | 9:23 | 13.6▽ | engineer | Prove they had the tech (Aspendos) and it would've been easier.… | architecture, diagram |
-| 60 | 9:36 | 12.0 | engineer | The pivot — chose the hard way; the first-person thesis: mainte… | map, architecture |
-| 61 | 9:48 | 8.3 | engineer | Comparison A — the maintainable open channel (LEFT half, STAGE-… | architecture, diagram |
-| 62 | 9:57 | 9.1 | engineer | Comparison B — the unreachable failing siphon (RIGHT half, STAG… | diagram |
-| 63 | 10:06 | 8.3 | engineer | The verdict — maintainable beat clever; 500 years. | architecture, map |
-| 64 | 10:14 | 6.6△ | engineer | Restate the thesis as the section's close, held. (deliberate <8… | infographic |
-| **— CALLBACK + CLOSE (Frontinus) · 10:21 —** | | | | | |
-| 65 | 10:21 | 7.9△ | witness | CROSSFADE back to Frontinus; honest distance restated. (deliber… | character |
-| 66 | 10:29 | 9.5 | witness | Tie Frontinus's obsession to the aqueduct's real feat. | character |
-| 67 | 10:38 | 10.8 | witness | The widened thesis — civilisation as accumulated precision. | character, infographic |
-| 68 | 10:49 | 7.4△ | engineer | The honest dating — the old Agrippa attribution. (deliberate <8… | infographic |
-| 69 | 10:56 | 9.1 | engineer | The dating revision — riverbed evidence -> Claudius; the achiev… | infographic |
-| 70 | 11:05 | 10.8 | witness | ⭐ Echo the human act — the anonymous libratore, push-in. | character |
-| 71 | 11:16 | 9.9 | witness | ⭐ Final number callback — name the title words 'precision' and 'i… | architecture, infographic |
-| 72 | 11:26 | 7.0△ | witness | The locked channel sign-off, on the bridge at first light. (del… | architecture |
-| **— OUTRO · 11:33 —** | | | | | |
-| 73 | 11:33 | 6.0△ | data | Outro card: subscribe + next-video thumbnail. (no VO; title sti… | — |
-
----
-
-## Pass 2 — Sequence design (shots)
-
-| id | size | type | role | trans |
-|:--|:--|:--|:--|:--|
-| **— COLD-OPEN — Frontinus (witness) —** | | | | |
-| 01 | stage | narrative | hook | cut |
-| 02 | study | detail | establish | cut |
-| 03 | action | detail | beat | cut |
-| 04 | stage | narrative | beat | cut |
-| 05 | study | detail | beat | cut |
-| 06 | stage | narrative | approach | cut |
-| 07 | vista | map | hook | cut |
-| **— TITLE —** | | | | |
-| 08 | abstract | title | establish | cut |
-| **— THE REVEAL (early) —** | | | | |
-| 09 | vista | establishing | payoff | cut |
-| 10 | stage | establishing | beat | cut |
-| 11 | study | detail | approach | cut |
-| **— THE STAKES / PROBLEM —** | | | | |
-| 12 | vista | map | establish | cut |
-| 13 | vista | map | approach | cut |
-| 14 | stage | establishing | beat | cut |
-| 15 | abstract | cross_section | beat | cut |
-| 16 | vista | establishing | approach | cut |
-| 17 | abstract | scale_comparison | payoff | cut |
-| 18 | abstract | scale_comparison | beat | cut |
-| 19 | action | cross_section | beat | cut |
-| 20 | action | cross_section | beat | cut |
-| 21 | study | detail | beat | cut |
-| **— HOW: THE INSTRUMENT —** | | | | |
-| 22 | action | detail | approach | **match_cut** |
-| 23 | study | cross_section | beat | cut |
-| 24 | study | detail | beat | cut |
-| 25 | action | narrative | beat | cut |
-| 26 | abstract | scale_comparison | beat | cut |
-| 27 | study | detail | beat | cut |
-| 28 | study | cross_section | beat | cut |
-| **— HOW: THE TECHNIQUE —** | | | | |
-| 29 | stage | narrative | establish | cut |
-| 30 | vista | map | approach | cut |
-| 31 | action | map | beat | cut |
-| 32 | abstract | scale_comparison | beat | cut |
-| 33 | abstract | scale_comparison | beat | cut |
-| 34 | vista | establishing | payoff | cut |
-| **— HOW: CHANNEL & CROSSING —** | | | | |
-| 35 | study | cross_section | approach | cut |
-| 36 | study | cross_section | beat | cut |
-| 37 | vista | map | beat | cut |
-| 38 | stage | establishing | approach | cut |
-| 39 | action | detail | approach | cut |
-| 40 | vista | establishing | payoff | cut |
-| 41 | stage | establishing | beat | cut |
-| 42 | study | cross_section | beat | cut |
-| 43 | action | detail | beat | cut |
-| **— THE SCALE / PAYOFF —** | | | | |
-| 44 | abstract | detail | establish | cut |
-| 45 | vista | establishing | approach | cut |
-| 46 | abstract | scale_comparison | payoff | cut |
-| 47 | abstract | scale_comparison | payoff | cut |
-| 48 | stage | establishing | beat | cut |
-| 49 | abstract | scale_comparison | payoff | cut |
-| 50 | vista | map | beat | cut |
-| 51 | stage | narrative | beat | cut |
-| **— WHAT MOST PEOPLE MISS —** | | | | |
-| 52 | abstract | detail | establish | cut |
-| 53 | vista | establishing | beat | cut |
-| 54 | stage | establishing | beat | cut |
-| 55 | study | detail | approach | cut |
-| 56 | abstract | scale_comparison | payoff | cut |
-| 57 | stage | narrative | beat | cut |
-| 58 | abstract | cross_section | approach | cut |
-| 59 | action | scale_comparison | beat | cut |
-| 60 | stage | map | beat | cut |
-| 61 | study | scale_comparison | approach | cut |
-| 62 | study | scale_comparison | payoff | cut |
-| 63 | vista | establishing | beat | cut |
-| 64 | abstract | detail | close | cut |
-| **— CALLBACK + CLOSE (Frontinus) —** | | | | |
-| 65 | stage | narrative | close | **crossfade** |
-| 66 | action | narrative | beat | cut |
-| 67 | study | detail | beat | cut |
-| 68 | study | detail | beat | cut |
-| 69 | action | narrative | beat | cut |
-| 70 | action | narrative | payoff | cut |
-| 71 | study | detail | payoff | cut |
-| 72 | stage | establishing | close | cut |
-| **— OUTRO —** | | | | |
-| 73 | abstract | outro | close | cut |
-
----
-
-## Pass 3 — Frames (composition)
-
-| id | frame | focal | neg | fg / mid / bg |
-|:--|:--|:--|:--|:--|
-| **— COLD-OPEN — Frontinus (witness) —** | | | | |
-| 01 | flat stage: Frontinus bent over his writing table under a s… | Frontinus, centre-l… | right | lamp glow + s… / Frontinus at th… / dark plastere… |
-| 02 | close isometric of the desk surface: wax tablets of tally c… | the tally columns, … | top-right | stylus, fg / tablets + ledge… / lamp-lit wood… |
-| 03 | flat stage: Frontinus looking up from the desk, one hand ra… | Frontinus's face + … | right | tablet, fg / Frontinus mid-g… / dark wall |
-| 04 | flat stage: Frontinus writing, head down, the report open b… | the report + his ha… | top | scrolls, fg-l… / Frontinus writi… / dark wall |
-| 05 | tight flat study on Frontinus's face, lit from the side by … | Frontinus's eyes, c… | none | none / Frontinus, head… / warm dark fal… |
-| 06 | flat stage: Frontinus half-turned toward a map of Gaul hung… | Frontinus turning +… | right | desk edge, fg / Frontinus, turn… / wall with a f… |
-| 07 | isometric map of southern Gaul: the Mediterranean coast, Ne… | Nemausus, lower-rig… | top | coastline, fg… / the hill countr… / haze + sky ba… |
-| **— TITLE —** | | | | |
-| 08 | title card: wordmark + topic title, centred on a dark warm … | the wordmark, dead-… | center | none / the title lockup / dark warm gra… |
-| **— THE REVEAL (early) —** | | | | |
-| 09 | full isometric elevation of the Pont du Gard revealed whole… | the bridge, centred… | bottom | gorge rim + s… / the three-tier … / warm hazy sky |
-| 10 | the bridge from a lower angle, a small tourist cluster dwar… | the bridge base + t… | bottom | tourist clust… / the towering lo… / upper tiers +… |
-| 11 | tilt-settled framing on the very top tier of the bridge, a … | the top-tier crown | top | lower tiers, … / the top arcade … / pale sky |
-| **— THE STAKES / PROBLEM —** | | | | |
-| 12 | isometric route map: Nemausus and the spring at Uzès pinned… | the two pins | top | coast, fg / the garrigue be… / sky band, top |
-| 13 | same map: a straight ghost line (20 km) vs the real winding… | the two contrasting… | top | coast, fg / straight ghost … / garrigue, mut… |
-| 14 | wide garrigue hills with the winding route threading the co… | the threading route | top | a scrub bush … / the contour-hug… / hazy ridgelin… |
-| 15 | abstract cross-section diagram: one downhill ramp from spri… | the descending flow… | center | none / the single down… / clean field |
-| 16 | elevation schematic: spring height vs city height, a thin v… | the tiny height sli… | top | none / the two elevati… / muted |
-| 17 | scale-comparison: the 12-17 m drop drawn as the height of a… | the tree-height bar | top | route baselin… / a tall tree mat… / muted |
-| 18 | the same tree-height budget stretched across a 50 km baseli… | the long thin basel… | top | none / the budget bar … / muted |
-| 19 | cross-section: too-steep channel, fast azure water scouring… | the scouring water | top | channel lip, … / the steep chann… / cutaway earth |
-| 20 | cross-section: too-flat channel, still azure water silting … | the silted still wa… | top | channel lip, … / the flat channe… / cutaway earth |
-| 21 | a lone surveyor on a bare hill, tiny against the country, a… | the tiny surveyor | top | hill crest + … / the lone survey… / vast hazy hil… |
-| **— HOW: THE INSTRUMENT —** | | | | |
-| 22 | hero isometric of the chorobates, the water trough along it… | the water groove | bottom | ground + a st… / the chorobates … / soft garrigue… |
-| 23 | labelled section of the chorobates: bench length, water gro… | the plumb-line + no… | right | none / the bench with … / clean field |
-| 24 | detail on one end of the chorobates: the plumb-line hanging… | the plumb-line vs i… | right | none / the bench-end d… / warm falloff |
-| 25 | dawn on the hillside: a surveyor at the chorobates, still c… | the surveyor at the… | top | dew scrub, fg / the surveyor + … / dawn haze, lo… |
-| 26 | clean idea-graphic: a bench + a puddle + a finished aqueduc… | the three icons row | center | none / bench | puddle … / clean warm fi… |
-| 27 | hero isometric of the groma: cross-staff, four plumb-bobs, … | the four plumb-bobs | right | ground, fg / the groma stand… / soft haze |
-| 28 | the dioptra on its stand, plus the three tools lined up sma… | the dioptra head | right | tool line, fg / the dioptra + t… / clean field |
-| **— HOW: THE TECHNIQUE —** | | | | |
-| 29 | two libratores on the hillside with their instruments, at w… | the working pair | top | scrub, fg / the two surveyo… / garrigue haze |
-| 30 | map view: the route as a chain of tiny survey steps/stakes … | the chain of stakes | top | coast, fg / the stepped rou… / muted terrain |
-| 31 | the leap-frog: the bench moved down to the next stake, the … | the bench being res… | top | downhill scru… / surveyor2 plant… / stepped hills… |
-| 32 | abstract error diagram: many tiny step-errors stacking into… | the growing error w… | top | none / the accumulatin… / clean field |
-| 33 | split idea: one easy 6 m level (left) vs the same repeated … | the repeated-tiny f… | top | none / one bench (left… / clean field |
-| 34 | grand pull-back: the whole 50 km achieved line laid across … | the full route arc | top | near ridge + … / the entire rout… / vast hazy hil… |
-| **— HOW: CHANNEL & CROSSING —** | | | | |
-| 35 | cutaway of the specus: a person-height channel you could st… | the channel interior | right | cut earth lip… / the specus inte… / cutaway ground |
-| 36 | detail of the channel wall: pink opus signinum lining + lay… | the lining + sinter… | right | none / the lined wall … / cut earth |
-| 37 | map: most of the route buried/at-grade, only tiny stretches… | the mostly-buried l… | top | coast, fg / the route, dash… / muted terrain |
-| 38 | the buried line running quietly toward the lip of the Gardo… | the gorge lip ahead | top | scrub, fg / the at-grade ch… / the gorge ope… |
-| 39 | the gorge yawns open — the land drops away — cueing the cro… | the gorge void | center | near rim, fg / the sheer drop … / far gorge wal… |
-| 40 | the Pont du Gard again — the earned return, a gentle push f… | the bridge in its g… | bottom | gorge rim + s… / the three-tier … / hazy sky |
-| 41 | cutaway logic overlay on the bridge: a slope line crossing … | the level slope lin… | top | gorge, fg / the bridge carr… / sky |
-| 42 | section through the bridge crown: the covered specus runnin… | the capped channel | right | top-tier ston… / the specus in s… / sky |
-| 43 | crowd at the base tilting up to the far-off waterline at th… | tilt from crowd up … | top | tourist crowd… / the full bridge… / the top-tier … |
-| **— THE SCALE / PAYOFF —** | | | | |
-| 44 | held dark framing on the bridge silhouette, a beat before t… | the bridge silhouet… | center | none / the bridge, qui… / dark warm sky |
-| 45 | the full 456 m span measured end to end, a tiny figure lost… | the span measure | bottom | near pier, fg / the whole span … / hazy sky |
-| 46 | the payoff graphic: across that whole span, a 2.5 cm drop =… | the two-coin drop | center | span baseline… / the tiny 2.5 cm… / clean |
-| 47 | slope-ratio graphic: 1 in 18,000 easing to 1 in 20,000, a l… | the near-flat slope… | top | none / the imperceptib… / clean |
-| 48 | a long stretch of channel that looks like level ground, azu… | the flat-looking ch… | top | scrub, fg / the seemingly l… / garrigue haze |
-| 49 | the delivery end: azure water arriving at the castellum bas… | the castellum outfl… | top | basin rim, fg / the distributio… / warm town haze |
-| 50 | map: one glowing drop tracing the whole route, spring to ci… | the travelling drop | top | coast, fg / the full route … / muted terrain… |
-| 51 | warm closing-toward-camera framing on the bridge, the CTA m… | the bridge, inviting | bottom | gorge scrub, … / the Pont du Gar… / golden sky |
-| **— WHAT MOST PEOPLE MISS —** | | | | |
-| 52 | the arches held big and beautiful, then quietly demoted — t… | the arches | center | gorge, fg / the arcade, bea… / sky |
-| 53 | grand pull-back: the bridge shrinking to a tiny bright segm… | the shrinking bridg… | top | near ridge, fg / the whole route… / vast hills |
-| 54 | arches going up easily — masons stacking stone, 'a solved p… | the rising arch + m… | top | scaffold, fg / an arch under c… / garrigue |
-| 55 | back on the crew with the trough — the invisible line being… | the trough + the si… | top | scrub, fg / the surveyor si… / hazy hills |
-| 56 | idea-graphic: a camera with a red no-symbol over a gradient… | the crossed-out cam… | center | none / camera icon + t… / clean |
-| 57 | the choice framed: they knew an easier way — a fork ahead o… | the fork in the rou… | top | scrub, fg / the surveyor at… / hills |
-| 58 | cutaway of an inverted siphon: water plunging down sealed p… | the U of the siphon | top | valley floor,… / the siphon's do… / valley walls |
-| 59 | the Aspendos siphon: a long sealed line with two tall press… | the pressure towers | top | valley scrub,… / the 1.6 km siph… / hazy valley |
-| 60 | map: the chosen long gentle contour + bridge vs the ghost o… | the chosen winding … | top | coast, fg / the long contou… / muted terrain |
-| 61 | comparison LEFT half: an open channel a person walks into t… | the walkable channel | right | cut lip, fg / a person inside… / cut earth |
-| 62 | comparison RIGHT half: a buried pressure siphon failing unr… | the buried failing … | left | soil, fg / the sealed pipe… / cut earth |
-| 63 | the whole line enduring: the bridge and route standing acro… | the enduring bridge… | top | near ridge, fg / the bridge on i… / vast warm hil… |
-| 64 | close on the bridge crown with '2.5 cm, held by hand' — a d… | the crown + the tin… | top | top stone, fg / the covered cha… / sky |
-| **— CALLBACK + CLOSE (Frontinus) —** | | | | |
-| 65 | crossfade back to Frontinus at his desk, lamp lower, the re… | Frontinus + the clo… | right | lamp, fg / Frontinus at th… / dark wall |
-| 66 | Frontinus looking off, connecting his work to the aqueduct … | Frontinus's look | right | scroll, fg / Frontinus, refl… / dark wall |
-| 67 | tight study on Frontinus, the thesis widening — civilisatio… | Frontinus's face | top | none / Frontinus, head… / warm dark fal… |
-| 68 | dating graphic: the old Agrippa/Augustus attribution, ~19 B… | the Agrippa date | center | none / a portrait-bust… / muted |
-| 69 | the riverbed dig revising it: tools in the Gardon silt, the… | the dig + the new d… | center | riverbed silt… / archaeologists'… / gorge wall |
-| 70 | push in on the anonymous surveyor at his trough at first li… | the surveyor's hand… | top | dawn scrub, fg / the libratore d… / dawn haze |
-| 71 | close on the bridge crown at first light, the 2.5 cm held —… | the tiny held drop | top | top stone, fg / the near-level … / warm dawn sky |
-| 72 | the whole bridge at first light for the sign-off, warm and … | the bridge, whole | bottom | gorge scrub, … / the Pont du Gar… / golden sky |
-| **— OUTRO —** | | | | |
-| 73 | outro card: subscribe prompt + a next-video thumbnail slot … | the subscribe lockup | center | none / the outro lockup / dark warm gra… |
-
----
-
-## Pass 4 — Builds (plate / assembly / plate+layers)
-
+## Pass 4 — Builds
 | id | build | plate subject / stage | layers |
-|:--|:--|:--|:--|
-| **— COLD-OPEN — Frontinus (witness) —** | | | |
-| 01 | assembly | flat warm stage: a plain plastered Roman wall… | props/roman_desk_01·mid, characters/frontinus_01·mid, props/oil_lamp_01·fg, props/scroll_stack_01·fg |
-| 02 | plate | close isometric top-down-ish of a Roman writi… | — |
-| 03 | assembly | flat warm stage: a plain plastered Roman wall… | props/roman_desk_01·mid, characters/frontinus_01·mid, props/wax_tablet_01·fg |
-| 04 | assembly | flat warm stage: a plain plastered Roman wall… | props/roman_desk_01·mid, characters/frontinus_01·mid, props/scroll_stack_01·fg |
-| 05 | assembly | flat warm stage, tight: dark plastered wall, … | characters/frontinus_01·mid |
-| 06 | assembly | flat warm stage: plastered wall carrying a fa… | props/roman_desk_01·fg, characters/frontinus_01·mid |
-| 07 | plate | isometric map of southern Gaul: warm Mediterr… | — |
-| **— TITLE —** | | | |
-| 08 | assembly | dark warm gradient field for the title sting … | — |
-| **— THE REVEAL (early) —** | | | |
-| 09 | plate | the Pont du Gard in full three-tier elevation… | — |
-| 10 | plate+layers | the lower tier of the Pont du Gard rising hug… | characters/crowd_tourists_01·fg |
-| 11 | plate | the top tier of the Pont du Gard filling the … | — |
-| **— THE STAKES / PROBLEM —** | | | |
-| 12 | plate | isometric map: Nemausus (Nîmes) and the sprin… | — |
-| 13 | plate | isometric map of the Uzès-to-Nîmes corridor s… | — |
-| 14 | plate+layers | wide isometric of limestone garrigue ridgelin… | nature/olive_tree_01·fg, rocks_01·fg |
-| 15 | plate | clean isometric schematic: a single continuou… | — |
-| 16 | plate | isometric elevation schematic: the spring ele… | — |
-| 17 | plate+layers | clean isometric scale-comparison field: a ver… | nature/cypress_01·mid |
-| 18 | plate | clean isometric: a very long horizontal basel… | — |
-| 19 | plate | isometric cutaway of an aqueduct channel runn… | — |
-| 20 | plate | isometric cutaway of a near-flat aqueduct cha… | — |
-| 21 | plate+layers | wide isometric of vast bare limestone garrigu… | characters/surveyor_01·mid, rocks_01·fg |
-| **— HOW: THE INSTRUMENT —** | | | |
-| 22 | plate+layers | a bare warm garrigue ground plane with soft h… | props/chorobates_01·mid, props/survey_stake_01·fg |
-| 23 | plate+layers | clean neutral field for a labelled diagram, g… | props/chorobates_01·mid |
-| 24 | plate | close isometric detail of one end of a chorob… | — |
-| 25 | plate+layers | wide isometric of a garrigue hillside at dawn… | props/chorobates_01·mid, characters/surveyor_01·mid, nature/olive_tree_01·fg |
-| 26 | plate | clean isometric idea-graphic: three simple ho… | — |
-| 27 | plate+layers | bare warm ground plane, soft haze, empty and … | props/groma_01·mid |
-| 28 | plate+layers | clean warm field staged for the dioptra centr… | props/dioptra_01·mid, props/chorobates_01·fg, props/groma_01·fg |
-| **— HOW: THE TECHNIQUE —** | | | |
-| 29 | plate+layers | wide isometric garrigue hillside staged for a… | props/chorobates_01·mid, characters/surveyor_01·mid, characters/surveyor_02·mid |
-| 30 | plate | isometric map of the aqueduct corridor with t… | — |
-| 31 | plate+layers | isometric stepped garrigue hillside descendin… | props/chorobates_01·mid, characters/surveyor_01·mid, characters/surveyor_02·mid, props/survey_stake_01·fg |
-| 32 | plate | clean isometric abstract: a long row of tiny … | — |
-| 33 | plate | clean isometric comparison graphic: LEFT a si… | — |
-| 34 | plate+layers | grand wide isometric of the entire garrigue l… | nature/olive_tree_01·fg, cloud_01·bg |
-| **— HOW: CHANNEL & CROSSING —** | | | |
-| 35 | plate | isometric cutaway of the specus: a masonry co… | — |
-| 36 | plate | close isometric of a specus wall in section: … | — |
-| 37 | plate | isometric route map emphasising that MOST of … | — |
-| 38 | plate+layers | isometric garrigue with the low at-grade chan… | nature/olive_tree_01·fg, rocks_01·fg |
-| 39 | plate | dramatic isometric of the Gardon gorge yawnin… | — |
-| 40 | plate | the Pont du Gard three-tier elevation spannin… | — |
-| 41 | plate | isometric of the Pont du Gard with a subtle n… | — |
-| 42 | plate | close isometric section through the top tier … | — |
-| 43 | plate+layers | full-height isometric of the Pont du Gard fro… | characters/crowd_tourists_01·fg |
-| **— THE SCALE / PAYOFF —** | | | |
-| 44 | plate | the Pont du Gard in near-silhouette against a… | — |
-| 45 | plate+layers | wide isometric of the full 456 m length of th… | characters/crowd_tourists_01·fg |
-| 46 | plate | clean isometric scale payoff: the enormous 45… | — |
-| 47 | plate | clean isometric graphic of an extremely shall… | — |
-| 48 | plate+layers | wide isometric of a long aqueduct channel acr… | nature/cypress_01·fg, rocks_01·fg |
-| 49 | plate | isometric of the castellum aquae (distributio… | — |
-| 50 | plate | isometric route map of the full Uzès-to-Nîmes… | — |
-| 51 | plate | the Pont du Gard bathed in warm golden light,… | — |
-| **— WHAT MOST PEOPLE MISS —** | | | |
-| 52 | plate | a beautiful tight isometric on the Pont du Ga… | — |
-| 53 | plate | grand wide isometric of the entire 50 km garr… | nature/olive_tree_01·fg |
-| 54 | plate+layers | isometric of a Roman aqueduct arch under cons… | characters/surveyor_01·mid, characters/surveyor_02·mid |
-| 55 | plate+layers | wide isometric garrigue with a faint azure su… | props/chorobates_01·mid, characters/surveyor_01·mid |
-| 56 | plate | clean isometric idea-graphic: a simple camera… | — |
-| 57 | plate+layers | isometric garrigue where the azure route reac… | characters/surveyor_01·mid |
-| 58 | plate | isometric cutaway of a Roman inverted siphon:… | — |
-| 59 | plate | wide isometric of the Aspendos aqueduct inver… | — |
-| 60 | plate | isometric map contrasting TWO options to Nîme… | — |
-| 61 | plate+layers | LEFT-half isometric cutaway of an open specus… | characters/surveyor_01·mid |
-| 62 | plate | RIGHT-half isometric cutaway of a buried lead… | — |
-| 63 | plate+layers | grand warm isometric of the Pont du Gard on i… | nature/cypress_01·fg |
-| 64 | plate | close isometric of the Pont du Gard's crown w… | — |
-| **— CALLBACK + CLOSE (Frontinus) —** | | | |
-| 65 | assembly | flat warm stage: a plain plastered Roman wall… | props/roman_desk_01·mid, characters/frontinus_01·mid, props/oil_lamp_01·fg |
-| 66 | assembly | flat warm stage: a plain plastered Roman wall… | props/roman_desk_01·mid, characters/frontinus_01·mid, props/scroll_stack_01·fg |
-| 67 | assembly | flat warm stage, tight on the figure: dark wa… | characters/frontinus_01·mid |
-| 68 | plate | clean isometric dating graphic: a simple Roma… | — |
-| 69 | plate | isometric of an archaeological find in the Ga… | — |
-| 70 | plate+layers | intimate isometric of a surveyor crouched at … | props/chorobates_01·mid, characters/surveyor_01·mid, nature/olive_tree_01·fg |
-| 71 | plate | close isometric of the Pont du Gard's crown c… | — |
-| 72 | plate | the Pont du Gard in full at first light, hone… | — |
-| **— OUTRO —** | | | |
-| 73 | assembly | dark warm gradient field for the outro card (… | — |
+|---|---|---|---|
+| scene_01 | assembly | flat stage: Frontinus bent over his writing table under a single oil lamp, scrolls and tablets around him | assets_library/props/roman_desk_01.png ← mid; assets_library/characters/frontinus_01.png ← mid; assets_library/props/oil_lamp_01.png ← fg; assets_library/props/scroll_stack_01.png ← fg |
+| scene_02 | plate | close isometric top-down-ish of a Roman writing desk: stacked wax tablets covered in neat tally columns, a bronze pipe-gauge (calix) nozzle, a papyrus ledger half-unrolled, a stylus; warm oil-lamp light from upper-left; empty wood surface upper-right reserved for a callout | — |
+| scene_03 | assembly | flat stage: Frontinus looking up from the desk, one hand raised, mid-thought | assets_library/props/roman_desk_01.png ← mid; assets_library/characters/frontinus_01.png ← mid; assets_library/props/wax_tablet_01.png ← fg |
+| scene_04 | assembly | flat stage: Frontinus writing, head down, the report open before him | assets_library/props/roman_desk_01.png ← mid; assets_library/characters/frontinus_01.png ← mid; assets_library/props/scroll_stack_01.png ← fg |
+| scene_05 | assembly | tight flat study on Frontinus's face, lit from the side by the lamp, still | assets_library/characters/frontinus_01.png ← mid |
+| scene_06 | assembly | flat stage: Frontinus half-turned toward a map of Gaul hung on the wall behind him | assets_library/props/roman_desk_01.png ← fg; assets_library/characters/frontinus_01.png ← mid |
+| scene_07 | plate | isometric map of southern Gaul: warm Mediterranean coastline lower edge, the town of Nemausus (Nîmes) lower-right and Uzès upper-left both marked, limestone garrigue hills between, a faint azure aqueduct route hinted along the contours; north up; muted terrain; upper band left clear for a title-safe callout | — |
+| scene_08 | assembly | title card: wordmark + topic title, centred on a dark warm field | — |
+| scene_09 | plate | the Pont du Gard in full three-tier elevation, honey limestone, spanning the Gardon gorge, revealed whole and heroic; warm haze behind; low scrub on the gorge rims; lower band clear for a callout | — |
+| scene_10 | plate+layers | the lower tier of the Pont du Gard rising huge from the gorge floor, honey limestone, warm light; empty foreground path where a crowd will stand; clear lower-centre for scale figures | assets_library/characters/crowd_tourists_01.png ← fg |
+| scene_11 | plate | the top tier of the Pont du Gard filling the frame, the covered specus channel line running along its crown under stone cap-slabs, honey limestone ashlar; pale sky above reserved for a callout | — |
+| scene_12 | plate | isometric map: Nemausus (Nîmes) and the spring near Uzès both pinned, limestone garrigue hill country between them, Mediterranean edge below; north up; muted; upper band clear | — |
+| scene_13 | plate | isometric map of the Uzès-to-Nîmes corridor showing TWO lines: a faint straight dashed line direct between the points, and the real winding azure aqueduct route hugging the contours far longer; muted terrain; upper band clear for two callouts | — |
+| scene_14 | plate+layers | wide isometric of limestone garrigue ridgelines with the azure aqueduct route threading along the contours, warm haze; sparse; empty near-foreground for a tree | assets_library/nature/olive_tree_01.png ← fg; assets_library/nature/rocks_01.png ← fg |
+| scene_15 | plate | clean isometric schematic: a single continuous gently-descending channel line from a high spring (left) to a low city (right), an azure flow arrow riding it left-to-right and downhill; no machinery; lots of clean negative space for labels | — |
+| scene_16 | plate | isometric elevation schematic: the spring elevation (left, slightly higher) and the city (right, slightly lower) with a thin vertical measure between them marking the tiny total height difference; long clean horizontal for a callout across the top | — |
+| scene_17 | plate+layers | clean isometric scale-comparison field: a vertical measure bar (~15 m) beside empty space sized to a tall tree; warm neutral ground line; foreground clear for the tree asset | assets_library/nature/cypress_01.png ← mid |
+| scene_18 | plate | clean isometric: a very long horizontal baseline labelled as 50 km, the tiny ~15 m vertical budget shown spread imperceptibly along it; stark negative space to sell the disproportion | — |
+| scene_19 | plate | isometric cutaway of an aqueduct channel running too steeply, azure water racing left-to-right, tearing at the mortar lining and undercutting the bed; cutaway earth around it; upper area clear for a callout | — |
+| scene_20 | plate | isometric cutaway of a near-flat aqueduct channel, azure water stalled and stagnant with silt building on the floor; cutaway earth; upper area clear for a callout | — |
+| scene_21 | plate+layers | wide isometric of vast bare limestone garrigue hills under warm haze, one small bare hill crest mid-frame, deep negative space to dwarf a figure; empty where the surveyor stands | assets_library/characters/surveyor_01.png ← mid; assets_library/nature/rocks_01.png ← fg |
+| scene_22 | plate+layers | a bare warm garrigue ground plane with soft haze behind, clean and empty, staged for a hero instrument to sit centre; foreground ground for a stake; lower band clear for a label | assets_library/props/chorobates_01.png ← mid; assets_library/props/survey_stake_01.png ← fg |
+| scene_23 | plate+layers | clean neutral field for a labelled diagram, generous margins for callouts around a centred instrument | assets_library/props/chorobates_01.png ← mid |
+| scene_24 | plate | close isometric detail of one end of a chorobates: a plumb-line hanging dead-straight against a marked notch, the water-filled groove running off to the side, wood + bronze, warm light upper-left; right side clear for a callout | — |
+| scene_25 | plate+layers | wide isometric of a garrigue hillside at dawn, long low warm light, still cold haze, empty crest staged for a surveyor and his bench | assets_library/props/chorobates_01.png ← mid; assets_library/characters/surveyor_01.png ← mid; assets_library/nature/olive_tree_01.png ← fg |
+| scene_26 | plate | clean isometric idea-graphic: three simple honey-limestone/wood icons in a row — a levelling bench, a small puddle of azure water, a single finished aqueduct arch — on a warm neutral field with generous space for a caption | — |
+| scene_27 | plate+layers | bare warm ground plane, soft haze, empty and staged for a single standing instrument; right side clear for a label | assets_library/props/groma_01.png ← mid |
+| scene_28 | plate+layers | clean warm field staged for the dioptra centred, with room along the lower edge for a small line-up of the three instruments; right clear for labels | assets_library/props/dioptra_01.png ← mid; assets_library/props/chorobates_01.png ← fg; assets_library/props/groma_01.png ← fg |
+| scene_29 | plate+layers | wide isometric garrigue hillside staged for a small survey party at work, warm haze, empty mid-ground | assets_library/props/chorobates_01.png ← mid; assets_library/characters/surveyor_01.png ← mid; assets_library/characters/surveyor_02.png ← mid |
+| scene_30 | plate | isometric map of the aqueduct corridor with the azure route rendered as a chain of many tiny survey-stake ticks marching downhill along the contours; muted terrain; upper band clear | — |
+| scene_31 | plate+layers | isometric stepped garrigue hillside descending left-to-right, staged for the leap-frog: room for a bench mid-slope and a stake further down | assets_library/props/chorobates_01.png ← mid; assets_library/characters/surveyor_01.png ← mid; assets_library/characters/surveyor_02.png ← mid; assets_library/props/survey_stake_01.png ← fg |
+| scene_32 | plate | clean isometric abstract: a long row of tiny step increments whose small errors visibly accumulate into a growing red-terracotta wedge of drift; stark negative space for labels | — |
+| scene_33 | plate | clean isometric comparison graphic: LEFT a single 6 m levelling bench (easy), RIGHT the same act tiled thousands of times into a vast faint grid (hard); warm neutral; centre gutter + top clear for labels | — |
+| scene_34 | plate+layers | flat-design isometric technical map, clean charcoal linework and flat muted fills, crisp diagram style — NOT painterly, NOT photorealistic, no atmospheric haze, no soft focus, no framing foliage: the whole garrigue route shown as one grand isometric diagram across low limestone hills, a single azure aqueduct line threading the full distance from the high spring at left to the distant walled city at right; epic breadth and pull-back scale but rendered flat and diagrammatic like a clean isometric map; lower-foreground kept clear for a framing-tree layer added later | assets_library/nature/olive_tree_01.png ← fg; assets_library/nature/cloud_01.png ← bg |
+| scene_35 | plate | isometric cutaway of the specus: a masonry conduit a bit over a metre wide and tall enough to stoop inside, azure water flowing along the floor left-to-right, pink opus signinum lining visible; cutaway earth; right side clear for a callout | — |
+| scene_36 | plate | close isometric of a specus wall in section: pinkish opus signinum hydraulic mortar lining with thick layered cream/tan calcium-carbonate sinter deposits built up on it; covered top edge; right clear for a callout | — |
+| scene_37 | plate | isometric route map emphasising that MOST of the aqueduct is underground or at grade — the azure route shown dashed/buried for the great majority, with only tiny raised arcade segments; muted terrain; upper band clear | — |
+| scene_38 | plate+layers | isometric garrigue with the low at-grade channel running left-to-right toward the opening lip of a river gorge ahead, warm haze; foreground scrub | assets_library/nature/olive_tree_01.png ← fg; assets_library/nature/rocks_01.png ← fg |
+| scene_39 | plate | dramatic isometric of the Gardon gorge yawning open, sheer limestone walls dropping to the river far below, azure water at the bottom, warm haze; the near rim where the channel stops; centre void staged for the reveal | — |
+| scene_40 | plate | the Pont du Gard three-tier elevation spanning the Gardon gorge, honey limestone, warm light, framed as an earned return (calmer, contextual, the whole crossing legible); lower band clear | — |
+| scene_41 | plate | isometric of the Pont du Gard with a subtle near-level channel line carried straight across its top from rim to rim, showing the bridge exists to keep the slope from dropping into the gorge; honey limestone; top clear for a callout | — |
+| scene_42 | plate | close isometric section through the top tier of the Pont du Gard: the covered specus channel running along the crown under stone cap-slabs, azure water inside, honey ashlar; right clear for a callout | — |
+| scene_43 | plate+layers | full-height isometric of the Pont du Gard from gorge floor to crown, honey limestone, warm light, staged for a tilt from a crowd at the base up to the tiny waterline at the top; foreground path for figures; top clear for a callout | assets_library/characters/crowd_tourists_01.png ← fg |
+| scene_44 | plate | the Pont du Gard in near-silhouette against a dim warm dusk sky, quiet and held, waiting; centre reserved for a number to appear | — |
+| scene_45 | plate+layers | wide isometric of the full 456 m length of the Pont du Gard with a measure line running its whole span underneath; a lone tiny figure at the far end for scale; honey limestone; lower band clear for a callout | assets_library/characters/crowd_tourists_01.png ← fg |
+| scene_46 | plate | clean isometric scale payoff: the enormous 456 m span as a long horizontal, and the 2.5 cm fall shown as two coins stacked on a table beside it — the shocking disproportion; warm neutral; centre + top clear for the big callout | — |
+| scene_47 | plate | clean isometric graphic of an extremely shallow slope line that reads as perfectly flat, annotated as 1 in 18,000 and 1 in 20,000; stark negative space top for two callouts | — |
+| scene_48 | plate+layers | wide isometric of a long aqueduct channel across garrigue that looks perfectly level to the eye, azure water quietly moving left-to-right; warm haze; foreground scrub | assets_library/nature/cypress_01.png ← fg; assets_library/nature/rocks_01.png ← fg |
+| scene_49 | plate | isometric of the castellum aquae (distribution basin) in Nemausus: azure water arriving and fanning into outlet pipes, the Roman town beyond in warm haze; upper band clear for a volume callout | — |
+| scene_50 | plate | isometric route map of the full Uzès-to-Nîmes line with a single bright azure droplet mid-journey along it, a subtle day-to-night gradient across the map to suggest 27 hours passing; muted terrain; upper band clear | — |
+| scene_51 | plate | the Pont du Gard bathed in warm golden light, whole and inviting, a closing hero framing for the subscribe moment; lower band clear | — |
+| scene_52 | plate | a beautiful tight isometric on the Pont du Gard's arcade, honey limestone, warm light — composed to be admired then undercut; centre for a punch callout | — |
+| scene_53 | plate | grand wide isometric of the entire 50 km garrigue route with the famous Pont du Gard reduced to one tiny bright segment along it, the rest buried/at-grade; awe scale; upper band clear for a callout | assets_library/nature/olive_tree_01.png ← fg |
+| scene_54 | plate+layers | isometric of a Roman aqueduct arch under construction, honey limestone blocks and timber scaffolding, staged for a couple of tiny worker silhouettes; warm light; top clear for a callout | assets_library/characters/surveyor_01.png ← mid; assets_library/characters/surveyor_02.png ← mid |
+| scene_55 | plate+layers | wide isometric garrigue with a faint azure survey sightline running off toward the horizon, staged for the surveyor at his bench; warm haze | assets_library/props/chorobates_01.png ← mid; assets_library/characters/surveyor_01.png ← mid |
+| scene_56 | plate | clean isometric idea-graphic: a simple camera icon with a terracotta no-symbol, beside a near-flat gradient line that 'cannot be photographed'; warm neutral; centre for a caption | — |
+| scene_57 | plate+layers | isometric garrigue where the azure route reaches a fork: one branch plunges steeply into a valley, the other winds gently along the contour; staged for the surveyor at the junction; top clear | assets_library/characters/surveyor_01.png ← mid |
+| scene_58 | plate | isometric cutaway of a Roman inverted siphon: azure water plunging down a sealed lead pipe into a valley and rising up the far side under pressure, header + receiving tanks at the tops; cutaway ground; top clear for a callout | — |
+| scene_59 | plate | wide isometric of the Aspendos aqueduct inverted siphon: a long sealed conduit crossing a valley with two tall masonry pressure towers, azure water; warm haze; upper band clear for a callout | — |
+| scene_60 | plate | isometric map contrasting TWO options to Nîmes: the real long winding contour route with its bridge (bold azure), and a faint short steep siphon alternative they rejected; muted terrain; upper band clear | — |
+| scene_61 | plate+layers | LEFT-half isometric cutaway of an open specus a person can walk into and scrape clean, azure water, pink lining; composed to occupy the LEFT of the frame (STAGE-2); right clear for the paired scene | assets_library/characters/surveyor_01.png ← mid |
+| scene_62 | plate | RIGHT-half isometric cutaway of a buried lead pressure-siphon pipe silting and failing deep under earth where no one can reach it, azure water backing up; composed to occupy the RIGHT of the frame (STAGE-2); left clear | — |
+| scene_63 | plate+layers | grand warm isometric of the Pont du Gard on its full route across the hills, timeless and enduring, golden haze; near foreground framing tree; top clear for a callout | assets_library/nature/cypress_01.png ← fg |
+| scene_64 | plate | close isometric of the Pont du Gard's crown with the covered specus, a tiny 2.5 cm measure marked on the near-level channel; honey ashlar; top clear for the closing callout | — |
+| scene_65 | assembly | crossfade back to Frontinus at his desk, lamp lower, the report now closed under his hand | assets_library/props/roman_desk_01.png ← mid; assets_library/characters/frontinus_01.png ← mid; assets_library/props/oil_lamp_01.png ← fg |
+| scene_66 | assembly | Frontinus looking off, connecting his work to the aqueduct — thoughtful | assets_library/props/roman_desk_01.png ← mid; assets_library/characters/frontinus_01.png ← mid; assets_library/props/scroll_stack_01.png ← fg |
+| scene_67 | assembly | tight study on Frontinus, the thesis widening — civilisation as accumulated precision | assets_library/characters/frontinus_01.png ← mid |
+| scene_68 | plate | clean isometric dating graphic: a simple Roman portrait-bust icon labelled with the old attribution to Agrippa under Augustus (~19 BC), rendered as a fading older note; warm neutral; centre for a caption | — |
+| scene_69 | plate | isometric of an archaeological find in the Gardon riverbed — Roman artefacts in the silt beside the gorge — with a new date marker for the reign of Claudius (~40-60 AD) supplanting the old one; centre for a caption | — |
+| scene_70 | plate+layers | intimate isometric of a surveyor crouched at his chorobates on a garrigue crest at first light, warm low sun, still — a push-in echo of the human act; foreground dew-scrub | assets_library/props/chorobates_01.png ← mid; assets_library/characters/surveyor_01.png ← mid; assets_library/nature/olive_tree_01.png ← fg |
+| scene_71 | plate | close isometric of the Pont du Gard's crown catching first light, the covered specus and a tiny 2.5 cm measure on the near-level water; honey ashlar warm; top clear for the final callback callout | — |
+| scene_72 | plate | the Pont du Gard in full at first light, honey limestone glowing warm and complete, a dignified sign-off framing; lower band clear | — |
+| scene_73 | assembly | outro card: subscribe prompt + a next-video thumbnail slot on a dark warm field | — |
 
----
+## Pass 5 — Asset plan
+- **Reused (16):** `assets_library/characters/crowd_tourists_01.png` ← scene_10, scene_43, scene_45; `assets_library/characters/frontinus_01.png` ← scene_01, scene_03, scene_04, scene_05, scene_06, scene_65, scene_66, scene_67; `assets_library/characters/surveyor_01.png` ← scene_21, scene_25, scene_29, scene_31, scene_54, scene_55, scene_57, scene_61, scene_70; `assets_library/characters/surveyor_02.png` ← scene_29, scene_31, scene_54; `assets_library/nature/cloud_01.png` ← scene_34; `assets_library/nature/cypress_01.png` ← scene_17, scene_48, scene_63; `assets_library/nature/olive_tree_01.png` ← scene_14, scene_25, scene_34, scene_38, scene_53, scene_70; `assets_library/nature/rocks_01.png` ← scene_14, scene_21, scene_38, scene_48; `assets_library/props/chorobates_01.png` ← scene_22, scene_23, scene_25, scene_28, scene_29, scene_31, scene_55, scene_70; `assets_library/props/dioptra_01.png` ← scene_28; `assets_library/props/groma_01.png` ← scene_27, scene_28; `assets_library/props/oil_lamp_01.png` ← scene_01, scene_65; `assets_library/props/roman_desk_01.png` ← scene_01, scene_03, scene_04, scene_06, scene_65, scene_66; `assets_library/props/scroll_stack_01.png` ← scene_01, scene_04, scene_66; `assets_library/props/survey_stake_01.png` ← scene_22, scene_31; `assets_library/props/wax_tablet_01.png` ← scene_03
+- **To generate (0):** — (all resolved)
 
-## Pass 5 — Asset batch (asset-planner)  🔴 CHARGED GATE
+## Pass 6 — Motion
+| id | camera | moving layers | texts | overlay |
+|---|---|---|---|---|
+| scene_01 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_02 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_03 | camera: none | — | — | — |
+| scene_04 | camera: none | — | — | — |
+| scene_05 | camera: none | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_06 | camera: none | — | — | — |
+| scene_07 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
+| scene_08 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | — |
+| scene_09 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | — | “Pont du Gard” 4.0-10.0s/bottom | — |
+| scene_10 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_11 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_12 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | “Nemausus” 3.0-7.5s/top | — |
+| scene_13 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
+| scene_14 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_15 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_16 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_17 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_18 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_19 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_20 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_21 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_22 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “chorobates” 3.5-9.0s/bottom | assets_library/overlays/dust_motes_01.mov |
+| scene_23 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_24 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_25 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_26 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_27 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_28 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_29 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | surveyor_01: gesture (note=sighting arm settle at t≈2.5s, 3-frame anticipation, ease=F9); surveyor_02: gesture (note=sighting arm settle at t≈2.5s, 3-frame anticipation, ease=F9) | — | — |
+| scene_30 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
+| scene_31 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | surveyor_01: gesture (note=sighting arm settle at t≈2.5s, 3-frame anticipation, ease=F9); surveyor_02: gesture (note=sighting arm settle at t≈2.5s, 3-frame anticipation, ease=F9) | — | — |
+| scene_32 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_33 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_34 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | cloud_01: drift (px_per_s=8, direction=right, ease=linear) | — | — |
+| scene_35 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “specus” 3.5-9.5s/right | — |
+| scene_36 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “opus signinum” 3.5-8.5s/right | — |
+| scene_37 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
+| scene_38 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Gardon” 3.0-7.0s/top | — |
+| scene_39 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_40 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_41 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_42 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_43 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_44 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_45 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 4.0-10.5s/bottom | — |
+| scene_46 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_47 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_48 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_49 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_50 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_51 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_52 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.0s/center | — |
+| scene_53 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | — | — | — |
+| scene_54 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_55 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_56 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_57 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_58 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_59 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_60 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
+| scene_61 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_62 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
+| scene_63 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
+| scene_64 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.0s/top | — |
+| scene_65 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_66 | camera: none | — | — | — |
+| scene_67 | camera: none | — | — | — |
+| scene_68 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.5s/center | — |
+| scene_69 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
+| scene_70 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_71 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_72 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | assets_library/overlays/dust_motes_01.mov |
+| scene_73 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | — |
 
-**To generate, gated:** **63 scene plates** (`generate_images.py`, per-scene) + **14 new Roman library assets** (`generate_asset.py`, `assets_library/_batches/batch_roman_01.json`) = **77 charged image generations.**
-Reused from library (₹0): `nature/cloud_01`, `nature/rocks_01`. Reference pack (`references/`) must be pulled before plate generation (visual_facts.md pull-list).
-
-### New library assets — `batch_roman_01.json`
-
-| asset | view | used in | one-line spec |
-|:--|:--|:--|:--|
-| characters/crowd_tourists_01 | flat | ×3 | flat Oversimplified cluster of 4-5 muted modern-tourist silhouettes (… |
-| characters/frontinus_01 | flat | ×8 | flat Oversimplified character: older Roman man, cream senatorial toga… |
-| characters/surveyor_01 | flat | ×9 | flat Oversimplified character: lean Roman workman, undyed short tunic… |
-| characters/surveyor_02 | flat | ×3 | flat Oversimplified character: Roman workman standing, holding a tall… |
-| nature/cypress_01 | flat | ×3 | flat, single dark narrow Mediterranean cypress, desaturated, charcoal… |
-| nature/olive_tree_01 | flat | ×6 | flat, single gnarled olive tree, broad silver-sage canopy, desaturate… |
-| props/chorobates_01 | isometric | ×8 | isometric ~6m Roman levelling bench: long wooden table on legs, a wat… |
-| props/dioptra_01 | isometric | ×1 | isometric Roman dioptra: a sighting tube/alidade on a geared tripod s… |
-| props/groma_01 | isometric | ×2 | isometric Roman groma: vertical staff, a horizontal cross on top, fou… |
-| props/oil_lamp_01 | isometric | ×2 | isometric small Roman bronze oil lamp, low flame + warm glow, charcoa… |
-| props/roman_desk_01 | isometric | ×6 | isometric plain Roman wooden writing table, charcoal outline; isolate… |
-| props/scroll_stack_01 | isometric | ×3 | isometric small stack of papyrus scrolls, charcoal outline; isolate o… |
-| props/survey_stake_01 | isometric | ×2 | isometric wooden survey stake with a marked height-notch, charcoal ou… |
-| props/wax_tablet_01 | isometric | ×1 | isometric stack of Roman wax writing tablets + a stylus, charcoal out… |
-
-### Scene plates — 63 (per-scene `images/scene_NN.png`)
-
-Every plate carries `visual_facts[]` (accuracy-gate checklist) and, for the real structures, a `reference_image` (⚠ pull the Pont du Gard / specus / route references into `references/` first). Assembly scenes (Frontinus desk 01/03–06/65–67, title 08, outro 73) generate **no** plate — they're built from the library assets above on a simple stage.
-
----
-
-## 🔴 CHARGED ASSET-BATCH GATE (after Pass 5) — needs your approval
-
-This is the pipeline's one paid gate before the AE build. Nothing has been generated. On your **approve**, generation runs in two ₹0-gated steps (both `asset-generation` skill, each image charged, each behind the visual-accuracy-gate):
-
-1. **`python generate_asset.py --batch assets_library/_batches/batch_roman_01.json`** → the 14 Roman library assets (Frontinus, the surveyors, the 3 instruments, desk props, olive/cypress). Layer-2.5 accuracy gate on each; they enter the library once (reused across this + future Roman videos).
-2. **`python generate_images.py --storyboard storyboard.json`** → the 63 scene plates. Layer-2 accuracy gate on each (vision vs `references/` + `visual_facts`).
-
-**Before you approve, two things worth a look:**
-- **Reference pack** — the `references/` pull-list (`visual_facts.md`) isn't downloaded yet. The plates want real Pont du Gard / specus / route photos to hold geometry (`PRIME-3`). ₹0, manual, public (Wikimedia/UNESCO). Do you want to pull those first, or generate off `visual_facts` alone?
-- **Batch size** — 77 charged gens is the whole video's art in one go. We can approve it all, or start with just the **14 library assets** (they're the reusable, cross-video ones) to sanity-check the Roman look before committing the 63 plates.
-
+## Pass 7 — AE blueprints
+| id | hierarchy | render | jsx |
+|---|---|---|---|
+| scene_01 | fam_stage: CAMERA_CTRL null ► [parchment stage + roman_desk_01, frontinus_01, oil_lamp_01, scroll_stack_01] | clips/scene_01.mp4 (+1.0s handles) | — |
+| scene_02 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_02.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_03 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_03.mp4 (+1.0s handles) | — |
+| scene_04 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_04.mp4 (+1.0s handles) | — |
+| scene_05 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_05.mp4 (+1.0s handles) | — |
+| scene_06 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_06.mp4 (+1.0s handles) | — |
+| scene_07 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_07.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_08 | fam_stage: CAMERA_CTRL null ► [parchment stage + ] | clips/scene_08.mp4 (+1.0s handles) | — |
+| scene_09 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_09.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_10 | fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider) | clips/scene_10.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_11 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_11.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_12 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_12.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_13 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_13.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_14 | fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, rocks_01] · bg layers parented at their parallax ratio (slider) | clips/scene_14.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_15 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_15.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_16 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_16.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_17 | fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01] · bg layers parented at their parallax ratio (slider) | clips/scene_17.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_18 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_18.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_19 | fam_section_water: CAMERA_CTRL null ► [plate]; WATERLINE precomp (masked azure strip) on top | clips/scene_19.mp4 (+1.0s handles) | — |
+| scene_20 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_20.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_21 | fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01, rocks_01] · bg layers parented at their parallax ratio (slider) | clips/scene_21.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_22 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, survey_stake_01] · bg layers parented at their parallax ratio (slider) | clips/scene_22.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_23 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01] · bg layers parented at their parallax ratio (slider) | clips/scene_23.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_24 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_24.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_25 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, olive_tree_01] · bg layers parented at their parallax ratio (slider) | clips/scene_25.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_26 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_26.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_27 | fam_plate_push: CAMERA_CTRL null ► [plate, groma_01] · bg layers parented at their parallax ratio (slider) | clips/scene_27.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_28 | fam_plate_push: CAMERA_CTRL null ► [plate, dioptra_01, chorobates_01, groma_01] · bg layers parented at their parallax ratio (slider) | clips/scene_28.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_29 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, surveyor_02] · bg layers parented at their parallax ratio (slider) | clips/scene_29.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_30 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_30.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_31 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_31.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_32 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_32.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_33 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_33.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_34 | fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, cloud_01] · bg layers parented at their parallax ratio (slider) | clips/scene_34.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_35 | fam_section_water: CAMERA_CTRL null ► [plate]; WATERLINE precomp (masked azure strip) on top | clips/scene_35.mp4 (+1.0s handles) | — |
+| scene_36 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_36.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_37 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_37.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_38 | fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, rocks_01] · bg layers parented at their parallax ratio (slider) | clips/scene_38.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_39 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_39.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_40 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_40.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_41 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_41.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_42 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_42.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_43 | fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider) | clips/scene_43.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_44 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_44.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_45 | fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider) | clips/scene_45.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_46 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_46.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_47 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_47.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_48 | fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01, rocks_01] · bg layers parented at their parallax ratio (slider) | clips/scene_48.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_49 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_49.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_50 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_50.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_51 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_51.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_52 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_52.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_53 | fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01] · bg layers parented at their parallax ratio (slider) | clips/scene_53.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_54 | fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01, surveyor_02] · bg layers parented at their parallax ratio (slider) | clips/scene_54.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_55 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01] · bg layers parented at their parallax ratio (slider) | clips/scene_55.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_56 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_56.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_57 | fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01] · bg layers parented at their parallax ratio (slider) | clips/scene_57.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_58 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_58.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_59 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_59.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_60 | fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room] | clips/scene_60.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_61 | fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01] · bg layers parented at their parallax ratio (slider) | clips/scene_61.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_62 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_62.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_63 | fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01] · bg layers parented at their parallax ratio (slider) | clips/scene_63.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_64 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_64.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_65 | fam_stage: CAMERA_CTRL null ► [parchment stage + roman_desk_01, frontinus_01, oil_lamp_01] | clips/scene_65.mp4 (+1.0s handles) | — |
+| scene_66 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_66.mp4 (+1.0s handles) | — |
+| scene_67 | fam_stage: flat parchment stage; layers placed by hand, no camera null | clips/scene_67.mp4 (+1.0s handles) | — |
+| scene_68 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_68.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_69 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_69.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_70 | fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, olive_tree_01] · bg layers parented at their parallax ratio (slider) | clips/scene_70.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_71 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_71.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_72 | fam_plate_push: CAMERA_CTRL null ► [plate] | clips/scene_72.mp4 (+1.0s handles) | ae_scripts/build_scene_comps.jsx |
+| scene_73 | fam_stage: CAMERA_CTRL null ► [parchment stage + ] | clips/scene_73.mp4 (+1.0s handles) | — |

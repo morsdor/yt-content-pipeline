@@ -34,8 +34,8 @@
     "storyboard_artist": "2026-07-24",
     "scene_composer": "2026-07-24",
     "asset_planner": "2026-07-24",
-    "motion_director": null,
-    "ae_director": null
+    "motion_director": "2026-07-27",
+    "ae_director": "2026-07-27"
   },
   "scenes": [
     {
@@ -103,7 +103,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted"
+      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted",
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 9.4s (1s handles ea. end)",
+        "hierarchy": "fam_stage: CAMERA_CTRL null ► [parchment stage + roman_desk_01, frontinus_01, oil_lamp_01, scroll_stack_01]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_01.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_02",
@@ -124,8 +145,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "characters.frontinus_01"
+        "light"
       ],
       "composition": {
         "frame": "close isometric of the desk surface: wax tablets of tally columns, a bronze pipe-gauge, a papyrus ledger, a stylus",
@@ -150,7 +170,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_02.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_03",
@@ -209,7 +250,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted"
+      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_03.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_04",
@@ -268,7 +330,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted"
+      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_04.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_05",
@@ -311,7 +394,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage, tight: dark plastered wall, single lamp key upper-left"
+      "_stage_bg": "flat warm stage, tight: dark plastered wall, single lamp key upper-left",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 7.4s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_05.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_06",
@@ -363,7 +467,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: plastered wall carrying a faint hung map of southern Gaul, lamp key upper-left"
+      "_stage_bg": "flat warm stage: plastered wall carrying a faint hung map of southern Gaul, lamp key upper-left",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 9.4s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_06.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_07",
@@ -384,7 +509,7 @@
       },
       "continuity": [
         "light",
-        "maps"
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "isometric map of southern Gaul: the Mediterranean coast, Nemausus and Uzès marked, garrigue hills, an azure route hinted",
@@ -410,7 +535,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 12.3s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_07.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_08",
@@ -427,7 +573,9 @@
         "progression_role": "establish",
         "transition_in": "cut"
       },
-      "continuity": [],
+      "continuity": [
+        "light"
+      ],
       "composition": {
         "frame": "title card: wordmark + topic title, centred on a dark warm field",
         "focal_point": "the wordmark, dead-centre",
@@ -441,7 +589,28 @@
       },
       "build": "assembly",
       "layers": [],
-      "_stage_bg": "dark warm gradient field for the title sting (no art — AE title lockup)"
+      "_stage_bg": "dark warm gradient field for the title sting (no art — AE title lockup)",
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 6.0s (1s handles ea. end)",
+        "hierarchy": "fam_stage: CAMERA_CTRL null ► [parchment stage + ]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_08.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_09",
@@ -488,7 +657,35 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pull_back",
+        "amount_pct": 8,
+        "ease": "F9 55%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [
+        {
+          "text": "Pont du Gard",
+          "start": 4.0,
+          "end": 10.0,
+          "position": "bottom"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_09.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_10",
@@ -545,7 +742,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_10.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_11",
@@ -596,7 +814,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 15.2s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_11.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_12",
@@ -617,7 +856,7 @@
       },
       "continuity": [
         "light",
-        "maps"
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "isometric route map: Nemausus and the spring at Uzès pinned, the winding line between",
@@ -643,7 +882,35 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [
+        {
+          "text": "Nemausus",
+          "start": 3.0,
+          "end": 7.5,
+          "position": "top"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_12.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_13",
@@ -665,7 +932,6 @@
       },
       "continuity": [
         "light",
-        "maps",
         "sides.water_flow"
       ],
       "composition": {
@@ -692,7 +958,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 11.9s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_13.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_14",
@@ -713,8 +1000,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "maps"
+        "light"
       ],
       "composition": {
         "frame": "wide garrigue hills with the winding route threading the contours",
@@ -754,7 +1040,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.9s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, rocks_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_14.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_15",
@@ -774,8 +1081,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "sides.water_flow"
+        "light"
       ],
       "composition": {
         "frame": "abstract cross-section diagram: one downhill ramp from spring to city, arrow riding it, no pumps",
@@ -800,7 +1106,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_15.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_16",
@@ -821,8 +1148,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "maps"
+        "light"
       ],
       "composition": {
         "frame": "elevation schematic: spring height vs city height, a thin vertical sliver marked as the whole budget",
@@ -845,7 +1171,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_16.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_17",
@@ -898,7 +1245,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_17.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_18",
@@ -941,7 +1309,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.4s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_18.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_19",
@@ -988,7 +1377,33 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "_motion_note": "Rung-3: masked azure waterline, oscillate amplitude 6px period 5s, de-synced",
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_section_water",
+        "comp": "3840x2160 @ 30fps, 12.3s (1s handles ea. end)",
+        "hierarchy": "fam_section_water: CAMERA_CTRL null ► [plate]; WATERLINE precomp (masked azure strip) on top",
+        "precomps": [
+          "WATERLINE_masked (azure strip)"
+        ],
+        "expressions": [
+          "WATERLINE: sine/wiggle oscillate amp 6px period 5s, de-synced (ambient only)"
+        ],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_19.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_20",
@@ -1035,7 +1450,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_20.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_21",
@@ -1098,7 +1534,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01, rocks_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_21.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_22",
@@ -1160,7 +1617,35 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "chorobates",
+          "start": 3.5,
+          "end": 9.0,
+          "position": "bottom"
+        }
+      ],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.9s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, survey_stake_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_22.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_23",
@@ -1216,7 +1701,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_23.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_24",
@@ -1238,7 +1744,7 @@
       },
       "continuity": [
         "light",
-        "props.chorobates_01"
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "detail on one end of the chorobates: the plumb-line hanging dead against its mark; the water groove beside",
@@ -1261,7 +1767,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_24.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_25",
@@ -1333,7 +1860,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 5,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 14.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, olive_tree_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_25.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_26",
@@ -1353,7 +1901,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "clean idea-graphic: a bench + a puddle + a finished aqueduct arch, three simple icons, the wit line",
@@ -1376,7 +1925,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_26.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_27",
@@ -1429,7 +1999,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.2s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, groma_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_27.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_28",
@@ -1450,6 +2041,8 @@
       },
       "continuity": [
         "light",
+        "props.chorobates_01",
+        "props.groma_01",
         "props.dioptra_01"
       ],
       "composition": {
@@ -1499,7 +2092,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.2s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, dioptra_01, chorobates_01, groma_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_28.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_29",
@@ -1521,7 +2135,8 @@
       },
       "continuity": [
         "light",
-        "characters.surveyor_01"
+        "characters.surveyor_01",
+        "props.chorobates_01"
       ],
       "composition": {
         "frame": "two libratores on the hillside with their instruments, at work — the levellers named",
@@ -1561,7 +2176,11 @@
           "placement": "at the bench",
           "scale_hint": "small",
           "parallax": 1.0,
-          "motion": null
+          "motion": {
+            "kind": "gesture",
+            "note": "sighting arm settle at t≈2.5s, 3-frame anticipation",
+            "ease": "F9"
+          }
         },
         {
           "asset": "assets_library/characters/surveyor_02.png",
@@ -1569,9 +2188,34 @@
           "placement": "a few steps downhill, holding a stake",
           "scale_hint": "small",
           "parallax": 1.0,
-          "motion": null
+          "motion": {
+            "kind": "gesture",
+            "note": "sighting arm settle at t≈2.5s, 3-frame anticipation",
+            "ease": "F9"
+          }
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, surveyor_02] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_29.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_30",
@@ -1593,7 +2237,6 @@
       },
       "continuity": [
         "light",
-        "maps",
         "sides.water_flow"
       ],
       "composition": {
@@ -1619,7 +2262,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_30.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_31",
@@ -1641,8 +2305,9 @@
       },
       "continuity": [
         "light",
-        "props.chorobates_01",
-        "sides.water_flow"
+        "sides.water_flow",
+        "characters.surveyor_01",
+        "props.chorobates_01"
       ],
       "composition": {
         "frame": "the leap-frog: the bench moved down to the next stake, the pair resetting it — sense of repetition",
@@ -1678,7 +2343,11 @@
           "placement": "moving the bench",
           "scale_hint": "small",
           "parallax": 1.0,
-          "motion": null
+          "motion": {
+            "kind": "gesture",
+            "note": "sighting arm settle at t≈2.5s, 3-frame anticipation",
+            "ease": "F9"
+          }
         },
         {
           "asset": "assets_library/characters/surveyor_02.png",
@@ -1686,7 +2355,11 @@
           "placement": "planting the next stake downhill-right",
           "scale_hint": "small",
           "parallax": 1.0,
-          "motion": null
+          "motion": {
+            "kind": "gesture",
+            "note": "sighting arm settle at t≈2.5s, 3-frame anticipation",
+            "ease": "F9"
+          }
         },
         {
           "asset": "assets_library/props/survey_stake_01.png",
@@ -1696,7 +2369,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 13.2s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_31.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_32",
@@ -1741,7 +2435,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_32.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_33",
@@ -1786,7 +2501,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_33.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_34",
@@ -1807,8 +2543,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "sides.water_flow"
+        "light"
       ],
       "composition": {
         "frame": "grand pull-back: the whole 50 km achieved line laid across the hills, spring to city",
@@ -1848,9 +2583,37 @@
           "placement": "upper sky",
           "scale_hint": "large soft",
           "parallax": 0.25,
-          "motion": null
+          "motion": {
+            "kind": "drift",
+            "px_per_s": 8,
+            "direction": "right",
+            "ease": "linear"
+          }
         }
-      ]
+      ],
+      "camera": {
+        "move": "pull_back",
+        "amount_pct": 8,
+        "ease": "F9 55%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 14.4s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, cloud_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [
+          "cloud_01 drift: loopOut(), de-synced phase"
+        ],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_34.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_35",
@@ -1899,7 +2662,40 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "_motion_note": "Rung-3: masked azure waterline, oscillate amplitude 6px period 5s, de-synced",
+      "texts": [
+        {
+          "text": "specus",
+          "start": 3.5,
+          "end": 9.5,
+          "position": "right"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_section_water",
+        "comp": "3840x2160 @ 30fps, 12.3s (1s handles ea. end)",
+        "hierarchy": "fam_section_water: CAMERA_CTRL null ► [plate]; WATERLINE precomp (masked azure strip) on top",
+        "precomps": [
+          "WATERLINE_masked (azure strip)"
+        ],
+        "expressions": [
+          "WATERLINE: sine/wiggle oscillate amp 6px period 5s, de-synced (ambient only)"
+        ],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_35.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_36",
@@ -1946,7 +2742,35 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "opus signinum",
+          "start": 3.5,
+          "end": 8.5,
+          "position": "right"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_36.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_37",
@@ -1967,7 +2791,7 @@
       },
       "continuity": [
         "light",
-        "maps"
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "map: most of the route buried/at-grade, only tiny stretches on arches — the 'what people miss'",
@@ -1992,7 +2816,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 9.9s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_37.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_38",
@@ -2053,7 +2898,35 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "Gardon",
+          "start": 3.0,
+          "end": 7.0,
+          "position": "top"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.9s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01, rocks_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_38.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_39",
@@ -2073,7 +2946,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "the gorge yawns open — the land drops away — cueing the crossing",
@@ -2094,7 +2968,28 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_39.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_40",
@@ -2141,7 +3036,28 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.4s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_40.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_41",
@@ -2192,7 +3108,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_41.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_42",
@@ -2242,7 +3179,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 8.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_42.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_43",
@@ -2263,7 +3221,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "crowd at the base tilting up to the far-off waterline at the crown, 49 m above",
@@ -2303,7 +3262,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 15.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_43.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_44",
@@ -2350,7 +3330,28 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 6.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_44.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_45",
@@ -2409,7 +3410,35 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "Pont du Gard",
+          "start": 4.0,
+          "end": 10.5,
+          "position": "bottom"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.2s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, crowd_tourists_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_45.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_46",
@@ -2453,7 +3482,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_46.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_47",
@@ -2497,7 +3547,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.7s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_47.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_48",
@@ -2518,7 +3589,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "a long stretch of channel that looks like level ground, azure water quietly moving right",
@@ -2561,7 +3633,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01, rocks_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_48.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_49",
@@ -2582,7 +3675,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "the delivery end: azure water arriving at the castellum basin in Nîmes, the city drinking",
@@ -2606,7 +3700,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 14.0s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_49.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_50",
@@ -2628,7 +3743,6 @@
       },
       "continuity": [
         "light",
-        "maps",
         "sides.water_flow"
       ],
       "composition": {
@@ -2654,7 +3768,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 14.8s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_50.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_51",
@@ -2701,7 +3836,28 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 5,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 15.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_51.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_52",
@@ -2750,7 +3906,35 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "Pont du Gard",
+          "start": 2.5,
+          "end": 6.0,
+          "position": "center"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 8.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_52.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_53",
@@ -2812,7 +3996,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "pull_back",
+        "amount_pct": 8,
+        "ease": "F9 55%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, olive_tree_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_53.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_54",
@@ -2833,7 +4038,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "characters.surveyor_01"
       ],
       "composition": {
         "frame": "arches going up easily — masons stacking stone, 'a solved problem'",
@@ -2874,7 +4080,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01, surveyor_02] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_54.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_55",
@@ -2895,7 +4122,8 @@
       },
       "continuity": [
         "light",
-        "characters.surveyor_01"
+        "characters.surveyor_01",
+        "props.chorobates_01"
       ],
       "composition": {
         "frame": "back on the crew with the trough — the invisible line being surveyed",
@@ -2935,7 +4163,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_55.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_56",
@@ -2978,7 +4227,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 13.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_56.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_57",
@@ -2998,7 +4268,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "characters.surveyor_01"
       ],
       "composition": {
         "frame": "the choice framed: they knew an easier way — a fork ahead of the surveyor",
@@ -3032,7 +4303,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 5,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.9s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_57.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_58",
@@ -3076,7 +4368,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_58.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_59",
@@ -3097,7 +4410,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "the Aspendos siphon: a long sealed line with two tall pressure towers, azure water",
@@ -3120,7 +4434,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 15.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_59.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_60",
@@ -3142,7 +4477,6 @@
       },
       "continuity": [
         "light",
-        "maps",
         "sides.water_flow"
       ],
       "composition": {
@@ -3168,7 +4502,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "pan_right",
+        "px_per_s": 55,
+        "ease": "F9 45%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_map_route",
+        "comp": "3840x2160 @ 30fps, 14.0s (1s handles ea. end)",
+        "hierarchy": "fam_map_route: CAMERA_CTRL null (pan) ► [map plate @~115% cover for pan room]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_60.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_61",
@@ -3190,7 +4545,8 @@
       },
       "continuity": [
         "light",
-        "sides.maintainable_vs_siphon"
+        "sides.water_flow",
+        "characters.surveyor_01"
       ],
       "composition": {
         "frame": "comparison LEFT half: an open channel a person walks into to inspect and scrape clean",
@@ -3225,7 +4581,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, surveyor_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_61.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_62",
@@ -3246,7 +4623,7 @@
       },
       "continuity": [
         "light",
-        "sides.maintainable_vs_siphon"
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "comparison RIGHT half: a buried pressure siphon failing unreachably underground",
@@ -3269,7 +4646,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.9,
+        "hold_out_s": 0.9
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_62.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_63",
@@ -3290,8 +4688,7 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light",
-        "sides.water_flow"
+        "light"
       ],
       "composition": {
         "frame": "the whole line enduring: the bridge and route standing across 500 years, warm and timeless",
@@ -3332,7 +4729,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 10.3s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, cypress_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_63.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_64",
@@ -3383,7 +4801,35 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "Pont du Gard",
+          "start": 2.5,
+          "end": 6.0,
+          "position": "top"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 8.6s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_64.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_65",
@@ -3442,7 +4888,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted"
+      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted",
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 9.9s (1s handles ea. end)",
+        "hierarchy": "fam_stage: CAMERA_CTRL null ► [parchment stage + roman_desk_01, frontinus_01, oil_lamp_01]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_65.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_66",
@@ -3501,7 +4968,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted"
+      "_stage_bg": "flat warm stage: a plain plastered Roman wall + floor line, a single oil-lamp glow pooling from upper-left, muted",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 11.5s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_66.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_67",
@@ -3547,7 +5035,28 @@
           "motion": null
         }
       ],
-      "_stage_bg": "flat warm stage, tight on the figure: dark wall, lamp key upper-left"
+      "_stage_bg": "flat warm stage, tight on the figure: dark wall, lamp key upper-left",
+      "camera": {
+        "move": "none",
+        "amount_pct": 0,
+        "ease": null,
+        "hold_in_s": 0,
+        "hold_out_s": 0
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_stage: flat parchment stage; layers placed by hand, no camera null",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_67.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_68",
@@ -3590,7 +5099,35 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [
+        {
+          "text": "Pont du Gard",
+          "start": 2.5,
+          "end": 6.5,
+          "position": "center"
+        }
+      ],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.4s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_68.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_69",
@@ -3633,7 +5170,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 5,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.1s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_69.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_70",
@@ -3654,7 +5212,8 @@
       },
       "continuity": [
         "light",
-        "characters.surveyor_01"
+        "characters.surveyor_01",
+        "props.chorobates_01"
       ],
       "composition": {
         "frame": "push in on the anonymous surveyor at his trough at first light — the human echo",
@@ -3702,7 +5261,28 @@
           "parallax": 1.0,
           "motion": null
         }
-      ]
+      ],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 5,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 12.8s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate, chorobates_01, surveyor_01, olive_tree_01] · bg layers parented at their parallax ratio (slider)",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_70.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_71",
@@ -3723,7 +5303,8 @@
         "transition_in": "cut"
       },
       "continuity": [
-        "light"
+        "light",
+        "sides.water_flow"
       ],
       "composition": {
         "frame": "close on the bridge crown at first light, the 2.5 cm held — 'precision, the insane kind'",
@@ -3754,7 +5335,28 @@
         ],
         "accent": "#B85C38"
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 6,
+        "ease": "F9 55%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 11.9s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_71.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_72",
@@ -3801,7 +5403,28 @@
         ],
         "accent": null
       },
-      "layers": []
+      "layers": [],
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.8,
+        "hold_out_s": 0.8
+      },
+      "texts": [],
+      "particle_overlay": "assets_library/overlays/dust_motes_01.mov",
+      "ae_build": {
+        "family": "fam_plate_push",
+        "comp": "3840x2160 @ 30fps, 9.0s (1s handles ea. end)",
+        "hierarchy": "fam_plate_push: CAMERA_CTRL null ► [plate]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": "ae_scripts/build_scene_comps.jsx",
+        "render": {
+          "clip": "clips/scene_72.mp4",
+          "handles_s": 1.0
+        }
+      }
     },
     {
       "id": "scene_73",
@@ -3818,7 +5441,9 @@
         "progression_role": "close",
         "transition_in": "cut"
       },
-      "continuity": [],
+      "continuity": [
+        "light"
+      ],
       "composition": {
         "frame": "outro card: subscribe prompt + a next-video thumbnail slot on a dark warm field",
         "focal_point": "the subscribe lockup",
@@ -3833,7 +5458,28 @@
       },
       "build": "assembly",
       "layers": [],
-      "_stage_bg": "dark warm gradient field for the outro card (AE lockup — subscribe + next-video slot)"
+      "_stage_bg": "dark warm gradient field for the outro card (AE lockup — subscribe + next-video slot)",
+      "camera": {
+        "move": "push_in",
+        "amount_pct": 4,
+        "ease": "F9 50%",
+        "hold_in_s": 0.7,
+        "hold_out_s": 0.7
+      },
+      "texts": [],
+      "particle_overlay": null,
+      "ae_build": {
+        "family": "fam_stage",
+        "comp": "3840x2160 @ 30fps, 8.0s (1s handles ea. end)",
+        "hierarchy": "fam_stage: CAMERA_CTRL null ► [parchment stage + ]",
+        "precomps": [],
+        "expressions": [],
+        "jsx": null,
+        "render": {
+          "clip": "clips/scene_73.mp4",
+          "handles_s": 1.0
+        }
+      }
     }
   ]
 }
