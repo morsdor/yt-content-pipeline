@@ -8,7 +8,7 @@
 |:--|:--|
 | **Video #** | 001 |
 | **Topic** | How Rome moved water across ~50 miles of terrain (§7 topic #1) |
-| **Status** | ✅ Packaging locked · Research done (2026-07-23) · Thumbnails a+c test-ready · Script drafted (2026-07-24, awaiting your voice pass) |
+| **Status** | ✅ Packaging locked · Research done · Thumbnails a+c test-ready · Script LOCKED (witness→Frontinus) · Board DONE (passes 1–5, 73 scenes) · 14 assets gated **14/14** · ✅ reference pack complete (3/3 canonical refs) + storyboard resolved (0 err, 22 deliberate) · ✅ **63/63 plates gated + LOCKED** (scene 34 re-done flat-iso; correct baked labels accepted) · 🔴 next: VO record + true-up → animatic → AE build (2026-07-27) |
 | **Runtime target** | 10–13 min |
 | **Civilization accent** | Roman — warm ochre/terracotta stone, electric-blue water (final `accent_hex` set at storyboard) |
 | **Locked** | 2026-07-23 |

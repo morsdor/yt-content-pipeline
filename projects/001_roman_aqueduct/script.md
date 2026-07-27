@@ -1,36 +1,55 @@
-# 001 · Roman Aqueduct — Script (DRAFT)
+# 001 · Roman Aqueduct — Script (LOCKED)
 
 > **Script-stage deliverable** (`the-engineering-atlas-video` → *Script*). Consumes `research.md`;
 > feeds the storyboard. Format precedent for every future `projects/NNN_topic/script.md`.
 > Beats follow `brand_guide.md` §7; registers follow §6 (**Witness** frames · **Engineer** explains · wit seasons).
 > Target: ~10–13 min · ~140–150 wpm · one raised-eyebrow beat / 60–90 s.
 
-## 🔴 HUMAN GATE — two zones are yours to rewrite in your own voice
-This is Claude's draft. Per the pipeline, **you** rewrite two things before it's locked:
-1. **① The cold-open** (0:00–0:30) — the hook has to sound like *you*.
-2. **⑥ "What most people miss"** (8:00–10:00) — this is *your* engineering take, first person.
-Everything else (the Engineer explanations, the numbers) is drafted to lock as-is once you've read it.
-Numbers are all grounded in `research.md`; ⚠ inline notes flag the two judgment calls.
+## ✅ LOCKED · witness reworked → Frontinus + bridge revealed early (2026-07-24, at the sequence gate)
+Locked to keep video 1 moving; then at the board's sequence gate you chose two changes, now folded in:
+1. **The witness is Sextus Julius Frontinus** — Rome's real water commissioner (appointed 97 AD, wrote
+   *De aquaeductu*, obsessed with metering water and catching pipe-theft). He frames the video as
+   *precision-as-Roman-obsession*. ⚠ **Honesty guardrail:** Frontinus is Rome, ~97 AD; the Pont du Gard is
+   Gaul, ~40–60 AD. He is the **thematic lens, never a witness to the bridge** — the narration says so outright
+   ("Frontinus never saw the aqueduct we're about to follow").
+2. **The Pont du Gard is revealed early** (§①.5, ~1:05) as the hero artifact + a number *tease*, then paid
+   off deep at §⑤. The mid-video beat (§④c) is now an *earned return*, not a first reveal.
+Since **you record the VO yourself**, your voice enters at the mic — riff any phrasing that isn't you. The
+first-person "what most people miss" (§⑥) is still yours to personalize. Numbers grounded in `research.md`
+(fact-lock checklist at the bottom).
 
 **Sign-off (locked, channel-wide):** *"Built to last — or built to teach us why it didn't. I'll see you in the next one."*
 
 ---
 
-## ① Cold-open vignette · 0:00–0:30 · **Witness** · 🔴 REWRITE IN YOUR VOICE
-*[Visual: pre-dawn. A single man kneels over a long wooden bench on a bare limestone hillside. Still, cold air. A groove of water along the bench top; a plumb-line hanging dead straight.]*
+## ① Cold-open vignette · 0:00–0:52 · **Witness (Frontinus)** · 🎙 personalize at the mic
+*[Visual: a Roman office at night. An older man in a senatorial toga bent over wax tablets and an aqueduct ledger by lamplight, counting columns of figures.]*
 
-We don't know his name.
+Sextus Julius Frontinus had one of the strangest jobs in the Roman Empire. He was in charge of water.
 
-Before the sun is up — because still, cold air holds the water flat, with no shimmer to lie to him — he kneels over a trough of water on a wooden bench and sights a line down a hillside he cannot see the end of.
+*[Visual: close on the tablets — tallies, discharge figures, a bronze pipe-gauge.]* Not building it — *accounting* for it. In the year 97, Rome handed him every aqueduct feeding the city and asked one question: where does all the water go?
 
-He is deciding, by eye, where the ground should fall away. Not by much. By almost nothing at all.
+So he counted it. Every day — which channels ran full, who was drilling illegal pipes into the mains to steal a share, whether the numbers added up.
 
-Fifty kilometres away, a city that has never met him is about to drink because of where he puts this next stake.
+*[Visual: Frontinus underlining a figure, unsatisfied.]* He wrote it all down, in a report we still have. And what comes off the page is a man who believed something total:
 
-*[Hook question, hold on his eye:]* How do you carry water across fifty kilometres of hills — and get the slope right by hand, when a single wrong guess drains a city?
+*[Beat, hold on his face:]* that a city rises or falls on getting the small measurements exactly right.
 
-## ② Title sting · 0:30–0:35
+*[Visual: pull past Frontinus toward a map of southern Gaul.]* Frontinus never saw the aqueduct we're about to follow. But he might have understood it better than anyone. Because somewhere in the hills of southern France, the Romans took that same obsession — and pushed it further than they ever pushed it anywhere else.
+
+## ② Title sting · 0:52–0:57
 *[Wordmark + title card: **The Insane Precision of a Roman Aqueduct**. 2–3 s sting.]*
+
+---
+
+## ①.5 The reveal (early) · 0:57–1:40 · **Engineer** 🆕
+*[Visual: hard cut / slow rise — the Pont du Gard, full three-tier elevation, revealed whole against the gorge. This is the hero image, brought forward.]*
+
+This is where they pushed it. The Pont du Gard — forty-nine metres of stone, three tiers of arches, the largest built with no mortar at all.
+
+*[Visual: a human figure dwarfed at the base for scale; then tilt toward the top.]* It is the most photographed Roman aqueduct on earth. And almost everything you'd notice about it is the *wrong* thing to be impressed by.
+
+*[Visual: settle on the very top, a hint of the hidden channel line.]* Because the truly insane number here isn't the height — it's a drop so small you cannot see it. By the end, you'll understand why it's the most precise thing the Romans ever built.
 
 ---
 
@@ -62,7 +81,7 @@ The margin for error was almost nothing. So let's talk about how they hit it any
 ### 4a · The instrument *(≈2:00–3:15)*
 *[Visual: hero reveal of the chorobates — a ~6 m bench on legs, water groove along the top, plumb-lines at each end against notches.]*
 
-This is a **chorobates**. It is, essentially, a very long, very serious spirit level: a wooden bench about six metres long, with a channel of water cut along the top and plumb-lines hanging at each end. When the plumb-lines sit dead against their marks, the top is level. When the wind won't cooperate, you read the water in the groove instead — which is why our man works at dawn, before the air moves.
+This is a **chorobates**. It is, essentially, a very long, very serious spirit level: a wooden bench about six metres long, with a channel of water cut along the top and plumb-lines hanging at each end. When the plumb-lines sit dead against their marks, the top is level. When the wind won't cooperate, you read the water in the groove instead — which is why the men who run it work at dawn, before the air moves.
 
 Vitruvius — the Roman architect who wrote the manual — called it the most reliable tool they had. *[wit:]* The Romans had no word for "hydraulic gradient." They had something better: a bench, a puddle, and a finished aqueduct.
 
@@ -88,9 +107,9 @@ Until it reaches the gorge of the river Gardon. There's no gentle contour around
 
 So they carried the water straight across it — on this.
 
-*[Visual: the Pont du Gard, full three-tier elevation.]*
+*[Visual: return to the Pont du Gard — the bridge we opened on, now understood in context.]*
 
-The **Pont du Gard**. Three tiers of stone arches, forty-nine metres tall, built from six-tonne blocks cut so precisely the largest arches use no mortar at all — just stone locked against stone. And the water? The water runs along a channel on the *very top*, capped under stone slabs, out of sight. People come from all over the world to photograph this bridge. Almost none of them are looking at the water — which is forty-nine metres over their heads, still falling, still on grade.
+And we arrive back at the bridge we opened on. Only now you know what it's actually for — not to be admired, but because a slope had to cross a river, and could not lose height to do it. The water runs along a channel on the *very top*, capped under stone slabs, out of sight. People come from all over the world to photograph this bridge. Almost none of them are looking at the water — which is forty-nine metres over their heads, still falling, still on grade.
 
 ---
 
@@ -111,7 +130,7 @@ And it worked. At its peak this line delivered around **forty thousand cubic met
 
 ---
 
-## ⑥ What most people miss · 8:00–10:00 · **Engineer (first person)** · 🔴 REWRITE IN YOUR VOICE
+## ⑥ What most people miss · 8:00–10:00 · **Engineer (first person)** · 🎙 personalize at the mic
 *[Visual: slow pull back OFF the arches, revealing the arches as a tiny segment of the whole fifty-km line.]*
 
 Here's what I think most people miss about the Pont du Gard.
@@ -132,18 +151,16 @@ The genius of the Pont du Gard was never the row of arches. It was a decision, a
 
 ---
 
-## ⑦ Callback + close · 10:00–11:00 · **Witness → sign-off**
-*[Visual: return to the man on the hillside at dawn, bench and plumb-line. Same frame as the open.]*
+## ⑦ Callback + close · ~10:20–11:40 · **Witness (Frontinus) → sign-off**
+*[Visual: back to Frontinus at his desk — the lamp lower now, the report closed under his hand.]*
 
-So — back to the man on the hillside. The one whose name we don't have.
+Frontinus never walked this aqueduct. He counted water two generations later, in a different province, for a different city.
 
-*[Visual: honest note — we don't know who; we do know it happened.]* We don't know who he was. We're not even fully sure *when* he worked — for centuries we gave the credit to Agrippa, under the emperor Augustus, and then archaeologists dug the riverbed and found the answer was probably two generations later, in the reign of Claudius, around the middle of the first century. The date moved. The achievement didn't.
+But he understood the thing that built it — because it was the same thing that drove him. Not the arches. Not the height. The conviction that the small measurement is the whole game — that a civilisation is, in the end, a very long list of things somebody got exactly right.
 
-Because at first light, in the still cold air, someone knelt over a trough of water and decided — by eye — where the ground should fall away. By almost nothing at all. And a city fifty kilometres away drank for five hundred years on the strength of that judgement.
+*[Visual: the honest dating note — Agrippa/Augustus dissolving to Claudius, the riverbed dig.]* We're not even fully sure when the Pont du Gard was built — for centuries we credited Agrippa, under Augustus; then archaeologists dug the riverbed and moved it two generations later, to the reign of Claudius. The date moved. The achievement didn't.
 
-*[Visual: hold on the bridge, water on top, catching first light.]*
-
-Two and a half centimetres, across the whole of that bridge. Held by hand. That's not luck. That's *precision* — the insane, invisible kind.
+*[Visual: hold on the bridge, water on top, catching first light.]* Because somewhere in those hills, someone knelt over a trough of water and decided, by eye, where the ground should fall away — by almost nothing at all. Two and a half centimetres, across the whole of that bridge. Held by hand. That's not luck. That's *precision* — the insane, invisible kind.
 
 *[Sign-off:]* Built to last — or built to teach us why it didn't. I'll see you in the next one.
 
@@ -162,6 +179,7 @@ Two and a half centimetres, across the whole of that bridge. Held by hand. That'
 - [⚠] **Total fall "12–17 m"** — scripted as an explicit range ("scholars still argue"), turning the dispute into a virtue. No single contested number asserted. *(research.md open item — resolved by phrasing, safe to ship.)*
 - [ ] **Build duration / workforce** — deliberately **not** in the script (the "~15 yrs / ~1,000 men" figure is soft; dropped rather than asserted).
 - [x] **No pumps / pure gravity; siphon known but refused (Aspendos 1,670 m / 40 m towers)** — solid.
+- [x] **Frontinus: Sextus Julius Frontinus (~35–103 AD), appointed *curator aquarum* by Nerva in 97 AD; wrote *De aquaeductu* (earliest surviving official report on Roman engineering); policed water-theft via illegal pipe taps; the *quinaria* discharge unit** — ✅ verified this session (Britannica / Wikipedia *De aquaeductu* / romanaqueducts.info). ⚠ **Framed honestly as the thematic lens, NOT a witness to the Pont du Gard** — he's Rome ~97 AD, the bridge is Gaul ~40–60 AD; the script states this outright.
 
 ## Word count / runtime
-~1,700 words of VO ≈ 11–12 min at 145 wpm with the reveals breathing. Trim in your read-pass if it runs long.
+~1,850 words of VO ≈ 11.8 min at 145 wpm with the reveals breathing (Frontinus cold-open + early reveal added ~1 min). Trim in your read-pass if it runs long.
