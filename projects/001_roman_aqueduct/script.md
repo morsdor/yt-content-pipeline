@@ -14,6 +14,11 @@ Locked to keep video 1 moving; then at the board's sequence gate you chose two c
    ("Frontinus never saw the aqueduct we're about to follow").
 2. **The Pont du Gard is revealed early** (§①.5, ~1:05) as the hero artifact + a number *tease*, then paid
    off deep at §⑤. The mid-video beat (§④c) is now an *earned return*, not a first reveal.
+
+**Amendment (2026-07-28) — cold hook prepended:** a ~15–20 s hero-number teaser (**§⓪**) now opens the video
+*before* the Frontinus vignette — the bridge on screen at 0:00, the 2.5 cm / 456 m number by ~0:07 — to win
+first-30-s retention on a zero-sub channel. It *teases* the number (the "two coins" payoff stays in **§⑤**);
+**§①.5** was trimmed so it no longer re-reveals it. Reuses the `scene_09` plate (₹0); board gains `scene_00`.
 Since **you record the VO yourself**, your voice enters at the mic — riff any phrasing that isn't you. The
 first-person "what most people miss" (§⑥) is still yours to personalize. Numbers grounded in `research.md`
 (fact-lock checklist at the bottom).
@@ -22,10 +27,19 @@ first-person "what most people miss" (§⑥) is still yours to personalize. Numb
 
 ---
 
-## ① Cold-open vignette · 0:00–0:52 · **Witness (Frontinus)** · 🎙 personalize at the mic
+## ⓪ Cold hook · 0:00–0:20 · **Engineer (tease)** · 🎙 personalize at the mic
+*[Visual: cold open — the Pont du Gard, full three-tier elevation, revealed whole against the gorge. Silence, or a single held note.]*
+
+Across this entire bridge — four hundred and fifty-six metres, fifteen hundred feet, end to end — the water falls two and a half centimetres. Barely an inch. A drop that small is invisible; you'd swear it was level.
+
+*[Visual: a slow push toward the very top, where the channel hides under the stone. Hold — then a hard cut to a lamplit Roman office.]* Holding it across fifty kilometres of hills — thirty miles — may be the most precise thing the Romans ever built, and it starts with a man whose job was counting water.
+
+---
+
+## ① Cold-open vignette · 0:20–1:12 · **Witness (Frontinus)** · 🎙 personalize at the mic
 *[Visual: a Roman office at night. An older man in a senatorial toga bent over wax tablets and an aqueduct ledger by lamplight, counting columns of figures.]*
 
-Sextus Julius Frontinus had one of the strangest jobs in the Roman Empire. He was in charge of water.
+His name was Sextus Julius Frontinus, and he had one of the strangest jobs in the Roman Empire. He was in charge of water.
 
 *[Visual: close on the tablets — tallies, discharge figures, a bronze pipe-gauge.]* Not building it — *accounting* for it. In the year 97, Rome handed him every aqueduct feeding the city and asked one question: where does all the water go?
 
@@ -42,29 +56,29 @@ So he counted it. Every day — which channels ran full, who was drilling illega
 
 ---
 
-## ①.5 The reveal (early) · 0:57–1:40 · **Engineer** 🆕
+## ①.5 The bridge, properly · ~1:15–2:00 · **Engineer**
 *[Visual: hard cut / slow rise — the Pont du Gard, full three-tier elevation, revealed whole against the gorge. This is the hero image, brought forward.]*
 
-This is where they pushed it. The Pont du Gard — forty-nine metres of stone, three tiers of arches, the largest built with no mortar at all.
+This is where they pushed it. The Pont du Gard — forty-nine metres of stone, a hundred and sixty feet, three tiers of arches, the largest built with no mortar at all.
 
 *[Visual: a human figure dwarfed at the base for scale; then tilt toward the top.]* It is the most photographed Roman aqueduct on earth. And almost everything you'd notice about it is the *wrong* thing to be impressed by.
 
-*[Visual: settle on the very top, a hint of the hidden channel line.]* Because the truly insane number here isn't the height — it's a drop so small you cannot see it. By the end, you'll understand why it's the most precise thing the Romans ever built.
+*[Visual: settle on the very top, a hint of the hidden channel line.]* To really see why, we have to leave the bridge — and follow the water all the way back to where it begins.
 
 ---
 
 ## ③ The stakes / the problem · 0:35–2:00 · **Engineer**
 *[Visual: map of the Nîmes aqueduct — the winding line from the spring at Uzès to the city, the straight-line distance ghosted behind it.]*
 
-The city is Nemausus — modern Nîmes, in the south of France. Its water comes from a spring near Uzès, and in a straight line, the two are only about twenty kilometres apart.
+The city is Nemausus — modern Nîmes, in the south of France. Its water comes from a spring near Uzès, and in a straight line, the two are only about twenty kilometres apart — twelve miles.
 
-The aqueduct the Romans built between them is **fifty** kilometres long.
+The aqueduct the Romans built between them is **fifty** kilometres long — more than thirty miles.
 
 That is the first thing worth sitting with. They more than doubled the distance *on purpose* — because the straight line runs across hills, and an aqueduct like this one has no pumps. None. Water moves one way only: downhill, the whole way, pulled by nothing but its own weight.
 
 *[Visual: the height "budget" — spring elevation vs city, a thin vertical sliver labelled.]*
 
-And here is the cruelty of it. From the spring to the city, the total height they had to spend — all of it, over the entire run — is somewhere between twelve and seventeen metres. Scholars still argue about the exact figure. Call it the height of a tall tree.
+And here is the cruelty of it. From the spring to the city, the total height they had to spend — all of it, over the entire run — is somewhere between twelve and seventeen metres — forty to fifty-five feet. Scholars still argue about the exact figure. Call it the height of a tall tree.
 
 That is the whole budget. A tall tree's worth of drop, rationed out across fifty kilometres of rock.
 
@@ -81,7 +95,7 @@ The margin for error was almost nothing. So let's talk about how they hit it any
 ### 4a · The instrument *(≈2:00–3:15)*
 *[Visual: hero reveal of the chorobates — a ~6 m bench on legs, water groove along the top, plumb-lines at each end against notches.]*
 
-This is a **chorobates**. It is, essentially, a very long, very serious spirit level: a wooden bench about six metres long, with a channel of water cut along the top and plumb-lines hanging at each end. When the plumb-lines sit dead against their marks, the top is level. When the wind won't cooperate, you read the water in the groove instead — which is why the men who run it work at dawn, before the air moves.
+This is a **chorobates**. It is, essentially, a very long, very serious spirit level: a wooden bench about six metres long — twenty feet — with a channel of water cut along the top and plumb-lines hanging at each end. When the plumb-lines sit dead against their marks, the top is level. When the wind won't cooperate, you read the water in the groove instead — which is why the men who run it work at dawn, before the air moves.
 
 Vitruvius — the Roman architect who wrote the manual — called it the most reliable tool they had. *[wit:]* The Romans had no word for "hydraulic gradient." They had something better: a bench, a puddle, and a finished aqueduct.
 
@@ -99,7 +113,7 @@ Every step carries a little error. Do it ten thousand times and the errors shoul
 ### 4c · The channel, and the crossing *(≈4:15–6:00)*
 *[Visual: cutaway of the *specus* — a stone conduit ~1.2–1.8 m wide, tall enough to stoop inside, lined pink with opus signinum, a covered top.]*
 
-The water itself runs in a *specus* — a masonry channel a bit over a metre wide and tall enough to walk inside, stooped. It's lined with **opus signinum**, a waterproof mortar the Romans made with crushed tile, and it's covered along almost its whole length. And here's the part the postcards never show you: **most of this aqueduct is underground, or at ground level.** It hugs the contours of the land, buried and quiet.
+The water itself runs in a *specus* — a masonry channel a bit over a metre wide — three or four feet — and tall enough to walk inside, stooped. It's lined with **opus signinum**, a waterproof mortar the Romans made with crushed tile, and it's covered along almost its whole length. And here's the part the postcards never show you: **most of this aqueduct is underground, or at ground level.** It hugs the contours of the land, buried and quiet.
 
 *[Visual: the reveal — the channel reaches the edge of the Gardon gorge. Push out to the Pont du Gard.]*
 
@@ -143,7 +157,7 @@ The real achievement is the thing you *can't* photograph — the invisible line.
 
 *[Visual: split — a steep, short siphon route vs the long, gentle contour route they chose.]*
 
-And here's the part I find almost stubborn, in the best way. **They knew an easier way, and they refused it.** The Romans could build a pressurised siphon — send water plunging down into a valley in sealed pipe and let pressure drive it back up the far side. They did exactly that elsewhere; a siphon at Aspendos ran over a kilometre and a half with forty-metre pressure towers. It would have let them take a shorter, steeper, less fussy line to Nîmes.
+And here's the part I find almost stubborn, in the best way. **They knew an easier way, and they refused it.** The Romans could build a pressurised siphon — send water plunging down into a valley in sealed pipe and let pressure drive it back up the far side. They did exactly that elsewhere; a siphon at Aspendos ran over a kilometre and a half — nearly a mile — with forty-metre pressure towers, a hundred and thirty feet tall. It would have let them take a shorter, steeper, less fussy line to Nîmes.
 
 They didn't. They chose the long way — the gentle hand-held contour and an open channel on a bridge. And I don't think that was conservatism. I think it was maintenance. *[first-person engineering take:]* An open channel you can walk into, inspect, and scrape clean. A buried pressure siphon you cannot — and lead pipe under pressure, silting and failing where no one can reach it, is a nightmare that outlives whoever signed off on it. Given the choice between clever and *maintainable*, they picked maintainable, and it carried water for five hundred years.
 

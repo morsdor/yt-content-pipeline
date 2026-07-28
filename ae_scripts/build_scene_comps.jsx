@@ -20,6 +20,7 @@
     var PROJECT_SUBDIR = "projects/001_roman_aqueduct";
 
     var SCENES = [
+  {id:"scene_00", plate:"images/scene_09.png", dur:22.0, move:"push_in", amt:5, panpx:0, hin:0.8, hout:0.8},
   {id:"scene_02", plate:"images/scene_02.png", dur:11.6, move:"push_in", amt:6, panpx:0, hin:0.7, hout:0.7},
   {id:"scene_07", plate:"images/scene_07.png", dur:10.3, move:"pan_right", amt:0, panpx:55, hin:0.8, hout:0.8},
   {id:"scene_09", plate:"images/scene_09.png", dur:10.8, move:"pull_back", amt:8, panpx:0, hin:0.8, hout:0.8},

@@ -8,7 +8,7 @@
 |:--|:--|
 | **Video #** | 001 |
 | **Topic** | How Rome moved water across ~50 miles of terrain (§7 topic #1) |
-| **Status** | ✅ Packaging locked · Research done · Thumbnails a+c test-ready · Script LOCKED (witness→Frontinus) · Board DONE (passes 1–5, 73 scenes) · 14 assets gated **14/14** · ✅ reference pack complete (3/3 canonical refs) + storyboard resolved (0 err, 22 deliberate) · ✅ **63/63 plates LOCKED** · ✅ **board COMPLETE — all 7 studio passes** (pass 6 motion + pass 7 AE-build; §11 QA clean; JSX scaffolds 61 comps) · 🔴 next: **record VO** → true-up → animatic → AE build (2026-07-27) |
+| **Status** | ✅ Packaging locked · Research done · Thumbnails a+c test-ready · Script LOCKED (witness→Frontinus) + **cold-hook amend (2026-07-28)** · ✅ **board COMPLETE — all 7 passes**, now **74 scenes** (+`scene_00` hero-number cold hook, reuses `scene_09` plate = ₹0; JSX 62 comps; validate 0 err / 23 deliberate) · ✅ **63/63 plates LOCKED** · ✅ VO **recorded → de-noised / −14 LUFS** (`vo_001_cleaned.wav`; raw take reverby → Adobe/AI de-reverb pending) · 🔴 next: **re-record VO** (better take, incl. new hook) → true-up → animatic → AE build (2026-07-28) |
 | **Runtime target** | 10–13 min |
 | **Civilization accent** | Roman — warm ochre/terracotta stone, electric-blue water (final `accent_hex` set at storyboard) |
 | **Locked** | 2026-07-23 |
