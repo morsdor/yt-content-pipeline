@@ -6,7 +6,7 @@
   "scene_recipes": {},
   "base_dir": "./projects/001_roman_aqueduct",
   "voiceover": "audio/voiceover.mp3",
-  "vo_duration": null,
+  "vo_duration": 695.18,
   "background_music": "audio/ambient.mp3",
   "music_volume": 0.08,
   "continuity_registry": {
@@ -41,8 +41,8 @@
     {
       "id": "scene_00",
       "t_start": 0.0,
-      "t_end": 22.0,
-      "duration": 22.0,
+      "t_end": 26.86,
+      "duration": 26.86,
       "narration_segment": "Across this entire bridge — four hundred and fifty-six metres, end to end — the water falls two and a half centimetres. A drop that small is invisible; you'd swear it was level. Holding it across fifty kilometres of hills may be the most precise thing the Romans ever built — and it starts with a man whose job was counting water.",
       "purpose": "COLD HOOK — open on the hero bridge; state the 2.5 cm / 456 m number as a mystery (TEASE — the 'two coins' payoff stays in scene_46/§⑤); hand off to Frontinus. Reuses the scene_09 render, no regen.",
       "register": "engineer",
@@ -68,10 +68,10 @@
         "labels": []
       },
       "build": "plate",
-      "image": "images/scene_09.png",
+      "image": "images/scene_00.png",
       "plate": {
-        "subject": "the Pont du Gard in full three-tier elevation, honey limestone, spanning the Gardon gorge, revealed whole and heroic; warm haze behind; low scrub on the gorge rims; lower band clear for a callout",
-        "reference_image": "references/pont_du_gard_elevation.jpg",
+        "subject": "the Pont du Gard at dawn in a dramatic low three-quarter view, honey-limestone Roman arches marching across the Gardon gorge, warm golden haze behind, the vast span framed heroically and a little mysterious as a cold-open hero shot distinct from later straight-on views; low scrub foreground, quiet warm sky; strictly Roman masonry, no modern elements.",
+        "reference_image": "references/Pont_du_Gard_03.jpg",
         "visual_facts": [
           "exactly THREE tiers of arches (bottom 6 / middle 11 / top ~35)",
           "48.8 m tall — tall, not long-and-low",
@@ -105,14 +105,13 @@
           "clip": "clips/scene_00.mp4",
           "handles_s": 1.0
         }
-      },
-      "reuses_plate": "scene_09"
+      }
     },
     {
       "id": "scene_01",
-      "t_start": 22.0,
-      "t_end": 29.4,
-      "duration": 7.4,
+      "t_start": 26.86,
+      "t_end": 34.6,
+      "duration": 7.74,
       "narration_segment": "Sextus Julius Frontinus had one of the strangest jobs in the Roman Empire. He was in charge of water.",
       "purpose": "Open on Frontinus — introduce the man whose obsession frames the video.",
       "register": "witness",
@@ -198,9 +197,9 @@
     },
     {
       "id": "scene_02",
-      "t_start": 29.4,
-      "t_end": 41.0,
-      "duration": 11.6,
+      "t_start": 34.6,
+      "t_end": 46.64,
+      "duration": 12.04,
       "narration_segment": "Not building it — accounting for it. In the year 97, Rome handed him every aqueduct feeding the city and asked one question: where does all the water go?",
       "purpose": "His actual job — auditing the water, not building it; the year 97.",
       "register": "witness",
@@ -265,9 +264,9 @@
     },
     {
       "id": "scene_03",
-      "t_start": 41.0,
-      "t_end": 52.6,
-      "duration": 11.6,
+      "t_start": 46.64,
+      "t_end": 57.5,
+      "duration": 10.86,
       "narration_segment": "So he counted it. Every day — which channels ran full, who was drilling illegal pipes into the mains to steal a share, whether the numbers added up.",
       "purpose": "The daily obsession — metering, catching pipe-theft, making the numbers add up.",
       "register": "witness",
@@ -345,9 +344,9 @@
     },
     {
       "id": "scene_04",
-      "t_start": 52.6,
-      "t_end": 62.1,
-      "duration": 9.5,
+      "t_start": 57.5,
+      "t_end": 66.24,
+      "duration": 8.74,
       "narration_segment": "He wrote it all down, in a report we still have. And what comes off the page is a man who believed something total:",
       "purpose": "De aquaeductu survives; set up the thesis line.",
       "register": "witness",
@@ -425,9 +424,9 @@
     },
     {
       "id": "scene_05",
-      "t_start": 62.1,
-      "t_end": 67.5,
-      "duration": 5.4,
+      "t_start": 66.24,
+      "t_end": 71.2,
+      "duration": 4.96,
       "narration_segment": "that a city rises or falls on getting the small measurements exactly right.",
       "purpose": "The thesis — precision as civic conviction. (deliberate <8s: hold on his face.)",
       "register": "witness",
@@ -489,9 +488,9 @@
     },
     {
       "id": "scene_06",
-      "t_start": 67.5,
-      "t_end": 74.9,
-      "duration": 7.4,
+      "t_start": 71.2,
+      "t_end": 77.78,
+      "duration": 6.58,
       "narration_segment": "Frontinus never saw the aqueduct we're about to follow. But he might have understood it better than anyone.",
       "purpose": "The honesty guardrail — he's a lens, not a witness — pivot toward the subject.",
       "register": "witness",
@@ -562,9 +561,9 @@
     },
     {
       "id": "scene_07",
-      "t_start": 74.9,
-      "t_end": 85.2,
-      "duration": 10.3,
+      "t_start": 77.78,
+      "t_end": 87.14,
+      "duration": 9.36,
       "narration_segment": "Because somewhere in the hills of southern France, the Romans took that same obsession — and pushed it further than they ever pushed it anywhere else.",
       "purpose": "Hook into the subject — pull to the map of southern Gaul.",
       "register": "witness",
@@ -630,8 +629,8 @@
     },
     {
       "id": "scene_08",
-      "t_start": 85.2,
-      "t_end": 89.2,
+      "t_start": 87.14,
+      "t_end": 91.14,
       "duration": 4.0,
       "narration_segment": "",
       "purpose": "Title sting: 'The Insane Precision of a Roman Aqueduct'. (no VO.)",
@@ -684,9 +683,9 @@
     },
     {
       "id": "scene_09",
-      "t_start": 89.2,
-      "t_end": 100.0,
-      "duration": 10.8,
+      "t_start": 91.14,
+      "t_end": 104.26,
+      "duration": 13.12,
       "narration_segment": "This is where they pushed it. The Pont du Gard — forty-nine metres of stone, three tiers of arches, the largest built with no mortar at all.",
       "purpose": "THE hero reveal, brought early. PULL-BACK. The bridge the viewer will spend the video understanding.",
       "register": "engineer",
@@ -738,8 +737,8 @@
       "texts": [
         {
           "text": "Pont du Gard",
-          "start": 4.0,
-          "end": 10.0,
+          "start": 4.859,
+          "end": 12.148,
           "position": "bottom"
         }
       ],
@@ -759,9 +758,9 @@
     },
     {
       "id": "scene_10",
-      "t_start": 100.0,
-      "t_end": 109.5,
-      "duration": 9.5,
+      "t_start": 104.26,
+      "t_end": 111.98,
+      "duration": 7.72,
       "narration_segment": "It is the most photographed Roman aqueduct on earth. And almost everything you'd notice about it is the wrong thing to be impressed by.",
       "purpose": "Set the misdirection — the famous thing is the wrong thing to admire.",
       "register": "engineer",
@@ -837,10 +836,10 @@
     },
     {
       "id": "scene_11",
-      "t_start": 109.5,
-      "t_end": 122.7,
-      "duration": 13.2,
-      "narration_segment": "Because the truly insane number here isn't the height — it's a drop so small you cannot see it. By the end, you'll understand why it's the most precise thing the Romans ever built.",
+      "t_start": 111.98,
+      "t_end": 114.98,
+      "duration": 3.0,
+      "narration_segment": "",
       "purpose": "Tease the 2.5cm without spending it — promise the payoff. (>12: one continuous settle to the top.)",
       "register": "engineer",
       "needs": [
@@ -905,13 +904,14 @@
           "clip": "clips/scene_11.mp4",
           "handles_s": 1.0
         }
-      }
+      },
+      "note": "VO cut/demoted-to-caption in 2026-08 script revision; kept as silent visual beat (true-up 2026-08-02)"
     },
     {
       "id": "scene_12",
-      "t_start": 122.7,
-      "t_end": 131.0,
-      "duration": 8.3,
+      "t_start": 114.98,
+      "t_end": 122.2,
+      "duration": 7.22,
       "narration_segment": "The city is Nemausus — modern Nîmes, in the south of France. Its water comes from a spring near Uzès,",
       "purpose": "Place city + spring on the map.",
       "register": "engineer",
@@ -963,8 +963,8 @@
       "texts": [
         {
           "text": "Nemausus",
-          "start": 3.0,
-          "end": 7.5,
+          "start": 2.61,
+          "end": 6.524,
           "position": "top"
         }
       ],
@@ -984,9 +984,9 @@
     },
     {
       "id": "scene_13",
-      "t_start": 131.0,
-      "t_end": 140.9,
-      "duration": 9.9,
+      "t_start": 122.2,
+      "t_end": 134.3,
+      "duration": 12.1,
       "narration_segment": "and in a straight line, the two are only about twenty kilometres apart. The aqueduct the Romans built between them is fifty kilometres long.",
       "purpose": "The core contrast — 20 km straight vs 50 km built.",
       "register": "data",
@@ -1053,9 +1053,9 @@
     },
     {
       "id": "scene_14",
-      "t_start": 140.9,
-      "t_end": 150.8,
-      "duration": 9.9,
+      "t_start": 134.3,
+      "t_end": 143.04,
+      "duration": 8.74,
       "narration_segment": "That is the first thing worth sitting with. They more than doubled the distance on purpose — because the straight line runs across hills,",
       "purpose": "The detour was deliberate — forced by terrain.",
       "register": "engineer",
@@ -1135,9 +1135,9 @@
     },
     {
       "id": "scene_15",
-      "t_start": 150.8,
-      "t_end": 161.6,
-      "duration": 10.8,
+      "t_start": 143.04,
+      "t_end": 156.12,
+      "duration": 13.08,
       "narration_segment": "and an aqueduct like this one has no pumps. None. Water moves one way only: downhill, the whole way, pulled by nothing but its own weight.",
       "purpose": "The single hard constraint — gravity only.",
       "register": "engineer",
@@ -1201,9 +1201,9 @@
     },
     {
       "id": "scene_16",
-      "t_start": 161.6,
-      "t_end": 173.2,
-      "duration": 11.6,
+      "t_start": 156.12,
+      "t_end": 164.04,
+      "duration": 7.92,
       "narration_segment": "And here is the cruelty of it. From the spring to the city, the total height they had to spend — all of it, over the entire run —",
       "purpose": "Set up the height budget as the scarce resource.",
       "register": "engineer",
@@ -1266,9 +1266,9 @@
     },
     {
       "id": "scene_17",
-      "t_start": 173.2,
-      "t_end": 182.3,
-      "duration": 9.1,
+      "t_start": 164.04,
+      "t_end": 175.44,
+      "duration": 11.4,
       "narration_segment": "is somewhere between twelve and seventeen metres. Scholars still argue about the exact figure. Call it the height of a tall tree.",
       "purpose": "Land the number as a tangible image — one tall tree. (RHYTHM-3 hold.)",
       "register": "data",
@@ -1340,9 +1340,9 @@
     },
     {
       "id": "scene_18",
-      "t_start": 182.3,
-      "t_end": 189.7,
-      "duration": 7.4,
+      "t_start": 175.44,
+      "t_end": 183.3,
+      "duration": 7.86,
       "narration_segment": "That is the whole budget. A tall tree's worth of drop, rationed out across fifty kilometres of rock.",
       "purpose": "Reinforce scarcity — that tree over 50 km. (deliberate <8s.)",
       "register": "data",
@@ -1404,9 +1404,9 @@
     },
     {
       "id": "scene_19",
-      "t_start": 189.7,
-      "t_end": 200.0,
-      "duration": 10.3,
+      "t_start": 183.3,
+      "t_end": 193.0,
+      "duration": 9.7,
       "narration_segment": "Spend it too fast — let the channel run too steep — and the water races, tears at the mortar, and undercuts its own bed.",
       "purpose": "Failure mode one — too steep scours.",
       "register": "engineer",
@@ -1477,9 +1477,9 @@
     },
     {
       "id": "scene_20",
-      "t_start": 200.0,
-      "t_end": 211.6,
-      "duration": 11.6,
+      "t_start": 193.0,
+      "t_end": 202.8,
+      "duration": 9.8,
       "narration_segment": "Spend it too slow, and the water stalls, silts up, and stops. The Romans had to hold a slope finer than the drainage on a modern motorway —",
       "purpose": "Failure mode two — too flat silts; the modern benchmark.",
       "register": "engineer",
@@ -1545,9 +1545,9 @@
     },
     {
       "id": "scene_21",
-      "t_start": 211.6,
-      "t_end": 223.2,
-      "duration": 11.6,
+      "t_start": 202.8,
+      "t_end": 212.2,
+      "duration": 9.4,
       "narration_segment": "and they had to hold it across country they could not see across, with a trough of water and a string. The margin for error was almost nothing.",
       "purpose": "Collapse the problem to its human absurdity — a trough and a string.",
       "register": "engineer",
@@ -1578,8 +1578,8 @@
       "build": "plate+layers",
       "image": "images/scene_21.png",
       "plate": {
-        "subject": "wide isometric of vast bare limestone garrigue hills under warm haze, one small bare hill crest mid-frame, deep negative space to dwarf a figure; empty where the surveyor stands",
-        "reference_image": "references/nimes_route_map.jpg",
+        "subject": "wide flat-isometric of vast bare limestone garrigue hills under warm haze, one low bare hill crest mid-frame with deep negative space around it to dwarf a lone figure staged there; clean even line-art, quiet warm sky; strictly a natural landscape — NO map lines, NO route overlay, NO cartographic contours, NO stray polygon outlines.",
+        "reference_image": "",
         "visual_facts": [
           "route MEANDERS along contours (winding ~50 km), NOT a straight shot (~20 km straight-line)",
           "terrain = limestone garrigue: pale rock, sage scrub",
@@ -1629,9 +1629,9 @@
     },
     {
       "id": "scene_22",
-      "t_start": 223.2,
-      "t_end": 233.1,
-      "duration": 9.9,
+      "t_start": 212.18,
+      "t_end": 220.4,
+      "duration": 8.22,
       "narration_segment": "So let's talk about how they hit it anyway. This is a chorobates. It is, essentially, a very long, very serious spirit level:",
       "purpose": "Reveal the hero instrument. MATCH-CUT 'trough of water and a string' -> the chorobates trough.",
       "register": "engineer",
@@ -1698,8 +1698,8 @@
       "texts": [
         {
           "text": "chorobates",
-          "start": 3.5,
-          "end": 9.0,
+          "start": 2.906,
+          "end": 7.473,
           "position": "bottom"
         }
       ],
@@ -1719,9 +1719,9 @@
     },
     {
       "id": "scene_23",
-      "t_start": 233.1,
-      "t_end": 242.2,
-      "duration": 9.1,
+      "t_start": 220.4,
+      "t_end": 230.18,
+      "duration": 9.78,
       "narration_segment": "a wooden bench about six metres long, with a channel of water cut along the top and plumb-lines hanging at each end.",
       "purpose": "Anatomy of the chorobates — a labelled section.",
       "register": "engineer",
@@ -1796,9 +1796,9 @@
     },
     {
       "id": "scene_24",
-      "t_start": 242.2,
-      "t_end": 253.0,
-      "duration": 10.8,
+      "t_start": 230.18,
+      "t_end": 239.06,
+      "duration": 8.88,
       "narration_segment": "When the plumb-lines sit dead against their marks, the top is level. When the wind won't cooperate, you read the water in the groove instead —",
       "purpose": "How it's read — plumb-lines and the water-groove fallback.",
       "register": "engineer",
@@ -1862,10 +1862,10 @@
     },
     {
       "id": "scene_25",
-      "t_start": 253.0,
-      "t_end": 265.8,
-      "duration": 12.8,
-      "narration_segment": "which is why the men who run it work at dawn, before the air moves. Vitruvius — the Roman architect who wrote the manual — called it the most reliable tool they had.",
+      "t_start": 239.06,
+      "t_end": 243.96,
+      "duration": 4.9,
+      "narration_segment": "which is why the men who run it work at dawn, before the air moves.",
       "purpose": "Introduce the field surveyors at dawn; cite Vitruvius. (>12: one continuous hold.)",
       "register": "engineer",
       "needs": [
@@ -1955,9 +1955,9 @@
     },
     {
       "id": "scene_26",
-      "t_start": 265.8,
-      "t_end": 274.1,
-      "duration": 8.3,
+      "t_start": 243.96,
+      "t_end": 254.48,
+      "duration": 10.52,
       "narration_segment": "The Romans had no word for 'hydraulic gradient.' They had something better: a bench, a puddle, and a finished aqueduct.",
       "purpose": "The wit beat — sophistication without jargon.",
       "register": "wit",
@@ -2020,9 +2020,9 @@
     },
     {
       "id": "scene_27",
-      "t_start": 274.1,
-      "t_end": 285.3,
-      "duration": 11.2,
+      "t_start": 254.48,
+      "t_end": 265.32,
+      "duration": 10.84,
       "narration_segment": "Two other instruments backed it up. The groma — a cross on a staff with four plumb-bobs — for setting dead-straight lines and clean right angles.",
       "purpose": "The groma — alignment and right angles.",
       "register": "engineer",
@@ -2094,9 +2094,9 @@
     },
     {
       "id": "scene_28",
-      "t_start": 285.3,
-      "t_end": 296.5,
-      "duration": 11.2,
+      "t_start": 265.32,
+      "t_end": 279.36,
+      "duration": 14.04,
       "narration_segment": "And the dioptra, a sighting instrument for measuring angles. Together, that's the whole toolkit: no lasers, no lenses, no engines. String, water, and a plumb weight.",
       "purpose": "The dioptra + the whole spare toolkit.",
       "register": "engineer",
@@ -2187,9 +2187,9 @@
     },
     {
       "id": "scene_29",
-      "t_start": 296.5,
-      "t_end": 305.6,
-      "duration": 9.1,
+      "t_start": 279.36,
+      "t_end": 287.2,
+      "duration": 7.84,
       "narration_segment": "The men who ran these were the libratores — the levellers. And the technique is the quiet genius of the whole thing.",
       "purpose": "Name the levellers; pivot from tools to technique.",
       "register": "engineer",
@@ -2289,9 +2289,9 @@
     },
     {
       "id": "scene_30",
-      "t_start": 305.6,
-      "t_end": 315.1,
-      "duration": 9.5,
+      "t_start": 287.2,
+      "t_end": 297.12,
+      "duration": 9.92,
       "narration_segment": "You don't survey fifty kilometres in one look. You survey it in thousands of tiny steps: set the level, sight the next stake,",
       "purpose": "The method — thousands of tiny steps.",
       "register": "engineer",
@@ -2357,9 +2357,9 @@
     },
     {
       "id": "scene_31",
-      "t_start": 315.1,
-      "t_end": 326.3,
-      "duration": 11.2,
+      "t_start": 297.12,
+      "t_end": 308.52,
+      "duration": 11.4,
       "narration_segment": "drop a fixed amount, move the level down to that stake, and do it again. And again. Leap-frogging a six-metre bench down fifty kilometres of hills.",
       "purpose": "The leap-frog rhythm down the hills.",
       "register": "engineer",
@@ -2464,10 +2464,10 @@
     },
     {
       "id": "scene_32",
-      "t_start": 326.3,
-      "t_end": 334.6,
-      "duration": 8.3,
-      "narration_segment": "Every step carries a little error. Do it ten thousand times and the errors should pile up into a disaster.",
+      "t_start": 308.52,
+      "t_end": 311.52,
+      "duration": 3.0,
+      "narration_segment": "",
       "purpose": "Introduce error accumulation — why it should fail.",
       "register": "engineer",
       "needs": [
@@ -2526,13 +2526,14 @@
           "clip": "clips/scene_32.mp4",
           "handles_s": 1.0
         }
-      }
+      },
+      "note": "VO cut/demoted-to-caption in 2026-08 script revision; kept as silent visual beat (true-up 2026-08-02)"
     },
     {
       "id": "scene_33",
-      "t_start": 334.6,
-      "t_end": 343.7,
-      "duration": 9.1,
+      "t_start": 311.52,
+      "t_end": 321.44,
+      "duration": 9.92,
       "narration_segment": "The real problem here was never one measurement — anyone can level six metres. The problem was repeating it ten thousand times",
       "purpose": "First-person reframe — repetition without drift is the feat.",
       "register": "engineer",
@@ -2596,9 +2597,9 @@
     },
     {
       "id": "scene_34",
-      "t_start": 343.7,
-      "t_end": 356.1,
-      "duration": 12.4,
+      "t_start": 321.44,
+      "t_end": 333.3,
+      "duration": 11.86,
       "narration_segment": "without letting the mistakes accumulate into a channel that runs uphill. That they landed the grade at all is the achievement. What they actually landed is almost hard to believe.",
       "purpose": "Resolve + tease the payoff — PULL-BACK to the whole achieved line. (>12: continuous reveal.)",
       "register": "engineer",
@@ -2687,9 +2688,9 @@
     },
     {
       "id": "scene_35",
-      "t_start": 356.1,
-      "t_end": 366.4,
-      "duration": 10.3,
+      "t_start": 333.3,
+      "t_end": 344.74,
+      "duration": 11.44,
       "narration_segment": "The water itself runs in a specus — a masonry channel a bit over a metre wide and tall enough to walk inside, stooped.",
       "purpose": "Reveal the specus at human scale.",
       "register": "engineer",
@@ -2744,8 +2745,8 @@
       "texts": [
         {
           "text": "specus",
-          "start": 3.5,
-          "end": 9.5,
+          "start": 3.887,
+          "end": 10.551,
           "position": "right"
         }
       ],
@@ -2769,9 +2770,9 @@
     },
     {
       "id": "scene_36",
-      "t_start": 366.4,
-      "t_end": 375.9,
-      "duration": 9.5,
+      "t_start": 344.74,
+      "t_end": 354.36,
+      "duration": 9.62,
       "narration_segment": "It's lined with opus signinum, a waterproof mortar the Romans made with crushed tile, and it's covered along almost its whole length.",
       "purpose": "The channel's waterproofing and cover.",
       "register": "engineer",
@@ -2823,8 +2824,8 @@
       "texts": [
         {
           "text": "opus signinum",
-          "start": 3.5,
-          "end": 8.5,
+          "start": 3.544,
+          "end": 8.607,
           "position": "right"
         }
       ],
@@ -2844,9 +2845,9 @@
     },
     {
       "id": "scene_37",
-      "t_start": 375.9,
-      "t_end": 383.8,
-      "duration": 7.9,
+      "t_start": 354.36,
+      "t_end": 361.86,
+      "duration": 7.5,
       "narration_segment": "And here's the part the postcards never show you: most of this aqueduct is underground, or at ground level.",
       "purpose": "The thing people miss — mostly buried, not arcades. (deliberate <8s.)",
       "register": "engineer",
@@ -2911,9 +2912,9 @@
     },
     {
       "id": "scene_38",
-      "t_start": 383.8,
-      "t_end": 391.7,
-      "duration": 7.9,
+      "t_start": 361.86,
+      "t_end": 369.82,
+      "duration": 7.96,
       "narration_segment": "It hugs the contours of the land, buried and quiet. Until it reaches the gorge of the river Gardon.",
       "purpose": "Follow the buried line to the gorge (the turn). (deliberate <8s.)",
       "register": "engineer",
@@ -2979,8 +2980,8 @@
       "texts": [
         {
           "text": "Gardon",
-          "start": 3.0,
-          "end": 7.0,
+          "start": 3.023,
+          "end": 7.053,
           "position": "top"
         }
       ],
@@ -3000,9 +3001,9 @@
     },
     {
       "id": "scene_39",
-      "t_start": 391.7,
-      "t_end": 400.8,
-      "duration": 9.1,
+      "t_start": 369.82,
+      "t_end": 379.2,
+      "duration": 9.38,
       "narration_segment": "There's no gentle contour around this. The land simply drops away. So they carried the water straight across it — on this.",
       "purpose": "The land drops; they crossed it head-on. Cue the return.",
       "register": "engineer",
@@ -3063,9 +3064,9 @@
     },
     {
       "id": "scene_40",
-      "t_start": 400.8,
-      "t_end": 408.2,
-      "duration": 7.4,
+      "t_start": 379.2,
+      "t_end": 384.86,
+      "duration": 5.66,
       "narration_segment": "And we arrive back at the bridge we opened on. Only now you know what it's actually for —",
       "purpose": "Earned RETURN to the Pont du Gard (revealed early) — push-in, not a fresh reveal. (deliberate <8s.)",
       "register": "engineer",
@@ -3131,9 +3132,9 @@
     },
     {
       "id": "scene_41",
-      "t_start": 408.2,
-      "t_end": 416.5,
-      "duration": 8.3,
+      "t_start": 384.86,
+      "t_end": 392.0,
+      "duration": 7.14,
       "narration_segment": "not to be admired, but because a slope had to cross a river, and could not lose height to do it.",
       "purpose": "Reframe the bridge's true purpose — carrying a slope, not being looked at.",
       "register": "engineer",
@@ -3203,9 +3204,9 @@
     },
     {
       "id": "scene_42",
-      "t_start": 416.5,
-      "t_end": 423.1,
-      "duration": 6.6,
+      "t_start": 392.0,
+      "t_end": 397.48,
+      "duration": 5.48,
       "narration_segment": "The water runs along a channel on the very top, capped under stone slabs, out of sight.",
       "purpose": "The water hidden along the very top — a section through the bridge crown. (deliberate <8s.)",
       "register": "engineer",
@@ -3274,9 +3275,9 @@
     },
     {
       "id": "scene_43",
-      "t_start": 423.1,
-      "t_end": 436.7,
-      "duration": 13.6,
+      "t_start": 397.48,
+      "t_end": 410.28,
+      "duration": 12.8,
       "narration_segment": "People come from all over the world to photograph this bridge. Almost none of them are looking at the water — which is forty-nine metres over their heads, still falling, still on grade.",
       "purpose": "Tilt crowd -> waterline, 49m up, still on grade. (>12: single continuous tilt-up.)",
       "register": "engineer",
@@ -3357,9 +3358,9 @@
     },
     {
       "id": "scene_44",
-      "t_start": 436.7,
-      "t_end": 441.3,
-      "duration": 4.6,
+      "t_start": 410.28,
+      "t_end": 414.38,
+      "duration": 4.1,
       "narration_segment": "Here is the number this whole video is built around.",
       "purpose": "Held beat before the number. (deliberate <8s.)",
       "register": "engineer",
@@ -3425,9 +3426,9 @@
     },
     {
       "id": "scene_45",
-      "t_start": 441.3,
-      "t_end": 452.5,
-      "duration": 11.2,
+      "t_start": 414.38,
+      "t_end": 425.44,
+      "duration": 11.06,
       "narration_segment": "Across the Pont du Gard — that giant, world-famous bridge, four hundred and fifty-six metres from end to end, long enough that you'd lose a friend in the crowd at the far side —",
       "purpose": "Establish the enormous span first — so the tiny drop lands against it.",
       "register": "engineer",
@@ -3491,8 +3492,8 @@
       "texts": [
         {
           "text": "Pont du Gard",
-          "start": 4.0,
-          "end": 10.5,
+          "start": 3.95,
+          "end": 10.369,
           "position": "bottom"
         }
       ],
@@ -3512,9 +3513,9 @@
     },
     {
       "id": "scene_46",
-      "t_start": 452.5,
-      "t_end": 461.6,
-      "duration": 9.1,
+      "t_start": 425.44,
+      "t_end": 433.94,
+      "duration": 8.5,
       "narration_segment": "the water falls two and a half centimetres. Two and a half centimetres. The height of two coins stacked on a table.",
       "purpose": "THE headline number pays off — 2.5cm = two coins. (RHYTHM-3 big hold.)",
       "register": "data",
@@ -3545,8 +3546,8 @@
       "build": "plate",
       "image": "images/scene_46.png",
       "plate": {
-        "subject": "clean isometric scale payoff: the enormous 456 m span as a long horizontal, and the 2.5 cm fall shown as two coins stacked on a table beside it — the shocking disproportion; warm neutral; centre + top clear for the big callout",
-        "reference_image": null,
+        "subject": "clean isometric scale payoff on the REAL Pont du Gard: its enormous 456-metre honey-limestone span as a long horizontal of Roman arches (strictly Roman masonry — absolutely NO modern bridge, NO concrete piers, NO highway, NO steel truss); beside it on a plain table two identical bronze Roman coins stacked, and the tiny 2.5 cm fall marked as a small vertical tick against the giant span — the point being how absurdly small the drop is. Warm neutral ground, uncluttered.",
+        "reference_image": "references/pont_du_gard_elevation.jpg",
         "visual_facts": [
           "2.5 cm fall across the 456 m bridge = 1 in 18,241 — the headline number"
         ],
@@ -3577,9 +3578,9 @@
     },
     {
       "id": "scene_47",
-      "t_start": 461.6,
-      "t_end": 470.3,
-      "duration": 8.7,
+      "t_start": 433.94,
+      "t_end": 444.9,
+      "duration": 10.96,
       "narration_segment": "That's a slope of one in eighteen thousand. And on the flattest stretches of the whole aqueduct, the grade eases to as little as one in twenty thousand —",
       "purpose": "Translate to slope ratios; push to the flatter extreme.",
       "register": "data",
@@ -3642,9 +3643,9 @@
     },
     {
       "id": "scene_48",
-      "t_start": 470.3,
-      "t_end": 479.8,
-      "duration": 9.5,
+      "t_start": 444.9,
+      "t_end": 453.16,
+      "duration": 8.26,
       "narration_segment": "a drop so gentle your eye simply cannot see it. It looks, for all the world, like level ground. The water knows better.",
       "purpose": "Make the imperceptibility felt. (wit close.)",
       "register": "wit",
@@ -3728,9 +3729,9 @@
     },
     {
       "id": "scene_49",
-      "t_start": 479.8,
-      "t_end": 491.8,
-      "duration": 12.0,
+      "t_start": 453.16,
+      "t_end": 467.22,
+      "duration": 14.06,
       "narration_segment": "And it worked. At its peak this line delivered around forty thousand cubic metres of water a day — close to nine million gallons — to the fountains, baths, and homes of Nîmes.",
       "purpose": "The payoff of use — what all that precision delivered.",
       "register": "data",
@@ -3795,9 +3796,9 @@
     },
     {
       "id": "scene_50",
-      "t_start": 491.8,
-      "t_end": 504.6,
-      "duration": 12.8,
+      "t_start": 467.22,
+      "t_end": 480.32,
+      "duration": 13.1,
       "narration_segment": "A single drop of that water took about twenty-seven hours to travel from the spring to the city: a full day and night, sliding downhill across a slope you couldn't see, and arriving.",
       "purpose": "Trace one drop's 27-hour journey. (>12: one continuous route travel.)",
       "register": "both",
@@ -3829,7 +3830,7 @@
       "build": "plate",
       "image": "images/scene_50.png",
       "plate": {
-        "subject": "isometric route map of the full Uzès-to-Nîmes line with a single bright azure droplet mid-journey along it, a subtle day-to-night gradient across the map to suggest 27 hours passing; muted terrain; upper band clear",
+        "subject": "clean flat-isometric route map of the full Uzes-to-Nimes aqueduct line as one winding azure channel across warm ochre terrain, with a single bright azure water droplet part-way along its journey; even warm daylight and legible line-art — NO harsh shadows, NO dark navy wedges, NO night side of the map, no clutter or stray marks.",
         "reference_image": "references/nimes_route_map.jpg",
         "visual_facts": [
           "route MEANDERS along contours (winding ~50 km), NOT a straight shot (~20 km straight-line)",
@@ -3863,9 +3864,9 @@
     },
     {
       "id": "scene_51",
-      "t_start": 504.6,
-      "t_end": 518.2,
-      "duration": 13.6,
+      "t_start": 480.32,
+      "t_end": 492.64,
+      "duration": 12.32,
       "narration_segment": "If you're the kind of person who finds a two-and-a-half-centimetre drop more impressive than a forty-nine-metre bridge, you're my kind of person — subscribe, and stick around. It gets better.",
       "purpose": "The one woven CTA (~68%), in-voice. (>12: one hold, to-camera feel.)",
       "register": "wit",
@@ -3931,9 +3932,9 @@
     },
     {
       "id": "scene_52",
-      "t_start": 518.2,
-      "t_end": 524.8,
-      "duration": 6.6,
+      "t_start": 492.64,
+      "t_end": 499.48,
+      "duration": 6.84,
       "narration_segment": "Here's what I think most people miss about the Pont du Gard. The arches are the least impressive part.",
       "purpose": "The thesis punch of the whole video, held. (deliberate <8s.)",
       "register": "engineer",
@@ -3987,8 +3988,8 @@
       "texts": [
         {
           "text": "Pont du Gard",
-          "start": 2.5,
-          "end": 6.0,
+          "start": 2.591,
+          "end": 6.218,
           "position": "center"
         }
       ],
@@ -4008,9 +4009,9 @@
     },
     {
       "id": "scene_53",
-      "t_start": 524.8,
-      "t_end": 536.4,
-      "duration": 11.6,
+      "t_start": 499.48,
+      "t_end": 514.02,
+      "duration": 14.54,
       "narration_segment": "I mean it. That bridge — the thing on every postcard — is just the four hundred and fifty-six metres where the slope happened to cross a river. It's a rounding error on a fifty-kilometre line.",
       "purpose": "Shrink the famous bridge to a rounding error — PULL-BACK to a tiny segment.",
       "register": "engineer",
@@ -4091,9 +4092,9 @@
     },
     {
       "id": "scene_54",
-      "t_start": 536.4,
-      "t_end": 547.2,
-      "duration": 10.8,
+      "t_start": 514.02,
+      "t_end": 527.64,
+      "duration": 13.62,
       "narration_segment": "It's beautiful, it's enormous, and engineering-wise, it's almost the easy bit: stacking stone is a solved problem. The Romans could throw arches at a valley all day.",
       "purpose": "Argue the arches were the easy, solved part.",
       "register": "wit",
@@ -4175,9 +4176,9 @@
     },
     {
       "id": "scene_55",
-      "t_start": 547.2,
-      "t_end": 556.7,
-      "duration": 9.5,
+      "t_start": 527.64,
+      "t_end": 536.44,
+      "duration": 8.8,
       "narration_segment": "The real achievement is the thing you can't photograph — the invisible line. A crew with a trough of water and a plumb weight surveyed a downhill path",
       "purpose": "Name the real feat — the invisible surveyed line — back on the crew.",
       "register": "engineer",
@@ -4209,8 +4210,8 @@
       "build": "plate+layers",
       "image": "images/scene_55.png",
       "plate": {
-        "subject": "wide isometric garrigue with a faint azure survey sightline running off toward the horizon, staged for the surveyor at his bench; warm haze",
-        "reference_image": null,
+        "subject": "wide flat-isometric of an empty garrigue hillside with a single faint azure survey sightline running dead-straight off to the horizon — the invisible surveyed grade line; deep negative space, warm haze, quiet sky. Strictly the bare landscape and the faint line — NO desk, NO furniture, NO office props, NO lamp, NO scroll.",
+        "reference_image": "",
         "visual_facts": [
           "the real feat is the invisible surveyed line"
         ],
@@ -4258,9 +4259,9 @@
     },
     {
       "id": "scene_56",
-      "t_start": 556.7,
-      "t_end": 568.3,
-      "duration": 11.6,
+      "t_start": 536.44,
+      "t_end": 546.76,
+      "duration": 10.32,
       "narration_segment": "so precise that across their most famous structure, the water gives up the thickness of two coins. You cannot point a camera at that. There's no monument to a gradient.",
       "purpose": "Callback the coin-thickness; crystallise why the feat is invisible.",
       "register": "engineer",
@@ -4290,8 +4291,8 @@
       "build": "plate",
       "image": "images/scene_56.png",
       "plate": {
-        "subject": "clean isometric idea-graphic: a simple camera icon with a terracotta no-symbol, beside a near-flat gradient line that 'cannot be photographed'; warm neutral; centre for a caption",
-        "reference_image": null,
+        "subject": "clean isometric idea-graphic: a single empty carved stone monument plinth standing on bare warm ground, its top bare and unoccupied — there is no statue, because you cannot raise a monument to an invisible thing; a faint near-flat azure gradient line runs quietly past at ground level. Wry and minimal — absolutely NO camera, NO prohibition/no-symbol, NO modern objects, NO figures.",
+        "reference_image": "",
         "visual_facts": [
           "the coin-thickness callback: you cannot photograph a gradient"
         ],
@@ -4322,9 +4323,9 @@
     },
     {
       "id": "scene_57",
-      "t_start": 568.3,
-      "t_end": 576.2,
-      "duration": 7.9,
+      "t_start": 546.76,
+      "t_end": 555.64,
+      "duration": 8.88,
       "narration_segment": "And here's the part I find almost stubborn, in the best way. They knew an easier way, and they refused it.",
       "purpose": "Open the choice — they had an easier option and refused it. (deliberate <8s.)",
       "register": "engineer",
@@ -4398,9 +4399,9 @@
     },
     {
       "id": "scene_58",
-      "t_start": 576.2,
-      "t_end": 585.3,
-      "duration": 9.1,
+      "t_start": 555.64,
+      "t_end": 565.3,
+      "duration": 9.66,
       "narration_segment": "The Romans could build a pressurised siphon — send water plunging down into a valley in sealed pipe and let pressure drive it back up the far side.",
       "purpose": "Explain the inverted siphon — the alternative.",
       "register": "engineer",
@@ -4463,9 +4464,9 @@
     },
     {
       "id": "scene_59",
-      "t_start": 585.3,
-      "t_end": 598.9,
-      "duration": 13.6,
+      "t_start": 565.3,
+      "t_end": 579.78,
+      "duration": 14.48,
       "narration_segment": "They did exactly that elsewhere; a siphon at Aspendos ran over a kilometre and a half with forty-metre pressure towers. It would have let them take a shorter, steeper, less fussy line to Nîmes.",
       "purpose": "Prove they had the tech (Aspendos) and it would've been easier. (>12: continuous siphon animation.)",
       "register": "engineer",
@@ -4529,10 +4530,10 @@
     },
     {
       "id": "scene_60",
-      "t_start": 598.9,
-      "t_end": 610.9,
-      "duration": 12.0,
-      "narration_segment": "They didn't. They chose the long way — the gentle hand-held contour and an open channel on a bridge. And I don't think that was conservatism. I think it was maintenance.",
+      "t_start": 579.78,
+      "t_end": 582.78,
+      "duration": 3.0,
+      "narration_segment": "",
       "purpose": "The pivot — chose the hard way; the first-person thesis: maintenance.",
       "register": "engineer",
       "needs": [
@@ -4593,13 +4594,14 @@
           "clip": "clips/scene_60.mp4",
           "handles_s": 1.0
         }
-      }
+      },
+      "note": "VO cut/demoted-to-caption in 2026-08 script revision; kept as silent visual beat (true-up 2026-08-02)"
     },
     {
       "id": "scene_61",
-      "t_start": 610.9,
-      "t_end": 619.2,
-      "duration": 8.3,
+      "t_start": 582.78,
+      "t_end": 590.58,
+      "duration": 7.8,
       "narration_segment": "An open channel you can walk into, inspect, and scrape clean. A buried pressure siphon you cannot —",
       "purpose": "Comparison A — the maintainable open channel (LEFT half, STAGE-2).",
       "register": "engineer",
@@ -4676,9 +4678,9 @@
     },
     {
       "id": "scene_62",
-      "t_start": 619.2,
-      "t_end": 628.3,
-      "duration": 9.1,
+      "t_start": 590.58,
+      "t_end": 600.78,
+      "duration": 10.2,
       "narration_segment": "and lead pipe under pressure, silting and failing where no one can reach it, is a nightmare that outlives whoever signed off on it.",
       "purpose": "Comparison B — the unreachable failing siphon (RIGHT half, STAGE-2).",
       "register": "engineer",
@@ -4741,9 +4743,9 @@
     },
     {
       "id": "scene_63",
-      "t_start": 628.3,
-      "t_end": 636.6,
-      "duration": 8.3,
+      "t_start": 600.78,
+      "t_end": 608.28,
+      "duration": 7.5,
       "narration_segment": "Given the choice between clever and maintainable, they picked maintainable, and it carried water for five hundred years.",
       "purpose": "The verdict — maintainable beat clever; 500 years.",
       "register": "engineer",
@@ -4824,9 +4826,9 @@
     },
     {
       "id": "scene_64",
-      "t_start": 636.6,
-      "t_end": 643.2,
-      "duration": 6.6,
+      "t_start": 608.28,
+      "t_end": 616.08,
+      "duration": 7.8,
       "narration_segment": "The genius of the Pont du Gard was never the row of arches. It was a decision, and a gradient.",
       "purpose": "Restate the thesis as the section's close, held. (deliberate <8s.)",
       "register": "engineer",
@@ -4882,8 +4884,8 @@
       "texts": [
         {
           "text": "Pont du Gard",
-          "start": 2.5,
-          "end": 6.0,
+          "start": 2.955,
+          "end": 7.091,
           "position": "top"
         }
       ],
@@ -4903,9 +4905,9 @@
     },
     {
       "id": "scene_65",
-      "t_start": 643.2,
-      "t_end": 651.1,
-      "duration": 7.9,
+      "t_start": 616.08,
+      "t_end": 624.08,
+      "duration": 8.0,
       "narration_segment": "Frontinus never walked this aqueduct. He counted water two generations later, in a different province, for a different city.",
       "purpose": "CROSSFADE back to Frontinus; honest distance restated. (deliberate <8s.)",
       "register": "witness",
@@ -4983,9 +4985,9 @@
     },
     {
       "id": "scene_66",
-      "t_start": 651.1,
-      "t_end": 660.6,
-      "duration": 9.5,
+      "t_start": 624.08,
+      "t_end": 633.28,
+      "duration": 9.2,
       "narration_segment": "But he understood the thing that built it — because it was the same thing that drove him. Not the arches. Not the height.",
       "purpose": "Tie Frontinus's obsession to the aqueduct's real feat.",
       "register": "witness",
@@ -5063,9 +5065,9 @@
     },
     {
       "id": "scene_67",
-      "t_start": 660.6,
-      "t_end": 671.4,
-      "duration": 10.8,
+      "t_start": 633.28,
+      "t_end": 645.16,
+      "duration": 11.88,
       "narration_segment": "The conviction that the small measurement is the whole game — that a civilisation is, in the end, a very long list of things somebody got exactly right.",
       "purpose": "The widened thesis — civilisation as accumulated precision.",
       "register": "witness",
@@ -5130,9 +5132,9 @@
     },
     {
       "id": "scene_68",
-      "t_start": 671.4,
-      "t_end": 678.8,
-      "duration": 7.4,
+      "t_start": 645.16,
+      "t_end": 652.98,
+      "duration": 7.82,
       "narration_segment": "We're not even fully sure when the Pont du Gard was built — for centuries we credited Agrippa, under Augustus;",
       "purpose": "The honest dating — the old Agrippa attribution. (deliberate <8s.)",
       "register": "engineer",
@@ -5180,8 +5182,8 @@
       "texts": [
         {
           "text": "Pont du Gard",
-          "start": 2.5,
-          "end": 6.5,
+          "start": 2.642,
+          "end": 6.869,
           "position": "center"
         }
       ],
@@ -5201,9 +5203,9 @@
     },
     {
       "id": "scene_69",
-      "t_start": 678.8,
-      "t_end": 687.9,
-      "duration": 9.1,
+      "t_start": 652.98,
+      "t_end": 662.48,
+      "duration": 9.5,
       "narration_segment": "then archaeologists dug the riverbed and moved it two generations later, to the reign of Claudius. The date moved. The achievement didn't.",
       "purpose": "The dating revision — riverbed evidence -> Claudius; the achievement stands.",
       "register": "engineer",
@@ -5265,9 +5267,9 @@
     },
     {
       "id": "scene_70",
-      "t_start": 687.9,
-      "t_end": 698.7,
-      "duration": 10.8,
+      "t_start": 662.48,
+      "t_end": 672.88,
+      "duration": 10.4,
       "narration_segment": "Because somewhere in those hills, someone knelt over a trough of water and decided, by eye, where the ground should fall away — by almost nothing at all.",
       "purpose": "Echo the human act — the anonymous libratore, push-in.",
       "register": "witness",
@@ -5356,9 +5358,9 @@
     },
     {
       "id": "scene_71",
-      "t_start": 698.7,
-      "t_end": 708.6,
-      "duration": 9.9,
+      "t_start": 672.88,
+      "t_end": 683.82,
+      "duration": 10.94,
       "narration_segment": "Two and a half centimetres, across the whole of that bridge. Held by hand. That's not luck. That's precision — the insane, invisible kind.",
       "purpose": "Final number callback — name the title words 'precision' and 'insane'.",
       "register": "witness",
@@ -5430,9 +5432,9 @@
     },
     {
       "id": "scene_72",
-      "t_start": 708.6,
-      "t_end": 715.6,
-      "duration": 7.0,
+      "t_start": 683.82,
+      "t_end": 689.18,
+      "duration": 5.36,
       "narration_segment": "Built to last — or built to teach us why it didn't. I'll see you in the next one.",
       "purpose": "The locked channel sign-off, on the bridge at first light. (deliberate <8s.)",
       "register": "witness",
@@ -5498,8 +5500,8 @@
     },
     {
       "id": "scene_73",
-      "t_start": 715.6,
-      "t_end": 721.6,
+      "t_start": 689.18,
+      "t_end": 695.18,
       "duration": 6.0,
       "narration_segment": "",
       "purpose": "Outro card: subscribe + next-video thumbnail. (no VO; title sting reprise.)",
@@ -5556,6 +5558,10 @@
     {
       "date": "2026-07-28",
       "change": "prepend scene_00 cold hook (reuses scene_09 plate); shift downstream t_start/t_end +22.0s"
+    },
+    {
+      "date": "2026-08-02",
+      "note": "VO true-up: refit all scene timings to the recorded read (vo_001_final.wav, 687.4s speech). Board end 695.2s incl. 4s title sting + 6s outro insert. Timings from faster-whisper small.en word timestamps aligned to narration_segment text."
     }
   ]
 }

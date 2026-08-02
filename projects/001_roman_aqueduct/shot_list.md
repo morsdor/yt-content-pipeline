@@ -1,4 +1,4 @@
-# Shot list — 74 scenes · ~722s (VO not yet recorded)
+# Shot list — 74 scenes · ~695s (VO 695s)
 *Rendered by `prompt_builder.py --shot-list` from `storyboard.json` (schema v2) — the board is the source of truth; regenerate this after every studio pass. Craft: `docs/cinematography.md` · numbers: `brand_guide.md` §5.*
 
 **Passes:** script_analyzer ✅ 2026-07-24 · film_director ✅ 2026-07-24 · storyboard_artist ✅ 2026-07-24 · scene_composer ✅ 2026-07-24 · asset_planner ✅ 2026-07-24 · motion_director ✅ 2026-07-27 · ae_director ✅ 2026-07-27
@@ -6,80 +6,80 @@
 ## Pass 1 — Scene breakdown
 | id | t | dur | register | purpose | needs |
 |---|---|---|---|---|---|
-| scene_00 | 0.0–22.0 | 22.0s | engineer | COLD HOOK — open on the hero bridge; state the 2.5 cm / 456 m number as a mystery (TEASE — the 'two coins' payoff stays in scene_46/§⑤); hand off to Frontinus. Reuses the scene_09 render, no regen. | architecture |
-| scene_01 | 22.0–29.4 | 7.4s | witness | Open on Frontinus — introduce the man whose obsession frames the video. | character |
-| scene_02 | 29.4–41.0 | 11.6s | witness | His actual job — auditing the water, not building it; the year 97. | character, infographic |
-| scene_03 | 41.0–52.6 | 11.6s | witness | The daily obsession — metering, catching pipe-theft, making the numbers add up. | character |
-| scene_04 | 52.6–62.1 | 9.5s | witness | De aquaeductu survives; set up the thesis line. | character |
-| scene_05 | 62.1–67.5 | 5.4s | witness | The thesis — precision as civic conviction. (deliberate <8s: hold on his face.) | character |
-| scene_06 | 67.5–74.9 | 7.4s | witness | The honesty guardrail — he's a lens, not a witness — pivot toward the subject. | character, map |
-| scene_07 | 74.9–85.2 | 10.3s | witness | Hook into the subject — pull to the map of southern Gaul. | map |
-| scene_08 | 85.2–89.2 | 4.0s | data | Title sting: 'The Insane Precision of a Roman Aqueduct'. (no VO.) | — |
-| scene_09 | 89.2–100.0 | 10.8s | engineer | THE hero reveal, brought early. PULL-BACK. The bridge the viewer will spend the video understanding. | architecture |
-| scene_10 | 100.0–109.5 | 9.5s | engineer | Set the misdirection — the famous thing is the wrong thing to admire. | architecture, character |
-| scene_11 | 109.5–122.7 | 13.2s | engineer | Tease the 2.5cm without spending it — promise the payoff. (>12: one continuous settle to the top.) | architecture |
-| scene_12 | 122.7–131.0 | 8.3s | engineer | Place city + spring on the map. | map |
-| scene_13 | 131.0–140.9 | 9.9s | data | The core contrast — 20 km straight vs 50 km built. | map, infographic |
-| scene_14 | 140.9–150.8 | 9.9s | engineer | The detour was deliberate — forced by terrain. | map, nature |
-| scene_15 | 150.8–161.6 | 10.8s | engineer | The single hard constraint — gravity only. | diagram |
-| scene_16 | 161.6–173.2 | 11.6s | engineer | Set up the height budget as the scarce resource. | map, infographic |
-| scene_17 | 173.2–182.3 | 9.1s | data | Land the number as a tangible image — one tall tree. (RHYTHM-3 hold.) | infographic, nature |
-| scene_18 | 182.3–189.7 | 7.4s | data | Reinforce scarcity — that tree over 50 km. (deliberate <8s.) | infographic |
-| scene_19 | 189.7–200.0 | 10.3s | engineer | Failure mode one — too steep scours. | diagram |
-| scene_20 | 200.0–211.6 | 11.6s | engineer | Failure mode two — too flat silts; the modern benchmark. | diagram |
-| scene_21 | 211.6–223.2 | 11.6s | engineer | Collapse the problem to its human absurdity — a trough and a string. | character |
-| scene_22 | 223.2–233.1 | 9.9s | engineer | Reveal the hero instrument. MATCH-CUT 'trough of water and a string' -> the chorobates trough. | architecture, character |
-| scene_23 | 233.1–242.2 | 9.1s | engineer | Anatomy of the chorobates — a labelled section. | architecture, diagram |
-| scene_24 | 242.2–253.0 | 10.8s | engineer | How it's read — plumb-lines and the water-groove fallback. | architecture, diagram |
-| scene_25 | 253.0–265.8 | 12.8s | engineer | Introduce the field surveyors at dawn; cite Vitruvius. (>12: one continuous hold.) | character |
-| scene_26 | 265.8–274.1 | 8.3s | wit | The wit beat — sophistication without jargon. | infographic |
-| scene_27 | 274.1–285.3 | 11.2s | engineer | The groma — alignment and right angles. | architecture |
-| scene_28 | 285.3–296.5 | 11.2s | engineer | The dioptra + the whole spare toolkit. | architecture |
-| scene_29 | 296.5–305.6 | 9.1s | engineer | Name the levellers; pivot from tools to technique. | character, nature |
-| scene_30 | 305.6–315.1 | 9.5s | engineer | The method — thousands of tiny steps. | map, character |
-| scene_31 | 315.1–326.3 | 11.2s | engineer | The leap-frog rhythm down the hills. | character, architecture |
-| scene_32 | 326.3–334.6 | 8.3s | engineer | Introduce error accumulation — why it should fail. | diagram, infographic |
-| scene_33 | 334.6–343.7 | 9.1s | engineer | First-person reframe — repetition without drift is the feat. | diagram, infographic |
-| scene_34 | 343.7–356.1 | 12.4s | engineer | Resolve + tease the payoff — PULL-BACK to the whole achieved line. (>12: continuous reveal.) | architecture, map |
-| scene_35 | 356.1–366.4 | 10.3s | engineer | Reveal the specus at human scale. | architecture, diagram |
-| scene_36 | 366.4–375.9 | 9.5s | engineer | The channel's waterproofing and cover. | architecture, diagram |
-| scene_37 | 375.9–383.8 | 7.9s | engineer | The thing people miss — mostly buried, not arcades. (deliberate <8s.) | map |
-| scene_38 | 383.8–391.7 | 7.9s | engineer | Follow the buried line to the gorge (the turn). (deliberate <8s.) | architecture, nature |
-| scene_39 | 391.7–400.8 | 9.1s | engineer | The land drops; they crossed it head-on. Cue the return. | nature |
-| scene_40 | 400.8–408.2 | 7.4s | engineer | Earned RETURN to the Pont du Gard (revealed early) — push-in, not a fresh reveal. (deliberate <8s.) | architecture |
-| scene_41 | 408.2–416.5 | 8.3s | engineer | Reframe the bridge's true purpose — carrying a slope, not being looked at. | architecture |
-| scene_42 | 416.5–423.1 | 6.6s | engineer | The water hidden along the very top — a section through the bridge crown. (deliberate <8s.) | architecture, diagram |
-| scene_43 | 423.1–436.7 | 13.6s | engineer | Tilt crowd -> waterline, 49m up, still on grade. (>12: single continuous tilt-up.) | character, architecture |
-| scene_44 | 436.7–441.3 | 4.6s | engineer | Held beat before the number. (deliberate <8s.) | architecture |
-| scene_45 | 441.3–452.5 | 11.2s | engineer | Establish the enormous span first — so the tiny drop lands against it. | architecture, infographic |
-| scene_46 | 452.5–461.6 | 9.1s | data | THE headline number pays off — 2.5cm = two coins. (RHYTHM-3 big hold.) | infographic |
-| scene_47 | 461.6–470.3 | 8.7s | data | Translate to slope ratios; push to the flatter extreme. | infographic |
-| scene_48 | 470.3–479.8 | 9.5s | wit | Make the imperceptibility felt. (wit close.) | architecture, nature |
-| scene_49 | 479.8–491.8 | 12.0s | data | The payoff of use — what all that precision delivered. | infographic, architecture |
-| scene_50 | 491.8–504.6 | 12.8s | both | Trace one drop's 27-hour journey. (>12: one continuous route travel.) | map, infographic |
-| scene_51 | 504.6–518.2 | 13.6s | wit | The one woven CTA (~68%), in-voice. (>12: one hold, to-camera feel.) | character |
-| scene_52 | 518.2–524.8 | 6.6s | engineer | The thesis punch of the whole video, held. (deliberate <8s.) | architecture |
-| scene_53 | 524.8–536.4 | 11.6s | engineer | Shrink the famous bridge to a rounding error — PULL-BACK to a tiny segment. | architecture, map |
-| scene_54 | 536.4–547.2 | 10.8s | wit | Argue the arches were the easy, solved part. | architecture, character |
-| scene_55 | 547.2–556.7 | 9.5s | engineer | Name the real feat — the invisible surveyed line — back on the crew. | character |
-| scene_56 | 556.7–568.3 | 11.6s | engineer | Callback the coin-thickness; crystallise why the feat is invisible. | infographic |
-| scene_57 | 568.3–576.2 | 7.9s | engineer | Open the choice — they had an easier option and refused it. (deliberate <8s.) | character |
-| scene_58 | 576.2–585.3 | 9.1s | engineer | Explain the inverted siphon — the alternative. | diagram |
-| scene_59 | 585.3–598.9 | 13.6s | engineer | Prove they had the tech (Aspendos) and it would've been easier. (>12: continuous siphon animation.) | architecture, diagram |
-| scene_60 | 598.9–610.9 | 12.0s | engineer | The pivot — chose the hard way; the first-person thesis: maintenance. | map, architecture |
-| scene_61 | 610.9–619.2 | 8.3s | engineer | Comparison A — the maintainable open channel (LEFT half, STAGE-2). | architecture, diagram |
-| scene_62 | 619.2–628.3 | 9.1s | engineer | Comparison B — the unreachable failing siphon (RIGHT half, STAGE-2). | diagram |
-| scene_63 | 628.3–636.6 | 8.3s | engineer | The verdict — maintainable beat clever; 500 years. | architecture, map |
-| scene_64 | 636.6–643.2 | 6.6s | engineer | Restate the thesis as the section's close, held. (deliberate <8s.) | infographic |
-| scene_65 | 643.2–651.1 | 7.9s | witness | CROSSFADE back to Frontinus; honest distance restated. (deliberate <8s.) | character |
-| scene_66 | 651.1–660.6 | 9.5s | witness | Tie Frontinus's obsession to the aqueduct's real feat. | character |
-| scene_67 | 660.6–671.4 | 10.8s | witness | The widened thesis — civilisation as accumulated precision. | character, infographic |
-| scene_68 | 671.4–678.8 | 7.4s | engineer | The honest dating — the old Agrippa attribution. (deliberate <8s.) | infographic |
-| scene_69 | 678.8–687.9 | 9.1s | engineer | The dating revision — riverbed evidence -> Claudius; the achievement stands. | infographic |
-| scene_70 | 687.9–698.7 | 10.8s | witness | Echo the human act — the anonymous libratore, push-in. | character |
-| scene_71 | 698.7–708.6 | 9.9s | witness | Final number callback — name the title words 'precision' and 'insane'. | architecture, infographic |
-| scene_72 | 708.6–715.6 | 7.0s | witness | The locked channel sign-off, on the bridge at first light. (deliberate <8s.) | architecture |
-| scene_73 | 715.6–721.6 | 6.0s | data | Outro card: subscribe + next-video thumbnail. (no VO; title sting reprise.) | — |
+| scene_00 | 0.0–26.86 | 26.86s | engineer | COLD HOOK — open on the hero bridge; state the 2.5 cm / 456 m number as a mystery (TEASE — the 'two coins' payoff stays in scene_46/§⑤); hand off to Frontinus. Reuses the scene_09 render, no regen. | architecture |
+| scene_01 | 26.86–34.6 | 7.74s | witness | Open on Frontinus — introduce the man whose obsession frames the video. | character |
+| scene_02 | 34.6–46.64 | 12.04s | witness | His actual job — auditing the water, not building it; the year 97. | character, infographic |
+| scene_03 | 46.64–57.5 | 10.86s | witness | The daily obsession — metering, catching pipe-theft, making the numbers add up. | character |
+| scene_04 | 57.5–66.24 | 8.74s | witness | De aquaeductu survives; set up the thesis line. | character |
+| scene_05 | 66.24–71.2 | 4.96s | witness | The thesis — precision as civic conviction. (deliberate <8s: hold on his face.) | character |
+| scene_06 | 71.2–77.78 | 6.58s | witness | The honesty guardrail — he's a lens, not a witness — pivot toward the subject. | character, map |
+| scene_07 | 77.78–87.14 | 9.36s | witness | Hook into the subject — pull to the map of southern Gaul. | map |
+| scene_08 | 87.14–91.14 | 4.0s | data | Title sting: 'The Insane Precision of a Roman Aqueduct'. (no VO.) | — |
+| scene_09 | 91.14–104.26 | 13.12s | engineer | THE hero reveal, brought early. PULL-BACK. The bridge the viewer will spend the video understanding. | architecture |
+| scene_10 | 104.26–111.98 | 7.72s | engineer | Set the misdirection — the famous thing is the wrong thing to admire. | architecture, character |
+| scene_11 | 111.98–114.98 | 3.0s | engineer | Tease the 2.5cm without spending it — promise the payoff. (>12: one continuous settle to the top.) | architecture |
+| scene_12 | 114.98–122.2 | 7.22s | engineer | Place city + spring on the map. | map |
+| scene_13 | 122.2–134.3 | 12.1s | data | The core contrast — 20 km straight vs 50 km built. | map, infographic |
+| scene_14 | 134.3–143.04 | 8.74s | engineer | The detour was deliberate — forced by terrain. | map, nature |
+| scene_15 | 143.04–156.12 | 13.08s | engineer | The single hard constraint — gravity only. | diagram |
+| scene_16 | 156.12–164.04 | 7.92s | engineer | Set up the height budget as the scarce resource. | map, infographic |
+| scene_17 | 164.04–175.44 | 11.4s | data | Land the number as a tangible image — one tall tree. (RHYTHM-3 hold.) | infographic, nature |
+| scene_18 | 175.44–183.3 | 7.86s | data | Reinforce scarcity — that tree over 50 km. (deliberate <8s.) | infographic |
+| scene_19 | 183.3–191.74 | 8.44s | engineer | Failure mode one — too steep scours. | diagram |
+| scene_20 | 191.74–201.76 | 10.02s | engineer | Failure mode two — too flat silts; the modern benchmark. | diagram |
+| scene_21 | 201.76–212.18 | 10.42s | engineer | Collapse the problem to its human absurdity — a trough and a string. | character |
+| scene_22 | 212.18–220.4 | 8.22s | engineer | Reveal the hero instrument. MATCH-CUT 'trough of water and a string' -> the chorobates trough. | architecture, character |
+| scene_23 | 220.4–230.18 | 9.78s | engineer | Anatomy of the chorobates — a labelled section. | architecture, diagram |
+| scene_24 | 230.18–239.06 | 8.88s | engineer | How it's read — plumb-lines and the water-groove fallback. | architecture, diagram |
+| scene_25 | 239.06–243.96 | 4.9s | engineer | Introduce the field surveyors at dawn; cite Vitruvius. (>12: one continuous hold.) | character |
+| scene_26 | 243.96–254.48 | 10.52s | wit | The wit beat — sophistication without jargon. | infographic |
+| scene_27 | 254.48–265.32 | 10.84s | engineer | The groma — alignment and right angles. | architecture |
+| scene_28 | 265.32–279.36 | 14.04s | engineer | The dioptra + the whole spare toolkit. | architecture |
+| scene_29 | 279.36–287.2 | 7.84s | engineer | Name the levellers; pivot from tools to technique. | character, nature |
+| scene_30 | 287.2–297.12 | 9.92s | engineer | The method — thousands of tiny steps. | map, character |
+| scene_31 | 297.12–308.52 | 11.4s | engineer | The leap-frog rhythm down the hills. | character, architecture |
+| scene_32 | 308.52–311.52 | 3.0s | engineer | Introduce error accumulation — why it should fail. | diagram, infographic |
+| scene_33 | 311.52–321.44 | 9.92s | engineer | First-person reframe — repetition without drift is the feat. | diagram, infographic |
+| scene_34 | 321.44–333.3 | 11.86s | engineer | Resolve + tease the payoff — PULL-BACK to the whole achieved line. (>12: continuous reveal.) | architecture, map |
+| scene_35 | 333.3–344.74 | 11.44s | engineer | Reveal the specus at human scale. | architecture, diagram |
+| scene_36 | 344.74–354.36 | 9.62s | engineer | The channel's waterproofing and cover. | architecture, diagram |
+| scene_37 | 354.36–361.86 | 7.5s | engineer | The thing people miss — mostly buried, not arcades. (deliberate <8s.) | map |
+| scene_38 | 361.86–369.82 | 7.96s | engineer | Follow the buried line to the gorge (the turn). (deliberate <8s.) | architecture, nature |
+| scene_39 | 369.82–379.2 | 9.38s | engineer | The land drops; they crossed it head-on. Cue the return. | nature |
+| scene_40 | 379.2–384.86 | 5.66s | engineer | Earned RETURN to the Pont du Gard (revealed early) — push-in, not a fresh reveal. (deliberate <8s.) | architecture |
+| scene_41 | 384.86–392.0 | 7.14s | engineer | Reframe the bridge's true purpose — carrying a slope, not being looked at. | architecture |
+| scene_42 | 392.0–397.48 | 5.48s | engineer | The water hidden along the very top — a section through the bridge crown. (deliberate <8s.) | architecture, diagram |
+| scene_43 | 397.48–410.28 | 12.8s | engineer | Tilt crowd -> waterline, 49m up, still on grade. (>12: single continuous tilt-up.) | character, architecture |
+| scene_44 | 410.28–414.38 | 4.1s | engineer | Held beat before the number. (deliberate <8s.) | architecture |
+| scene_45 | 414.38–425.44 | 11.06s | engineer | Establish the enormous span first — so the tiny drop lands against it. | architecture, infographic |
+| scene_46 | 425.44–433.94 | 8.5s | data | THE headline number pays off — 2.5cm = two coins. (RHYTHM-3 big hold.) | infographic |
+| scene_47 | 433.94–444.9 | 10.96s | data | Translate to slope ratios; push to the flatter extreme. | infographic |
+| scene_48 | 444.9–453.16 | 8.26s | wit | Make the imperceptibility felt. (wit close.) | architecture, nature |
+| scene_49 | 453.16–467.22 | 14.06s | data | The payoff of use — what all that precision delivered. | infographic, architecture |
+| scene_50 | 467.22–480.32 | 13.1s | both | Trace one drop's 27-hour journey. (>12: one continuous route travel.) | map, infographic |
+| scene_51 | 480.32–492.64 | 12.32s | wit | The one woven CTA (~68%), in-voice. (>12: one hold, to-camera feel.) | character |
+| scene_52 | 492.64–499.48 | 6.84s | engineer | The thesis punch of the whole video, held. (deliberate <8s.) | architecture |
+| scene_53 | 499.48–514.02 | 14.54s | engineer | Shrink the famous bridge to a rounding error — PULL-BACK to a tiny segment. | architecture, map |
+| scene_54 | 514.02–527.64 | 13.62s | wit | Argue the arches were the easy, solved part. | architecture, character |
+| scene_55 | 527.64–536.44 | 8.8s | engineer | Name the real feat — the invisible surveyed line — back on the crew. | character |
+| scene_56 | 536.44–546.76 | 10.32s | engineer | Callback the coin-thickness; crystallise why the feat is invisible. | infographic |
+| scene_57 | 546.76–555.64 | 8.88s | engineer | Open the choice — they had an easier option and refused it. (deliberate <8s.) | character |
+| scene_58 | 555.64–565.3 | 9.66s | engineer | Explain the inverted siphon — the alternative. | diagram |
+| scene_59 | 565.3–579.78 | 14.48s | engineer | Prove they had the tech (Aspendos) and it would've been easier. (>12: continuous siphon animation.) | architecture, diagram |
+| scene_60 | 579.78–582.78 | 3.0s | engineer | The pivot — chose the hard way; the first-person thesis: maintenance. | map, architecture |
+| scene_61 | 582.78–590.58 | 7.8s | engineer | Comparison A — the maintainable open channel (LEFT half, STAGE-2). | architecture, diagram |
+| scene_62 | 590.58–600.78 | 10.2s | engineer | Comparison B — the unreachable failing siphon (RIGHT half, STAGE-2). | diagram |
+| scene_63 | 600.78–608.28 | 7.5s | engineer | The verdict — maintainable beat clever; 500 years. | architecture, map |
+| scene_64 | 608.28–616.08 | 7.8s | engineer | Restate the thesis as the section's close, held. (deliberate <8s.) | infographic |
+| scene_65 | 616.08–624.08 | 8.0s | witness | CROSSFADE back to Frontinus; honest distance restated. (deliberate <8s.) | character |
+| scene_66 | 624.08–633.28 | 9.2s | witness | Tie Frontinus's obsession to the aqueduct's real feat. | character |
+| scene_67 | 633.28–645.16 | 11.88s | witness | The widened thesis — civilisation as accumulated precision. | character, infographic |
+| scene_68 | 645.16–652.98 | 7.82s | engineer | The honest dating — the old Agrippa attribution. (deliberate <8s.) | infographic |
+| scene_69 | 652.98–662.48 | 9.5s | engineer | The dating revision — riverbed evidence -> Claudius; the achievement stands. | infographic |
+| scene_70 | 662.48–672.88 | 10.4s | witness | Echo the human act — the anonymous libratore, push-in. | character |
+| scene_71 | 672.88–683.82 | 10.94s | witness | Final number callback — name the title words 'precision' and 'insane'. | architecture, infographic |
+| scene_72 | 683.82–689.18 | 5.36s | witness | The locked channel sign-off, on the bridge at first light. (deliberate <8s.) | architecture |
+| scene_73 | 689.18–695.18 | 6.0s | data | Outro card: subscribe + next-video thumbnail. (no VO; title sting reprise.) | — |
 
 ## Pass 2 — Sequence design
 | id | size | type | role | transition |
@@ -331,10 +331,10 @@
 | scene_06 | camera: none | — | — | — |
 | scene_07 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
 | scene_08 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | — |
-| scene_09 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | — | “Pont du Gard” 4.0-10.0s/bottom | — |
+| scene_09 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | — | “Pont du Gard” 4.859-12.148s/bottom | — |
 | scene_10 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_11 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
-| scene_12 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | “Nemausus” 3.0-7.5s/top | — |
+| scene_12 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | “Nemausus” 2.61-6.524s/top | — |
 | scene_13 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
 | scene_14 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_15 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
@@ -344,7 +344,7 @@
 | scene_19 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_20 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_21 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
-| scene_22 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “chorobates” 3.5-9.0s/bottom | assets_library/overlays/dust_motes_01.mov |
+| scene_22 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “chorobates” 2.906-7.473s/bottom | assets_library/overlays/dust_motes_01.mov |
 | scene_23 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_24 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_25 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
@@ -357,24 +357,24 @@
 | scene_32 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_33 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_34 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | cloud_01: drift (px_per_s=8, direction=right, ease=linear) | — | — |
-| scene_35 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “specus” 3.5-9.5s/right | — |
-| scene_36 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “opus signinum” 3.5-8.5s/right | — |
+| scene_35 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “specus” 3.887-10.551s/right | — |
+| scene_36 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “opus signinum” 3.544-8.607s/right | — |
 | scene_37 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | — |
-| scene_38 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Gardon” 3.0-7.0s/top | — |
+| scene_38 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Gardon” 3.023-7.053s/top | — |
 | scene_39 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_40 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_41 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_42 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_43 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_44 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
-| scene_45 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 4.0-10.5s/bottom | — |
+| scene_45 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 3.95-10.369s/bottom | — |
 | scene_46 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_47 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_48 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_49 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_50 | camera: pan_right 55 px/s, ease F9 45%, hold 0.8s/0.8s | — | — | assets_library/overlays/dust_motes_01.mov |
 | scene_51 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
-| scene_52 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.0s/center | — |
+| scene_52 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.591-6.218s/center | — |
 | scene_53 | camera: pull_back 8%, ease F9 55%, hold 0.8s/0.8s | — | — | — |
 | scene_54 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
 | scene_55 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
@@ -386,11 +386,11 @@
 | scene_61 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_62 | camera: push_in 4%, ease F9 50%, hold 0.9s/0.9s | — | — | — |
 | scene_63 | camera: push_in 4%, ease F9 50%, hold 0.8s/0.8s | — | — | — |
-| scene_64 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.0s/top | — |
+| scene_64 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.955-7.091s/top | — |
 | scene_65 | camera: push_in 4%, ease F9 50%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
 | scene_66 | camera: none | — | — | — |
 | scene_67 | camera: none | — | — | — |
-| scene_68 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.5-6.5s/center | — |
+| scene_68 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | “Pont du Gard” 2.642-6.869s/center | — |
 | scene_69 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | — |
 | scene_70 | camera: push_in 5%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
 | scene_71 | camera: push_in 6%, ease F9 55%, hold 0.7s/0.7s | — | — | assets_library/overlays/dust_motes_01.mov |
