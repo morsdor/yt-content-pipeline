@@ -84,23 +84,6 @@
   {id:"scene_72", plate:"images/scene_72.png", dur:5.4, move:"push_in", amt:4, panpx:0, hin:0.8, hout:0.8}
     ];
 
-    // ---- AUTO-GENERATED from storyboard.json (true-up 2026-08-03): curated nature
-    //      layers (3 verified-absent) + on-screen labels (board timings). ----
-    var EXTRAS = {
-        "scene_09": {texts: [{text: "Pont du Gard", start: 4.859, end: 12.148, position: "bottom"}]},
-        "scene_12": {texts: [{text: "Nemausus", start: 2.61, end: 6.524, position: "top"}]},
-        "scene_17": {layers: [{asset: "assets_library/nature/cypress_01.png", xf: 0.66, yf: 0.88, hf: 0.56}]},
-        "scene_22": {texts: [{text: "chorobates", start: 2.906, end: 7.473, position: "bottom"}]},
-        "scene_25": {layers: [{asset: "assets_library/nature/olive_tree_01.png", xf: 0.13, yf: 0.99, hf: 0.48}]},
-        "scene_36": {texts: [{text: "opus signinum", start: 3.544, end: 8.607, position: "right"}]},
-        "scene_38": {texts: [{text: "Gardon", start: 3.023, end: 7.053, position: "top"}]},
-        "scene_45": {texts: [{text: "Pont du Gard", start: 3.95, end: 10.369, position: "bottom"}]},
-        "scene_52": {texts: [{text: "Pont du Gard", start: 2.591, end: 6.218, position: "center"}]},
-        "scene_53": {layers: [{asset: "assets_library/nature/olive_tree_01.png", xf: 0.15, yf: 1.0, hf: 0.62}]},
-        "scene_64": {texts: [{text: "Pont du Gard", start: 2.955, end: 7.091, position: "top"}]},
-        "scene_68": {texts: [{text: "Pont du Gard", start: 2.642, end: 6.869, position: "center"}]},
-    };
-
     function repoRoot() {
         var here = new File($.fileName).parent, root = here.parent;
         if (Folder(root.fsName + "/assets_library").exists) return root;
@@ -123,50 +106,13 @@
         }
     }
 
-    // ---- label style (brand: charcoal serif; artist adds the parchment bar + final look) ----
-    var FONT_LABEL = "Georgia", LABEL_SIZE = 120, INK_CHARCOAL = [0.173, 0.173, 0.173];
-    function labelPos(pos) {
-        if (pos === "top")    return [W / 2, H * 0.13];
-        if (pos === "center") return [W / 2, H * 0.52];
-        if (pos === "right")  return [W * 0.72, H * 0.50];
-        return [W / 2, H * 0.87];                          // bottom (default)
-    }
-    function addCutout(comp, cam, proj, bin, root, L) {     // curated nature layer, parallax 1.0
-        var it = importPng(proj, bin, root + "/" + L.asset);  // assets_library is REPO-relative
-        var lay = comp.layers.add(it);
-        var sc = (L.hf * H) / it.height * 100;
-        lay.transform.scale.setValue([sc, sc]);
-        lay.transform.anchorPoint.setValue([it.width / 2, it.height]);  // bottom-centre sits on ground
-        lay.transform.position.setValue([L.xf * W, L.yf * H]);
-        lay.parent = cam;                                  // travels with the plate
-        lay.name = "layer_" + L.asset.split("/").pop().replace(".png", "");
-    }
-    function addLabel(comp, t) {                            // screen-fixed placeholder (NOT parented to cam)
-        var startC = HANDLES + t.start, endC = HANDLES + t.end;
-        var tl = comp.layers.addText(t.text);
-        var sp = tl.property("Source Text"), td = sp.value;
-        td.resetCharStyle();
-        td.font = FONT_LABEL; td.fontSize = LABEL_SIZE;
-        td.fillColor = INK_CHARCOAL; td.applyFill = true; td.applyStroke = false;
-        td.justification = ParagraphJustification.CENTER_JUSTIFY;
-        sp.setValue(td);
-        tl.transform.position.setValue(labelPos(t.position));
-        tl.inPoint = startC; tl.outPoint = endC;
-        var op = tl.transform.opacity;
-        op.setValueAtTime(startC, 0);
-        op.setValueAtTime(startC + 0.3, 100);
-        op.setValueAtTime(Math.max(startC + 0.31, endC - 0.3), 100);
-        op.setValueAtTime(endC, 0);
-        tl.name = "label_" + t.text.replace(/[^A-Za-z0-9]+/g, "_");
-    }
-
     app.beginUndoGroup("Build all scene comps (001)");
     try {
         var root = repoRoot(); if (!root) throw new Error("No repo folder selected.");
         var base = root.fsName + "/" + PROJECT_SUBDIR;
         var proj = app.project || app.newProject();
         var bin = proj.items.addFolder("plates_001");
-        var built = 0, nCut = 0, nLab = 0, s, i;
+        var built = 0, s, i;
 
         for (i = 0; i < SCENES.length; i++) {
             s = SCENES[i];
@@ -206,17 +152,11 @@
                 pp.setValueAtTime(t1, [c[0] + dir * dist / 2, c[1]]);
                 easeAll(pp);
             }
-            var ex = EXTRAS[s.id];
-            if (ex) {
-                if (ex.layers) for (var li = 0; li < ex.layers.length; li++) { addCutout(comp, cam, proj, bin, root.fsName, ex.layers[li]); nCut++; }
-                if (ex.texts)  for (var ti = 0; ti < ex.texts.length;  ti++) { addLabel(comp, ex.texts[ti]); nLab++; }
-            }
             built++;
         }
-        alert("Built " + built + " scene comps  (+ " + nCut + " curated nature layers, " + nLab + " placeholder labels).\n" +
-              "Each: plate cover-scaled, CAMERA_CTRL rigged, eased move keyed.\n" +
-              "Labels are charcoal Georgia placeholders — restyle + add the parchment bar by hand.\n" +
-              "Next by hand: holds/taste, the 12 assembly / title / outro / waterline scenes.\n" +
+        alert("Built " + built + " scene comps (fam_plate_push + fam_map_route).\n" +
+              "Each: plate imported, CAMERA_CTRL rigged, eased move keys set.\n" +
+              "Next by hand: holds/taste, parallax layers, the 10 assembly + 2 waterline scenes.\n" +
               "One Cmd+Z removes everything.");
     } catch (err) {
         alert("Script stopped: " + err.message);

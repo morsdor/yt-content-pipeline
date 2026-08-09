@@ -43,8 +43,8 @@
       "t_start": 0.0,
       "t_end": 26.86,
       "duration": 26.86,
-      "narration_segment": "Across this entire bridge — four hundred and fifty-six metres, fifteen hundred feet, end to end — the water falls two and a half centimetres, barely an inch. A drop that small is invisible; you'd swear it was level. Holding it across fifty kilometres of hills — thirty miles — may be the most precise thing the Romans ever built, and it starts with a man whose job was counting water.",
-      "purpose": "COLD HOOK — open on the hero bridge; state the 2.5 cm / 456 m number as a mystery (TEASE — the 'two coins' payoff stays in scene_46/§⑤); hand off to Frontinus. Own hero plate (images/scene_00.png), regenerated 2026-08-03.",
+      "narration_segment": "Across this entire bridge — four hundred and fifty-six metres, end to end — the water falls two and a half centimetres. A drop that small is invisible; you'd swear it was level. Holding it across fifty kilometres of hills may be the most precise thing the Romans ever built — and it starts with a man whose job was counting water.",
+      "purpose": "COLD HOOK — open on the hero bridge; state the 2.5 cm / 456 m number as a mystery (TEASE — the 'two coins' payoff stays in scene_46/§⑤); hand off to Frontinus. Reuses the scene_09 render, no regen.",
       "register": "engineer",
       "needs": [
         "architecture"
@@ -686,7 +686,7 @@
       "t_start": 91.14,
       "t_end": 104.26,
       "duration": 13.12,
-      "narration_segment": "This is where they pushed it. The Pont du Gard — forty-nine metres of stone, a hundred and sixty feet, three tiers of arches, the largest built with no mortar at all.",
+      "narration_segment": "This is where they pushed it. The Pont du Gard — forty-nine metres of stone, three tiers of arches, the largest built with no mortar at all.",
       "purpose": "THE hero reveal, brought early. PULL-BACK. The bridge the viewer will spend the video understanding.",
       "register": "engineer",
       "needs": [
@@ -987,7 +987,7 @@
       "t_start": 122.2,
       "t_end": 134.3,
       "duration": 12.1,
-      "narration_segment": "and in a straight line, the two are only about twenty kilometres apart — twelve miles. The aqueduct the Romans built between them is fifty kilometres long.",
+      "narration_segment": "and in a straight line, the two are only about twenty kilometres apart. The aqueduct the Romans built between them is fifty kilometres long.",
       "purpose": "The core contrast — 20 km straight vs 50 km built.",
       "register": "data",
       "needs": [
@@ -1269,7 +1269,7 @@
       "t_start": 164.04,
       "t_end": 175.44,
       "duration": 11.4,
-      "narration_segment": "is somewhere between twelve and seventeen metres — forty to fifty-five feet. Scholars still argue about the exact figure. Call it the height of a tall tree.",
+      "narration_segment": "is somewhere between twelve and seventeen metres. Scholars still argue about the exact figure. Call it the height of a tall tree.",
       "purpose": "Land the number as a tangible image — one tall tree. (RHYTHM-3 hold.)",
       "register": "data",
       "needs": [
@@ -1722,7 +1722,7 @@
       "t_start": 220.4,
       "t_end": 230.18,
       "duration": 9.78,
-      "narration_segment": "a wooden bench about six metres long — twenty feet — with a channel of water cut along the top and plumb-lines hanging at each end.",
+      "narration_segment": "a wooden bench about six metres long, with a channel of water cut along the top and plumb-lines hanging at each end.",
       "purpose": "Anatomy of the chorobates — a labelled section.",
       "register": "engineer",
       "needs": [
@@ -2691,7 +2691,7 @@
       "t_start": 333.3,
       "t_end": 344.74,
       "duration": 11.44,
-      "narration_segment": "The water itself runs in a specus — a masonry channel a bit over a metre wide, three or four feet, and tall enough to walk inside, stooped.",
+      "narration_segment": "The water itself runs in a specus — a masonry channel a bit over a metre wide and tall enough to walk inside, stooped.",
       "purpose": "Reveal the specus at human scale.",
       "register": "engineer",
       "needs": [
@@ -4467,7 +4467,7 @@
       "t_start": 565.3,
       "t_end": 579.78,
       "duration": 14.48,
-      "narration_segment": "They did exactly that elsewhere; a siphon at Aspendos ran over a kilometre and a half — nearly a mile — with forty-metre pressure towers, a hundred and thirty feet tall. It would have let them take a shorter, steeper, less fussy line to Nîmes.",
+      "narration_segment": "They did exactly that elsewhere; a siphon at Aspendos ran over a kilometre and a half with forty-metre pressure towers. It would have let them take a shorter, steeper, less fussy line to Nîmes.",
       "purpose": "Prove they had the tech (Aspendos) and it would've been easier. (>12: continuous siphon animation.)",
       "register": "engineer",
       "needs": [
@@ -5562,10 +5562,6 @@
     {
       "date": "2026-08-02",
       "note": "VO true-up: refit all scene timings to the recorded read (vo_001_final.wav, 687.4s speech). Board end 695.2s incl. 4s title sting + 6s outro insert. Timings from faster-whisper small.en word timestamps aligned to narration_segment text."
-    },
-    {
-      "date": "2026-08-03",
-      "note": "Narration refresh: hand-merged imperial conversions (spoken for the Tier-1 audience) into 7 narration_segment(s) — scene_00/09/13/17/23/35/59 — keeping board prose + correct proper-noun spellings (Whisper mis-hears excluded). Fixed stale scene_00 purpose note. Other low-match scenes were Whisper noise, left unchanged."
     }
   ]
 }
