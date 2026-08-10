@@ -1,0 +1,74 @@
+# SOFTWARE-STORYTELLING comp list — a SEPARATE exploration from the Engineering Atlas
+# outlier DB (data/comp_channels.yaml). Scanned into data/outliers_software.csv to test
+# whether a software-engineering *storytelling* channel (not a coding-tutorial channel)
+# has >=3x outlier precedent worth a pilot. Run:
+#
+#   python3 scripts/fetch_outliers.py \
+#       --channels data/comp_channels_software.yaml --csv data/outliers_software.csv
+#
+# ⚠ VERIFY each @handle in the script's "Channel resolution" table before trusting the
+#   numbers — a wrong handle silently tracks the WRONG channel. Handles below are best-
+#   effort; correct any that resolve to the wrong title and re-run (the scan is free).
+#
+# Lanes (docs/outlier_system.md):
+#   format   — animated/high-production technical storytelling; the visual bar for what
+#              we'd build (the Engineering Atlas pipeline, applied to software).
+#   topic    — software/CS subject overlap: incidents, origin stories, how-it-works.
+#   audience — the same curious Tier-1 developer/tech viewer, adjacent subjects.
+#   packaging— title/thumbnail/promise craft worth studying regardless of topic.
+channels:
+  # ── format lane: animated technical storytelling (the conceptual-animation "Lane A" bar) ──
+  - name: 3Blue1Brown
+    handle: "@3blue1brown"
+    why: "format lane — animated math/CS storytelling; the gold standard for technical narrative animation"
+  - name: Welch Labs
+    handle: "@WelchLabs"
+    why: "format lane — animated ML/math narratives; high-craft, story-first, single-topic deep dives"
+  - name: Reducible
+    handle: "@Reducible"
+    why: "format lane — animated algorithms/CS (compression, TSP, FFT); exactly the how-it-works craft we'd hand-build"
+  - name: Art of the Problem
+    handle: "@ArtOfTheProblem"
+    why: "format lane — animated CS/cryptography HISTORY; the storytelling-of-computing angle we want"
+  - name: Spanning Tree
+    handle: "@SpanningTree"
+    why: "format lane — short animated CS-concept explainers; clean minimal motion, disciplined single-idea scope"
+  - name: Branch Education
+    handle: "@BranchEducation"
+    why: "format lane — premium 3D how-tech-works (chips, GPUs, SSDs); hardware/software boundary, quality benchmark"
+
+  # ── topic lane: software subject — incidents, origin stories, deep dives ("Lane B" core) ──
+  - name: Kevin Fang
+    handle: "@kevinfaang"
+    why: "topic lane — software INCIDENT/postmortem stories (Knight Capital, Therac-25, outages); the clearest Lane-B proof"
+  - name: Asianometry
+    handle: "@Asianometry"
+    why: "topic lane — semiconductor & tech-industry HISTORY, narrated; evergreen origin-story storytelling that reuses our pipeline"
+  - name: Low Level
+    handle: "@LowLevelTV"
+    why: "topic lane — security/systems deep dives (exploits, how CPUs/malware work); narrative technical explainers"
+  - name: Coderized
+    handle: "@coderized"
+    why: "topic lane — software craft & concepts as story (not tutorials); well-produced, on-format for what we'd make"
+  - name: Fireship
+    handle: "@Fireship"
+    why: "topic + packaging lane — fast tech news/drama, '100 seconds of X'; the discovery/packaging A/B lab for dev topics"
+  - name: Computerphile
+    handle: "@Computerphile"
+    why: "topic lane — CS concepts (talking-head); proof the SUBJECTS pull; a floor for how much production the format needs"
+
+  # ── audience lane: the same curious Tier-1 viewer, adjacent subjects ──
+  - name: Veritasium
+    handle: "@veritasium"
+    why: "audience lane — science storytelling ceiling; the promise/curiosity bar our technical stories are measured against"
+  - name: Tom Scott
+    handle: "@TomScottGo"
+    why: "audience lane — tech/computer curiosity (archive); huge Tier-1 reach, 'things you didn't know' framing"
+  - name: Company Man
+    handle: "@TheCompanyMan"
+    why: "audience lane — company/tech business origin stories; narrated evergreen, adjacent to tech-history storytelling"
+
+  # ── packaging lane: title/thumbnail benchmark (reused from the Engineering Atlas list) ──
+  - name: Johnny Harris
+    handle: "@johnnyharris"
+    why: "packaging lane — the title/thumbnail/storytelling benchmark; study the promise, not the topic"
