@@ -20,8 +20,11 @@ The channel is not yet named or brand-guided; this project is its first concrete
 ## Status
 
 - ✅ Packaging locked (`packaging.md`, 2026-08-09)
-- 🔴 **Next — Phase 0 research:** fact-check the hero number (energy/water per query). No thumbnail
-  lock without it. See `packaging.md` → Phase-0 handoff.
+- ✅ **Phase-0 research done** (`research.md`, 2026-08-10) — hero number resolved (energy ~0.3 Wh solid;
+  water ~10–15 mL all-in but contested). Thumbnail **unblocked**. Two changes: water-bet runner-up title
+  **killed** (500 mL/query is false); thumbnail number pivots per-query → **machine/aggregate scale**
+  (recommended: the Three Mile Island reactor restart).
+- 🔴 **Next — user decision:** lock the thumbnail direction (`research.md` §6), then script.
 - ⬜ Then: script → studio board → VO → generation → AE → conform (same production spine as 001,
   but this channel will need its **own art direction / brand guide** before generation — flagged, not
   yet built).
@@ -45,6 +48,7 @@ copy. Fireship-style "blend" (voice/personality + tech, faceless) remains a poss
 
 ## Files
 - `packaging.md` — the locked Stage-1 gate deliverable (founding document).
+- `research.md` — Phase-0 research + fact-check (hero number, industrial chain, honest counter-framing).
 - `monetization.md` — channel-level earnings model (AdSense / sponsorships / product); migrate to the
   channel brand doc once the channel gets its own home.
 - Shared research assets live at repo root: `data/comp_channels_software.yaml`,

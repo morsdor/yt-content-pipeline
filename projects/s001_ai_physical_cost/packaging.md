@@ -13,7 +13,7 @@
 | **Vein** | AI/LLM (hottest + highest-velocity vein in the software scan) told as an *infrastructure story*, not equation derivation |
 | **Pipeline** | Cinematic AI-stills → After Effects (datacenters, grid, cooling, fabs). **No Manim / motion-graphics build required** — this concept was chosen partly because it fits the existing pipeline |
 | **Runtime target** | 10–13 min |
-| **Status** | ✅ Packaging locked (2026-08-09) · 🔴 next: **Phase 0 research** — fact-check the hero number before the thumbnail can lock |
+| **Status** | ✅ Packaging locked (2026-08-09) · ✅ **Phase-0 research done (2026-08-10)** — hero number resolved, thumbnail unblocked (see `research.md`). Two changes below: water-bet runner-up **killed**; thumbnail number pivots per-query → **machine/aggregate scale**. Next: user locks thumbnail direction → script |
 | **Locked** | 2026-08-09 |
 
 ## Locked title
@@ -47,7 +47,11 @@ proven cost hook (Computerphile) with a proven, renderable, hardware subject (Br
 > **Dominant object:** an isometric hyperscale **datacenter glowing electric-blue** against a dark grid
 > of power lines / a cooling-tower plume. Foreground: a single tiny phone showing one trivial chat
 > message ("hi").
-> **Words (≤4):** one hero number — energy or water per answer — *pinned at research* (placeholder).
+> **Words (≤4):** ✅ **LOCKED — Direction A (2026-08-10): the reactor.** Hero image = phone "hi" → datacenter
+> wired to a **nuclear reactor**; hero number/phrase = **835 MW** (or "a nuclear reactor"), the Three Mile
+> Island restart Microsoft bought for its AI datacenters. Chosen over per-query figures (0.3 Wh true but not
+> visceral; per-query water contested) because it's honest, documented, *and* jaw-dropping. Fleet-multiplier
+> ("1B/day") and "3% of Earth's power" retained as A/B test alternates only. See `research.md` §6.
 
 - **Design logic (from 001's 120 px study):** one focal point + hard color contrast (electric-blue/gold
   energy vs a dark, moody background) + a number carrying what the image can't. The **absurd gap**
@@ -65,10 +69,12 @@ proven cost hook (Computerphile) with a proven, renderable, hardware subject (Br
 1. **F5 · AI's Enormous Power Problem** — sharper, more visual thumbnail (grid/substation); the
    power-grid-strain angle is the most documented and defensible, and the purest engineering framing.
    The safe alternate.
-2. **Number bet · It Takes a Bottle of Water to Answer One AI Question** — the number-forward shock
-   that mirrors 001's `2.5 cm` mechanism. High curiosity, but the exact figure is contested → an
-   **identity/number bet** that only ships if research pins a rock-solid number. Test *against* the two
-   proven lanes.
+2. ~~**Number bet · It Takes a Bottle of Water to Answer One AI Question**~~ — 🚫 **KILLED by Phase-0
+   research (2026-08-10).** The modern per-query figure is **~15 mL, not 500 mL**; the 500 mL figure was
+   *10–50 queries* on GPT-3 (2023) and its own author has retracted it. As a literal per-query title this
+   is the overclaim that burns the expert audience (the F1/F2 failure mode). If a water-shock title is
+   ever revived it must move to the **aggregate** and even then sits behind the two power lanes. See
+   `research.md` §2 + §6.
 
 ## Gate sign-off (Stage-1 checklist)
 - [x] ≥3× precedent on comparable channels — **four**, cost + hardware frames
@@ -76,7 +82,8 @@ proven cost hook (Computerphile) with a proven, renderable, hardware subject (Br
 - [x] Title from `formula_library.md`, proven-at-topic formula (F2, backed by F5)
 - [x] One-sentence thumbnail concept (dominant object + ≤4 words) that's a real hook
 - [x] Locked here before any research spend
-- [ ] **Hero number fact-checked** (power or water per query) before the thumbnail locks — Phase-0 blocker
+- [x] **Hero number fact-checked** ✅ (2026-08-10, `research.md`) — energy ~0.3 Wh (solid); water ~10–15 mL
+      all-in (contested). Blocker cleared; thumbnail number pivots per-query → machine/aggregate scale.
 
 ## Phase-0 handoff (research questions this packaging commits us to)
 1. **The hero number** — energy (Wh) and/or water (mL) per typical LLM query, with a *defensible,
