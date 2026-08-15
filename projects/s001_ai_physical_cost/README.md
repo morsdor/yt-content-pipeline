@@ -24,8 +24,15 @@ The channel is not yet named or brand-guided; this project is its first concrete
   water ~10–15 mL all-in but contested). Thumbnail **unblocked**. Two changes: water-bet runner-up title
   **killed** (500 mL/query is false); thumbnail number pivots per-query → **machine/aggregate scale**
   (recommended: the Three Mile Island reactor restart).
-- 🔴 **Next — user decision:** lock the thumbnail direction (`research.md` §6), then script.
-- ⬜ Then: script → studio board → VO → generation → AE → conform (same production spine as 001,
+- ✅ **Thumbnail direction locked** — A, "the reactor" (Three Mile Island / 835 MW), 2026-08-10.
+- 🟡 **Script — DRAFT v2** (`script.md`, 2026-08-10): ~12 min, dazzle ladder (rack→plant→fab→nation→reactor).
+  v2 rebalanced **off water** (electricity is the spine — power = 3 of 5 tentpoles + climax; water = 1 tight
+  beat; chip beat = silicon/manufacturing) and **cut the finger-pointing** (reflection beat is wonder, not
+  media-criticism). **Next: your read-pass / lock.**
+- 🟡 **Thumbnail — Stage-4 typography done** (`thumbnail.md` + `output/`, study): real local type (Arial
+  Black / IBM Plex) in 3 hero options (835 MW · **A NUCLEAR REACTOR** ⭐ · 1 BILLION A DAY) over a **stand-in**
+  plate. **Open:** pick the hero text; then the **charged gate** — generate the real Stage-2 AI plate.
+- ⬜ Then: studio board → VO → generation → AE → conform (same production spine as 001,
   but this channel will need its **own art direction / brand guide** before generation — flagged, not
   yet built).
 
@@ -48,7 +55,10 @@ copy. Fireship-style "blend" (voice/personality + tech, faceless) remains a poss
 
 ## Files
 - `packaging.md` — the locked Stage-1 gate deliverable (founding document).
-- `research.md` — Phase-0 research + fact-check (hero number, industrial chain, honest counter-framing).
+- `research.md` — Phase-0 research + fact-check (hero number, industrial chain, honest counter-framing, dazzle spine).
+- `script.md` — DRAFT v2 VO script (~12 min); borrows EA's witness/engineer registers until this channel has its own guide.
+- `teleprompter.html` — standalone offline teleprompter for the read (double-click to open; electric-blue palette). Regenerate from `script.md` if the script changes.
+- `thumbnail.md` + `output/thumb_*` — Stage-4 typography study (real local type over a stand-in plate; real AI plate = separate charged gate).
 - `monetization.md` — channel-level earnings model (AdSense / sponsorships / product); migrate to the
   channel brand doc once the channel gets its own home.
 - Shared research assets live at repo root: `data/comp_channels_software.yaml`,
