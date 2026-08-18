@@ -264,16 +264,17 @@ def make_text_image(text: str, max_width: int, fontsize: int = FONT_SIZE,
 def build_scene(scene: dict, index: int, base_dir: str) -> CompositeVideoClip:
     """Build a single scene clip from a storyboard entry.
 
-    Animatic logic: prefer a finished AE render if one exists (v2 ae_build.render.clip,
-    v1 animated_clip), else the scene's still + Ken Burns. v2 assembly scenes (no plate)
-    get a parchment slate carrying the scene id — pacing is still checkable."""
+    Animatic logic: prefer a finished compositor render if one exists (v2
+    remotion_build.render.clip, or the retired ae_build.render.clip; v1 animated_clip),
+    else the scene's still + Ken Burns. v2 assembly scenes (no plate) get a parchment
+    slate carrying the scene id — pacing is still checkable."""
 
     duration = scene.get("duration", 10)
-    clip_rel = ((scene.get("ae_build") or {}).get("render") or {}).get("clip") \
-        or scene.get("animated_clip")
+    build = scene.get("remotion_build") or scene.get("ae_build") or {}
+    clip_rel = (build.get("render") or {}).get("clip") or scene.get("animated_clip")
     clip_path = os.path.join(base_dir, clip_rel) if clip_rel else None
 
-    # 1. Base: AE render if present → still + Ken Burns → parchment slate (assembly)
+    # 1. Base: finished render if present → still + Ken Burns → parchment slate (assembly)
     if clip_path and os.path.isfile(clip_path):
         base_clip = VideoFileClip(clip_path).resize(RESOLUTION)
         # Handle cases where the clip is shorter than requested duration

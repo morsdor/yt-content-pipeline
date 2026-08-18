@@ -25,3 +25,20 @@ projects/*/images_4k/
 projects/*/clips/
 projects/*/videos/
 projects/*/review/
+
+# Remotion (the compositor since 2026-08-17). Track the source — src/, config, package.json —
+# never the installed deps, bundle output or renders.
+node_modules/
+remotion/out/
+remotion/build/
+remotion/.remotion/
+
+# Vendored third-party Agent Skills — installer output, NOT our source.
+# `skills-lock.json` is the manifest (source + path + hash per skill) and IS tracked;
+# restore a clone with:  npx skills experimental_install
+# (.agents/ has never been tracked at HEAD — this just stops it showing as noise.)
+.agents/
+# The installer also symlinks each vendored skill into .claude/skills/.
+# Our OWN hand-written skills there stay tracked — hence the negation.
+.claude/skills/remotion-*
+!.claude/skills/remotion-director/

@@ -168,7 +168,13 @@ An assembly scene (no AI plate — built from library assets on a simple backgro
 | `texts[]` | 6 | ❌ | As v1: `{text, start, end, position}` — but timed by the rules: enter 0.2–0.5s after the ear, exit ≥0.5s before the cut, ≤6 words (`TEXT-*`). |
 | `particle_overlay` | 6 | ❌ | Stock overlay path (dust/sparks/rain) — counts toward the moving-element budget. |
 | `continuity[]` | 2–6 | ❌ | Registry keys this scene touches; the accuracy gate checks them. |
-| `ae_build{}` | 7 ae-director | ✅ | `comp`, `hierarchy` (one line: nulls + parenting), `precomps[]`, `expressions[]`, `jsx` (path into `ae_scripts/` if a scaffold is warranted), `render {clip, handles_s}` → `clips/scene_NN.mp4`, ~1s handles. |
+| `remotion_build{}` | 7 remotion-director | ✅ | `component` (path under `remotion/src/`), `family` (`PlatePush`/`Stage`/`Diagram`/`Counter`/`MapRoute`/`CodePanel`), `props{}`, `sequences[]` (`{component, from, durationInFrames, props}` — **frames, not seconds**), `motion_refs[]` (which `src/brand/motion.ts` constants the scene uses — the §5 audit trail), `durationInFrames` (= round(duration×30) + 60), `render {clip, handles_frames: 30}` → `clips/scene_NN.mp4`. |
+| `ae_build{}` | 7 ae-director — **RETIRED 2026-08-17** | legacy only | Superseded by `remotion_build{}`. Still read for the one pre-switch board (`projects/001_roman_aqueduct`). **Do not write new `ae_build{}` blocks.** Was: `comp`, `hierarchy`, `precomps[]`, `expressions[]`, `jsx`, `render {clip, handles_s}`. |
+
+> **Frames, not seconds, below pass 6.** Passes 1–6 speak seconds (`t_start`, `t_end`,
+> `duration`, `hold_in_s`). Remotion speaks frames. **`remotion-director` owns the single
+> conversion** at 30fps and writes integers into the board, so nothing downstream re-derives
+> it — off-by-one-frame drift is this pipeline's classic bug.
 
 ---
 

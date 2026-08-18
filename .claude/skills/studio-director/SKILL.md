@@ -4,10 +4,10 @@ description: >-
   The pre-production orchestrator. Use when a video's script is approved and it's time to
   board it — "run the studio", "board this script", "start pre-production", "direct video
   NNN". Invokes the seven studio passes in order (script-analyzer → film-director →
-  storyboard-artist → scene-composer → asset-planner → motion-director → ae-director) on the
-  single accreting storyboard.json v2, enforces the human gates and pass ordering, runs
+  storyboard-artist → scene-composer → asset-planner → motion-director → remotion-director) on
+  the single accreting storyboard.json v2, enforces the human gates and pass ordering, runs
   --validate between passes, and delivers the finished board (storyboard.json + shot_list.md)
-  ready for VO recording, generation, and the AE session. Consult art-director first when the
+  ready for VO recording, generation, and the build session. Consult art-director first when the
   video enters new visual territory.
 ---
 
@@ -31,7 +31,7 @@ script.md (approved)
  4 scene-composer       build / plate{} / layers[]  (generation becomes DERIVED here)
  5 asset-planner        assets resolved + _batches/batch_NN.json       ── HUMAN GATE: batch (charged)
  6 motion-director      camera{} + layers[].motion{} + texts[] (numbers)
- 7 ae-director          ae_build{} + JSX scaffolds + session plan      ── HUMAN GATE: full board
+ 7 remotion-director    remotion_build{} + component scaffolds         ── HUMAN GATE: full board
    │
    ▼
 🎙 record VO → true-up t_start/t_end/durations to the real read → vo_duration set
@@ -40,8 +40,14 @@ asset-generation skill (plates + batch, gated by visual-accuracy-gate)
    ▼
 animatic (video_assembler.py: stills + VO — pacing check, fix the board not the comps)
    ▼
-user's AE session (per ae_build + scaffolds) → Layer 3 render QC → Premiere conform
+build session (per remotion_build + families) → Layer 3 render QC → /remotion-render → Premiere conform
 ```
+
+> **Pass 7 changed 2026-08-17.** The compositor is **Remotion**, not After Effects
+> (`remotion-pipeline-decision` memory). `ae-director` is **retired**; `remotion-director`
+> replaces it and fills `remotion_build{}`. Passes 1–6 are **unchanged** — they were already
+> tool-agnostic. `ae_build{}` remains readable for the one board that predates the switch
+> (`projects/001_roman_aqueduct`); do not write new `ae_build{}` blocks.
 
 ## Operating rules
 

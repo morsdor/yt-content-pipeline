@@ -205,10 +205,16 @@ _KENBURNS = {
 }
 
 
+def _build_block(scene):
+    """The pass-7 build block. `remotion_build` (current, since 2026-08-17) wins over
+    `ae_build` (retired — kept readable for the one pre-switch board, 001_roman_aqueduct)."""
+    return scene.get("remotion_build") or scene.get("ae_build") or {}
+
+
 def _clip_name(scene, idx):
-    """The AE render target for this scene. v2: ae_build.render.clip; v1 legacy
-    `animated_clip` honoured for continuity."""
-    render = ((scene.get("ae_build") or {}).get("render") or {})
+    """The render target for this scene. v2: <build>.render.clip; v1 legacy
+    `animated_clip` honoured for continuity. Uniform across both compositors."""
+    render = (_build_block(scene).get("render") or {})
     return render.get("clip") or scene.get("animated_clip") or f"clips/scene_{idx:02d}.mp4"
 
 
@@ -396,12 +402,22 @@ def write_shot_list(sb, out_path):
                           f"| {s.get('particle_overlay') or '—'} |"),
             lambda s: s.get("camera") is not None)
 
-    section("Pass 7 — AE blueprints",
+    section("Pass 7 — Remotion blueprints",
+            "| id | family | component | props | render |",
+            lambda i, s: (lambda b: f"| {s.get('id', i)} | {b.get('family', '?')} "
+                          f"| {b.get('component', '?')} "
+                          f"| {', '.join(f'{k}={v}' for k, v in (b.get('props') or {}).items()) or '—'} "
+                          f"| {(b.get('render') or {}).get('clip', '?')} "
+                          f"(+{(b.get('render') or {}).get('handles_frames', 30)}f handles) |")(s.get("remotion_build") or {}),
+            lambda s: s.get("remotion_build"))
+
+    # Retired compositor — still rendered for the one pre-switch board (001_roman_aqueduct).
+    section("Pass 7 — AE blueprints (retired pipeline)",
             "| id | hierarchy | render | jsx |",
             lambda i, s: (lambda b: f"| {s.get('id', i)} | {b.get('hierarchy', '?')} "
                           f"| {(b.get('render') or {}).get('clip', '?')} (+{(b.get('render') or {}).get('handles_s', 1)}s handles) "
                           f"| {b.get('jsx') or '—'} |")(s.get("ae_build") or {}),
-            lambda s: s.get("ae_build"))
+            lambda s: s.get("ae_build") and not s.get("remotion_build"))
 
     Path(out_path).write_text("\n".join(L))
     return len(scenes)
@@ -418,6 +434,8 @@ PASS_BLOCKS = {  # ledger entry -> per-scene requirement when that pass is stamp
     "scene_composer":  lambda s: s.get("build") in ("plate", "assembly", "plate+layers")
                                  and (s.get("build") == "assembly" or (scene_subject(s) and s.get("image"))),
     "motion_director": lambda s: s.get("camera") is not None,
+    # Pass 7 — either compositor satisfies the ledger; `remotion_director` is the current one.
+    "remotion_director": lambda s: bool(((s.get("remotion_build") or {}).get("render") or {}).get("clip")),
     "ae_director":     lambda s: bool(((s.get("ae_build") or {}).get("render") or {}).get("clip")),
 }
 

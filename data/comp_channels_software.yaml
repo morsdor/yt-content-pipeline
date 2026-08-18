@@ -38,6 +38,9 @@ channels:
     why: "format lane — premium 3D how-tech-works (chips, GPUs, SSDs); hardware/software boundary, quality benchmark"
 
   # ── topic lane: software subject — incidents, origin stories, deep dives ("Lane B" core) ──
+  - name: CodeSource
+    handle: "@CodeSource"
+    why: "topic + format lane — THE closest comp: faceless software documentaries at our exact spec (10-15 min, AI-assisted visuals, ~2.5/month). 101k subs in 23 months, 100% sponsor coverage. Deep dive: docs/comp_deep_dive_codesource.md"
   - name: Kevin Fang
     handle: "@kevinfaang"
     why: "topic lane — software INCIDENT/postmortem stories (Knight Capital, Therac-25, outages); the clearest Lane-B proof"
