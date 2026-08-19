@@ -14,7 +14,10 @@ The channel is not yet named or brand-guided; this project is its first concrete
    (Kevin Fang lane — pilot #2 candidate).
 4. **Concept chosen:** the *physical/industrial cost of AI* — the one AI angle that (a) rides the
    strongest replicable precedent (Computerphile *Why AI Tokens are so Expensive*, 14.2×/22.8) and
-   (b) renders in the existing cinematic AI-stills → AE pipeline, no Manim.
+   (b) renders as **cinematic AI stills + camera/parallax motion**, no Manim-style procedural
+   animation required. *(Originally justified as "fits the existing AE pipeline"; AE was retired
+   2026-08-17 and the build is now Remotion — the reasoning survives the switch intact, since
+   plate-plus-camera is `PlatePush`, the simplest composition family we have.)*
 5. **Packaging gate:** passed — see `packaging.md` (locked title + thumbnail + 4-precedent evidence).
 
 ## Status
@@ -32,9 +35,13 @@ The channel is not yet named or brand-guided; this project is its first concrete
 - 🟡 **Thumbnail — Stage-4 typography done** (`thumbnail.md` + `output/`, study): real local type (Arial
   Black / IBM Plex) in 3 hero options (835 MW · **A NUCLEAR REACTOR** ⭐ · 1 BILLION A DAY) over a **stand-in**
   plate. **Open:** pick the hero text; then the **charged gate** — generate the real Stage-2 AI plate.
-- ⬜ Then: studio board → VO → generation → AE → conform (same production spine as 001,
-  but this channel will need its **own art direction / brand guide** before generation — flagged, not
-  yet built).
+- ✅ **Channel brand guide written** (`brand_guide_software.md`, 2026-08-17) — identity, color, type,
+  and a §5 motion spec compiled into `remotion/src/brand/tokens.ts`. **One decision still open: the
+  channel name** (§0 — recommended *Load Bearing*). It blocks the wordmark, the channel art, and this
+  video's **thumbnail typography**.
+- ⬜ Then: studio board → VO → generation → **Remotion build** → conform. Same production spine as 001
+  with one change: **After Effects was retired 2026-08-17** — pass 7 is now `remotion-director`
+  writing `remotion_build{}`, and 001 is the last AE video.
 
 ## Format decision — storytelling, not personality (2026-08-10)
 
@@ -45,21 +52,28 @@ on-camera charisma + faster cadence. That's the opposite of the "few, high-craft
 intent. Kept as an **audience-lane reference** (same dev-curious viewer, different format), not a model to
 copy. Fireship-style "blend" (voice/personality + tech, faceless) remains a possible future lever.
 
-## Open channel-level decisions (not blocking Phase 0)
+## Open channel-level decisions
 
-- **Channel name & brand guide** — the software channel needs its own identity; The Engineering Atlas
-  `brand_guide.md` does not transfer (different subject, different visual language).
+- 🔴 **Channel name — the one live blocker.** Brand guide §0 recommends **Load Bearing**; alternates
+  are The Stack Trace and Blast Radius. Everything in the guide except §1–§2 is name-independent, so
+  this blocks only the wordmark, the channel art, and **this video's thumbnail typography** — which is
+  exactly where the thumbnail thread is parked.
+- ✅ **Brand guide — written** (`brand_guide_software.md`, 2026-08-17). The Engineering Atlas
+  `brand_guide.md` does not transfer; this is its sister document.
 - **Visual language** — cinematic/industrial (this concept) vs conceptual-animation (the algorithms
-  vein). This pilot deliberately picks cinematic to reuse the existing pipeline; revisit if the
+  vein). This pilot deliberately picks cinematic because it is the cheapest to build; revisit if the
   channel leans toward the 3B1B/Reducible lane later.
 
 ## Files
 - `packaging.md` — the locked Stage-1 gate deliverable (founding document).
 - `research.md` — Phase-0 research + fact-check (hero number, industrial chain, honest counter-framing, dazzle spine).
-- `script.md` — DRAFT v2 VO script (~12 min); borrows EA's witness/engineer registers until this channel has its own guide.
+- `script.md` — DRAFT v2 VO script (~12 min); written in EA's witness/engineer registers — **re-check
+  against `brand_guide_software.md` §6** ("The Insider and the Translator"), which now supersedes them.
 - `teleprompter.html` — standalone offline teleprompter for the read (double-click to open; electric-blue palette). Regenerate from `script.md` if the script changes.
 - `thumbnail.md` + `output/thumb_*` — Stage-4 typography study (real local type over a stand-in plate; real AI plate = separate charged gate).
 - `monetization.md` — channel-level earnings model (AdSense / sponsorships / product); migrate to the
   channel brand doc once the channel gets its own home.
+- Channel-level docs at repo root: `brand_guide_software.md` (identity, color, type, §5 motion spec),
+  `docs/comp_deep_dive_codesource.md` (the comp that shaped the format).
 - Shared research assets live at repo root: `data/comp_channels_software.yaml`,
   `data/outliers_software.csv`, `data/comp_videos_software.csv`.

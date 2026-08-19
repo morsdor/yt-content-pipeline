@@ -68,7 +68,9 @@ remotion/
   src/
     Root.tsx                    registerRoot — every video's <Composition>s
     brand/
-      colors.ts  type.ts  motion.ts     ← brand_guide_software.md §3/§4/§5, compiled
+      tokens.ts  fonts.ts               ← brand_guide_software.md §3/§4/§5, compiled
+                                          (ONE tokens file — see §11: it is the spec and
+                                           the validator, never a runtime import)
     families/                            ← the reusable shot archetypes (was: AE template comps)
       PlatePush.tsx  Stage.tsx  Diagram.tsx  Counter.tsx  MapRoute.tsx  CodePanel.tsx
     components/

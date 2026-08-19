@@ -80,4 +80,4 @@ Existing `animation_prompt` strings are motion *intent* — convert each to nume
 fields become eased `camera{}` equivalents. This supersedes the generated
 `motion_briefs.md` (the board is now the brief).
 
-**Handoff:** ae-director (pass 7).
+**Handoff:** remotion-director (pass 7). *(Was ae-director — retired 2026-08-17.)*

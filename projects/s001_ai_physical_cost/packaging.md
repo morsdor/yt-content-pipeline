@@ -11,7 +11,7 @@
 | **Video #** | s001 (software channel — pilot) |
 | **Concept** | The hidden industrial machine — power, water, chips — behind a single AI answer |
 | **Vein** | AI/LLM (hottest + highest-velocity vein in the software scan) told as an *infrastructure story*, not equation derivation |
-| **Pipeline** | Cinematic AI-stills → After Effects (datacenters, grid, cooling, fabs). **No Manim / motion-graphics build required** — this concept was chosen partly because it fits the existing pipeline |
+| **Pipeline** | Cinematic AI-stills → **Remotion** (datacenters, grid, cooling, fabs). **No Manim / procedural-animation build required** — the concept was chosen partly because it renders as plate-plus-camera, the cheapest motion we have. *(Amended 2026-08-17: originally read "→ After Effects"; AE was retired that day. The rationale is unaffected — plate-plus-camera is the `PlatePush` family, and the stills themselves are unchanged.)* |
 | **Runtime target** | 10–13 min |
 | **Status** | ✅ Packaging locked (2026-08-09) · ✅ **Phase-0 research done (2026-08-10)** — hero number resolved, thumbnail unblocked (see `research.md`). Two changes below: water-bet runner-up **killed**; thumbnail number pivots per-query → **machine/aggregate scale**. Next: user locks thumbnail direction → script |
 | **Locked** | 2026-08-09 |

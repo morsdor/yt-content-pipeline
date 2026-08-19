@@ -5,7 +5,7 @@
 viewer, different visual language. Written 2026-08-17, after the @CodeSource comp deep dive
 (`docs/comp_deep_dive_codesource.md`) and the Remotion pipeline decision.*
 
-> **§5 Motion Identity is not prose — it is the spec for `src/brand/motion.ts`.** Under the AE pipeline
+> **§5 Motion Identity is not prose — it is the spec for `src/brand/tokens.ts`.** Under the AE pipeline
 > a brand guide was a document a human had to remember to obey. Under Remotion it compiles. Every
 > number in §5 becomes a typed constant, and a scene that violates one fails review because it
 > physically cannot be expressed. That is the whole reason this guide is worth writing before scene one.
@@ -122,7 +122,7 @@ per-civilization accent, so the studio chain treats it identically.)
 
 ---
 
-## 5. Motion Identity — the spec for `src/brand/motion.ts`
+## 5. Motion Identity — the spec for `src/brand/tokens.ts`
 
 > EA moves like *a surveyor* — slow, weighted, geological. **Load Bearing moves like a system
 > executing**: precise, purposeful, arriving exactly on time and then completely still. Snappier than

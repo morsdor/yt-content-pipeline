@@ -1,12 +1,21 @@
-# Animation Strategy: Every Scene Hand-Built in After Effects
+# Animation Strategy: Every Scene Hand-Built (AE → Remotion)
 
 > **What this doc is.** The *why* and the *what* of the channel's motion approach — the
 > reasoning, the history, and the targets. The *how-to* lives in
-> [docs/after_effects_workflow.md](docs/after_effects_workflow.md) (the AE build) and
+> [docs/after_effects_workflow.md](docs/after_effects_workflow.md) (the AE build, **legacy —
+> 001 only**), the `remotion-director` skill + [brand_guide_software.md](brand_guide_software.md)
+> §5/§11 (the Remotion build), and
 > [docs/production_workflow.md](docs/production_workflow.md) (where it sits in the pipeline);
 > the scene contract is [docs/storyboard_schema.md](docs/storyboard_schema.md).
 >
-> **How we got here (two pivots).**
+> **⚠ Status (2026-08-17): After Effects is retired as the build tool.** Motion is now built in
+> **Remotion** — React components rendered deterministically — with `remotion-director` as studio
+> pass 7 in place of `ae-director`. **`projects/001_roman_aqueduct` finishes on AE** (its board
+> carries `ae_build{}` and its 62 comps are already scaffolded); every board from s001 onward
+> writes `remotion_build{}`. The sections below still describe the AE build in AE's vocabulary —
+> read them as *the motion philosophy*, which is unchanged and ported, not as current tooling.
+>
+> **How we got here (three pivots).**
 > - **Generative image-to-video — tried and dropped (Jul 12, 2026).** This doc originally
 >   proposed generative i2v for the "animated" scenes. At full-batch scale ~70% of clips
 >   softened the crisp linework, warped precise geometry, or added uninvited camera moves —
@@ -20,8 +29,16 @@
 >   seven-pass **studio chain** (`studio-director`) into one `storyboard.json` v2,
 >   timestamped to the pre-recorded VO, built in AE, and conformed in **Premiere Pro**.
 >   `video_assembler.py` survives only as the animatic tool.
+> - **The Remotion pivot (Aug 17, 2026).** The build moved from After Effects to **Remotion**.
+>   The reasoning is not that AE animates badly — it's that a GUI timeline is the one part of
+>   this pipeline an agent cannot touch. In Remotion a scene is *code*: it can be written,
+>   diffed, reviewed and re-rendered deterministically, brand constants are enforced by a lint
+>   (`npm run brand:check`) instead of by memory, and Studio still gives direct on-canvas
+>   tuning that writes back to the file. It also ends the Adobe dependency for new work.
+>   Everything below still holds — the six motion layers port to Remotion one-for-one.
 >
-> The layer/rung analysis below — *why AE wins* — is the durable core and is unchanged.
+> The layer/rung analysis below — *why layered motion over stills wins* — is the durable core
+> and is unchanged by the tool switch; only the tool named in it has changed.
 
 ## What Dinzo, Bound and Oversimplified Actually Do (It's Not What You Think)
 
