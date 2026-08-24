@@ -45,12 +45,43 @@ VARIATIONS = {
 
 # SKILL Stage-2 base prompt — deliberately NO style-card prefix.
 BASE = (
-    "Dramatic isometric illustration of {subject}. Vibrant {accent} as the single pop "
-    "colour against warm tan and ochre stone; high contrast, bold composition, one clear "
-    "focal point, cinematic lighting, deep moody dark background, extremely detailed and "
-    "eye-catching, YouTube thumbnail style, 16:9 aspect ratio, 1280x720. {variation} "
+    "Dramatic isometric illustration of {subject}. {palette} High contrast, bold "
+    "composition, one clear focal point, cinematic lighting, deep moody dark background, "
+    "extremely detailed and eye-catching, YouTube thumbnail style, 16:9 aspect ratio, "
+    "1280x720. {composition} {variation} "
     "Absolutely NO text, letters, numbers, watermarks or logos anywhere in the image."
 )
+
+# Per-channel look. The two channels are deliberately opposite palettes — running EA's
+# warm-parchment clause for the software channel silently produces off-brand plates, and
+# you only find out after paying for them. See brand_guide.md vs brand_guide_software.md §3.
+BRANDS = {
+    "ea": {
+        "accent": "electric cyan-blue #22B8E0",
+        "palette": "Vibrant {accent} as the single pop colour against warm tan and ochre stone;",
+        "composition": "",
+        "why": "The Engineering Atlas — warm parchment, daylight, stone.",
+    },
+    "depthfirst": {
+        "accent": "electric blue #4DA3FF",
+        "palette": (
+            "Near-black blue-black ground (#0B0E14) with cold graphite structure; vibrant "
+            "{accent} as the single pop colour, carried only by glowing windows, rim-light "
+            "and power-line arcs. NO warm tan, NO ochre, NO parchment, NO daylight, no warm "
+            "sunset tones. Schematic and disciplined like a drafting table, not a glossy "
+            "product render."
+        ),
+        # The layout convention is locked for every video on this channel
+        # (brand_guide_software.md §2 / thumbnail.md): subject right, type left.
+        "composition": (
+            "Composition: place the subject in the RIGHT two-thirds of the frame. Keep the "
+            "LEFT third clean, dark and near-empty — typography is composited there later. "
+            "Keep the lower-left foreground an uncluttered dark plane with nothing important "
+            "in it — a graphic element is composited there later."
+        ),
+        "why": "Depth First — ink-black, schematic, high-contrast (brand_guide_software.md §3).",
+    },
+}
 
 
 def load_dotenv(*candidates):
@@ -86,7 +117,9 @@ def main():
     ap = argparse.ArgumentParser(description="Generate 3 A/B thumbnail candidates (Gemini). See thumbnail-workflow SKILL Stage 2.")
     ap.add_argument("--project", required=True, help="project dir, e.g. projects/001_roman_aqueduct")
     ap.add_argument("--subject", required=True, help="the locked thumbnail concept's dominant object, described")
-    ap.add_argument("--accent", default="electric cyan-blue #22B8E0", help="the single pop colour")
+    ap.add_argument("--brand", default="ea", choices=list(BRANDS),
+                    help="which channel's look to compose (default: ea). 'depthfirst' = the software channel")
+    ap.add_argument("--accent", default=None, help="the single pop colour (default: the brand's)")
     ap.add_argument("--vary", default="crop", choices=list(VARIATIONS), help="the ONE axis to A/B")
     ap.add_argument("--model", default=IMAGE_MODEL_DEFAULT, help="image model (gemini-3-pro-image for a hero re-render)")
     ap.add_argument("--force", action="store_true", help="regenerate even if the output exists")
@@ -96,10 +129,16 @@ def main():
 
     load_dotenv(SCRIPT_DIR / ".env", Path(args.project) / ".env", Path(".env"))
     out_dir = Path(args.project) / "output"
-    prompts = [(tag, BASE.format(subject=args.subject.strip(), accent=args.accent, variation=v))
+    brand = BRANDS[args.brand]
+    accent = args.accent or brand["accent"]
+    prompts = [(tag, BASE.format(subject=args.subject.strip(),
+                                 palette=brand["palette"].format(accent=accent),
+                                 composition=brand["composition"],
+                                 variation=v))
                for tag, v in VARIATIONS[args.vary]]
 
-    print(f"== THUMBNAIL PASS ({args.model}) — vary: {args.vary} ==")
+    print(f"== THUMBNAIL PASS ({args.model}) — brand: {args.brand} — vary: {args.vary} ==")
+    print(f"   {brand['why']}  accent: {accent}")
     for tag, _ in prompts:
         print(f"  thumb_{tag} -> {out_dir}/thumb_{tag}.png")
 

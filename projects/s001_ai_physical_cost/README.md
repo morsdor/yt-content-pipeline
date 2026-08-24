@@ -32,13 +32,18 @@ The channel is not yet named or brand-guided; this project is its first concrete
   v2 rebalanced **off water** (electricity is the spine — power = 3 of 5 tentpoles + climax; water = 1 tight
   beat; chip beat = silicon/manufacturing) and **cut the finger-pointing** (reflection beat is wonder, not
   media-criticism). **Next: your read-pass / lock.**
-- 🟡 **Thumbnail — Stage-4 typography done** (`thumbnail.md` + `output/`, study): real local type (Arial
-  Black / IBM Plex) in 3 hero options (835 MW · **A NUCLEAR REACTOR** ⭐ · 1 BILLION A DAY) over a **stand-in**
-  plate. **Open:** pick the hero text; then the **charged gate** — generate the real Stage-2 AI plate.
+- ✅ **Thumbnail — Stage-4 typography LOCKED** (`thumbnail.md` + `output/`, 2026-08-20): hero is
+  **`835 MW`, alone**, set in **Archivo Black** (now vendored at `assets/fonts/`). The number beats the
+  words "A NUCLEAR REACTOR" because the image *is* a cooling tower — the picture already says reactor;
+  `835 MW` is what it can't say. Also settled a real §4 collision by test (hero is a number, but display
+  beats mono at 120px — brand guide now carries the carve-out). **Open:** hero colour (amber vs bone),
+  deliberately deferred to the real plate; and the **charged gate** — generate the real Stage-2 plate.
+  Carries one known defect into Stage 2: the phone must render as an **assistant-chat UI**, not an SMS
+  bubble, or the thumbnail scans as an energy video rather than an AI video at 120px.
 - ✅ **Channel brand guide written** (`brand_guide_software.md`, 2026-08-17) — identity, color, type,
-  and a §5 motion spec compiled into `remotion/src/brand/tokens.ts`. **One decision still open: the
-  channel name** (§0 — recommended *Load Bearing*). It blocks the wordmark, the channel art, and this
-  video's **thumbnail typography**.
+  and a §5 motion spec compiled into `remotion/src/brand/tokens.ts`.
+- ✅ **Channel name LOCKED — "Depth First"** (§0, 2026-08-20), handle `@thedepthfirst`. The wordmark,
+  the channel art, and this video's **thumbnail typography** are all unblocked.
 - ⬜ Then: studio board → VO → generation → **Remotion build** → conform. Same production spine as 001
   with one change: **After Effects was retired 2026-08-17** — pass 7 is now `remotion-director`
   writing `remotion_build{}`, and 001 is the last AE video.
@@ -54,10 +59,12 @@ copy. Fireship-style "blend" (voice/personality + tech, faceless) remains a poss
 
 ## Open channel-level decisions
 
-- 🔴 **Channel name — the one live blocker.** Brand guide §0 recommends **Load Bearing**; alternates
-  are The Stack Trace and Blast Radius. Everything in the guide except §1–§2 is name-independent, so
-  this blocks only the wordmark, the channel art, and **this video's thumbnail typography** — which is
-  exactly where the thumbnail thread is parked.
+- ✅ **Channel name — LOCKED 2026-08-20: "Depth First"** (`@thedepthfirst`). Chosen over Machine Code,
+  Monolith and Commit History; Load Bearing, Bare Metal, Source Code, Code Story and In Review all
+  died on either a live handle collision or a wrong signal — full reasoning and the rejection table in
+  `brand_guide_software.md` §0. The name is deliberately dev-gated, which **amends §12** (see its
+  scope note): the test governs the video, not the name. Wordmark, channel art and **this video's
+  thumbnail typography are unblocked** — the thumbnail thread can restart.
 - ✅ **Brand guide — written** (`brand_guide_software.md`, 2026-08-17). The Engineering Atlas
   `brand_guide.md` does not transfer; this is its sister document.
 - **Visual language** — cinematic/industrial (this concept) vs conceptual-animation (the algorithms

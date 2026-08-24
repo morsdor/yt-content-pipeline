@@ -1,5 +1,5 @@
 /**
- * Load Bearing — brand tokens.  Source of truth for `brand_guide_software.md` §3/§4/§5.
+ * Depth First — brand tokens.  Source of truth for `brand_guide_software.md` §3/§4/§5.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * READ THIS BEFORE USING: these are the SPEC and the VALIDATOR, not runtime imports.

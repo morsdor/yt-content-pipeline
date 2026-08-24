@@ -1,4 +1,4 @@
-# Load Bearing — Brand Guide (software/technical documentaries)
+# Depth First — Brand Guide (software/technical documentaries)
 
 *The identity document for the **second channel** — technical documentaries told visually. Sister to
 `brand_guide.md` (The Engineering Atlas), which does **not** transfer: different subject, different
@@ -12,18 +12,46 @@ viewer, different visual language. Written 2026-08-17, after the @CodeSource com
 
 ---
 
-## 0. The one open decision — the name
+## 0. The name — ✅ LOCKED: **Depth First** (2026-08-20)
 
-Everything below is name-independent except §1–§2. **Recommended: "Load Bearing."**
+**Channel name: Depth First. Handle: `@thedepthfirst`.**
 
-| Candidate | Case | Risk |
-|:--|:--|:--|
-| **Load Bearing** ⭐ | Instantly legible to non-engineers (*load-bearing wall*) and precise to engineers (*the dependency everything rests on*). Covers all four lanes — what became load-bearing (breakthroughs), what failed (blunders), what carries the weight (architecture). Carries your Engineering Atlas heritage into software, which is a position nobody else in this niche has. Deep cultural resonance with devs via xkcd 2347. | Two words; must never be written "Loadbearing" |
-| The Stack Trace | The record of how something failed, read backwards to find the cause — literally the channel's method. Devs get it instantly. | Reads incident-only; weak for origin stories. Slightly insider |
-| Blast Radius | Punchy, dramatic, perfect for the failure lane | Too narrow if you ever do architecture or breakthroughs |
+Written "Depth First" — two words, no hyphen, never "DepthFirst" or "Depth-First". The handle carries
+a `the` prefix because `@depthfirst` is held by a dormant 19-sub channel; a prefixed handle is
+standard in this lane (`@LowLevelTV`, `@TomScottGo`, `@TheCompanyMan`, `@kevinfaang` — 4 of our 16
+comps run one). Claim the handle **before** the wordmark ships; a "free" `forHandle` lookup is a
+strong signal, not a guarantee.
 
-**Lock the name before the wordmark, the channel art, or any thumbnail typography ships.** Everything
-else in this guide can proceed today.
+**Why this one, in the order the reasons mattered:**
+
+1. **It is a statement of format, not of subject.** Depth-first search goes all the way down one
+   branch before it considers the next. That is exactly the channel: few videos, long, one subject
+   exhausted properly. The name promises the thing that actually differentiates us from the lane.
+2. **It is dev vocabulary with no civilian reading** — a deliberate choice (see §12). No non-engineer
+   says "depth first"; every engineer has implemented it. This gates the name to register 1.
+3. **Lane-agnostic.** Breakthroughs, failures, architecture, languages all sit under it. The rejected
+   alternates each boxed us in: The Stack Trace and Blast Radius read incident-only; Root Cause,
+   Postmortem and Git Blame the same.
+4. **Positive, not failure-coded.** Most available software names in this space are about things
+   breaking. This one is about how we look at things.
+5. **Wordmark:** DEPTH / FIRST = **5 over 5**, the only candidate that stacks a perfect square block
+   in Archivo Black — see §2. This is a real asset at 48px.
+
+**Rejected, with the reason each died** (naming research 2026-08-19/20; handle availability checked
+live against the YouTube Data API, read-only, ~74 quota units):
+
+| Candidate | Why it died |
+|:--|:--|
+| **Load Bearing** (the previous §0 recommendation) | Contains no software signal — reads as construction, and `@loadbearing` is squatted anyway. Its "legible to non-engineers" case was its *weakness* once we decided to gate on developers. |
+| Bare Metal | Same flaw milder — could read as machining or a band; collides with bare-metal-cloud-hosting SEO; `@baremetal` squatted |
+| Source Code · Prior Art | Real active channels already own them (21.4k / 5.9k subs) |
+| Code Story | `@codestory` free, but [codestory.co](https://www.codestory.co/) is a top-1% software podcast (798 eps) and `@codestories` is a live 2k-sub channel — collision in our exact medium *and* subject |
+| Byzantine · Postmortem · Runtime | Live collisions (`@byzantinetv` 3.2k, `@postmortemtv` 2.2k) or no clean variant left |
+| In Review | Reads as a product-review channel (the most saturated corner of tech YouTube); buried under "year in review" saturation; `@inreview` taken by an active 1k channel; IN/REVIEW = 2-over-6, the weakest lockup considered |
+| Machine Code · Monolith · The Codebase | Clean and available — genuine runners-up. Machine Code (`@machinecode`, exact handle free) is the fallback if Depth First ever has to be abandoned. Both say *software* but say nothing about *format* or *story*, which is what Depth First adds. |
+| Commit History | The closest call — the only name that said software *and* story. Lost on tense: it frames the channel as retrospective, and s001 (*The Physical Cost of AI*) is a present-tense explainer, not a history. |
+
+**Now unblocked:** the wordmark, the channel art, and s001's thumbnail typography.
 
 ---
 
@@ -55,10 +83,17 @@ where the value expires.
 
 ## 2. Wordmark & Channel Art
 
-- **Wordmark:** the name set in the display face (§4), letter-spaced +2%, on near-black. One
-  structural rule mark — a single horizontal line *under* the word, weight 3px at 1080p, in the
-  brand accent — reading as the load it carries. Nothing else. No icon, no gradient, no bevel.
-- **Avatar:** the underline mark alone on near-black, or the initials. Must survive 48px.
+- **Wordmark:** **DEPTH** over **FIRST**, set in the display face (§4), letter-spaced +2%, on
+  near-black. The two words are 5 characters each — set them to equal optical width so the lockup
+  reads as a solid square block. Never set it on one line except where a horizontal strip forces it.
+- **The mark:** one structural rule in the brand accent, weight 3px at 1080p — a *vertical* line
+  descending down the left edge of the stack, past the baseline of FIRST. It reads as the traversal:
+  down before across. Nothing else. No icon, no gradient, no bevel.
+  *(This replaces the horizontal underline specced under the old working name, whose rationale — "the
+  load it carries" — died with it. The rule mark is the one design call made at name-lock; override
+  it here if you want the underline back.)*
+- **Avatar:** the DEPTH/FIRST square block, or the descending rule alone, on near-black. The 5-over-5
+  stack is what makes this survive 48px — protect it.
 - **Banner:** near-black ground, the wordmark left of centre, one line of positioning text below it
   in mono. No collage of video thumbnails.
 
@@ -115,6 +150,13 @@ per-civilization accent, so the studio chain treats it identically.)
 - Free; keep in `assets/fonts/` and load into Remotion via `staticFile()` + `@remotion/fonts`.
 - **Numbers are always mono.** This is the single most identity-defining typographic rule here — a
   metric in a proportional face immediately looks like a generic explainer.
+- **Carve-out: the thumbnail hero is always Archivo Black, even when it is a number.** The two rules
+  above collide the moment a hero is a metric (s001's is `835 MW`). Display wins, and the reason is
+  structural, not aesthetic: mono's uniform advance width forces wide sidebearings, so at 120px the
+  lockup spreads wider at lower stroke density and fragments into two words instead of one mark.
+  Tested head-to-head on s001 (`projects/s001_ai_physical_cost/output/thumb_D_font_contact_sheet.png`,
+  2026-08-20) — Archivo Black wins decisively at squint size. **In-frame** numbers stay mono; the
+  thumbnail is packaging competing in a sidebar, not on-screen data.
 - **On-screen text sits on a surface**, never raw on imagery: `#161B26` at 85% opacity, 8px radius,
   16px padding, 1px `#2A3240` border. Bone text. Accent on one word maximum.
 - **Minimum on-screen size: 36px at 4K** (≈ 1.7% of frame height). Below that it is decoration, not
@@ -124,7 +166,7 @@ per-civilization accent, so the studio chain treats it identically.)
 
 ## 5. Motion Identity — the spec for `src/brand/tokens.ts`
 
-> EA moves like *a surveyor* — slow, weighted, geological. **Load Bearing moves like a system
+> EA moves like *a surveyor* — slow, weighted, geological. **Depth First moves like a system
 > executing**: precise, purposeful, arriving exactly on time and then completely still. Snappier than
 > EA. Never bouncy. Stillness is the default state; motion is an event that means something.
 
@@ -344,6 +386,23 @@ Before publishing: *"Would an engineer who works on this exact system watch it w
 would their non-technical partner watch it to the end?"*
 
 Both, or it isn't ready.
+
+**Scope — amended at name-lock (2026-08-20).** This test governs **the video**: the script, the
+narration, the visuals, the explanations. It does **not** govern **the channel name**. The name is
+deliberately gated to register 1 — no non-engineer says "depth first" — and that was chosen on
+evidence, not by accident:
+
+- Every successful channel in `data/comp_channels_software.yaml` that isn't a person-brand or a
+  coined word uses **CS jargon as its brand**: Reducible, Spanning Tree, Low Level. Not one of them
+  uses a legible English metaphor. The metaphor names were ours, not the lane's.
+- A name's job is to make the right viewer feel *found*. A video's job is to lose nobody. Those are
+  different jobs and they take different rules.
+
+So: the name may be opaque to a non-engineer. **The video may not be.** §1's audience order still
+stands — register 2 is the growth audience and must never need a prerequisite *inside the video*.
+
+The honest cost of this: the name does no recruiting work with register 2. Titles and thumbnails now
+carry 100% of that load, which raises the bar on packaging rather than lowering it.
 
 ---
 

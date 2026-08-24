@@ -1,5 +1,5 @@
 /**
- * Load Bearing — font loading (brand_guide_software.md §4).
+ * Depth First — font loading (brand_guide_software.md §4).
  *
  * Google Fonts via @remotion/google-fonts: no files to vendor, no FOUT at render time.
  * Import this module once from Root.tsx; the loads are module-level side effects.

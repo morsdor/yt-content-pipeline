@@ -4,7 +4,7 @@ import { PlatePush } from './families/PlatePush';
 import { TitleCard } from './scenes/TitleCard';
 
 /**
- * Load Bearing — composition registry.
+ * Depth First — composition registry.
  *
  * Frame spec is fixed by brand_guide_software.md §5: 3840×2160 @ 30fps, and every scene
  * renders with 30 frames of handles at BOTH ends (Premiere conform stays trim-only).

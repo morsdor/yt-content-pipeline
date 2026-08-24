@@ -53,6 +53,50 @@ proven cost hook (Computerphile) with a proven, renderable, hardware subject (Br
 > visceral; per-query water contested) because it's honest, documented, *and* jaw-dropping. Fleet-multiplier
 > ("1B/day") and "3% of Earth's power" retained as A/B test alternates only. See `research.md` §6.
 
+### Hero text — ✅ LOCKED 2026-08-20: **`835 MW`**, alone (2 words)
+
+Set in **Archivo Black** (`brand_guide_software.md` §4 + its thumbnail carve-out — the hero is a number
+but display beats mono at 120px). No kicker line.
+
+**Why the number and not the words "A NUCLEAR REACTOR"** (which the Stage-4 study had starred): the
+image *is* a cooling tower. The picture already says "nuclear reactor" — loudly, and without requiring
+any engineering knowledge. The 001 discipline is *a number carrying what the image can't*, and `835 MW`
+is the one thing the picture cannot say. Putting the words on it spends the scarcest resource in the
+frame restating the art. It also ran 5 words against the ≤4 budget above, and 17 characters forces the
+hero down a size. The earlier ⭐ was set weighing the two options against *each other*, not against the
+image — that was the error.
+
+### ⚠ Known defect in this direction — the AI signal is invisible at 120px
+
+A phone showing a chat bubble reads as **texting**, not as AI. At squint size the phone is a dark
+sliver (confirmed in the 120px study renders). The thumbnail can therefore scan as an
+energy/infrastructure video — a materially narrower audience than an AI video, and a mis-sell of the
+subject. **Fix, folded into the Stage-2 plate prompt:** the foreground device must be an unmistakable
+**assistant-chat interface** — the recognisable chat-UI silhouette with "hi" in it — not a generic SMS
+bubble. This is a plate-prompt change, not a text change.
+
+### A/B axis — revised (supersedes the scale-cue plan below)
+
+| | Composition | What it tests |
+|:--|:--|:--|
+| **A** (primary) | cinematic reactor + chat-UI phone, `835 MW` | craft-led — the channel's founding bet |
+| **B** (variant) | reactor + **AI model logos side by side**, `835 MW` | category-convention — instant subject recognition at 120px |
+
+**B is a real test, not a throwaway**, because A's known defect is exactly what B fixes: logos are the
+most recognisable shapes in the category and survive any squint. But B carries real costs, which is why
+it is the variant and not the lock: it is the single most saturated visual in AI content (undercutting
+the craft differentiation that is this channel's whole moat); `docs/comp_deep_dive_codesource.md` found
+AI-as-a-subject was that comp's **worst** category, 3 for 3, and logos pull the framing back toward
+generic AI content and away from the physical-machine twist that passed the gate; and corporate logos
+beside a reactor read as accusation, which contradicts the wonder-not-blame framing `research.md`
+settled and the finger-pointing cut from script v2. If B wins anyway, that is a finding worth having.
+
+**Logos, if B is built, are local vector assets only** — never image-model output. Same rule as
+lettering: AI-drawn logos come out mangled and read as slop.
+
+*(The original scale-cue A/B — one datacenter → a horizon of them → one wired to a plant — is parked.
+It varies a less decisive axis than subject-recognition and can be tested on a later video.)*
+
 - **Design logic (from 001's 120 px study):** one focal point + hard color contrast (electric-blue/gold
   energy vs a dark, moody background) + a number carrying what the image can't. The **absurd gap**
   between one throwaway message and the industrial machine behind it *is* the hook — no infographic
