@@ -1,15 +1,21 @@
 import { AbsoluteFill, Easing, Interactive, interpolate, useCurrentFrame } from 'remotion';
 
 /**
- * TitleCard — the §7 beat at 0:45, on every video, unchanged.
+ * TitleCard — the §7 beat at ~1:10, on every video, unchanged. (scene_12)
  *
  * This file is also the HOUSE REFERENCE for a fully canvas-interactive scene: every
  * value in every `style` is a hardcoded literal, so Studio can select, drag and keyframe
  * each element and write the edit back into this file. Compare `families/PlatePush.tsx`,
  * which trades that for reusability.
  *
+ * §2 lockup (rewritten at name-lock, 2026-08-20): DEPTH over FIRST — 5 characters over 5,
+ * the only candidate that stacks a perfect square block in Archivo Black, which is what
+ * makes it survive at 48px. The mark is a VERTICAL rule descending the left edge of the
+ * stack, past the baseline of FIRST: it reads as the traversal, down before across.
+ * (The previous horizontal underline belonged to the old working name and died with it.)
+ *
  * Brand literals used (validated by `npm run brand:check`):
- *   #0B0E14 ink · #E8E6E1 bone · #FFB020 amber · Easing.bezier(0.4, 0, 0.2, 1)
+ *   #0B0E14 ink · #E8E6E1 bone · #FFB020 amber · #8B94A7 ash · Easing.bezier(0.4, 0, 0.2, 1)
  */
 
 export const TitleCard: React.FC = () => {
@@ -26,41 +32,55 @@ export const TitleCard: React.FC = () => {
       }}
     >
       <Interactive.Div
-        name="Wordmark"
+        name="Wordmark lockup"
         style={{
-          fontFamily: 'Archivo Black',
-          fontSize: 260,
-          letterSpacing: '0.02em',
-          color: '#E8E6E1',
-          opacity: interpolate(frame, [0, 8], [0, 1], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-            easing: Easing.bezier(0.4, 0, 0.2, 1),
-          }),
-          translate: interpolate(frame, [0, 8], ['0px 12px', '0px 0px'], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-            easing: Easing.bezier(0.4, 0, 0.2, 1),
-          }),
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'stretch',
+          gap: 56,
         }}
       >
-        LOAD BEARING
-      </Interactive.Div>
+        {/* §2: the descending rule — down before across. Draws downward, then holds. */}
+        <Interactive.Div
+          name="Rule"
+          style={{
+            width: 12,
+            backgroundColor: '#FFB020',
+            alignSelf: 'flex-start',
+            height: interpolate(frame, [36, 56], ['0px', '640px'], {
+              extrapolateLeft: 'clamp',
+              extrapolateRight: 'clamp',
+              easing: Easing.bezier(0.4, 0, 0.2, 1),
+            }),
+          }}
+        />
 
-      {/* §2: one structural rule mark — the line it carries. Draws on, then holds. */}
-      <Interactive.Div
-        name="Rule"
-        style={{
-          height: 10,
-          backgroundColor: '#FFB020',
-          marginTop: 36,
-          width: interpolate(frame, [6, 24], ['0px', '900px'], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-            easing: Easing.bezier(0.4, 0, 0.2, 1),
-          }),
-        }}
-      />
+        <Interactive.Div
+          name="Wordmark"
+          style={{
+            fontFamily: 'Archivo Black',
+            fontSize: 260,
+            lineHeight: 1.02,
+            letterSpacing: '0.02em',
+            color: '#E8E6E1',
+            display: 'flex',
+            flexDirection: 'column',
+            opacity: interpolate(frame, [60, 68], [0, 1], {
+              extrapolateLeft: 'clamp',
+              extrapolateRight: 'clamp',
+              easing: Easing.bezier(0.4, 0, 0.2, 1),
+            }),
+            translate: interpolate(frame, [60, 68], ['0px 12px', '0px 0px'], {
+              extrapolateLeft: 'clamp',
+              extrapolateRight: 'clamp',
+              easing: Easing.bezier(0.4, 0, 0.2, 1),
+            }),
+          }}
+        >
+          <div>DEPTH</div>
+          <div>FIRST</div>
+        </Interactive.Div>
+      </Interactive.Div>
 
       <Interactive.Div
         name="Topic"
@@ -69,15 +89,15 @@ export const TitleCard: React.FC = () => {
           fontWeight: 400,
           fontSize: 72,
           color: '#8B94A7',
-          marginTop: 48,
-          opacity: interpolate(frame, [14, 22], [0, 1], {
+          marginTop: 96,
+          opacity: interpolate(frame, [44, 52], [0, 1], {
             extrapolateLeft: 'clamp',
             extrapolateRight: 'clamp',
             easing: Easing.bezier(0.4, 0, 0.2, 1),
           }),
         }}
       >
-        The Physical Cost of AI
+        Why AI Is So Expensive to Run
       </Interactive.Div>
     </AbsoluteFill>
   );

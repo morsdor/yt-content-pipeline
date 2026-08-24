@@ -43,10 +43,17 @@ concrete deliverable.
   ⚠ One accuracy defect was caught and fixed: the first render put **lightning in the cooling-tower
   plume**; root cause was our own palette wording ("power-line arcs"), now corrected at source so it
   cannot recur on future videos. Optional next: variant B (logos) → Test & Compare.
-- ⬜ **NEXT: the studio board** (`studio-director`, 7 passes, ₹0) → VO record → generation →
-  **Remotion build** → conform. Same production spine as 001
-  with one change: **After Effects was retired 2026-08-17** — pass 7 is now `remotion-director`
-  writing `remotion_build{}`, and 001 is the last AE video.
+- ✅ **Studio board COMPLETE + scaffolded** (`storyboard.json` + `shot_list.md`, 2026-08-24).
+  **77 scenes · 12.24 min · 26,652 frames.** Validator 0 errors; `npm run lint` green
+  (eslint + tsc + brand:check). **42 plates / 35 assembly** — every chart, counter, map and
+  schematic is built in Remotion from code, so 35 scenes need **no AI generation at all**
+  (₹0 instead of ~₹260, and the numbers are correct because no model draws them).
+  **The asset batch is empty** — no charged asset gate for this video. 13 Remotion components
+  scaffolded, all 77 compositions registered. Three board bugs caught by the build: an illegal
+  accent (`#4DA3FF` → `#22D3EE`), `TitleCard.tsx` still saying "LOAD BEARING", and 10 scenes
+  mis-routed to `Counter`. See `shot_list.md` Pass 7.
+- ⬜ **NEXT — charged gate:** the plate batch, 42 images ≈ ₹310 (flash) / ₹491 (pro). Then the
+  VO record + timing true-up, animatic, build session, Premiere conform.
 
 ## Format decision — storytelling, not personality (2026-08-10)
 

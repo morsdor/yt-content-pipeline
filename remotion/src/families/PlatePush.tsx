@@ -60,7 +60,9 @@ export const PlatePush: React.FC<PlatePushProps> = ({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            scale: interpolate(frame, [0, durationInFrames], [from, to], {
+            // §5: CAMERA.holdFrames = 15 at both ends, so the clip starts and ends
+            // at rest and Premiere's trim lands on a still frame.
+            scale: interpolate(frame, [15, durationInFrames - 15], [from, to], {
               extrapolateLeft: 'clamp',
               extrapolateRight: 'clamp',
               easing: Easing.bezier(0.4, 0, 0.2, 1),
@@ -99,7 +101,7 @@ export const PlatePush: React.FC<PlatePushProps> = ({
               color: '#8B94A7',
               fontFamily: 'IBM Plex Mono',
               fontSize: 44,
-              opacity: interpolate(frame, [0, 8], [0, 1], {
+              opacity: interpolate(frame, [30, 38], [0, 1], {
                 extrapolateLeft: 'clamp',
                 extrapolateRight: 'clamp',
                 easing: Easing.bezier(0.4, 0, 0.2, 1),
