@@ -2,7 +2,8 @@
 
 **Pilot video (001) of a new, second channel: software-engineering *storytelling*** — narrative,
 high-craft, few-but-polished videos, distinct from The Engineering Atlas (this repo's main channel).
-The channel is not yet named or brand-guided; this project is its first concrete deliverable.
+The channel is **Depth First** (`@thedepthfirst`, named 2026-08-20); this project is its first
+concrete deliverable.
 
 ## Why this exists (the evidence trail)
 
@@ -28,23 +29,22 @@ The channel is not yet named or brand-guided; this project is its first concrete
   **killed** (500 mL/query is false); thumbnail number pivots per-query → **machine/aggregate scale**
   (recommended: the Three Mile Island reactor restart).
 - ✅ **Thumbnail direction locked** — A, "the reactor" (Three Mile Island / 835 MW), 2026-08-10.
-- 🟡 **Script — DRAFT v2** (`script.md`, 2026-08-10): ~12 min, dazzle ladder (rack→plant→fab→nation→reactor).
-  v2 rebalanced **off water** (electricity is the spine — power = 3 of 5 tentpoles + climax; water = 1 tight
-  beat; chip beat = silicon/manufacturing) and **cut the finger-pointing** (reflection beat is wonder, not
-  media-criticism). **Next: your read-pass / lock.**
-- ✅ **Thumbnail — Stage-4 typography LOCKED** (`thumbnail.md` + `output/`, 2026-08-20): hero is
-  **`835 MW`, alone**, set in **Archivo Black** (now vendored at `assets/fonts/`). The number beats the
-  words "A NUCLEAR REACTOR" because the image *is* a cooling tower — the picture already says reactor;
-  `835 MW` is what it can't say. Also settled a real §4 collision by test (hero is a number, but display
-  beats mono at 120px — brand guide now carries the carve-out). **Open:** hero colour (amber vs bone),
-  deliberately deferred to the real plate; and the **charged gate** — generate the real Stage-2 plate.
-  Carries one known defect into Stage 2: the phone must render as an **assistant-chat UI**, not an SMS
-  bubble, or the thumbnail scans as an energy video rather than an AI video at 120px.
-- ✅ **Channel brand guide written** (`brand_guide_software.md`, 2026-08-17) — identity, color, type,
-  and a §5 motion spec compiled into `remotion/src/brand/tokens.ts`.
-- ✅ **Channel name LOCKED — "Depth First"** (§0, 2026-08-20), handle `@thedepthfirst`. The wordmark,
-  the channel art, and this video's **thumbnail typography** are all unblocked.
-- ⬜ Then: studio board → VO → generation → **Remotion build** → conform. Same production spine as 001
+- ✅ **Script — v2 LOCKED by the user 2026-08-20** (`script.md`): **1,748 words ≈ 12.1 min at 145 wpm**
+  (measured; the old "~1,950 / 11.8 min" footer was an estimate and self-inconsistent). Dazzle ladder
+  rack→plant→fab→nation→reactor. v2 rebalanced **off water** (power = 3 of 5 tentpoles + climax) and
+  **cut the finger-pointing**. ⚠ Words are locked, **register is not** — re-read against
+  `brand_guide_software.md` §6 before the VO record.
+- ✅ **Thumbnail — Stage-2 plate GENERATED + Stage-4 type LOCKED** (`thumbnail.md` + `output/`,
+  2026-08-20). Hero is **`835 MW`, alone**, Archivo Black, **signal amber** (the real plate settled
+  amber vs bone — it is full of near-white, which absorbs bone). Plate generated on
+  `gemini-3-pro-image` via the new `--brand depthfirst --vary pairing` path; 4 images, ~₹46.
+  ✅ **SHIPPED: `output/thumb_FINAL_835mw.png`** (1280×720, 1,035 KB). The phone + chat UI is a **local
+  composite**, not model output — which is what makes the AI signal survive the 120px squint.
+  ⚠ One accuracy defect was caught and fixed: the first render put **lightning in the cooling-tower
+  plume**; root cause was our own palette wording ("power-line arcs"), now corrected at source so it
+  cannot recur on future videos. Optional next: variant B (logos) → Test & Compare.
+- ⬜ **NEXT: the studio board** (`studio-director`, 7 passes, ₹0) → VO record → generation →
+  **Remotion build** → conform. Same production spine as 001
   with one change: **After Effects was retired 2026-08-17** — pass 7 is now `remotion-director`
   writing `remotion_build{}`, and 001 is the last AE video.
 
@@ -77,7 +77,8 @@ copy. Fireship-style "blend" (voice/personality + tech, faceless) remains a poss
 - `script.md` — DRAFT v2 VO script (~12 min); written in EA's witness/engineer registers — **re-check
   against `brand_guide_software.md` §6** ("The Insider and the Translator"), which now supersedes them.
 - `teleprompter.html` — standalone offline teleprompter for the read (double-click to open; electric-blue palette). Regenerate from `script.md` if the script changes.
-- `thumbnail.md` + `output/thumb_*` — Stage-4 typography study (real local type over a stand-in plate; real AI plate = separate charged gate).
+- `thumbnail.md` + `output/thumb_*` — the thumbnail record: Stage-2 plate generation (candidates,
+  the accuracy defect and its root cause), the Archivo-vs-mono type test, and the local phone composite.
 - `monetization.md` — channel-level earnings model (AdSense / sponsorships / product); migrate to the
   channel brand doc once the channel gets its own home.
 - Channel-level docs at repo root: `brand_guide_software.md` (identity, color, type, §5 motion spec),

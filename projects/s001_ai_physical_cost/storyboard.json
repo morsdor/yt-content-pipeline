@@ -1,0 +1,1947 @@
+{
+  "version": 2,
+  "channel": "Depth First",
+  "brand_guide": "brand_guide_software.md",
+  "civilization": null,
+  "domain": "AI infrastructure",
+  "accent_hex": "#4DA3FF",
+  "style_anchor_strength": 0.7,
+  "scene_recipes": {},
+  "base_dir": "./projects/s001_ai_physical_cost",
+  "voiceover": "audio/voiceover.mp3",
+  "vo_duration": null,
+  "background_music": null,
+  "music_volume": 0.08,
+  "continuity_registry": {
+    "light": "cold rim-light from upper-left; ink-black ground #0B0E14 everywhere. No warm/golden light anywhere — this channel is the inverse of The Engineering Atlas.",
+    "palette": "ground #0B0E14 · surface #161B26 · line #2A3240 · text #E8E6E1 · label #8B94A7 · accent electric blue #4DA3FF (per-video domain accent)",
+    "accuracy": {
+      "cooling_tower_plume": "CONDENSING WATER VAPOUR only — bright white/pale blue, soft-edged. Never smoke, soot, exhaust, storm cloud, or lightning. A fission plant burns nothing.",
+      "power_flow": "steady glowing conductors and cable runs. NEVER lightning bolts or electrical arcing. Do not use the word 'arcs' in any prompt — it renders as lightning.",
+      "three_mile_island": "TWO towers. Unit 2 = the 1979 meltdown; Unit 1 = the undamaged twin being restarted. Never depict the melted unit restarting."
+    },
+    "sides": {
+      "query_flow": "LEFT-to-RIGHT. The human/question side is always LEFT; the machine/infrastructure side is always RIGHT. This matches the shipped thumbnail (phone lower-left, machine right) — packaging and video share one axis.",
+      "power_flow": "RIGHT-to-LEFT. Electricity travels from generation (right) back through the grid to the datacenter and finally the phone (left). Demand goes right; power comes back left. Never cross these.",
+      "scale_ladder": "Every rung UP the dazzle ladder (rack -> plant -> fab -> nation -> reactor) is a PULL-BACK, never a push-in. Pushing in means 'look closer at this'; pulling back means 'it is bigger than you thought'.",
+      "training_vs_running": "training = LEFT bar, running/inference = RIGHT bar (scenes 52-53)"
+    },
+    "maps": "north up; terrain in graphite #2A3240, unlit; the active region carries accent #4DA3FF and nothing else does"
+  },
+  "passes": {
+    "script_analyzer": "2026-08-24",
+    "film_director": "2026-08-24",
+    "storyboard_artist": null,
+    "scene_composer": null,
+    "asset_planner": null,
+    "motion_director": null,
+    "remotion_director": null
+  },
+  "scenes": [
+    {
+      "id": "scene_01",
+      "t_start": 0.0,
+      "t_end": 7.0,
+      "duration": 7.0,
+      "narration_segment": "That took about a second, and it felt like nothing — because it very nearly was nothing.",
+      "purpose": "the hook: the weightlessness the whole video will dismantle",
+      "register": "engineer",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "hook",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "the phone in the dark, screen-lit. Cold open on the smallest object in the video"
+    },
+    {
+      "id": "scene_02",
+      "t_start": 7.0,
+      "t_end": 16.9,
+      "duration": 9.9,
+      "narration_segment": "That answer cost around a third of a watt-hour of electricity and a mouthful of water. Less than running your microwave for two seconds.",
+      "purpose": "plant the honest small number so the payoff can't be called a cheat",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "hook",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "0.3 Wh vs a microwave — the honest number, stated before the escalation"
+    },
+    {
+      "id": "scene_03",
+      "t_start": 16.9,
+      "t_end": 25.2,
+      "duration": 8.3,
+      "narration_segment": "So here is the strange question this video is going to answer. If one AI answer costs almost nothing —",
+      "purpose": "state the contract: a question the viewer now wants answered",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "hook",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "HARD CUT to the datacenter. The scale-shock the whole cold open exists to deliver"
+    },
+    {
+      "id": "scene_04",
+      "t_start": 25.2,
+      "t_end": 33.1,
+      "duration": 7.9,
+      "narration_segment": "why did answering enough of them lead one of the largest companies on Earth to restart a nuclear reactor?",
+      "purpose": "the tease — name the reactor without explaining it",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "stage",
+        "progression_role": "hook",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "the reactor teased at distance, silhouette only — the climax is not spent here"
+    },
+    {
+      "id": "scene_05",
+      "t_start": 33.1,
+      "t_end": 42.6,
+      "duration": 9.5,
+      "narration_segment": "Right now, somewhere, it's late, and someone can't sleep, and they ask a machine a question they'd be embarrassed to ask a person.",
+      "purpose": "make it human and specific before it becomes industrial",
+      "register": "witness",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "stage",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "city at 11pm, push into one lit window"
+    },
+    {
+      "id": "scene_06",
+      "t_start": 42.6,
+      "t_end": 53.4,
+      "duration": 10.8,
+      "narration_segment": "Somewhere else a student pastes in an essay. A coder asks why their code won't run. A kid asks how big a blue whale really is.",
+      "purpose": "breadth — this is everyone, not a niche",
+      "register": "witness",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "action",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the montage of askers — student, coder, kid"
+    },
+    {
+      "id": "scene_07",
+      "t_start": 53.4,
+      "t_end": 63.7,
+      "duration": 10.3,
+      "narration_segment": "None of them are thinking about electricity. Why would they? The whole promise of this technology is that it feels free, and instant, and weightless",
+      "purpose": "name the illusion explicitly — the thesis in one word: weightless",
+      "register": "witness",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "close on a screen: the illusion named — free, instant, weightless"
+    },
+    {
+      "id": "scene_08",
+      "t_start": 63.7,
+      "t_end": 72.0,
+      "duration": 8.3,
+      "narration_segment": "— a genie that costs you nothing but the typing. And for any one of them, that's very nearly true.",
+      "purpose": "concede the honest point up front — earns trust for the escalation",
+      "register": "witness",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the genie that costs nothing but typing — concede the honest point"
+    },
+    {
+      "id": "scene_09",
+      "t_start": 72.0,
+      "t_end": 80.3,
+      "duration": 8.3,
+      "narration_segment": "But there is no such thing as one. Right now this is happening about a billion times a day —",
+      "purpose": "the pivot: singular to fleet. The whole argument turns here",
+      "register": "data",
+      "needs": [
+        "map",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "THE PIVOT: sparks multiply to a billion a day. Singular becomes fleet"
+    },
+    {
+      "id": "scene_10",
+      "t_start": 80.3,
+      "t_end": 88.6,
+      "duration": 8.3,
+      "narration_segment": "and every one of those weightless little questions reaches back, through a wire, to something enormous, and physical, and hidden,",
+      "purpose": "the wire — introduce the through-line the video literally follows",
+      "register": "witness",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the wire traced back as a schematic line — introduces the through-line"
+    },
+    {
+      "id": "scene_11",
+      "t_start": 88.6,
+      "t_end": 99.8,
+      "duration": 11.2,
+      "narration_segment": "that somebody had to build, and power, and feed. So let's follow a single question all the way back — and see what it's actually standing on.",
+      "purpose": "state the method: we follow one query backwards",
+      "register": "witness",
+      "needs": [
+        "map",
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "transmission lines converging on one blazing datacenter"
+    },
+    {
+      "id": "scene_12",
+      "t_start": 99.8,
+      "t_end": 104.8,
+      "duration": 5.0,
+      "narration_segment": "",
+      "purpose": "title card — Why AI Is So Expensive to Run",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "title",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "TITLE STING — wordmark + Why AI Is So Expensive to Run"
+    },
+    {
+      "id": "scene_13",
+      "t_start": 104.8,
+      "t_end": 116.0,
+      "duration": 11.2,
+      "narration_segment": "Let's start with the small number, because it's real, and it matters. A short, ordinary question to a chatbot uses only about 0.3 watt-hours of electricity —",
+      "purpose": "deliver the hero small number cleanly and without spin",
+      "register": "data",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "query travels phone -> server; 0.3 Wh appears small"
+    },
+    {
+      "id": "scene_14",
+      "t_start": 116.0,
+      "t_end": 125.9,
+      "duration": 9.9,
+      "narration_segment": "what a good LED bulb burns in a couple of minutes. You may have heard that each query gulps ten times a Google search.",
+      "purpose": "anchor 0.3 Wh to a body-scale referent, then raise the myth",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "an LED bulb — anchor 0.3 Wh to something in the room"
+    },
+    {
+      "id": "scene_15",
+      "t_start": 125.9,
+      "t_end": 136.2,
+      "duration": 10.3,
+      "narration_segment": "That figure came from 2023, on older hardware — and it's roughly ten times too high for a typical question today. The engineers got fast.",
+      "purpose": "correct the myth generously — credit the engineers, no scolding",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the 2023 myth corrected — generously, crediting the engineers"
+    },
+    {
+      "id": "scene_16",
+      "t_start": 136.2,
+      "t_end": 147.4,
+      "duration": 11.2,
+      "narration_segment": "Ask it to read a long document, and that climbs to a few watt-hours. Switch on one of the new reasoning models that thinks before it answers,",
+      "purpose": "show the number is a floor, not a ceiling",
+      "register": "data",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the number climbing 0.3 -> 2.5 -> 40"
+    },
+    {
+      "id": "scene_17",
+      "t_start": 147.4,
+      "t_end": 155.3,
+      "duration": 7.9,
+      "narration_segment": "and a single hard question can burn forty watt-hours or more — over a hundred times the simple case.",
+      "purpose": "the 100x spread — the first real jolt",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "stage",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish after 2 abstracts. The 100x spread at human scale"
+    },
+    {
+      "id": "scene_18",
+      "t_start": 155.3,
+      "t_end": 164.8,
+      "duration": 9.5,
+      "narration_segment": "So hold onto the friendly number — 0.3. Not because it's wrong, but because the story was never that one query is expensive.",
+      "purpose": "re-frame: the thesis is not per-query guilt",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "abstract",
+        "progression_role": "reset",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "hold onto 0.3 — the reset before the ladder starts"
+    },
+    {
+      "id": "scene_19",
+      "t_start": 164.8,
+      "t_end": 175.6,
+      "duration": 10.8,
+      "narration_segment": "The story is what it takes to answer a billion of them a day, forever — and to keep making the machine hungrier. Follow the wire.",
+      "purpose": "hand off to the ladder — 'follow the wire' is the spine cue",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "'follow the wire' — the spine cue, the ladder begins"
+    },
+    {
+      "id": "scene_20",
+      "t_start": 175.6,
+      "t_end": 186.4,
+      "duration": 10.8,
+      "narration_segment": "Your question doesn't land on 'a computer.' It lands here — in a building the size of several football fields, full of machines that never sleep.",
+      "purpose": "first scale-shock: the query's destination is a building",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "LADDER RUNG 1: the datacenter building, football fields"
+    },
+    {
+      "id": "scene_21",
+      "t_start": 186.4,
+      "t_end": 195.9,
+      "duration": 9.5,
+      "narration_segment": "The thing actually answering you is a chip like this — an H100. One of them, flat out, draws about 700 watts —",
+      "purpose": "hero the chip — the physical object doing the thinking",
+      "register": "engineer",
+      "needs": [
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "HERO SHOT: the H100 lifted out and lit like a jewel"
+    },
+    {
+      "id": "scene_22",
+      "t_start": 195.9,
+      "t_end": 204.2,
+      "duration": 8.3,
+      "narration_segment": "a microwave's worth of power, for one chip. But you're not answered by one. They run in trays of eight,",
+      "purpose": "one chip is already absurd — and it is never one",
+      "register": "data",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "a tray of eight"
+    },
+    {
+      "id": "scene_23",
+      "t_start": 204.2,
+      "t_end": 213.3,
+      "duration": 9.1,
+      "narration_segment": "and one tray pulls around ten kilowatts — the electricity of about five homes — to do arithmetic, fast, in the dark.",
+      "purpose": "convert watts into homes — the unit the viewer feels",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "10 kW = five homes"
+    },
+    {
+      "id": "scene_24",
+      "t_start": 213.3,
+      "t_end": 222.4,
+      "duration": 9.1,
+      "narration_segment": "Fill a rack with trays and a hall with racks, and a single building is running the power of a small town.",
+      "purpose": "the multiply: rack to hall to town",
+      "register": "data",
+      "needs": [
+        "architecture",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "★ PULL-BACK 1/3 — rack -> hall -> the power of a small town"
+    },
+    {
+      "id": "scene_25",
+      "t_start": 222.4,
+      "t_end": 232.7,
+      "duration": 10.3,
+      "narration_segment": "That is the fundamental fact about artificial intelligence that the smooth little chat window is designed to hide: underneath, it is a ferociously hungry machine,",
+      "purpose": "name the concealment — the emotional core of the video",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the smooth chat window vs the machine it hides. The emotional core"
+    },
+    {
+      "id": "scene_26",
+      "t_start": 232.7,
+      "t_end": 243.9,
+      "duration": 11.2,
+      "narration_segment": "and what it is hungry for is electricity. And there is a catch built into physics. Everything that much electricity does, it eventually turns into heat —",
+      "purpose": "the physics turn that opens the water beat",
+      "register": "engineer",
+      "needs": [
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the physics turn: electricity becomes heat"
+    },
+    {
+      "id": "scene_27",
+      "t_start": 243.9,
+      "t_end": 254.2,
+      "duration": 10.3,
+      "narration_segment": "and a hall like this would cook itself in minutes if nobody carried the heat away. Which is the second cost, the one nobody sees.",
+      "purpose": "set up cost #2 as inevitable, not incidental",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the hall's heat shimmer; cooling kicks in"
+    },
+    {
+      "id": "scene_28",
+      "t_start": 254.2,
+      "t_end": 264.1,
+      "duration": 9.9,
+      "narration_segment": "The cheapest way to move a mountain of heat is water — so a big part of this machine exists just to evaporate it,",
+      "purpose": "why water — it is a heat problem, not a thirst problem",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "LADDER RUNG 2: the cooling towers exhaling vapour"
+    },
+    {
+      "id": "scene_29",
+      "t_start": 264.1,
+      "t_end": 272.8,
+      "duration": 8.7,
+      "narration_segment": "the way sweat cools you down. At the datacenter itself, one answer evaporates only a few millilitres — a rushed sip.",
+      "purpose": "the on-site number, honestly small",
+      "register": "data",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the on-site sip — a few millilitres"
+    },
+    {
+      "id": "scene_30",
+      "t_start": 272.8,
+      "t_end": 280.2,
+      "duration": 7.4,
+      "narration_segment": "But that isn't where most of the water is. Because the electricity had to come from somewhere —",
+      "purpose": "the misdirection: the water is upstream, not here",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "misdirection: the water is upstream, not here"
+    },
+    {
+      "id": "scene_31",
+      "t_start": 280.2,
+      "t_end": 291.8,
+      "duration": 11.6,
+      "narration_segment": "and most of the world still makes power by boiling water into steam to spin a turbine, in plants that evaporate their own rivers to cool back down.",
+      "purpose": "the grid's own water cost — the hidden second boundary",
+      "register": "engineer",
+      "needs": [
+        "architecture",
+        "nature"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "match_cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.power_flow",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "★ MATCH-CUT 1/3 — datacenter cooling tower plume -> POWER PLANT cooling tower plume. Same shape, bigger scale: the match IS the argument"
+    },
+    {
+      "id": "scene_32",
+      "t_start": 291.8,
+      "t_end": 301.3,
+      "duration": 9.5,
+      "narration_segment": "So every watt your question borrowed from the grid had already spent a little water, miles away, before it ever reached the building.",
+      "purpose": "connect the two boundaries into one chain",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "every watt already spent water, miles away"
+    },
+    {
+      "id": "scene_33",
+      "t_start": 301.3,
+      "t_end": 312.5,
+      "duration": 11.2,
+      "narration_segment": "Add them up, and a single answer costs somewhere around fifteen millilitres of water — a real mouthful. The exact figure is genuinely hard to pin down;",
+      "purpose": "deliver ~15 mL and immediately flag its uncertainty",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the two boundaries add to ~15 mL"
+    },
+    {
+      "id": "scene_34",
+      "t_start": 312.5,
+      "t_end": 321.2,
+      "duration": 8.7,
+      "narration_segment": "it depends on where the datacenter sits and how it's cooled. But a mouthful is the right order of magnitude —",
+      "purpose": "the humility beat — credibility with the expert viewer",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "reset",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "THE HUMILITY BEAT — the figure is contested. Credibility with the expert viewer"
+    },
+    {
+      "id": "scene_35",
+      "t_start": 321.2,
+      "t_end": 329.9,
+      "duration": 8.7,
+      "narration_segment": "and, once again, there is no such thing as one. Now — where does a chip like that even come from?",
+      "purpose": "re-arm the fleet refrain and hand off to silicon",
+      "register": "engineer",
+      "needs": [
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "stage",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "hand off to silicon: where does a chip come from?"
+    },
+    {
+      "id": "scene_36",
+      "t_start": 329.9,
+      "t_end": 339.0,
+      "duration": 9.1,
+      "narration_segment": "Because before that chip ever answered a single question, it was one of the most difficult objects humanity knows how to make.",
+      "purpose": "reframe the chip from component to artefact",
+      "register": "engineer",
+      "needs": [
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "establish",
+        "transition_in": "match_cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "★ MATCH-CUT 2/3 — the H100 (scene 21) -> the blank silicon wafer it was carved from. Rewind on the same rectangle"
+    },
+    {
+      "id": "scene_37",
+      "t_start": 339.0,
+      "t_end": 347.7,
+      "duration": 8.7,
+      "narration_segment": "The features carved onto it are smaller than a virus, printed by firing light at silicon with a machine so complex",
+      "purpose": "the precision — awe, not statistics",
+      "register": "engineer",
+      "needs": [
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "features smaller than a virus"
+    },
+    {
+      "id": "scene_38",
+      "t_start": 347.7,
+      "t_end": 356.4,
+      "duration": 8.7,
+      "narration_segment": "that only one company on Earth can build it. Getting from sand to a working AI chip takes hundreds of steps,",
+      "purpose": "the ASML fact — a genuine jaw-drop, kept about the machine",
+      "register": "data",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the EUV machine, hero-lit — only one company on Earth"
+    },
+    {
+      "id": "scene_39",
+      "t_start": 356.4,
+      "t_end": 367.6,
+      "duration": 11.2,
+      "narration_segment": "in a factory that has to be cleaner than an operating room and never, ever stops. And a factory like that is a monster of its own.",
+      "purpose": "the fab as its own industrial appetite",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the cleanroom that never stops"
+    },
+    {
+      "id": "scene_40",
+      "t_start": 367.6,
+      "t_end": 375.9,
+      "duration": 8.3,
+      "narration_segment": "One leading-edge chip fab runs on the electricity of a small city and the water of a small town —",
+      "purpose": "the fab's power AND water in one line — the ladder's 4th rung",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "LADDER RUNG 3: a city of power AND a town of water"
+    },
+    {
+      "id": "scene_41",
+      "t_start": 375.9,
+      "t_end": 387.1,
+      "duration": 11.2,
+      "narration_segment": "millions of gallons a day, purified past anything found in nature — just to keep printing silicon. The company that makes most of the world's AI chips",
+      "purpose": "make the volume physical",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "millions of gallons a day"
+    },
+    {
+      "id": "scene_42",
+      "t_start": 387.1,
+      "t_end": 398.3,
+      "duration": 11.2,
+      "narration_segment": "gets through more power and water in a year than some entire countries. So your chatbot's brain was thirsty, and power-hungry, before it ever had a thought.",
+      "purpose": "TSMC vs countries — then the wit line that lands the beat",
+      "register": "wit",
+      "needs": [
+        "map",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish. TSMC vs entire countries"
+    },
+    {
+      "id": "scene_43",
+      "t_start": 398.3,
+      "t_end": 409.5,
+      "duration": 11.2,
+      "narration_segment": "Expensive to build. Expensive to cool. Expensive to make. Now do the one thing that turns all of this from a curiosity into a crisis — multiply.",
+      "purpose": "summarise the three costs and cue the multiply",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "stage",
+        "progression_role": "reset",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the three costs summarised — then 'multiply'"
+    },
+    {
+      "id": "scene_44",
+      "t_start": 409.5,
+      "t_end": 419.0,
+      "duration": 9.5,
+      "narration_segment": "We followed the heat, and the water, and the silicon. Now follow the thing the whole machine actually runs on — electricity —",
+      "purpose": "recap the ladder and return to the spine",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "★ PULL-BACK 2/3 — LADDER RUNG 4: one datacenter -> a map studded with hundreds"
+    },
+    {
+      "id": "scene_45",
+      "t_start": 419.0,
+      "t_end": 427.3,
+      "duration": 8.3,
+      "narration_segment": "and ask a simple question: where does a billion queries' worth of it come from? One query is a sip.",
+      "purpose": "pose the aggregate question in the viewer's own terms",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "a billion queries' worth of electricity"
+    },
+    {
+      "id": "scene_46",
+      "t_start": 427.3,
+      "t_end": 438.9,
+      "duration": 11.6,
+      "narration_segment": "But a billion a day, and climbing — data-centre electricity is growing about fifteen percent a year, more than four times faster than everything else we plug in.",
+      "purpose": "growth rate — the number that makes it a trend, not a snapshot",
+      "register": "data",
+      "needs": [
+        "infographic",
+        "diagram"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the 15%/yr growth curve climbing"
+    },
+    {
+      "id": "scene_47",
+      "t_start": 438.9,
+      "t_end": 449.7,
+      "duration": 10.8,
+      "narration_segment": "Here's what that looks like when it lands on a real place. In Ireland, data centres now draw twenty-three percent of the entire country's electricity —",
+      "purpose": "Ireland: the abstraction becomes a country",
+      "register": "data",
+      "needs": [
+        "map",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish. IRELAND lights up — the abstraction becomes a country"
+    },
+    {
+      "id": "scene_48",
+      "t_start": 449.7,
+      "t_end": 459.6,
+      "duration": 9.9,
+      "narration_segment": "nearly a quarter of a national grid, feeding server halls instead of homes. In a decade it grew more than five hundred percent —",
+      "purpose": "make 23% concrete: halls instead of homes",
+      "register": "data",
+      "needs": [
+        "map",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "server halls instead of homes; +518% in a decade"
+    },
+    {
+      "id": "scene_49",
+      "t_start": 459.6,
+      "t_end": 469.1,
+      "duration": 9.5,
+      "narration_segment": "until the country started refusing to connect new ones. And Ireland is just the sharpest edge of it. Today the world's data centres",
+      "purpose": "a state had to say no — the first hard consequence",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the country starts refusing new connections"
+    },
+    {
+      "id": "scene_50",
+      "t_start": 469.1,
+      "t_end": 479.4,
+      "duration": 10.3,
+      "narration_segment": "already use more electricity than most countries on Earth. By 2030 they're on track for around three percent of all the power humanity generates —",
+      "purpose": "the planetary figure, framed as projection",
+      "register": "data",
+      "needs": [
+        "map",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the 2030 projection: ~3% of all power humanity generates"
+    },
+    {
+      "id": "scene_51",
+      "t_start": 479.4,
+      "t_end": 488.1,
+      "duration": 8.7,
+      "narration_segment": "and in the United States, they'll soon draw more than making all the country's aluminium, steel, cement, and chemicals — combined.",
+      "purpose": "beat heavy industry — the comparison that lands hardest",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "stage",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish. Beats aluminium+steel+cement+chemicals COMBINED"
+    },
+    {
+      "id": "scene_52",
+      "t_start": 488.1,
+      "t_end": 498.4,
+      "duration": 10.3,
+      "narration_segment": "And it doesn't slow down, because of a quirk most people never hear. We picture the giant cost as training — building the model once.",
+      "purpose": "set up the training-vs-inference inversion",
+      "register": "engineer",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the training bar — what everyone pictures"
+    },
+    {
+      "id": "scene_53",
+      "t_start": 498.4,
+      "t_end": 507.1,
+      "duration": 8.7,
+      "narration_segment": "But the forever-cost is answering you, a billion times a day — and running the thing has quietly outgrown building it.",
+      "purpose": "the inversion: running it beat building it",
+      "register": "data",
+      "needs": [
+        "diagram",
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the inversion: running it has outgrown building it"
+    },
+    {
+      "id": "scene_54",
+      "t_start": 507.1,
+      "t_end": 515.0,
+      "duration": 7.9,
+      "narration_segment": "Which is how you end up with a company doing something that would have sounded insane ten years ago.",
+      "purpose": "the hinge into the climax",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish. The hinge into the climax"
+    },
+    {
+      "id": "scene_55",
+      "t_start": 515.0,
+      "t_end": 527.0,
+      "duration": 12.0,
+      "narration_segment": "This is Three Mile Island. If the name rings a bell, it should. In 1979, one of its two reactors suffered the worst nuclear accident in American history —",
+      "purpose": "the reveal — a name that carries its own dread",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "hook",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "★ THE REVEAL: the twin towers of Three Mile Island, silent, grey sky"
+    },
+    {
+      "id": "scene_56",
+      "t_start": 527.0,
+      "t_end": 536.5,
+      "duration": 9.5,
+      "narration_segment": "a partial meltdown that helped freeze new nuclear construction in this country for a generation. Its surviving twin ran on quietly until 2019,",
+      "purpose": "the history, precisely — Unit 2 melted, Unit 1 survived",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "crossfade"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "TRANS-2 crossfade = time passing, 1979 -> 2019. The only crossfade in the video"
+    },
+    {
+      "id": "scene_57",
+      "t_start": 536.5,
+      "t_end": 544.4,
+      "duration": 7.9,
+      "narration_segment": "when it was switched off — simply too expensive to keep running. The lights went out. It was over.",
+      "purpose": "the death of the plant — the low before the turn",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "switched off. The lights went out"
+    },
+    {
+      "id": "scene_58",
+      "t_start": 544.4,
+      "t_end": 554.3,
+      "duration": 9.9,
+      "narration_segment": "Except in 2024, it came back. Not for a city. Not for a region. Microsoft signed a twenty-year deal to buy the entire output",
+      "purpose": "the turn — resurrection, and for whom",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "action",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "2024 — crews, trucks, the plant stirring"
+    },
+    {
+      "id": "scene_59",
+      "t_start": 554.3,
+      "t_end": 564.2,
+      "duration": 9.9,
+      "narration_segment": "of a restarted Three Mile Island reactor — 835 megawatts, every watt of it — to match the electricity its AI data centres burn.",
+      "purpose": "the hero number the thumbnail promised: 835 MW",
+      "register": "data",
+      "needs": [
+        "infographic",
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "★ 835 MEGAWATTS — the hero number the thumbnail promised"
+    },
+    {
+      "id": "scene_60",
+      "t_start": 564.2,
+      "t_end": 573.7,
+      "duration": 9.5,
+      "narration_segment": "Over a billion dollars, to wake a nuclear reactor from the dead. Eight hundred and thirty-five megawatts is an entire power station —",
+      "purpose": "the cost, then convert MW into something human",
+      "register": "data",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "over a billion dollars; an entire power station"
+    },
+    {
+      "id": "scene_61",
+      "t_start": 573.7,
+      "t_end": 582.0,
+      "duration": 8.3,
+      "narration_segment": "enough to light three-quarters of a million homes — and its whole output now has one customer, feeding one appetite.",
+      "purpose": "800k homes, re-routed to one customer — the asymmetry made visual",
+      "register": "data",
+      "needs": [
+        "infographic",
+        "map"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.power_flow",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "SHOT-2 re-establish. 800,000 homes greying out as the power re-routes"
+    },
+    {
+      "id": "scene_62",
+      "t_start": 582.0,
+      "t_end": 589.0,
+      "duration": 7.0,
+      "narration_segment": "That is the real answer to the question we opened with. Your one question costs a sip.",
+      "purpose": "close the loop opened in scene 3",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "'your one question costs a sip' — the callback to scene 2"
+    },
+    {
+      "id": "scene_63",
+      "t_start": 589.0,
+      "t_end": 601.4,
+      "duration": 12.4,
+      "narration_segment": "But all of them, all the time, growing every year — cost a reactor. That is why AI is so expensive to run. Not the query. The machine behind it.",
+      "purpose": "THE title payoff — held on the towers, one continuous move",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "★★ THE TITLE PAYOFF. Held on the towers. Stillness, not a move — the strongest choice available"
+    },
+    {
+      "id": "scene_64",
+      "t_start": 601.4,
+      "t_end": 613.4,
+      "duration": 12.0,
+      "narration_segment": "Here's the thing I keep coming back to. Any one of these questions really is almost nothing. Your own AI use is a rounding error on your life —",
+      "purpose": "hand the honest counter-argument to the viewer, unprompted",
+      "register": "witness",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "establish",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "back to the phone, the haiku still on screen"
+    },
+    {
+      "id": "scene_65",
+      "t_start": 613.4,
+      "t_end": 624.6,
+      "duration": 11.2,
+      "narration_segment": "the energy of a query is a few seconds of television. That's true, and it's worth saying plainly. But line them up — a billion a day,",
+      "purpose": "concede fully, then turn",
+      "register": "witness",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "scale_comparison",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "a query = a few seconds of television. The concession, made fully"
+    },
+    {
+      "id": "scene_66",
+      "t_start": 624.6,
+      "t_end": 635.8,
+      "duration": 11.2,
+      "narration_segment": "growing every year, all landing on the same few grids and rivers and towns at once — and 'almost nothing,' repeated at that scale, becomes a reactor.",
+      "purpose": "the thesis in one sentence — concentration, not per-prompt guilt",
+      "register": "engineer",
+      "needs": [
+        "map"
+      ],
+      "shot": {
+        "scene_type": "map",
+        "shot_size": "vista",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "maps",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the billion sparks resolve into the reactor"
+    },
+    {
+      "id": "scene_67",
+      "t_start": 635.8,
+      "t_end": 646.1,
+      "duration": 10.3,
+      "narration_segment": "The weight was never in the question. It's in the machine that makes the question feel free. And that's the part I find genuinely remarkable.",
+      "purpose": "relocate the weight — and turn to wonder",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "stage",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the machine that makes the question feel free"
+    },
+    {
+      "id": "scene_68",
+      "t_start": 646.1,
+      "t_end": 654.0,
+      "duration": 7.9,
+      "narration_segment": "We built something so good at hiding its own weight that a civilisation-sized effort — power plants, cooling towers,",
+      "purpose": "begin the roll-call of the hidden chain",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "approach",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the roll-call of the hidden chain begins"
+    },
+    {
+      "id": "scene_69",
+      "t_start": 654.0,
+      "t_end": 663.9,
+      "duration": 9.9,
+      "narration_segment": "a factory cleaner than a hospital, a reactor pulled back from the dead — collapses down to a blinking cursor and a one-second reply.",
+      "purpose": "the collapse — civilisation-scale to a cursor",
+      "register": "witness",
+      "needs": [
+        "character",
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "abstract",
+        "progression_role": "beat",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "the whole chain held as one schematic"
+    },
+    {
+      "id": "scene_70",
+      "t_start": 663.9,
+      "t_end": 673.0,
+      "duration": 9.1,
+      "narration_segment": "There's no monument to a datacenter. The most impressive thing about this machine might be that you never have to see it.",
+      "purpose": "the house line — echoes 001's 'no monument to a gradient'",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "payoff",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.power_flow"
+      ],
+      "_note": "'no monument to a datacenter' — the house line, echoing 001"
+    },
+    {
+      "id": "scene_71",
+      "t_start": 673.0,
+      "t_end": 682.9,
+      "duration": 9.9,
+      "narration_segment": "It isn't weightless. It never was. It just feels that way — and that feeling might be the most expensive thing we've ever engineered.",
+      "purpose": "the emotional peak — the thesis as a closing aphorism",
+      "register": "witness",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "narrative",
+        "shot_size": "stage",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "THE EMOTIONAL PEAK: it isn't weightless, it never was"
+    },
+    {
+      "id": "scene_72",
+      "t_start": 682.9,
+      "t_end": 692.8,
+      "duration": 9.9,
+      "narration_segment": "So the next time it answers you instantly, and it feels free, and weightless, and like magic — remember what 'instant' is standing on.",
+      "purpose": "return to the phone — the callback frame",
+      "register": "engineer",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "close",
+        "transition_in": "match_cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "★ MATCH-CUT 3/3 — the reactor's towers -> the phone screen. Closes the loop opened in scene 1"
+    },
+    {
+      "id": "scene_73",
+      "t_start": 692.8,
+      "t_end": 704.4,
+      "duration": 11.6,
+      "narration_segment": "A rack that eats like a town. A power plant that drinks for it. A chip that took a small country's worth of power and water to carve.",
+      "purpose": "the ladder recited back, one continuous pull",
+      "register": "engineer",
+      "needs": [
+        "architecture",
+        "map"
+      ],
+      "shot": {
+        "scene_type": "cross_section",
+        "shot_size": "vista",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "★ PULL-BACK 3/3 — the final continuous move: phone -> datacenter -> plant -> reactor"
+    },
+    {
+      "id": "scene_74",
+      "t_start": 704.4,
+      "t_end": 713.1,
+      "duration": 8.7,
+      "narration_segment": "And, at the end of the line, a reactor somebody brought back from the dead to keep the whole thing fed.",
+      "purpose": "land the chain on the reactor — final rung",
+      "register": "engineer",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "vista",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "accuracy.cooling_tower_plume",
+        "accuracy.three_mile_island",
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "the reactor at the end of the line"
+    },
+    {
+      "id": "scene_75",
+      "t_start": 713.1,
+      "t_end": 720.1,
+      "duration": 7.0,
+      "narration_segment": "It's the most impressive machine most people will never see — and it is anything but free.",
+      "purpose": "the closing line — held",
+      "register": "witness",
+      "needs": [
+        "architecture"
+      ],
+      "shot": {
+        "scene_type": "establishing",
+        "shot_size": "stage",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "the closing line, held"
+    },
+    {
+      "id": "scene_76",
+      "t_start": 720.1,
+      "t_end": 728.4,
+      "duration": 8.3,
+      "narration_segment": "The next time it answers in a second, remember what it's standing on. I'll see you in the next one.",
+      "purpose": "sign-off",
+      "register": "engineer",
+      "needs": [
+        "character"
+      ],
+      "shot": {
+        "scene_type": "detail",
+        "shot_size": "study",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "sign-off — first person, personalised at the mic"
+    },
+    {
+      "id": "scene_77",
+      "t_start": 728.4,
+      "t_end": 734.4,
+      "duration": 6.0,
+      "narration_segment": "",
+      "purpose": "outro card — subscribe + next video, title sting reprise",
+      "register": "engineer",
+      "needs": [
+        "infographic"
+      ],
+      "shot": {
+        "scene_type": "outro",
+        "shot_size": "abstract",
+        "progression_role": "close",
+        "transition_in": "cut"
+      },
+      "continuity": [
+        "light",
+        "palette",
+        "sides.query_flow"
+      ],
+      "_note": "OUTRO CARD — subscribe + next video, title sting reprise"
+    }
+  ]
+}

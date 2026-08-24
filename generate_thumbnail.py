@@ -9,30 +9,51 @@ scene); generate_images.py makes STORYBOARD scene plates (always style-card-pref
 A thumbnail is a full-bleed 1280x720 scene with a dark moody background and NO style card.
 
 This tool composes the SKILL's Stage-2 base prompt around a locked concept + accent,
-appends exactly ONE varied axis per candidate (crop tightness by default), and writes
+appends exactly ONE varied axis per candidate (--vary: crop | pairing), and writes
 <project>/output/thumb_{a,b,c}.png. Text is NEVER generated — typography is added locally
-in Stage 4 (Fraunces Bold), because AI lettering reads as slop (SKILL rule 3).
+in Stage 4 by add_thumbnail_text.py (EA: Fraunces Bold · Depth First: Archivo Black),
+because AI lettering reads as slop (SKILL rule 3). Same rule kills AI-drawn logos.
 
-Charged (Gemini image model, same one the plate pass uses). Gated: --dry-run previews the
-composed prompts with no API call; a real run requires --yes.
+Charged. Defaults to gemini-3-pro-image — deliberately NOT the plate pass's flash model;
+see the note by IMAGE_MODEL_DEFAULT. Gated: --dry-run previews the composed prompts with
+no API call; a real run requires --yes.
 
 Usage (from repo root)
 ----------------------
+    # The Engineering Atlas — a linear structure, so vary the crop
     P=projects/001_roman_aqueduct
-    python generate_thumbnail.py --project $P \
-        --subject "a monumental ancient Roman aqueduct ..." \
-        --accent "electric cyan-blue #22B8E0" --vary crop --dry-run
-    python generate_thumbnail.py --project $P --subject "..." --accent "..." --vary crop --yes
+    python generate_thumbnail.py --project $P --brand ea \
+        --subject "a monumental ancient Roman aqueduct ..." --vary crop --dry-run
+
+    # Depth First — a two-object relationship, so vary the pairing
+    P=projects/s001_ai_physical_cost
+    python generate_thumbnail.py --project $P --brand depthfirst \
+        --subject "a colossal nuclear cooling tower ... wired to a hyperscale datacenter" \
+        --vary pairing --dry-run
+    # ... then re-run with --yes to submit (CHARGED)
 """
 
 import argparse, base64, os
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-IMAGE_MODEL_DEFAULT = "gemini-3.1-flash-image"          # same model as the plate pass
+
+# ⚠ This pass DELIBERATELY diverges from generate_images.py / generate_asset.py, which
+# default to gemini-3.1-flash-image. Do not "fix" this back for consistency.
+#   - The plate pass generates ~60 images/video; flash is what keeps that at ~₹450.
+#   - This pass generates 3, and they are the only images that decide whether anyone
+#     ever sees the other 60. Pro costs ~$0.134 vs ~$0.086 — a ~₹13 delta on a batch.
+#   - The real reason is prompt adherence, not polish: the composed prompt stacks three
+#     spatial constraints (subject right two-thirds · left third clear for type · lower-left
+#     foreground clear for the phone composite). A dropped constraint isn't a slightly worse
+#     thumbnail, it's an unusable one — and a re-run costs more than the upgrade.
+# 1K and 2K are priced identically, so ask for 2K and downscale to 1280x720 — free sharpness.
+IMAGE_MODEL_DEFAULT = "gemini-3-pro-image"
 
 # A/B axes. Vary exactly ONE across a/b/c, or the test teaches nothing (SKILL rule 2).
 VARIATIONS = {
+    # Written for LINEAR structures (aqueducts, bridges) — a single subject whose leading
+    # line carries the frame. Wrong axis for a two-object composition; see "pairing".
     "crop": [
         ("a", "Framing: wide establishing shot — the structure recedes across a vast "
               "landscape to a distant vanishing point, emphasizing sheer scale and distance."),
@@ -41,6 +62,19 @@ VARIATIONS = {
         ("c", "Framing: tight dramatic crop on the nearest edge of the structure with heavy "
               "foreshortening, the leading line rushing away to a distant vanishing point."),
     ],
+    # For concepts whose hook is a RELATIONSHIP between two objects (s001: the machine that
+    # answers vs. the machine that powers it). Varies how the two are weighed against each
+    # other — i.e. how much scale-shock wins in this niche — not how tightly they're cropped.
+    "pairing": [
+        ("a", "Framing: the power source dominates — it towers over the frame while the "
+              "computing facility sits small and bright at its foot, dwarfed by what feeds it."),
+        ("b", "Framing: the two structures stand side by side at equal visual weight, "
+              "explicitly joined by the heavy cable run between them, so the frame reads as "
+              "a single wired circuit."),
+        ("c", "Framing: a whole horizon of identical computing facilities recedes into the "
+              "distance, all of them converging by cable on the one power source — the fleet, "
+              "not the building."),
+    ],
 }
 
 # SKILL Stage-2 base prompt — deliberately NO style-card prefix.
@@ -48,7 +82,7 @@ BASE = (
     "Dramatic isometric illustration of {subject}. {palette} High contrast, bold "
     "composition, one clear focal point, cinematic lighting, deep moody dark background, "
     "extremely detailed and eye-catching, YouTube thumbnail style, 16:9 aspect ratio, "
-    "1280x720. {composition} {variation} "
+    "1280x720. {composition} {variation} {facts} "
     "Absolutely NO text, letters, numbers, watermarks or logos anywhere in the image."
 )
 
@@ -67,7 +101,7 @@ BRANDS = {
         "palette": (
             "Near-black blue-black ground (#0B0E14) with cold graphite structure; vibrant "
             "{accent} as the single pop colour, carried only by glowing windows, rim-light "
-            "and power-line arcs. NO warm tan, NO ochre, NO parchment, NO daylight, no warm "
+            "and illuminated cable runs. NO warm tan, NO ochre, NO parchment, NO daylight, no warm "
             "sunset tones. Schematic and disciplined like a drafting table, not a glossy "
             "product render."
         ),
@@ -121,7 +155,11 @@ def main():
                     help="which channel's look to compose (default: ea). 'depthfirst' = the software channel")
     ap.add_argument("--accent", default=None, help="the single pop colour (default: the brand's)")
     ap.add_argument("--vary", default="crop", choices=list(VARIATIONS), help="the ONE axis to A/B")
-    ap.add_argument("--model", default=IMAGE_MODEL_DEFAULT, help="image model (gemini-3-pro-image for a hero re-render)")
+    ap.add_argument("--facts", default="", help="physical-accuracy constraints the model gets wrong "
+                    "unprompted (the thumbnail's visual_facts). Stated as positives + explicit negatives.")
+    ap.add_argument("--only", default=None, help="regenerate just these candidates, e.g. 'b' or 'a,c' "
+                    "— so fixing one does not pay for three")
+    ap.add_argument("--model", default=IMAGE_MODEL_DEFAULT, help="image model (default: pro — see the note by IMAGE_MODEL_DEFAULT; gemini-3.1-flash-image to economise)")
     ap.add_argument("--force", action="store_true", help="regenerate even if the output exists")
     ap.add_argument("--dry-run", action="store_true", help="print composed prompts; no API call, no charge")
     ap.add_argument("--yes", action="store_true", help="confirm the CHARGED batch (required to actually generate)")
@@ -134,8 +172,14 @@ def main():
     prompts = [(tag, BASE.format(subject=args.subject.strip(),
                                  palette=brand["palette"].format(accent=accent),
                                  composition=brand["composition"],
-                                 variation=v))
+                                 variation=v,
+                                 facts=args.facts.strip()))
                for tag, v in VARIATIONS[args.vary]]
+    if args.only:
+        keep = {t.strip() for t in args.only.split(",") if t.strip()}
+        prompts = [(t, pr) for t, pr in prompts if t in keep]
+        if not prompts:
+            raise SystemExit(f"--only {args.only!r} matched no candidate in --vary {args.vary}")
 
     print(f"== THUMBNAIL PASS ({args.model}) — brand: {args.brand} — vary: {args.vary} ==")
     print(f"   {brand['why']}  accent: {accent}")

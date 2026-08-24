@@ -1,9 +1,9 @@
 # s001 · Thumbnail — Stage-4 Typography
 
 > `thumbnail-workflow` SKILL Stage 4 (local typography, **never AI lettering**). Locked direction:
-> **A · "The Asymmetry / the reactor"** (`packaging.md` + `research.md` §6). Type here is **real and
-> final-quality** (rendered locally with Pillow); the **background is a STAND-IN** — the real AI plate
-> (Stage 2) is a separate **charged** image-gen gate, not yet run. Outputs in `output/`.
+> **A · "The Asymmetry / the reactor"** (`packaging.md` + `research.md` §6). Type is **real** —
+> rendered locally with Pillow, never by the image model. **The Stage-2 plate is generated** as of
+> 2026-08-20; the earlier stand-in renders are kept below, marked superseded. Outputs in `output/`.
 
 ## Decided
 
@@ -23,35 +23,90 @@
   and fragments "835" and "MW" into two words instead of one mark. §4 now carries an explicit
   thumbnail carve-out so this doesn't get re-litigated per video. **In-frame numbers stay mono.**
 
-## Open
+## ✅ SHIPPED — `output/thumb_FINAL_835mw.png` (2026-08-20)
 
-- 🟡 **Hero colour — deliberately deferred to the real plate.** Signal amber `#FFB020` is the brand
-  anchor (§3: "the single most important number in any frame"), but in the study **bone `#E8E6E1`
-  reads harder at 120px** against the stand-in's blue-dominant field. That result is a property of the
-  *placeholder*, not of the design — amber-on-blue is high hue contrast but close in luminance. Do not
-  lock this until the real plate exists; re-squint both then.
-- 🟡 **A/B variant B (reactor + AI model logos)** — approved as the A/B axis, not yet built. See
-  `packaging.md`. Logos must be local vector assets, never image-model output.
-- 🔴 **Blocked on a charged gate:** the real Stage-2 AI plate. Needs explicit go-ahead before any
-  image-gen spend. Until then the type sits on the placeholder.
+1280×720, 1,035 KB (YouTube's cap is 2,048 KB). The v2 plate, tight crop, phone composite,
+`835 MW` in Archivo Black signal amber. Locked by the user.
 
-## Plate-prompt requirement carried into Stage 2
+Still open, both optional and neither blocking:
+- ~₹12 for a denser native-resolution re-render (the shipped crop is a 1076px source upscaled 1.19×,
+  and v2's datacenter is a low flat hall — less imposing than the rejected v1's tall block).
+- **A/B variant B** (reactor + AI model logos) — approved as the test axis, not yet built. Same plate,
+  local vector logos only. See `packaging.md`.
 
-**The foreground device must read as an assistant-chat interface, not a text message.** A phone with a
-generic SMS bubble reads as *texting*; at 120px it collapses to a dark sliver and the thumbnail scans
-as an energy/infrastructure video rather than an AI video. Use the recognisable chat-UI silhouette with
-"hi" in it. This is the one defect the current direction has, and it is fixed in the prompt, not the
-typography.
+---
 
-## Current renders (locked hero, brand faces)
+## Stage-2 plate — GENERATED 2026-08-20 (4 images on `gemini-3-pro-image`, ~₹46)
 
-| File | Face / colour | Read |
+Run: `--brand depthfirst --vary pairing`. The `pairing` axis (added for this video) varies how the
+two objects are weighed against each other, not crop tightness — the inherited `crop` axis was
+written for linear stone structures and teaches nothing about a two-object composition.
+
+| | Framing | Squint result |
 |:--|:--|:--|
-| `thumb_D_835mw_archivo_amber.png` | Archivo Black / amber | ⭐ On-brand default. Dense, tight, one solid mark at 120px |
-| `thumb_D_835mw_archivo_bone.png` | Archivo Black / bone | Highest raw contrast on the stand-in — the colour A/B |
-| `thumb_D_835mw_plexmono_amber.png` | IBM Plex Mono Bold / amber | The rejected mono test. Visibly lighter and wider; fragments at squint |
+| a | power source dominates, datacenter small at its foot | Elegant but collapses to *one cooling tower* at 120px; datacenter is a thin strip |
+| **b** ⭐ | the two side by side, joined by the cable run | **The only one where both objects survive the squint.** Datacenter unmistakably a datacenter |
+| c | a horizon of datacenters converging on one tower | The fleet never materialised — two buildings, one a ghost |
 
-Each has a `_120.png` squint sibling; `thumb_D_font_contact_sheet.png` shows all three full + squint.
+**The composition constraints held on all three** (left third clean, subject right two-thirds, clear
+lower-left plane). That is the pro model earning its cost; stacked spatial clauses are exactly what
+flash drops. **Colour question settled: amber.** The real plate is full of near-white (plume, window
+rows); bone shares both luminance and hue with all of it and is absorbed, while amber owns a hue
+nothing else in the frame uses. This **reverses** the stand-in study's provisional read — correctly,
+since that read was flagged as placeholder-dependent.
+
+### ⚠ Accuracy defect found and fixed — the "arcs" bug
+
+v1 of candidate b rendered **lightning inside the cooling-tower plume**, plus arcing along the
+transmission lines, and a dark storm-grey plume that read as smoke. All three are wrong: a fission
+plant burns nothing, so there is no exhaust — the plume is condensing water vapour off the tertiary
+loop, three loops removed from the core and not radioactive. A dark smoky plume reinforces the single
+most common misconception about nuclear power, on the debut thumbnail of a channel whose §12 test is
+*"would an engineer watch it without wincing."*
+
+**Root cause was our own prompt, not the model.** The Depth First palette clause said
+*"power-line arcs"* — meant as the catenary sag of hanging cable, read by the model as electrical
+arcing. Changed to **"illuminated cable runs"** in `generate_thumbnail.py`'s brand profile, so it
+cannot re-seed on future videos. A `--facts` flag was added for physical-accuracy constraints
+(the thumbnail's `visual_facts`), and `--only` so fixing one candidate does not pay for three.
+
+**v2 fixed the plume completely** — clean white/pale-blue vapour, clear dark sky, steady glowing
+conductors — but the reworded subject made the model reflow the scene smaller, weakening the squint.
+Recovered for ₹0 by cropping in (`thumb_b_v2crop_final.png`, 1076px source → 1280×720, a mild 1.19×
+upscale). Compare all three in `thumb_final_compare.png`; `thumb_b_v1_final_amber.png` and
+`thumb_b_v1.png` are kept as the rejected-but-punchier reference.
+
+**Remaining weakness:** v2's datacenter is a low flat hall, less imposing than v1's tall glowing
+block. If that matters more than the ~₹12, one more generation with a fill-the-frame instruction
+would give a native-resolution, denser version.
+
+---
+
+## The phone is a LOCAL composite, not a prompt instruction — and that was the right call
+
+The Stage-2 prompt bans all text and logos (SKILL rule 3), so "hi" and the chat UI could never have
+come from the model. Drawing them locally turned the chat-UI requirement from *hope the model
+complies* into a guarantee, and it is free to iterate. Two things the build learned:
+
+- **Size, not UI detail, is what makes it read.** The original concept said "a single tiny phone";
+  at 120px a tiny phone is a dark sliver and the thumbnail scans as an energy video. The phone is
+  drawn at ~40% of frame height.
+- **The AI signal is the SHAPE of the exchange**, not the interface chrome: one small bright question
+  bubble, then a long dense block of answer. That silhouette survives blur. A single message bubble
+  reads as SMS at any size.
+
+Logos for variant B follow the same rule — local vector only, never image-model output.
+
+## Current renders
+
+| File | What it is |
+|:--|:--|
+| **`thumb_FINAL_835mw.png`** | ✅ **SHIPPED.** (identical to `thumb_b_v2crop_final.png`) v2 plate, tight crop, phone composite, `835 MW` in Archivo Black amber |
+| `thumb_b_final_amber.png` / `_bone.png` | v2 uncropped, both colour options — the amber-vs-bone test |
+| `thumb_final_compare.png` | v1 vs v2-uncropped vs v2-crop, full · 120px · 120px zoomed |
+| `thumb_b_v1_final_amber.png`, `thumb_b_v1.png` | the rejected lightning-plume version, kept for reference |
+| `thumb_a.png`, `thumb_c.png` | the losing pairing candidates |
+| `thumb_squint_sheet.png` | the raw a/b/c plates at squint size |
 
 <details>
 <summary>Superseded — the 2026-08-13 study (pre-brand, pre-hero-lock)</summary>
@@ -68,11 +123,11 @@ across three candidate heroes. Kept for the record; **do not build from these.**
 
 </details>
 
-## Re-stamp onto the REAL plate (once Stage 2 is generated — the house tool, ₹0)
+## Re-stamping type (the house tool, ₹0)
 
-When the real `thumb_plate.png` exists, drop the placeholder and stamp with the house Stage-4 tool
-(`add_thumbnail_text.py` — Pillow, local, never AI text). Note the `--font` flag is **required** for
-this channel: the tool's default is Fraunces, which is The Engineering Atlas's face.
+Type is stamped by `add_thumbnail_text.py` (Pillow, local, never AI text). The `--font` flag is
+**required** for this channel — the tool's default is Fraunces, The Engineering Atlas's face, so
+omitting it silently stamps the wrong brand.
 
 ```bash
 python add_thumbnail_text.py \
@@ -94,14 +149,15 @@ real house tool; only the 120px siblings and contact sheet are scratchpad code.)
 
 - [x] One dominant object ≥60% (the machine, right) — ✅ in the stand-in; **must hold in the real plate**.
 - [x] ≤4 words readable at 120 px — ✅ `835 MW` survives cleanly at 2 words.
-- [ ] **AI signal legible at 120px — ❌ FAILS on the stand-in.** The phone vanishes. Fixed by the
-      chat-UI plate-prompt requirement above; re-check on the real plate.
+- [x] **AI signal legible at 120px — ✅ PASSES on the real plate.** Not because the UI is readable
+      (at 120px nothing inside a phone could be) but because the *shape of the exchange* survives
+      blur: one tiny bright bubble, then a long dense block of answer. That silhouette says "AI";
+      a plain message bubble would not. The phone is drawn locally at ~40% of frame height —
+      "a tiny phone" as originally specced would have vanished.
 - [x] Pops on dark UI — ✅. ⚠ Re-check on a **light** UI once the real plate lands.
 - [x] Curiosity gap — ✅ tiny "hi" vs a reactor is the whole hook; the number doesn't answer *why*.
 
 ## Next
 
-1. **Gate: generate the real Stage-2 plate?** (charged image-gen) — on your go-ahead only. Prompt must
-   carry the chat-UI requirement.
-2. Re-stamp with the command above → lock hero colour (amber vs bone) at 120px on light + dark.
-3. Build variant B (logos) → Test & Compare → log the result.
+1. 120px re-check on a **light** UI — only dark has been checked.
+2. Build variant B (logos, local vector) → YouTube Test & Compare → log in `assets/thumbnails_log.md`.

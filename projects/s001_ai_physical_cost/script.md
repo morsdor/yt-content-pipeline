@@ -1,12 +1,17 @@
-# s001 · The Physical Cost of AI — Script (DRAFT v2)
+# s001 · The Physical Cost of AI — Script (v2 — ✅ LOCKED 2026-08-20)
 
 > **Script-stage deliverable** (`the-engineering-atlas-video` → *Script*). Consumes `research.md`;
 > feeds the storyboard. Mirrors `projects/001_roman_aqueduct/script.md`, the house format precedent.
+>
+> ✅ **LOCKED by the user 2026-08-20.** Cleared for the studio board (`studio-director`) and the VO
+> record. Any change from here is a re-lock, because scene timings are timestamped against it.
 > Target: ~11–13 min · ~140–150 wpm · one jaw-drop beat / 60–90 s · dual units throughout.
 >
-> ⚠ **Provisional voice.** New channel, no brand guide yet. Registers borrowed from The Engineering Atlas
-> (`brand_guide.md` §6–7): **Witness** frames the human stakes · **Engineer** (systems/infra explainer)
-> explains · wit seasons. You record the VO yourself — your voice is final at the mic.
+> ⚠ **Voice — one open check.** Written in registers borrowed from The Engineering Atlas
+> (`brand_guide.md` §6–7): **Witness** frames the human stakes · **Engineer** explains · wit seasons.
+> The channel now has its own guide — **re-read against `brand_guide_software.md` §6 ("The Insider and
+> the Translator"), which supersedes those registers.** Locking the words does not lock the register;
+> you record the VO yourself and your voice is final at the mic.
 >
 > **Structure = the locked dazzle ladder** (`research.md` §7): the unit of scale zooms out every act —
 > rack → power plant → fab → nation → reactor — climbing to the LOCKED climax (Three Mile Island).
@@ -171,7 +176,11 @@ It's the most impressive machine most people will never see — and it is anythi
 - [x] **~1 billion ChatGPT queries/day** — Altman's figure; attribute as order-of-magnitude scale, not a census.
 
 ## Word count / runtime
-~1,950 words of VO ≈ **11.8 min at 145 wpm** with the reveals breathing. Resource balance: **power = ④, ⑦, ⑧
+**1,748 words of VO ≈ 12.1 min at 145 wpm** with the reveals breathing. *(Measured 2026-08-20 by
+stripping all scene headings, stage directions and markdown from the spoken lines. The previous
+"~1,950 words ≈ 11.8 min" was an estimate and internally inconsistent — 1,950 at 145 wpm is 13.4 min.
+`script-analyzer` timestamps scenes off this figure, so it needs to be the real one.)* Both land
+inside the 11–13 min target. Resource balance: **power = ④, ⑦, ⑧
 (spine + climax)** · **water = ⑤ (one tight beat)** · **silicon/manufacturing = ⑥.** If it runs long, tighten
 ⑨→⑩ (they share a closing image); protect the five escalation beats (④–⑧). First-person beats (⓪, ①, ⑤ close,
 ⑦ close, ⑨, ⑩) are yours to re-voice at the mic.
