@@ -16,7 +16,11 @@ export const Scene55: React.FC = () => {
   const { durationInFrames } = useVideoConfig();
 
   // §5: pan 40 px/s at 4K, right — direction set by continuity_registry.sides.
-  const x = interpolate(frame, [15, durationInFrames - 15], [0, 40 * (durationInFrames / 30)], {
+  const travelPx = 40 * (durationInFrames / 30);
+  // Overscale must cover the travel or the plate edge enters frame (see PlatePush).
+  // Sign is inverted deliberately: a pan RIGHT moves the camera right, content LEFT.
+  const PAN_SCALE = 1 + Math.abs(travelPx) / 3840 + 0.04;
+  const x = interpolate(frame, [15, durationInFrames - 15], [travelPx / 2, -travelPx / 2], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
     easing: Easing.bezier(0.4, 0, 0.2, 1),
@@ -29,7 +33,7 @@ export const Scene55: React.FC = () => {
         style={{
           width: '100%',
           height: '100%',
-          scale: 1.06,
+          scale: PAN_SCALE,
           translate: `${x}px 0px`,
         }}
       >

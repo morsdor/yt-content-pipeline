@@ -66,6 +66,20 @@ def fit(path, w, h):
     return canvas
 
 
+def facts_of(s):
+    """v2 keeps these inside plate{}; v1 had them on the scene root. Read both."""
+    return (s.get("plate") or {}).get("visual_facts") or s.get("visual_facts") or []
+
+
+def ref_of(s):
+    return (s.get("plate") or {}).get("reference_image") or s.get("reference_image")
+
+
+def subject_of(s):
+    return ((s.get("plate") or {}).get("subject")
+            or s.get("image_prompt", "") or s.get("purpose", ""))
+
+
 def cell(path, label, w):
     h = int(w * 9 / 16)
     c = Image.new("RGB", (w, h + LABEL_H), INK)
@@ -78,7 +92,7 @@ def build_sheets(sel, scenes, root, out):
     cells = []
     for i in sel:
         s = scenes[i - 1]
-        tag = "".join(t for t, k in (("F", "visual_facts"), ("R", "reference_image")) if s.get(k))
+        tag = ("F" if facts_of(s) else "") + ("R" if ref_of(s) else "")
         cells.append(cell(root / s["image"],
                           f"{i:02d} {s.get('type','')[:4]}/{s.get('scene_type','')}" + (f"  [{tag}]" if tag else ""),
                           CELL_W))
@@ -101,15 +115,15 @@ def build_pairs(sel, scenes, root, out):
     made = []
     for i in sel:
         s = scenes[i - 1]
-        if not s.get("reference_image"):
+        if not ref_of(s):
             continue
         w = 520; h = int(w * 9 / 16)
         pair = Image.new("RGB", (2 * w + 3 * PAD, h + 2 * PAD + LABEL_H), INK)
         pair.paste(fit(root / s["image"], w, h), (PAD, PAD))
-        pair.paste(fit(root / s["reference_image"], w, h), (2 * PAD + w, PAD))
+        pair.paste(fit(root / ref_of(s), w, h), (2 * PAD + w, PAD))
         d = ImageDraw.Draw(pair)
         d.text((PAD + 6, h + PAD + 8), f"scene {i:02d}  RENDER", fill=BG, font=font(15))
-        d.text((2 * PAD + w + 6, h + PAD + 8), f"REFERENCE {Path(s['reference_image']).name}", fill=BG, font=font(15))
+        d.text((2 * PAD + w + 6, h + PAD + 8), f"REFERENCE {Path(ref_of(s)).name}", fill=BG, font=font(15))
         fp = pdir / f"scene_{i:02d}.png"; pair.save(fp); made.append(fp)
     return made
 
@@ -121,9 +135,9 @@ def build_checklist(sel, scenes, out):
             "|:--|:--|:--|:--|:--|:--|"]
     for i in sel:
         s = scenes[i - 1]
-        subj = (s.get("image_prompt", "")[:64]).replace("|", "/").replace("\n", " ")
-        ref = Path(s["reference_image"]).name if s.get("reference_image") else "—"
-        rows.append(f"| {i:02d} | {s.get('type','')}/{s.get('scene_type','')} | {subj}… | {len(s.get('visual_facts') or []) or '—'} | {ref} |  |")
+        subj = (subject_of(s)[:64]).replace("|", "/").replace("\n", " ")
+        ref = Path(ref_of(s)).name if ref_of(s) else "—"
+        rows.append(f"| {i:02d} | {s.get('type','')}/{s.get('scene_type','')} | {subj}… | {len(facts_of(s)) or '—'} | {ref} |  |")
     (out / "review_checklist.md").write_text("\n".join(rows) + "\n")
 
 
@@ -135,6 +149,14 @@ def main():
     sb_path = Path(args.storyboard).resolve(); root = sb_path.parent
     sb = json.loads(sb_path.read_text()); scenes = sb["scenes"]
     sel = parse_sel(args.scenes, len(scenes))
+    # v2: only plate builds have an `image`; `assembly` scenes are code-built and have
+    # nothing to gate here. Silently reviewing them is wrong; crashing on them is worse.
+    skipped = [i for i in sel if not scenes[i - 1].get("image")]
+    sel = [i for i in sel if scenes[i - 1].get("image")]
+    if skipped:
+        print(f"skipping {len(skipped)} assembly scene(s) — no plate to gate: "
+              + ", ".join(f"{i:02d}" for i in skipped[:12])
+              + (" …" if len(skipped) > 12 else ""))
     out = root / "review"; out.mkdir(parents=True, exist_ok=True)
     sheets = build_sheets(sel, scenes, root, out)
     pairs = build_pairs(sel, scenes, root, out)

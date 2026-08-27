@@ -1,4 +1,5 @@
 import { AbsoluteFill, Easing, Img, Interactive, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AmbientDrift } from '../components/AmbientDrift';
 
 /**
  * Scene31 — hero scene, canvas-interactive tier (brand_guide_software.md §11).
@@ -17,7 +18,11 @@ export const Scene31: React.FC = () => {
   const { durationInFrames } = useVideoConfig();
 
   // §5: pan 45 px/s at 4K, left — direction set by continuity_registry.sides.
-  const x = interpolate(frame, [15, durationInFrames - 15], [0, -45 * (durationInFrames / 30)], {
+  const travelPx = -45 * (durationInFrames / 30);
+  // Overscale must cover the travel or the plate edge enters frame (see PlatePush).
+  // Sign is inverted deliberately: a pan RIGHT moves the camera right, content LEFT.
+  const PAN_SCALE = 1 + Math.abs(travelPx) / 3840 + 0.04;
+  const x = interpolate(frame, [15, durationInFrames - 15], [travelPx / 2, -travelPx / 2], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
     easing: Easing.bezier(0.4, 0, 0.2, 1),
@@ -30,7 +35,7 @@ export const Scene31: React.FC = () => {
         style={{
           width: '100%',
           height: '100%',
-          scale: 1.06,
+          scale: PAN_SCALE,
           translate: `${x}px 0px`,
         }}
       >
@@ -40,19 +45,7 @@ export const Scene31: React.FC = () => {
         />
       </Interactive.Div>
 
-      {/* §5 ambient drift 4 px/s — the single permitted moving element here. */}
-      <Interactive.Div
-        name="Plume drift"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'transparent',
-          translate: `${interpolate(frame, [15, durationInFrames - 15], [0, 4 * (durationInFrames / 30)], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-          })}px 0px`,
-        }}
-      />
+      <AmbientDrift pxPerSecond={4} />
     </AbsoluteFill>
   );
 };

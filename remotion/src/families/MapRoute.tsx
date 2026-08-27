@@ -1,5 +1,7 @@
 import { AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame } from 'remotion';
 import type { Domain } from '../brand/tokens';
+import { SceneText } from '../components/SceneText';
+import type { SceneTextItem } from '../components/SceneText';
 
 /**
  * MapRoute — a map plate with a route or flow drawn onto it (§5 "Connecting line / flow").
@@ -16,11 +18,12 @@ export type MapRouteProps = {
   /** Optional map plate under public/. Omit for a pure code-drawn map. */
   plate?: string;
   domain: Domain;
+  /** The board's texts[] for this scene, timed in seconds from content start. */
+  texts?: SceneTextItem[];
   /** Draw-on length in frames, 12–21 per §5. */
   drawOnFrames?: number;
   /** Frame the draw-on begins. Default 38 = the 30-frame head handle + 8. */
   startFrame?: number;
-  label?: string;
 };
 
 const ACCENT: Record<Domain, string> = {
@@ -37,7 +40,7 @@ export const MapRoute: React.FC<MapRouteProps> = ({
   domain,
   drawOnFrames = 16,
   startFrame = 38, // 30-frame head handle + 8
-  label,
+  texts,
 }) => {
   const frame = useCurrentFrame();
   const accent = ACCENT[domain];
@@ -74,26 +77,7 @@ export const MapRoute: React.FC<MapRouteProps> = ({
         </svg>
       </AbsoluteFill>
 
-      {label ? (
-        <AbsoluteFill
-          style={{ alignItems: 'flex-start', justifyContent: 'flex-end', padding: 160 }}
-        >
-          <div
-            style={{
-              backgroundColor: '#161B26',
-              border: '1px solid #2A3240',
-              borderLeft: `6px solid ${accent}`,
-              borderRadius: 8,
-              padding: '16px 28px',
-              color: '#8B94A7',
-              fontFamily: 'IBM Plex Mono',
-              fontSize: 44,
-            }}
-          >
-            {label}
-          </div>
-        </AbsoluteFill>
-      ) : null}
+      {texts?.length ? <SceneText texts={texts} accent={accent} /> : null}
     </AbsoluteFill>
   );
 };

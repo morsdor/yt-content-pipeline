@@ -2,8 +2,9 @@ import { Composition } from 'remotion';
 import './brand/fonts'; // module-level font loads — must be imported once, here
 import { Diagram } from './families/Diagram';
 import { MapRoute } from './families/MapRoute';
-import { PlatePush } from './families/PlatePush';
+import { PlateAnnotated } from './families/PlateAnnotated';
 import { TitleCard } from './scenes/TitleCard';
+import { Scene16 } from './scenes/Scene16';
 import { Scene24 } from './scenes/Scene24';
 import { Scene31 } from './scenes/Scene31';
 import { Scene44 } from './scenes/Scene44';
@@ -19,14 +20,14 @@ import { Scene77 } from './scenes/Scene77';
  *
  * s001 · Why AI Is So Expensive to Run — 77 scenes, 26,652 frames.
  *
- * Generated once from projects/s001_ai_physical_cost/storyboard.json (remotion-director,
- * pass 7) and HAND-EDITABLE from here. Studio's Props editor writes visual edits back into
- * the `defaultProps` literals below, so do not regenerate this file over the top of them.
+ * Studio's Props editor writes visual edits back into the defaultProps literals below.
+ * Hand-edit here — but do NOT regex-patch this file: the strings carry escaped
+ * apostrophes and a naive pattern corrupts them. Regenerate wholesale or edit by hand.
  *
- * Frame spec is fixed by brand_guide_software.md §5: 3840×2160 @ 30fps, every scene
- * rendered with 30 frames of handles at BOTH ends (Premiere conform stays trim-only).
- * durationInFrames = round(seconds × 30) + 60 — this pass owns that single conversion.
- * Content therefore starts at frame 30, which is why entry animations are offset by it.
+ * Plate scenes use PlateAnnotated: a leader-line annotation on the plate's MEASURED
+ * brightest mass, one light sweep, a vignette, and a mono scene mark.
+ *
+ * 3840×2160 @ 30fps, 30 frames of handles at BOTH ends. Content starts at frame 30.
  */
 
 export const RemotionRoot: React.FC = () => {
@@ -36,7 +37,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_01 · detail · the hook: the weightlessness the whole video will dismantle */}
       <Composition
         id="scene-01"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={270}
         fps={30}
         width={3840}
@@ -46,10 +47,16 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_01.png',
           push: 3 as const,
           direction: 'in' as const,
+          markerX: 0.495,
+          markerY: 0.475,
+          annotation: 'the lit screen',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S01 · DETAIL',
         }}
       />
 
-      {/* scene_02 · scale_comparison · plant the honest small number so the payoff can't be called a ch */}
+      {/* scene_02 · scale_comparison · plant the honest small number so the payoff can't be called a  */}
       <Composition
         id="scene-02"
         component={Diagram}
@@ -62,13 +69,14 @@ export const RemotionRoot: React.FC = () => {
           labels: ['0.3 Wh — one answer', '2 seconds of a microwave'],
           layout: 'bars' as const,
           weights: [0.54, 1.0],
+          texts: [{ text: '0.3 Wh — one answer', start: 0.5, end: 5.4, position: 'top' }, { text: '2 seconds of a microwave', start: 5.0, end: 9.3, position: 'top' }],
         }}
       />
 
       {/* scene_03 · establishing · state the contract: a question the viewer now wants answered */}
       <Composition
         id="scene-03"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={309}
         fps={30}
         width={3840}
@@ -78,13 +86,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_03.png',
           push: 0 as const,
           direction: 'in' as const,
+          markerX: 0.452,
+          markerY: 0.631,
+          annotation: 'the lit hall',
+          labelSide: 'right' as const,
+          labelRise: 557,
+          sceneMark: 'S03 · ESTABLISHING',
         }}
       />
 
       {/* scene_04 · establishing · the tease — name the reactor without explaining it */}
       <Composition
         id="scene-04"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={297}
         fps={30}
         width={3840}
@@ -94,13 +108,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_04.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.72,
+          markerY: 0.461,
+          annotation: 'the towers on the horizon line',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S04 · ESTABLISHING',
         }}
       />
 
       {/* scene_05 · narrative · make it human and specific before it becomes industrial */}
       <Composition
         id="scene-05"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={345}
         fps={30}
         width={3840}
@@ -110,13 +130,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_05.png',
           push: 3 as const,
           direction: 'in' as const,
+          markerX: 0.633,
+          markerY: 0.324,
+          annotation: 'the single brighter window',
+          labelSide: 'left' as const,
+          labelRise: 479,
+          sceneMark: 'S05 · NARRATIVE',
         }}
       />
 
       {/* scene_06 · narrative · breadth — this is everyone, not a niche */}
       <Composition
         id="scene-06"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={384}
         fps={30}
         width={3840}
@@ -126,13 +152,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_06.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.613,
+          markerY: 0.485,
+          annotation: 'the centre pool of light',
+          labelSide: 'left' as const,
+          labelRise: 566,
+          sceneMark: 'S06 · NARRATIVE',
         }}
       />
 
-      {/* scene_07 · detail · name the illusion explicitly — the thesis in one word: weightles */}
+      {/* scene_07 · detail · name the illusion explicitly — the thesis in one word: weightl */}
       <Composition
         id="scene-07"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={369}
         fps={30}
         width={3840}
@@ -142,10 +174,16 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_07.png',
           push: 3 as const,
           direction: 'in' as const,
+          markerX: 0.33,
+          markerY: 0.326,
+          annotation: 'the blinking cursor',
+          labelSide: 'right' as const,
+          labelRise: 484,
+          sceneMark: 'S07 · DETAIL',
         }}
       />
 
-      {/* scene_08 · scale_comparison · concede the honest point up front — earns trust for the escalati */}
+      {/* scene_08 · scale_comparison · concede the honest point up front — earns trust for the escala */}
       <Composition
         id="scene-08"
         component={Diagram}
@@ -157,6 +195,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['one question', 'cost: ~nothing'],
           layout: 'row' as const,
+          texts: [{ text: 'one question', start: 0.5, end: 4.6, position: 'bottom' }, { text: 'cost: ~nothing', start: 4.2, end: 7.7, position: 'bottom' }],
         }}
       />
 
@@ -171,11 +210,11 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: '~1,000,000,000 / day',
+          texts: [{ text: '~1,000,000,000 / day', start: 0.5, end: 7.7, position: 'top' }],
         }}
       />
 
-      {/* scene_10 · cross_section · the wire — introduce the through-line the video literally follow */}
+      {/* scene_10 · cross_section · the wire — introduce the through-line the video literally foll */}
       <Composition
         id="scene-10"
         component={Diagram}
@@ -187,13 +226,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['your question', '→ something enormous'],
           layout: 'row' as const,
+          texts: [{ text: 'your question', start: 0.5, end: 4.6, position: 'bottom' }, { text: '→ something enormous', start: 4.2, end: 7.7, position: 'bottom' }],
         }}
       />
 
       {/* scene_11 · establishing · state the method: we follow one query backwards */}
       <Composition
         id="scene-11"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={396}
         fps={30}
         width={3840}
@@ -203,6 +243,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_11.png',
           push: 0 as const,
           direction: 'in' as const,
+          markerX: 0.753,
+          markerY: 0.603,
+          annotation: 'the datacenter where all lines meet',
+          labelSide: 'left' as const,
+          labelRise: 556,
+          sceneMark: 'S11 · ESTABLISHING',
         }}
       />
 
@@ -228,13 +274,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['0.3 Wh'],
           layout: 'row' as const,
+          texts: [{ text: '0.3 Wh', start: 0.5, end: 10.6, position: 'bottom' }],
         }}
       />
 
       {/* scene_14 · scale_comparison · anchor 0.3 Wh to a body-scale referent, then raise the myth */}
       <Composition
         id="scene-14"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={357}
         fps={30}
         width={3840}
@@ -244,11 +291,16 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_14.png',
           push: 3 as const,
           direction: 'in' as const,
-          label: 'a couple of minutes of this',
+          markerX: 0.497,
+          markerY: 0.346,
+          annotation: 'a couple of minutes of this',
+          labelSide: 'right' as const,
+          labelRise: 527,
+          sceneMark: 'S14 · SCALE COMPARISON',
         }}
       />
 
-      {/* scene_15 · scale_comparison · correct the myth generously — credit the engineers, no scolding */}
+      {/* scene_15 · scale_comparison · correct the myth generously — credit the engineers, no scoldin */}
       <Composition
         id="scene-15"
         component={Diagram}
@@ -261,29 +313,24 @@ export const RemotionRoot: React.FC = () => {
           labels: ['2023 estimate', 'today — ~10× lower'],
           layout: 'bars' as const,
           weights: [1.0, 0.1],
+          texts: [{ text: '2023 estimate', start: 0.5, end: 5.7, position: 'top' }, { text: 'today — ~10× lower', start: 5.3, end: 9.7, position: 'top' }],
         }}
       />
 
       {/* scene_16 · cross_section · show the number is a floor, not a ceiling */}
       <Composition
         id="scene-16"
-        component={Diagram}
+        component={Scene16}
         durationInFrames={396}
         fps={30}
         width={3840}
         height={2160}
-        defaultProps={{
-          domain: 'infrastructure' as const,
-          labels: ['0.3 Wh', '~2.5 Wh', '~40 Wh'],
-          layout: 'bars' as const,
-          weights: [0.0075, 0.0625, 1.0],
-        }}
       />
 
       {/* scene_17 · scale_comparison · the 100x spread — the first real jolt */}
       <Composition
         id="scene-17"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={297}
         fps={30}
         width={3840}
@@ -293,7 +340,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_17.png',
           push: 5 as const,
           direction: 'in' as const,
-          label: 'one hard question',
+          markerX: 0.56,
+          markerY: 0.573,
+          annotation: 'one hard question',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S17 · SCALE COMPARISON',
         }}
       />
 
@@ -309,6 +361,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['0.3'],
           layout: 'row' as const,
+          texts: [{ text: '0.3', start: 0.5, end: 8.9, position: 'bottom' }],
         }}
       />
 
@@ -323,14 +376,14 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: 'follow the wire',
+          texts: [{ text: 'follow the wire', start: 0.5, end: 10.2, position: 'bottom' }],
         }}
       />
 
       {/* scene_20 · establishing · first scale-shock: the query's destination is a building */}
       <Composition
         id="scene-20"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={384}
         fps={30}
         width={3840}
@@ -340,13 +393,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_20.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.276,
+          markerY: 0.466,
+          annotation: 'the door at the near corner',
+          labelSide: 'right' as const,
+          labelRise: 627,
+          sceneMark: 'S20 · ESTABLISHING',
         }}
       />
 
       {/* scene_21 · detail · hero the chip — the physical object doing the thinking */}
       <Composition
         id="scene-21"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={345}
         fps={30}
         width={3840}
@@ -356,14 +415,15 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_21.png',
           push: 4 as const,
           direction: 'in' as const,
-          label: 'NVIDIA H100 · ~700 W',
+          sceneMark: 'S21 · DETAIL',
+          texts: [{ text: 'NVIDIA H100 · ~700 W', start: 0.5, end: 8.9, position: 'bottom' }],
         }}
       />
 
       {/* scene_22 · cross_section · one chip is already absurd — and it is never one */}
       <Composition
         id="scene-22"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={309}
         fps={30}
         width={3840}
@@ -373,7 +433,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_22.png',
           push: 4 as const,
           direction: 'in' as const,
-          label: '×8 per tray',
+          markerX: 0.652,
+          markerY: 0.652,
+          annotation: '×8 per tray',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S22 · CROSS SECTION',
         }}
       />
 
@@ -390,6 +455,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ['one tray ≈ 10 kW', '≈ 5 homes'],
           layout: 'bars' as const,
           weights: [1.0, 1.0],
+          texts: [{ text: 'one tray ≈ 10 kW', start: 0.5, end: 5.0, position: 'bottom' }, { text: '≈ 5 homes', start: 4.6, end: 8.5, position: 'bottom' }],
         }}
       />
 
@@ -406,7 +472,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_25 · establishing · name the concealment — the emotional core of the video */}
       <Composition
         id="scene-25"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={369}
         fps={30}
         width={3840}
@@ -416,6 +482,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_25.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.329,
+          markerY: 0.522,
+          annotation: 'the small chat window',
+          labelSide: 'left' as const,
+          labelRise: 493,
+          sceneMark: 'S25 · ESTABLISHING',
         }}
       />
 
@@ -431,13 +503,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['electricity in', 'heat out'],
           layout: 'row' as const,
+          texts: [{ text: 'electricity in', start: 0.5, end: 6.2, position: 'top' }, { text: 'heat out', start: 5.8, end: 10.6, position: 'top' }],
         }}
       />
 
       {/* scene_27 · establishing · set up cost #2 as inevitable, not incidental */}
       <Composition
         id="scene-27"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={369}
         fps={30}
         width={3840}
@@ -447,13 +520,14 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_27.png',
           push: 4 as const,
           direction: 'in' as const,
+          sceneMark: 'S27 · ESTABLISHING',
         }}
       />
 
       {/* scene_28 · establishing · why water — it is a heat problem, not a thirst problem */}
       <Composition
         id="scene-28"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={357}
         fps={30}
         width={3840}
@@ -463,13 +537,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_28.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.602,
+          markerY: 0.244,
+          annotation: 'the largest plume where it leaves the tower',
+          labelSide: 'right' as const,
+          labelRise: 307,
+          sceneMark: 'S28 · ESTABLISHING',
         }}
       />
 
       {/* scene_29 · detail · the on-site number, honestly small */}
       <Composition
         id="scene-29"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={321}
         fps={30}
         width={3840}
@@ -479,7 +559,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_29.png',
           push: 3 as const,
           direction: 'in' as const,
-          label: 'a few mL — one answer',
+          markerX: 0.275,
+          markerY: 0.183,
+          annotation: 'a few mL — one answer',
+          labelSide: 'right' as const,
+          labelRise: 180,
+          sceneMark: 'S29 · DETAIL',
         }}
       />
 
@@ -494,7 +579,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: 'most of the water is NOT here',
+          texts: [{ text: 'most of the water is NOT here', start: 0.5, end: 6.8, position: 'top' }],
         }}
       />
 
@@ -519,7 +604,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: 'power →',
+          texts: [{ text: 'power →', start: 0.5, end: 5.2, position: 'bottom' }, { text: '← water already spent', start: 4.8, end: 8.9, position: 'bottom' }],
         }}
       />
 
@@ -536,6 +621,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ['on-site: a few mL', 'grid: ~10 mL', '≈ 15 mL'],
           layout: 'bars' as const,
           weights: [0.33, 0.67, 1.0],
+          texts: [{ text: 'on-site: a few mL', start: 0.5, end: 6.2, position: 'top' }, { text: 'grid: ~10 mL', start: 5.8, end: 10.6, position: 'top' }],
         }}
       />
 
@@ -551,13 +637,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['≈ 15 mL', '± depends on site & cooling'],
           layout: 'row' as const,
+          texts: [{ text: '≈ 15 mL', start: 0.5, end: 4.8, position: 'bottom' }, { text: '± depends on site & cooling', start: 4.4, end: 8.1, position: 'bottom' }],
         }}
       />
 
       {/* scene_35 · narrative · re-arm the fleet refrain and hand off to silicon */}
       <Composition
         id="scene-35"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={321}
         fps={30}
         width={3840}
@@ -567,13 +654,14 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_35.png',
           push: 4 as const,
           direction: 'in' as const,
+          sceneMark: 'S35 · NARRATIVE',
         }}
       />
 
       {/* scene_36 · detail · reframe the chip from component to artefact */}
       <Composition
         id="scene-36"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={333}
         fps={30}
         width={3840}
@@ -583,6 +671,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_36.png',
           push: 3 as const,
           direction: 'in' as const,
+          markerX: 0.387,
+          markerY: 0.439,
+          annotation: 'the wafer\'s centre',
+          labelSide: 'right' as const,
+          labelRise: 728,
+          sceneMark: 'S36 · DETAIL',
         }}
       />
 
@@ -598,13 +692,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['a human hair', 'a virus', 'the features on this chip'],
           layout: 'row' as const,
+          texts: [{ text: 'a human hair', start: 0.5, end: 4.8, position: 'top' }, { text: 'a virus', start: 4.4, end: 8.1, position: 'top' }],
         }}
       />
 
       {/* scene_38 · establishing · the ASML fact — a genuine jaw-drop, kept about the machine */}
       <Composition
         id="scene-38"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={321}
         fps={30}
         width={3840}
@@ -614,14 +709,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_38.png',
           push: 4 as const,
           direction: 'in' as const,
-          label: 'one manufacturer on Earth',
+          markerX: 0.452,
+          markerY: 0.448,
+          annotation: 'one manufacturer on Earth',
+          labelSide: 'right' as const,
+          labelRise: 747,
+          sceneMark: 'S38 · ESTABLISHING',
         }}
       />
 
       {/* scene_39 · establishing · the fab as its own industrial appetite */}
       <Composition
         id="scene-39"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={396}
         fps={30}
         width={3840}
@@ -631,6 +731,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_39.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.509,
+          markerY: 0.381,
+          annotation: 'the nearest suited figure',
+          labelSide: 'right' as const,
+          labelRise: 602,
+          sceneMark: 'S39 · ESTABLISHING',
         }}
       />
 
@@ -647,6 +753,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ['the power of a small city', 'the water of a small town'],
           layout: 'bars' as const,
           weights: [0.85, 0.7],
+          texts: [{ text: 'the power of a small city', start: 0.5, end: 4.6, position: 'top' }, { text: 'the water of a small town', start: 4.2, end: 7.7, position: 'top' }],
         }}
       />
 
@@ -662,6 +769,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['millions of gallons — every day'],
           layout: 'row' as const,
+          texts: [{ text: 'millions of gallons — every day', start: 0.5, end: 10.6, position: 'bottom' }],
         }}
       />
 
@@ -676,7 +784,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: 'one company',
+          texts: [{ text: 'one company', start: 0.5, end: 6.2, position: 'bottom' }, { text: '> some entire countries', start: 5.8, end: 10.6, position: 'bottom' }],
         }}
       />
 
@@ -692,6 +800,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['build', 'cool', 'make', '× ?'],
           layout: 'row' as const,
+          texts: [{ text: 'build', start: 0.5, end: 6.2, position: 'top' }, { text: 'cool', start: 5.8, end: 10.6, position: 'top' }],
         }}
       />
 
@@ -718,6 +827,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ['one query', '× 1,000,000,000 / day'],
           layout: 'bars' as const,
           weights: [0.001, 1.0],
+          texts: [{ text: 'one query', start: 0.5, end: 4.6, position: 'top' }, { text: '× 1,000,000,000 / day', start: 4.2, end: 7.7, position: 'top' }],
         }}
       />
 
@@ -734,6 +844,7 @@ export const RemotionRoot: React.FC = () => {
           labels: ['data centres +15%/yr', 'everything else'],
           layout: 'bars' as const,
           weights: [1.0, 0.24],
+          texts: [{ text: 'data centres +15%/yr', start: 0.5, end: 6.4, position: 'top' }, { text: 'everything else', start: 6.0, end: 11.0, position: 'top' }],
         }}
       />
 
@@ -748,7 +859,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: '23% of the national grid',
+          texts: [{ text: '23% of the national grid', start: 0.5, end: 10.2, position: 'top' }],
         }}
       />
 
@@ -764,6 +875,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['homes', 'server halls', '+518% in a decade'],
           layout: 'row' as const,
+          texts: [{ text: 'homes', start: 0.5, end: 5.4, position: 'bottom' }, { text: 'server halls', start: 5.0, end: 9.3, position: 'bottom' }],
         }}
       />
 
@@ -778,7 +890,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           domain: 'infrastructure' as const,
           drawOnFrames: 16,
-          label: 'no new connections',
+          texts: [{ text: 'no new connections', start: 0.5, end: 8.9, position: 'bottom' }],
         }}
       />
 
@@ -795,13 +907,14 @@ export const RemotionRoot: React.FC = () => {
           labels: ['~3% of all power humanity generates', 'by 2030'],
           layout: 'bars' as const,
           weights: [0.03, 1.0],
+          texts: [{ text: '~3% of all power humanity generates', start: 0.5, end: 5.7, position: 'bottom' }, { text: 'by 2030', start: 5.3, end: 9.7, position: 'bottom' }],
         }}
       />
 
       {/* scene_51 · scale_comparison · beat heavy industry — the comparison that lands hardest */}
       <Composition
         id="scene-51"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={321}
         fps={30}
         width={3840}
@@ -811,7 +924,8 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_51.png',
           push: 5 as const,
           direction: 'in' as const,
-          label: 'aluminium · steel · cement · chemicals',
+          sceneMark: 'S51 · SCALE COMPARISON',
+          texts: [{ text: 'aluminium · steel · cement · chemicals', start: 0.5, end: 4.8, position: 'top' }, { text: 'vs data centres', start: 4.4, end: 8.1, position: 'top' }],
         }}
       />
 
@@ -827,6 +941,7 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['training — once'],
           layout: 'row' as const,
+          texts: [{ text: 'training — once', start: 0.5, end: 9.7, position: 'top' }],
         }}
       />
 
@@ -843,13 +958,14 @@ export const RemotionRoot: React.FC = () => {
           labels: ['training — once', 'running it — forever'],
           layout: 'bars' as const,
           weights: [0.3, 1.0],
+          texts: [{ text: 'training — once', start: 0.5, end: 4.8, position: 'top' }, { text: 'running it — forever', start: 4.4, end: 8.1, position: 'top' }],
         }}
       />
 
       {/* scene_54 · establishing · the hinge into the climax */}
       <Composition
         id="scene-54"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={297}
         fps={30}
         width={3840}
@@ -859,6 +975,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_54.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.155,
+          markerY: 0.539,
+          annotation: 'the tower silhouettes on the right horizon',
+          labelSide: 'right' as const,
+          labelRise: 494,
+          sceneMark: 'S54 · ESTABLISHING',
         }}
       />
 
@@ -875,7 +997,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_56 · narrative · the history, precisely — Unit 2 melted, Unit 1 survived */}
       <Composition
         id="scene-56"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={345}
         fps={30}
         width={3840}
@@ -885,14 +1007,20 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_56.png',
           push: 4 as const,
           direction: 'in' as const,
-          label: '1979',
+          markerX: 0.874,
+          markerY: 0.171,
+          annotation: '1979',
+          labelSide: 'left' as const,
+          labelRise: 180,
+          sceneMark: 'S56 · NARRATIVE',
+          texts: [{ text: '2019', start: 4.8, end: 8.9, position: 'bottom' }],
         }}
       />
 
       {/* scene_57 · detail · the death of the plant — the low before the turn */}
       <Composition
         id="scene-57"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={297}
         fps={30}
         width={3840}
@@ -902,14 +1030,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_57.png',
           push: 3 as const,
           direction: 'in' as const,
-          label: '2019 — shut down',
+          markerX: 0.498,
+          markerY: 0.475,
+          annotation: '2019 — shut down',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S57 · DETAIL',
         }}
       />
 
       {/* scene_58 · narrative · the turn — resurrection, and for whom */}
       <Composition
         id="scene-58"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={357}
         fps={30}
         width={3840}
@@ -919,7 +1052,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_58.png',
           push: 4 as const,
           direction: 'in' as const,
-          label: '2024 — restart',
+          markerX: 0.631,
+          markerY: 0.767,
+          annotation: '2024 — restart',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S58 · NARRATIVE',
         }}
       />
 
@@ -945,13 +1083,14 @@ export const RemotionRoot: React.FC = () => {
           domain: 'infrastructure' as const,
           labels: ['20-year agreement', '> $1 billion'],
           layout: 'row' as const,
+          texts: [{ text: '20-year agreement', start: 0.5, end: 5.2, position: 'top' }, { text: '> $1 billion', start: 4.8, end: 8.9, position: 'top' }],
         }}
       />
 
-      {/* scene_61 · scale_comparison · 800k homes, re-routed to one customer — the asymmetry made visua */}
+      {/* scene_61 · scale_comparison · 800k homes, re-routed to one customer — the asymmetry made vis */}
       <Composition
         id="scene-61"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={309}
         fps={30}
         width={3840}
@@ -961,14 +1100,20 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_61.png',
           push: 5 as const,
           direction: 'in' as const,
-          label: '~750,000 homes',
+          markerX: 0.717,
+          markerY: 0.561,
+          annotation: '~750,000 homes',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S61 · SCALE COMPARISON',
+          texts: [{ text: 'one customer', start: 4.2, end: 7.7, position: 'top' }],
         }}
       />
 
       {/* scene_62 · detail · close the loop opened in scene 3 */}
       <Composition
         id="scene-62"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={270}
         fps={30}
         width={3840}
@@ -978,7 +1123,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_62.png',
           push: 3 as const,
           direction: 'in' as const,
-          label: 'one question',
+          markerX: 0.488,
+          markerY: 0.553,
+          annotation: 'one question',
+          labelSide: 'right' as const,
+          labelRise: 760,
+          sceneMark: 'S62 · DETAIL',
         }}
       />
 
@@ -995,7 +1145,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_64 · detail · hand the honest counter-argument to the viewer, unprompted */}
       <Composition
         id="scene-64"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={420}
         fps={30}
         width={3840}
@@ -1005,6 +1155,7 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_64.png',
           push: 3 as const,
           direction: 'in' as const,
+          sceneMark: 'S64 · DETAIL',
         }}
       />
 
@@ -1021,10 +1172,11 @@ export const RemotionRoot: React.FC = () => {
           labels: ['one query', '≈ a few seconds of TV'],
           layout: 'bars' as const,
           weights: [0.8, 1.0],
+          texts: [{ text: 'one query', start: 0.5, end: 6.2, position: 'top' }, { text: '≈ a few seconds of TV', start: 5.8, end: 10.6, position: 'top' }],
         }}
       />
 
-      {/* scene_66 · map · the thesis in one sentence — concentration, not per-prompt guilt */}
+      {/* scene_66 · map · the thesis in one sentence — concentration, not per-prompt gui */}
       <Composition
         id="scene-66"
         component={MapRoute}
@@ -1041,7 +1193,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_67 · establishing · relocate the weight — and turn to wonder */}
       <Composition
         id="scene-67"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={369}
         fps={30}
         width={3840}
@@ -1051,13 +1203,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_67.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.298,
+          markerY: 0.605,
+          annotation: 'the chat panel',
+          labelSide: 'right' as const,
+          labelRise: 760,
+          sceneMark: 'S67 · ESTABLISHING',
         }}
       />
 
       {/* scene_68 · establishing · begin the roll-call of the hidden chain */}
       <Composition
         id="scene-68"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={297}
         fps={30}
         width={3840}
@@ -1067,6 +1225,12 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_68.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.31,
+          markerY: 0.07,
+          annotation: 'the power station\'s turbine hall',
+          labelSide: 'right' as const,
+          labelRise: 180,
+          sceneMark: 'S68 · ESTABLISHING',
         }}
       />
 
@@ -1083,7 +1247,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_70 · detail · the house line — echoes 001's 'no monument to a gradient' */}
       <Composition
         id="scene-70"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={333}
         fps={30}
         width={3840}
@@ -1093,13 +1257,20 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_70.png',
           push: 0 as const,
           direction: 'in' as const,
+          markerX: 0.498,
+          markerY: 0.478,
+          annotation: 'the empty plinth top',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S70 · DETAIL',
+          lightSweep: false,
         }}
       />
 
       {/* scene_71 · narrative · the emotional peak — the thesis as a closing aphorism */}
       <Composition
         id="scene-71"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={357}
         fps={30}
         width={3840}
@@ -1109,13 +1280,14 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_71.png',
           push: 5 as const,
           direction: 'in' as const,
+          sceneMark: 'S71 · NARRATIVE',
         }}
       />
 
       {/* scene_72 · detail · return to the phone — the callback frame */}
       <Composition
         id="scene-72"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={357}
         fps={30}
         width={3840}
@@ -1125,6 +1297,7 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_72.png',
           push: 4 as const,
           direction: 'in' as const,
+          sceneMark: 'S72 · DETAIL',
         }}
       />
 
@@ -1141,7 +1314,7 @@ export const RemotionRoot: React.FC = () => {
       {/* scene_74 · establishing · land the chain on the reactor — final rung */}
       <Composition
         id="scene-74"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={321}
         fps={30}
         width={3840}
@@ -1151,13 +1324,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_74.png',
           push: 4 as const,
           direction: 'in' as const,
+          markerX: 0.579,
+          markerY: 0.455,
+          annotation: 'the towers',
+          labelSide: 'left' as const,
+          labelRise: 760,
+          sceneMark: 'S74 · ESTABLISHING',
         }}
       />
 
       {/* scene_75 · establishing · the closing line — held */}
       <Composition
         id="scene-75"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={270}
         fps={30}
         width={3840}
@@ -1167,13 +1346,19 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_75.png',
           push: 0 as const,
           direction: 'in' as const,
+          markerX: 0.781,
+          markerY: 0.505,
+          annotation: 'the one lit point in a vast dark field',
+          labelSide: 'left' as const,
+          labelRise: 491,
+          sceneMark: 'S75 · ESTABLISHING',
         }}
       />
 
       {/* scene_76 · detail · sign-off */}
       <Composition
         id="scene-76"
-        component={PlatePush}
+        component={PlateAnnotated}
         durationInFrames={309}
         fps={30}
         width={3840}
@@ -1183,6 +1368,7 @@ export const RemotionRoot: React.FC = () => {
           plate: 'plates/scene_76.png',
           push: 3 as const,
           direction: 'in' as const,
+          sceneMark: 'S76 · DETAIL',
         }}
       />
 

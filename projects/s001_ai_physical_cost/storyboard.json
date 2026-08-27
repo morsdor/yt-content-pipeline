@@ -82,13 +82,15 @@
       "build": "plate",
       "image": "images/scene_01.png",
       "plate": {
-        "subject": "a single modern smartphone lying face-up in total darkness, its screen the only light source, casting a soft cold-blue glow on nothing",
+        "subject": "EXACTLY ONE single smartphone, alone, lying face-up flat in total darkness, its screen the only light source, casting a soft cold-blue glow into empty space around it",
         "reference_image": null,
         "visual_facts": [
+          "EXACTLY ONE phone in the entire frame — no second device, no duplicate, no back view, no product lineup",
           "the screen is the ONLY light source in the frame",
-          "no hand, no desk, no room — pure void around it"
+          "no hand, no desk, no room, no reflection surface — pure empty void around it",
+          "the screen glows evenly; no icons, no UI elements, no lettering of any kind"
         ],
-        "accent": "#22D3EE"
+        "accent": "the phone screen"
       },
       "layers": [],
       "camera": {
@@ -264,7 +266,7 @@
           "windows glow from within — the building is the light source",
           "no smoke or exhaust of any kind"
         ],
-        "accent": "#22D3EE"
+        "accent": "the datacenter window rows and the conductors"
       },
       "layers": [],
       "camera": {
@@ -346,7 +348,7 @@
           "plume is white/pale-blue condensing water vapour — never smoke or lightning",
           "towers are SMALL in frame — this is the tease, not the climax"
         ],
-        "accent": "#22D3EE"
+        "accent": "a faint rim-light on the tower lips"
       },
       "layers": [],
       "camera": {
@@ -423,7 +425,7 @@
         "visual_facts": [
           "one window is distinctly brighter — the eye must find it"
         ],
-        "accent": "#22D3EE"
+        "accent": "the one brighter apartment window"
       },
       "layers": [],
       "camera": {
@@ -501,7 +503,7 @@
           "no human figures — people are implied by their screens only",
           "three distinct pools of light, evenly spaced"
         ],
-        "accent": "#22D3EE"
+        "accent": "the three device screens"
       },
       "layers": [],
       "camera": {
@@ -579,7 +581,7 @@
           "the interface is deliberately almost empty",
           "no readable lettering anywhere"
         ],
-        "accent": "#22D3EE"
+        "accent": "the blinking cursor"
       },
       "layers": [],
       "camera": {
@@ -939,7 +941,7 @@
           "lines converge on ONE building",
           "conductors glow steadily — never lightning or arcing"
         ],
-        "accent": "#22D3EE"
+        "accent": "the converging transmission conductors"
       },
       "layers": [],
       "camera": {
@@ -1192,7 +1194,7 @@
         "visual_facts": [
           "one bulb, isolated, no fixture or lamp"
         ],
-        "accent": "#22D3EE"
+        "accent": "the bulb filament"
       },
       "layers": [],
       "camera": {
@@ -1487,7 +1489,7 @@
           "the mass must read as roughly 100 bulbs",
           "both groups identically lit — only the count differs"
         ],
-        "accent": "#22D3EE"
+        "accent": "the massed bulb filaments"
       },
       "layers": [],
       "camera": {
@@ -1753,7 +1755,7 @@
           "a human-scale door is visible for scale reference",
           "the building extends beyond the frame on both sides"
         ],
-        "accent": "#22D3EE"
+        "accent": "the hall's window rows"
       },
       "layers": [],
       "camera": {
@@ -1833,7 +1835,7 @@
           "a server GPU board — heatsink fins, no consumer shroud or RGB lighting",
           "hero-lit against a dark rack interior"
         ],
-        "accent": "#22D3EE"
+        "accent": "the GPU board's rim-light and power connectors"
       },
       "layers": [],
       "camera": {
@@ -1928,7 +1930,7 @@
           "exactly eight boards, evenly fanned",
           "one is accent-lit, the rest graphite"
         ],
-        "accent": "#22D3EE"
+        "accent": "the one highlighted board in the fan"
       },
       "layers": [],
       "camera": {
@@ -2124,7 +2126,7 @@
           "three distinct scale tiers visible simultaneously in one frame",
           "the town is a graphite outline, unlit — only the datacenter glows"
         ],
-        "accent": "#22D3EE"
+        "accent": "the hall's window rows (the town stays unlit)"
       },
       "layers": [],
       "camera": {
@@ -2224,7 +2226,7 @@
           "the chat panel is SMALL and sharp; the hall is LARGE and shadowed",
           "no readable text on the panel"
         ],
-        "accent": "#22D3EE"
+        "accent": "the small chat panel"
       },
       "layers": [],
       "camera": {
@@ -2398,7 +2400,7 @@
           "heat shimmer is a distortion, not smoke or steam",
           "liquid lines glow steadily"
         ],
-        "accent": "#22D3EE"
+        "accent": "the cold liquid-cooling lines"
       },
       "layers": [],
       "camera": {
@@ -2479,7 +2481,7 @@
           "plume is CONDENSING WATER VAPOUR — bright white, soft-edged, never smoke or grey",
           "clear night sky, no storm clouds, no lightning anywhere"
         ],
-        "accent": "#22D3EE"
+        "accent": "rim-light on the tower lips"
       },
       "layers": [],
       "camera": {
@@ -2560,7 +2562,7 @@
         "visual_facts": [
           "ONE droplet, deliberately tiny relative to the pipework"
         ],
-        "accent": "#22D3EE"
+        "accent": "the single water droplet"
       },
       "layers": [],
       "camera": {
@@ -2744,7 +2746,7 @@
           "plume is white condensing water vapour only — never smoke, soot, grey exhaust or lightning",
           "MUST rhyme in silhouette with scene 28's rooftop towers — same shape, bigger scale"
         ],
-        "accent": "#22D3EE"
+        "accent": "rim-light on the tower lips and the turbine hall windows"
       },
       "layers": [],
       "camera": {
@@ -3113,7 +3115,7 @@
         "visual_facts": [
           "the factory is an unlit graphite outline — it is not yet the subject"
         ],
-        "accent": "#22D3EE"
+        "accent": "the GPU board's rim-light"
       },
       "layers": [],
       "camera": {
@@ -3191,7 +3193,7 @@
           "the wafer is BLANK — mirror-polished, no die pattern printed",
           "occupies the same frame position and scale as the GPU board in scene 21"
         ],
-        "accent": "#22D3EE"
+        "accent": "the wafer's mirrored rim-light"
       },
       "layers": [],
       "camera": {
@@ -3369,7 +3371,7 @@
           "machine is bus-sized — vastly larger than a person",
           "cleanroom environment: flat panels, no windows, no daylight"
         ],
-        "accent": "#22D3EE"
+        "accent": "the lithography machine's optical column"
       },
       "layers": [],
       "camera": {
@@ -3461,7 +3463,7 @@
           "figures are small pale silhouettes — scale reference only, no faces",
           "cold even cleanroom light, no warm tones"
         ],
-        "accent": "#22D3EE"
+        "accent": "the cleanroom bay lighting"
       },
       "layers": [],
       "camera": {
@@ -3921,7 +3923,7 @@
           "hundreds of identical lit rectangles — the fleet, not one building",
           "all glow the same cold blue; terrain is unlit graphite"
         ],
-        "accent": "#22D3EE"
+        "accent": "the field of datacenter rectangles"
       },
       "layers": [],
       "camera": {
@@ -4573,7 +4575,7 @@
           "the datacenter side is clearly heavier — the beam tips toward it",
           "industry models are unlit graphite; only the datacenter glows"
         ],
-        "accent": "#22D3EE"
+        "accent": "the datacenter on the raised pan"
       },
       "layers": [],
       "camera": {
@@ -4860,7 +4862,7 @@
           "the two subjects are NOT yet joined by any line — that connection is the climax",
           "towers are silhouettes only, no plume yet — the plant is still shut down"
         ],
-        "accent": "#22D3EE"
+        "accent": "the campus windows (the towers stay dark)"
       },
       "layers": [],
       "camera": {
@@ -4941,7 +4943,7 @@
           "TWO towers; a squat domed containment building is also visible — the dome is the reactor, the towers are not",
           "flat grey overcast — the only non-night scene in the video, deliberately"
         ],
-        "accent": "#22D3EE"
+        "accent": null
       },
       "layers": [],
       "camera": {
@@ -5023,7 +5025,7 @@
           "the seam is a tonal division only — the towers are continuous across it",
           "no plume on either side"
         ],
-        "accent": "#22D3EE"
+        "accent": null
       },
       "layers": [],
       "camera": {
@@ -5124,7 +5126,7 @@
           "almost every light is OFF — one is barely lit",
           "no readable lettering on the panel"
         ],
-        "accent": "#22D3EE"
+        "accent": "the one fading indicator lamp"
       },
       "layers": [],
       "camera": {
@@ -5220,7 +5222,7 @@
           "activity is at the BASE of the towers — the towers themselves are still unlit and plumeless",
           "figures are small silhouettes, no faces"
         ],
-        "accent": "#22D3EE"
+        "accent": "the temporary lighting rigs at the tower base"
       },
       "layers": [],
       "camera": {
@@ -5496,7 +5498,7 @@
           "the house field must read as a very large count — hundreds visible",
           "a clear wave boundary between lit and dimmed houses"
         ],
-        "accent": "#22D3EE"
+        "accent": "the lit house field and the re-route line"
       },
       "layers": [],
       "camera": {
@@ -5596,7 +5598,7 @@
         "visual_facts": [
           "identical framing and scale to scene 29's droplet — this is a deliberate visual callback"
         ],
-        "accent": "#22D3EE"
+        "accent": "the single water droplet"
       },
       "layers": [],
       "camera": {
@@ -5691,7 +5693,7 @@
           "the plant is RUNNING now: lit, plumes active. Contrast with scene 55's dead towers",
           "one glowing conductor leaves frame left — steady light, never an arc"
         ],
-        "accent": "#22D3EE"
+        "accent": "the tower base lighting and the departing conductor"
       },
       "layers": [],
       "camera": {
@@ -5768,7 +5770,7 @@
         "visual_facts": [
           "identical composition to scene 1 — the callback must be exact"
         ],
-        "accent": "#22D3EE"
+        "accent": "the phone screen"
       },
       "layers": [],
       "camera": {
@@ -6017,7 +6019,7 @@
           "the chain recedes in depth, each element smaller and darker than the last",
           "only the chat panel is lit"
         ],
-        "accent": "#22D3EE"
+        "accent": "the small chat panel"
       },
       "layers": [],
       "camera": {
@@ -6095,7 +6097,7 @@
           "plumes are white condensing water vapour only",
           "no lightning, no arcing, clear sky"
         ],
-        "accent": "#22D3EE"
+        "accent": "the station's rim-light"
       },
       "layers": [],
       "camera": {
@@ -6274,7 +6276,7 @@
           "the plinth is EMPTY — the absence is the entire point",
           "no lettering carved on it"
         ],
-        "accent": "#22D3EE"
+        "accent": "rim-light on the empty plinth"
       },
       "layers": [],
       "camera": {
@@ -6351,7 +6353,7 @@
           "the beam is LEVEL, not tipped — the two sides weigh the same",
           "the phone is small and bright; the industrial cluster is large and dark"
         ],
-        "accent": "#22D3EE"
+        "accent": "the phone screen"
       },
       "layers": [],
       "camera": {
@@ -6430,7 +6432,7 @@
         "visual_facts": [
           "the two shapes must share a visible common edge — this is a match-cut frame"
         ],
-        "accent": "#22D3EE"
+        "accent": "the phone screen where the tower silhouette meets it"
       },
       "layers": [],
       "camera": {
@@ -6512,7 +6514,7 @@
           "scale increases left to right; the phone is smallest, the reactor largest",
           "conductors glow steadily — never lightning or arcing"
         ],
-        "accent": "#22D3EE"
+        "accent": "the conductors joining every element in the chain"
       },
       "layers": [],
       "camera": {
@@ -6592,7 +6594,7 @@
         "visual_facts": [
           "white condensing water vapour only — no smoke, no lightning"
         ],
-        "accent": "#22D3EE"
+        "accent": "the arriving conductor"
       },
       "layers": [],
       "camera": {
@@ -6671,7 +6673,7 @@
           "everything is SMALL and mostly unlit — the scale of the whole system at once",
           "only a few points of light in a large dark field"
         ],
-        "accent": "#22D3EE"
+        "accent": "the few remaining points of light"
       },
       "layers": [],
       "camera": {
@@ -6749,7 +6751,7 @@
         "visual_facts": [
           "the screen is DIMMING — darker than scene 1, this is the closing state"
         ],
-        "accent": "#22D3EE"
+        "accent": "the dimming phone screen"
       },
       "layers": [],
       "camera": {

@@ -1,4 +1,5 @@
-import { AbsoluteFill, Img, Interactive, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, Img, Interactive, staticFile } from 'remotion';
+import { AmbientDrift } from '../components/AmbientDrift';
 
 /**
  * Scene63 — hero scene, canvas-interactive tier (brand_guide_software.md §11).
@@ -12,10 +13,10 @@ import { AbsoluteFill, Img, Interactive, interpolate, staticFile, useCurrentFram
  */
 
 export const Scene63: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
-
-  // §5 MANDATORY STATIC BEAT — no camera move at all. `frame` drives only the plume.
+  // §5 MANDATORY STATIC BEAT. There is deliberately no `useCurrentFrame` here: this scene
+  // has NO camera move and NO frame-driven value of its own. The only motion in the frame
+  // is AmbientDrift, which owns its own clock. If a future edit reintroduces `frame` to
+  // this component, something has gone wrong — the payoff is supposed to be still.
 
   return (
     <AbsoluteFill name="Scene 63" style={{ backgroundColor: '#0B0E14' }}>
@@ -33,19 +34,7 @@ export const Scene63: React.FC = () => {
         />
       </Interactive.Div>
 
-      {/* §5 ambient drift 4 px/s — the single permitted moving element here. */}
-      <Interactive.Div
-        name="Plume drift"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'transparent',
-          translate: `${interpolate(frame, [15, durationInFrames - 15], [0, 4 * (durationInFrames / 30)], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-          })}px 0px`,
-        }}
-      />
+      <AmbientDrift pxPerSecond={4} />
     </AbsoluteFill>
   );
 };

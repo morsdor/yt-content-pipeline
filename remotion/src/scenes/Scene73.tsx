@@ -1,4 +1,5 @@
 import { AbsoluteFill, Easing, Img, Interactive, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AmbientDrift } from '../components/AmbientDrift';
 
 /**
  * Scene73 — hero scene, canvas-interactive tier (brand_guide_software.md §11).
@@ -37,19 +38,7 @@ export const Scene73: React.FC = () => {
         />
       </Interactive.Div>
 
-      {/* §5 ambient drift 3 px/s — the single permitted moving element here. */}
-      <Interactive.Div
-        name="Plume drift"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'transparent',
-          translate: `${interpolate(frame, [15, durationInFrames - 15], [0, 3 * (durationInFrames / 30)], {
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-          })}px 0px`,
-        }}
-      />
+      <AmbientDrift pxPerSecond={3} />
     </AbsoluteFill>
   );
 };
