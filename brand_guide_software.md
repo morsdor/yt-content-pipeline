@@ -97,6 +97,29 @@ where the value expires.
 - **Banner:** near-black ground, the wordmark left of centre, one line of positioning text below it
   in mono. No collage of video thumbnails.
 
+**Rendered assets — ✅ shipped 2026-09-02.**
+
+| File | Use |
+|:--|:--|
+| `assets/brand/depthfirst_mark_2048.png` | Canonical mark. Exact tokens, no watermark, no shadow |
+| `assets/brand/depthfirst_mark_512.png` | Upload size — the Instagram / YouTube avatar |
+| `assets/brand/depthfirst_mark_src_gemini_2048.png` | Generated source, kept for provenance only — **do not ship** |
+
+The mark was **generated (Gemini), then repaired deterministically.** What generation got right was
+the hard part: the 5-over-5 block lands dead-centre (1023, 1024 on a 2048 canvas) and DEPTH / FIRST
+come out at exactly equal optical width (944 px each) — the one rule in this section most likely to
+fail. What it got wrong was every colour — `#0F141A` ground, `#FCFAFB` bone (pure white, which §3
+explicitly forbids), `#FDA51D` amber — plus a drop shadow of 22,396 sub-ground pixels that no bullet
+above permits. Because the amber rule and the letters never touch (rule ends x531, letters start
+x612) the two were separated spatially and each rebuilt against exact tokens, with sub-ground pixels
+clamped to ground to erase the shadow. Lockup half-diagonal is 673 px against an inscribed-circle
+radius of 1024, so it survives Instagram's circle crop untouched; verified legible at 48 px.
+
+> **Lesson: a wordmark is typography, not an image.** Generation is usable for the lockup's
+> *geometry*, but its output is never token-exact — repair it in code before it ships. Judging the
+> file by eye would have passed all five defects; measuring caught them and also overturned two
+> things eyeballing got *wrong* (the mark looked off-centre and looked unequal — it was neither).
+
 ---
 
 ## 3. Color System
@@ -409,3 +432,42 @@ carry 100% of that load, which raises the bar on packaging rather than lowering 
 *Companions: `docs/comp_deep_dive_codesource.md` (the evidence behind §7 runtime and §8) ·
 `brand_guide.md` (The Engineering Atlas — the sister channel, deliberately different) ·
 `docs/cinematography.md` (craft canon behind §5) · the `studio-director` chain for per-video execution.*
+
+---
+
+## 13. Instagram — `@thedepthfirst` (live 2026-09-02)
+
+The short-form arm. Same name, same handle, same mark as YouTube — deliberately. Two names would be
+two brands with zero compounding, and would recreate exactly the dead funnel diagnosed in
+`docs/comp_deep_dive_equationverse.md` §5.
+
+| Field | Value |
+|:--|:--|
+| Handle | `@thedepthfirst` |
+| Name (30 char, indexed separately from the handle) | `Depth First · how code works` |
+| Avatar | `assets/brand/depthfirst_mark_512.png` |
+| Bio | The algorithms hiding in things you already use. Every animation here is the real algorithm, actually run — not drawn. |
+
+**Why the Name field carries a plain-English descriptor.** §0 and §12 gate the *name* to engineers
+and accept that it does no recruiting work with register 2. Instagram hands that cost back for free —
+the Name field is indexed separately from the handle, so a dev-gated handle and a legible descriptor
+coexist. This is the one place the §12 trade-off gets partially bought back.
+
+**Why dev-gating costs less here than on YouTube.** Reels autoplay in-feed; the account name is a
+12 px line above a video that is already running. Nobody reads the name and *then* decides to watch —
+the name is read at the **follow** decision, by which point the content has already explained itself.
+
+**The bio line is the moat.** "The real algorithm, actually run — not drawn" is true of these reels
+and false of essentially every competitor in the lane. Nobody copies it without rebuilding their
+pipeline. Keep it.
+
+**The grid is an asset.** The content rule (open on a civilian object, never a developer noun) makes
+the profile grid a wall of *objects*, where every competing dev account shows code screenshots.
+Protect this deliberately when choosing cover frames.
+
+### Posted
+
+| Reel | Subject | Length | Posted |
+|:--|:--|:--|:--|
+| `r001` | How Shazam names a song in seconds | 40 s | **2026-09-02** |
+| `r002` | Autocorrect / edit distance | 43 s | not yet |

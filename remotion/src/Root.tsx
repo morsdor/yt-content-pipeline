@@ -3,6 +3,11 @@ import './brand/fonts'; // module-level font loads — must be imported once, he
 import { Diagram } from './families/Diagram';
 import { MapRoute } from './families/MapRoute';
 import { PlateAnnotated } from './families/PlateAnnotated';
+import { DURATION_SECONDS, Shazam } from './reels/Shazam';
+import {
+  Autocorrect,
+  DURATION_SECONDS as AUTOCORRECT_SECONDS,
+} from './reels/Autocorrect';
 import { TitleCard } from './scenes/TitleCard';
 import { Scene16 } from './scenes/Scene16';
 import { Scene24 } from './scenes/Scene24';
@@ -33,6 +38,27 @@ import { Scene77 } from './scenes/Scene77';
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+
+      {/* ── r001 · short-form ────────────────────────────────────────────────
+          1080×1920 for Instagram/Shorts, no handles — a reel is the final
+          deliverable, not a Premiere conform. Every mark is computed output from
+          projects/r001_shazam/fingerprint.py. */}
+      <Composition
+        id="r001-shazam"
+        component={Shazam}
+        durationInFrames={DURATION_SECONDS * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="r002-autocorrect"
+        component={Autocorrect}
+        durationInFrames={AUTOCORRECT_SECONDS * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
 
       {/* scene_01 · detail · the hook: the weightlessness the whole video will dismantle */}
       <Composition
