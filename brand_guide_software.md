@@ -132,11 +132,11 @@ than glossy like a render.
 
 | Role | Color | Hex | Notes |
 |:--|:--|:--|:--|
-| Ground | Ink black | `#0B0E14` | Slightly blue-black, never pure `#000` — pure black crushes on OLED and kills depth |
-| Surface / panel | Slate | `#161B26` | Cards, code panels, callout bars |
+| Ground | Ink black | `#040E1F` | Slightly blue-black, never pure `#000` — pure black crushes on OLED and kills depth |
+| Surface / panel | Slate | `#0E213E` | Cards, code panels, callout bars |
 | Primary text | Bone | `#E8E6E1` | Warm off-white, never pure white |
-| Secondary text / labels | Ash | `#8B94A7` | Annotations, axis labels, timestamps |
-| Rule / grid / schematic line | Graphite | `#2A3240` | Diagram lines, dividers, grid |
+| Secondary text / labels | Ash | `#81A2C4` | Annotations, axis labels, timestamps |
+| Rule / grid / schematic line | Graphite | `#274064` | Diagram lines, dividers, grid |
 | **Brand anchor** | Signal amber | `#FFB020` | The wordmark, the underline, the single most important number in any frame |
 
 **Per-domain accent** — one per video, chosen by subject. (Structurally the same idea as EA's
@@ -144,12 +144,12 @@ per-civilization accent, so the studio chain treats it identically.)
 
 | Domain | Accent | Hex |
 |:--|:--|:--|
-| Infrastructure / networking | Electric cyan | `#22D3EE` |
-| Security / cryptography | Acid green | `#4ADE80` |
-| Data / databases | Violet | `#A78BFA` |
+| Infrastructure / networking | Electric cyan | `#00D6F7` |
+| Security / cryptography | Acid green | `#3DDF7D` |
+| Data / databases | Violet | `#AD88FF` |
 | AI / compute | Signal amber | `#FFB020` |
 | **Failure / incident** | Alert red | `#FF4D4D` |
-| Languages / tooling | Sky | `#60A5FA` |
+| Languages / tooling | Sky | `#51A4FF` |
 
 **Rules.**
 - **Amber is reserved.** It is the brand anchor and the "this is the number that matters" color. If
@@ -159,6 +159,46 @@ per-civilization accent, so the studio chain treats it identically.)
 - The domain accent carries callouts, key strokes in diagrams, and the thumbnail hero word. Everything
   else stays base.
 - **Never put a saturated accent on more than ~10% of the frame.** Contrast is the asset.
+  **Long-form only — see §3a.** On short-form this rule is actively wrong.
+
+---
+
+## 3a. Short-form colour — revised 2026-09-03
+
+Measured on the posted reels: **~90% of every frame was effectively greyscale** (OKLCH chroma < 0.04)
+and **under 2% was vivid**. The palette contained saturated colour; almost none of it reached the
+screen. Feedback was blunt and correct — *"they look pale with background as well."*
+
+Three causes, in order of how much each contributed:
+
+1. **83% of the safe band was bare ground, and 40% of its rows were completely empty.** This was the
+   real driver. No palette can rescue a frame that is mostly nothing.
+2. **Three of the five base tokens were true greys** — ash `C=0.030`, graphite `C=0.028`, slate
+   `C=0.023`. Ash carries every label and sub-line. Grey text on near-black *is* the pale look.
+3. **§3's ≤10% saturation rule enforced it.** That rule is right for a 12-minute documentary, where
+   restraint reads as sophistication. On a phone, mid-scroll, it reads as dead.
+
+**The fixes, all shipped:**
+
+- **Neutrals now carry chroma at the same lightness** — the table in §3 is the revised palette. The
+  frame gains colour without a single element being added.
+- **The ground is no longer a flat fill.** `ReelGround` in `remotion/src/reels/lib/chrome.tsx` draws
+  the drafting table §3 already described in prose: a faint 90px measured grid in `mesh #0D1F3C`,
+  radially masked so it is densest behind the content and gone by the frame edge, over a wide accent
+  glow at 11% opacity. The accent is the reel's `DOMAIN_ACCENT`, so **the ground is tinted by
+  subject**. Every reel uses this instead of `backgroundColor`.
+- **Data fills stop being timid.** r002's distance heat map was capped at `0.30` alpha, which is why
+  the one genuinely colourful element still measured at 1.5% vivid. Now `0.62`.
+
+**Result on the same frame: greyscale share 92% → 12%, mean lightness 0.21 → 0.25.**
+
+**§3a supersedes §3's ≤10% rule for short-form.** The amber rule does *not* change — amber is still
+the brand anchor, still **one element per frame**. Saturation is now allowed to cover the ground;
+amber remains the thing that means *this is the number that matters*.
+
+> **Colour must encode data, not decorate.** The ramps here are computed `rgb()` from real values —
+> frequency band in r001, distance in r002 — which is also why `brand:check` accepts them without
+> the hexes being added to the palette. Before adding any colour, answer: *what does this encode?*
 
 ---
 

@@ -28,12 +28,12 @@ export type CounterProps = {
 };
 
 const ACCENT: Record<Domain, string> = {
-  infrastructure: '#22D3EE',
-  security: '#4ADE80',
-  data: '#A78BFA',
+  infrastructure: '#00D6F7',
+  security: '#3DDF7D',
+  data: '#AD88FF',
   ai: '#FFB020',
   failure: '#FF4D4D',
-  languages: '#60A5FA',
+  languages: '#51A4FF',
 };
 
 export const Counter: React.FC<CounterProps> = ({
@@ -57,7 +57,7 @@ export const Counter: React.FC<CounterProps> = ({
     <AbsoluteFill
       name="Scene"
       style={{
-        backgroundColor: '#0B0E14',
+        backgroundColor: '#040E1F',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -76,12 +76,12 @@ export const Counter: React.FC<CounterProps> = ({
         {unit}
       </div>
 
-      <div style={{ width: 520, height: 3, backgroundColor: '#2A3240' }} />
+      <div style={{ width: 520, height: 3, backgroundColor: '#274064' }} />
 
       {caption ? (
         <div
           style={{
-            color: '#8B94A7',
+            color: '#81A2C4',
             fontFamily: 'IBM Plex Sans',
             fontSize: 56,
             textAlign: 'center',

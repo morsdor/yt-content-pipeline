@@ -2,6 +2,7 @@ import { AbsoluteFill, Audio, interpolate, staticFile, useCurrentFrame } from 'r
 import {
   Fade,
   Progress,
+  ReelGround,
   SAFE_W,
   Readout,
   ReelHeader,
@@ -110,10 +111,10 @@ const cy = (i: number) => TY + (i + 1) * CELL;
  * addition — which is also why `brand:check` has nothing to say about it.
  */
 const STOPS: [number, [number, number, number]][] = [
-  [0, [74, 222, 128]], // #4ADE80 — identical prefixes
-  [2, [34, 211, 238]], // #22D3EE
-  [5, [96, 165, 250]], // #60A5FA
-  [10, [70, 84, 110]], // receding into the grid
+  [0, [61, 223, 125]], // #3DDF7D — identical prefixes
+  [2, [0, 214, 247]], // #00D6F7
+  [5, [81, 164, 255]], // #51A4FF
+  [10, [39, 64, 100]], // receding into the grid
 ];
 
 const heat = (v: number): string => {
@@ -132,7 +133,7 @@ const heat = (v: number): string => {
 };
 
 /** Only the low end gets a filled block, so the valley reads as a shape. */
-const heatAlpha = (v: number) => Math.max(0, 0.30 * (1 - v / 6) ** 1.4);
+const heatAlpha = (v: number) => Math.max(0, 0.62 * (1 - v / 6) ** 1.15);
 
 /** The one position where the two words diverge (0-indexed into each word). */
 const DIFF = EDITS[0].i - 1;
@@ -201,7 +202,7 @@ const DictScan: React.FC<{ frame: number }> = ({ frame }) => {
           textAlign: 'center',
           fontFamily: 'IBM Plex Mono',
           fontSize: 96,
-          color: '#22D3EE',
+          color: '#00D6F7',
         }}
       >
         {fmt(seen)}
@@ -215,14 +216,14 @@ const DictScan: React.FC<{ frame: number }> = ({ frame }) => {
           textAlign: 'center',
           fontFamily: 'IBM Plex Sans',
           fontSize: 42,
-          color: '#8B94A7',
+          color: '#81A2C4',
         }}
       >
         words checked
       </div>
       <div style={{ position: 'absolute', top: 1030, left: 160, width: 760, height: 8 }}>
-        <div style={{ position: 'absolute', width: 760, height: 8, background: '#2A3240' }} />
-        <div style={{ position: 'absolute', width: 760 * p, height: 8, background: '#22D3EE' }} />
+        <div style={{ position: 'absolute', width: 760, height: 8, background: '#274064' }} />
+        <div style={{ position: 'absolute', width: 760 * p, height: 8, background: '#00D6F7' }} />
       </div>
     </div>
   );
@@ -302,9 +303,9 @@ const Table: React.FC<{ frame: number }> = ({ frame }) => {
             fontSize={38}
             fill={
               isEdit || (isCorner && cornerP > 0.5)
-                ? '#0B0E14'
+                ? '#040E1F'
                 : isSeed
-                  ? '#8B94A7'
+                  ? '#81A2C4'
                   : heat(GRID[i][j])
             }
           >
@@ -326,7 +327,7 @@ const Table: React.FC<{ frame: number }> = ({ frame }) => {
           textAnchor="middle"
           fontFamily="IBM Plex Mono"
           fontSize={40}
-          fill={k === DIFF ? '#FFB020' : '#22D3EE'}
+          fill={k === DIFF ? '#FFB020' : '#00D6F7'}
         >
           {ch}
         </text>
@@ -369,8 +370,8 @@ const Ranking: React.FC<{ frame: number }> = ({ frame }) => {
               justifyContent: 'space-between',
               alignItems: 'center',
               opacity: o,
-              background: win ? '#161B26' : 'transparent',
-              borderLeft: win ? '6px solid #FFB020' : '6px solid #2A3240',
+              background: win ? '#0E213E' : 'transparent',
+              borderLeft: win ? '6px solid #FFB020' : '6px solid #274064',
               padding: '20px 28px',
               marginBottom: 12,
             }}
@@ -379,7 +380,7 @@ const Ranking: React.FC<{ frame: number }> = ({ frame }) => {
               style={{
                 fontFamily: 'IBM Plex Mono',
                 fontSize: 52,
-                color: win ? '#FFB020' : '#8B94A7',
+                color: win ? '#FFB020' : '#81A2C4',
               }}
             >
               {c.word}
@@ -388,7 +389,7 @@ const Ranking: React.FC<{ frame: number }> = ({ frame }) => {
               style={{
                 fontFamily: 'IBM Plex Mono',
                 fontSize: 52,
-                color: win ? '#FFB020' : '#8B94A7',
+                color: win ? '#FFB020' : '#81A2C4',
               }}
             >
               {c.d}
@@ -406,19 +407,20 @@ export const Autocorrect: React.FC = () => {
   const frame = useCurrentFrame();
 
   return (
-    <AbsoluteFill style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill>
+      <ReelGround accent="#00D6F7" />
       <Audio src={staticFile('reels/r002_audio.wav')} />
       <ReelHeader
         big={
           <>
             How your phone knows
             <br />
-            what you <span style={{ color: '#22D3EE' }}>meant</span>
+            what you <span style={{ color: '#00D6F7' }}>meant</span>
           </>
         }
         small={
           <>
-            How your phone knows what you <span style={{ color: '#22D3EE' }}>meant</span>
+            How your phone knows what you <span style={{ color: '#00D6F7' }}>meant</span>
           </>
         }
         out={[T.titleOut[0], T.titleOut[1]]}
@@ -438,7 +440,7 @@ export const Autocorrect: React.FC = () => {
           textAlign: 'center',
           fontFamily: 'IBM Plex Sans',
           fontSize: 46,
-          color: '#8B94A7',
+          color: '#81A2C4',
         }}
       >
         You have typed this. You did not mean it.
@@ -541,7 +543,7 @@ export const Autocorrect: React.FC = () => {
           style={{
             fontFamily: 'IBM Plex Mono',
             fontSize: 44,
-            color: '#8B94A7',
+            color: '#81A2C4',
             marginTop: 18,
           }}
         >
@@ -564,7 +566,7 @@ export const Autocorrect: React.FC = () => {
       >
         Distance gets you the shortlist.
         <br />
-        <span style={{ color: '#8B94A7' }}>
+        <span style={{ color: '#81A2C4' }}>
           How often people actually type a word picks the winner.
         </span>
       </Fade>

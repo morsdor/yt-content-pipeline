@@ -1,4 +1,4 @@
-import { Easing, interpolate, useCurrentFrame } from 'remotion';
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from 'remotion';
 
 /**
  * Shared chrome for the short-form reels — the parts that are identical in every
@@ -150,7 +150,7 @@ export const StepLabel: React.FC<{
       style={{
         fontFamily: 'IBM Plex Mono',
         fontSize: 38,
-        color: '#8B94A7',
+        color: '#81A2C4',
         letterSpacing: 3,
         marginBottom: 10,
       }}
@@ -160,7 +160,7 @@ export const StepLabel: React.FC<{
     <div style={{ fontFamily: 'IBM Plex Sans', fontWeight: 600, fontSize: 60, color: '#E8E6E1' }}>
       {title}
     </div>
-    <div style={{ fontFamily: 'IBM Plex Sans', fontSize: 42, color: '#8B94A7', marginTop: 8 }}>
+    <div style={{ fontFamily: 'IBM Plex Sans', fontSize: 42, color: '#81A2C4', marginTop: 8 }}>
       {sub}
     </div>
   </Fade>
@@ -180,13 +180,13 @@ export const Readout: React.FC<{
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          borderTop: '2px solid #2A3240',
+          borderTop: '2px solid #274064',
           padding: '14px 4px',
           fontFamily: 'IBM Plex Mono',
           fontSize: 40,
         }}
       >
-        <span style={{ color: '#8B94A7' }}>{k}</span>
+        <span style={{ color: '#81A2C4' }}>{k}</span>
         <span style={{ color: '#E8E6E1' }}>{v}</span>
       </div>
     ))}
@@ -198,8 +198,8 @@ export const Progress: React.FC<{ seconds: number }> = ({ seconds }) => {
   const p = Math.min(1, frame / (seconds * FPS));
   return (
     <div style={{ position: 'absolute', top: SAFE_BOTTOM - 6, left: 60, width: 960, height: 6 }}>
-      <div style={{ position: 'absolute', width: 960, height: 6, background: '#2A3240' }} />
-      <div style={{ position: 'absolute', width: 960 * p, height: 6, background: '#22D3EE' }} />
+      <div style={{ position: 'absolute', width: 960, height: 6, background: '#274064' }} />
+      <div style={{ position: 'absolute', width: 960 * p, height: 6, background: '#00D6F7' }} />
     </div>
   );
 };
@@ -246,3 +246,42 @@ export const SafeZones: React.FC = () => (
     />
   </>
 );
+
+/**
+ * The reel ground — brand guide §3a.
+ *
+ * A flat near-black fill leaves ~83% of the safe band empty and ~90% of the frame
+ * effectively greyscale, which is what made the first two reels read as pale. This
+ * replaces it with the drafting table §3 has always described in prose: a faint
+ * measured grid, masked so it is densest behind the content and gone by the frame
+ * edge, over a wide accent glow that gives the ground depth without competing with
+ * anything drawn on top.
+ *
+ * Every reel uses this instead of a bare `backgroundColor` fill. The accent is the
+ * reel's DOMAIN_ACCENT, so the ground is tinted by subject.
+ */
+export const ReelGround: React.FC<{ accent: string }> = ({ accent }) => {
+  const mask =
+    'radial-gradient(ellipse 68% 52% at 50% 46%, rgba(0,0,0,1) 0%, ' +
+    'rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%)';
+  return (
+    <>
+      <AbsoluteFill style={{ backgroundColor: '#040E1F' }} />
+      <AbsoluteFill
+        style={{
+          opacity: 0.11,
+          backgroundImage: `radial-gradient(ellipse 78% 58% at 50% 46%, ${accent} 0%, transparent 70%)`,
+        }}
+      />
+      <AbsoluteFill
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, #0D1F3C 0 2px, transparent 2px 90px),' +
+            'repeating-linear-gradient(90deg, #0D1F3C 0 2px, transparent 2px 90px)',
+          maskImage: mask,
+          WebkitMaskImage: mask,
+        }}
+      />
+    </>
+  );
+};

@@ -41,12 +41,12 @@ export type DiagramProps = {
 };
 
 const ACCENT: Record<Domain, string> = {
-  infrastructure: '#22D3EE',
-  security: '#4ADE80',
-  data: '#A78BFA',
+  infrastructure: '#00D6F7',
+  security: '#3DDF7D',
+  data: '#AD88FF',
   ai: '#FFB020',
   failure: '#FF4D4D',
-  languages: '#60A5FA',
+  languages: '#51A4FF',
 };
 
 const H = 30;
@@ -84,11 +84,11 @@ export const Diagram: React.FC<DiagramProps> = ({
   const ticks = axisMax ? [0, 0.25, 0.5, 0.75, 1].map((f) => f * axisMax) : [];
 
   return (
-    <AbsoluteFill name="Scene" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene" style={{ backgroundColor: '#040E1F' }}>
       <svg width="100%" height="100%" viewBox="0 0 3840 2160">
         <polygon
           points={`${left - 140},${BASE_Y} ${left + span + 140},${BASE_Y} ${left + span + 140 + DX},${BASE_Y - DY} ${left - 140 + DX},${BASE_Y - DY}`}
-          fill="#161B26"
+          fill="#0E213E"
           opacity={ground}
         />
         <line
@@ -96,7 +96,7 @@ export const Diagram: React.FC<DiagramProps> = ({
           y1={BASE_Y}
           x2={left + span + 140}
           y2={BASE_Y}
-          stroke="#2A3240"
+          stroke="#274064"
           strokeWidth={4}
           opacity={ground}
         />
@@ -106,15 +106,15 @@ export const Diagram: React.FC<DiagramProps> = ({
           if (i === 0) return null;
           return (
             <g key={t} opacity={ground}>
-              <line x1={left - 140} y1={y} x2={left + span + 140} y2={y} stroke="#2A3240" strokeWidth={2} />
-              <text x={left - 180} y={y + 16} textAnchor="end" fill="#8B94A7" fontFamily="IBM Plex Mono" fontSize={44}>
+              <line x1={left - 140} y1={y} x2={left + span + 140} y2={y} stroke="#274064" strokeWidth={2} />
+              <text x={left - 180} y={y + 16} textAnchor="end" fill="#81A2C4" fontFamily="IBM Plex Mono" fontSize={44}>
                 {t >= 1000 ? `${Math.round(t / 1000)}k` : Number(t.toFixed(1))}
               </text>
             </g>
           );
         })}
         {axisUnit ? (
-          <text x={left - 180} y={BASE_Y - MAX_H - 60} textAnchor="end" fill="#8B94A7" fontFamily="IBM Plex Mono" fontSize={40} opacity={ground}>
+          <text x={left - 180} y={BASE_Y - MAX_H - 60} textAnchor="end" fill="#81A2C4" fontFamily="IBM Plex Mono" fontSize={40} opacity={ground}>
             {axisUnit}
           </text>
         ) : null}
@@ -140,20 +140,20 @@ export const Diagram: React.FC<DiagramProps> = ({
               ) : null}
               <polygon
                 points={`${x + barW},${y} ${x + barW + DX},${y - DY} ${x + barW + DX},${y + h - DY} ${x + barW},${y + h}`}
-                fill={hero ? accent : '#161B26'}
+                fill={hero ? accent : '#0E213E'}
                 opacity={hero ? 0.55 : 1}
               />
               <polygon
                 points={`${x},${y} ${x + barW},${y} ${x + barW + DX},${y - DY} ${x + DX},${y - DY}`}
-                fill={hero ? accent : '#8B94A7'}
+                fill={hero ? accent : '#81A2C4'}
                 opacity={hero ? 0.85 : 0.5}
               />
-              <rect x={x} y={y} width={barW} height={h} fill={hero ? accent : '#2A3240'} />
+              <rect x={x} y={y} width={barW} height={h} fill={hero ? accent : '#274064'} />
               <text
                 x={x + barW / 2 + DX / 2}
                 y={BASE_Y + 84}
                 textAnchor="middle"
-                fill={hero ? '#E8E6E1' : '#8B94A7'}
+                fill={hero ? '#E8E6E1' : '#81A2C4'}
                 fontFamily="IBM Plex Sans"
                 fontSize={46}
                 opacity={grow}

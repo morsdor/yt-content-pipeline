@@ -30,7 +30,7 @@ export const Scene59: React.FC = () => {
     <AbsoluteFill
       name="Scene 59"
       style={{
-        backgroundColor: '#0B0E14',
+        backgroundColor: '#040E1F',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -53,7 +53,7 @@ export const Scene59: React.FC = () => {
         name="Rule"
         style={{
           height: 6,
-          backgroundColor: '#2A3240',
+          backgroundColor: '#274064',
           marginTop: 64,
           width: interpolate(frame, [54, 70], ['0px', '1400px'], {
             extrapolateLeft: 'clamp',
@@ -69,7 +69,7 @@ export const Scene59: React.FC = () => {
           fontFamily: 'IBM Plex Sans',
           fontWeight: 400,
           fontSize: 72,
-          color: '#8B94A7',
+          color: '#81A2C4',
           marginTop: 56,
           opacity: interpolate(frame, [60, 68], [0, 1], {
             extrapolateLeft: 'clamp',

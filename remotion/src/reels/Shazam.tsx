@@ -171,7 +171,7 @@ const Header: React.FC<{ frame: number }> = ({ frame }) => {
         }}
       >
         How Shazam names
-        <br />a song in <span style={{ color: '#22D3EE' }}>3 seconds</span>
+        <br />a song in <span style={{ color: '#00D6F7' }}>3 seconds</span>
       </div>
       <div
         style={{
@@ -187,7 +187,7 @@ const Header: React.FC<{ frame: number }> = ({ frame }) => {
           letterSpacing: -0.5,
         }}
       >
-        How Shazam names a song in <span style={{ color: '#22D3EE' }}>3 seconds</span>
+        How Shazam names a song in <span style={{ color: '#00D6F7' }}>3 seconds</span>
       </div>
     </>
   );
@@ -206,7 +206,7 @@ const StepLabel: React.FC<{ n: string; title: string; sub: string; from: number;
       style={{
         fontFamily: 'IBM Plex Mono',
         fontSize: 38,
-        color: '#8B94A7',
+        color: '#81A2C4',
         letterSpacing: 3,
         marginBottom: 10,
       }}
@@ -216,7 +216,7 @@ const StepLabel: React.FC<{ n: string; title: string; sub: string; from: number;
     <div style={{ fontFamily: 'IBM Plex Sans', fontWeight: 600, fontSize: 60, color: '#E8E6E1' }}>
       {title}
     </div>
-    <div style={{ fontFamily: 'IBM Plex Sans', fontSize: 42, color: '#8B94A7', marginTop: 8 }}>
+    <div style={{ fontFamily: 'IBM Plex Sans', fontSize: 42, color: '#81A2C4', marginTop: 8 }}>
       {sub}
     </div>
   </Fade>
@@ -235,13 +235,13 @@ const Readout: React.FC<{ from: number; to: number; rows: [string, string][] }> 
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          borderTop: '2px solid #2A3240',
+          borderTop: '2px solid #274064',
           padding: '14px 4px',
           fontFamily: 'IBM Plex Mono',
           fontSize: 40,
         }}
       >
-        <span style={{ color: '#8B94A7' }}>{k}</span>
+        <span style={{ color: '#81A2C4' }}>{k}</span>
         <span style={{ color: '#E8E6E1' }}>{v}</span>
       </div>
     ))}
@@ -261,8 +261,8 @@ const Waveform: React.FC<{ frame: number }> = ({ frame }) => {
   const headX = SX + (n / (WAVE.length - 1)) * SW;
   return (
     <svg width={W} height={HGT} style={{ position: 'absolute', opacity: fade }}>
-      <line x1={SX} y1={midY} x2={SX + SW} y2={midY} stroke="#2A3240" strokeWidth={2} />
-      <polyline points={pts} fill="none" stroke="#22D3EE" strokeWidth={3} />
+      <line x1={SX} y1={midY} x2={SX + SW} y2={midY} stroke="#274064" strokeWidth={2} />
+      <polyline points={pts} fill="none" stroke="#00D6F7" strokeWidth={3} />
       {draw < 1 ? (
         <line
           x1={headX}
@@ -385,10 +385,10 @@ const HashChip: React.FC<{ frame: number }> = ({ frame }) => {
  * Built as rgb() from the data, not as hex literals: this is a data channel.
  */
 const PEAK_STOPS: [number, [number, number, number]][] = [
-  [0.0, [74, 222, 128]],   // #4ADE80 — low
-  [0.35, [34, 211, 238]],  // #22D3EE — mid
-  [0.7, [96, 165, 250]],   // #60A5FA
-  [1.0, [167, 139, 250]],  // #A78BFA — high
+  [0.0, [61, 223, 125]],   // #3DDF7D — low
+  [0.35, [0, 214, 247]],  // #00D6F7 — mid
+  [0.7, [81, 164, 255]],   // #51A4FF
+  [1.0, [173, 136, 255]],  // #AD88FF — high
 ];
 
 const peakColor = (f: number): string => {
@@ -455,11 +455,11 @@ const ScatterPanel: React.FC<{
         }}
       >
         <span style={{ color: '#E8E6E1' }}>{title}</span>
-        <span style={{ color: highlightOffset === null ? '#8B94A7' : '#FFB020' }}>{note}</span>
+        <span style={{ color: highlightOffset === null ? '#81A2C4' : '#FFB020' }}>{note}</span>
       </div>
-      <svg width={PANEL_W} height={PANEL_H} style={{ background: '#161B26' }}>
+      <svg width={PANEL_W} height={PANEL_H} style={{ background: '#0E213E' }}>
         {pts.slice(0, n).map(([a, b], i) => (
-          <circle key={i} cx={x(a)} cy={y(b)} r={4} fill="#8B94A7" opacity={0.75} />
+          <circle key={i} cx={x(a)} cy={y(b)} r={4} fill="#81A2C4" opacity={0.75} />
         ))}
         {ignite > 0 && highlightOffset !== null ? (
           <>
@@ -498,14 +498,14 @@ const Histogram: React.FC<{ frame: number }> = ({ frame }) => {
         style={{
           fontFamily: 'IBM Plex Mono',
           fontSize: 38,
-          color: '#8B94A7',
+          color: '#81A2C4',
           marginBottom: 12,
         }}
       >
         votes per time offset
       </div>
       <svg width={PANEL_W} height={hh}>
-        <line x1={0} y1={hh} x2={PANEL_W} y2={hh} stroke="#2A3240" strokeWidth={3} />
+        <line x1={0} y1={hh} x2={PANEL_W} y2={hh} stroke="#274064" strokeWidth={3} />
         {HIST.map(([off, v], i) => {
           const win = off === STATS.best_offset_frames;
           const h = (v / maxV) * (hh - 10) * grow;
@@ -516,7 +516,7 @@ const Histogram: React.FC<{ frame: number }> = ({ frame }) => {
               y={hh - h}
               width={Math.max(1.5, bw - 1)}
               height={h}
-              fill={win ? '#FFB020' : '#2A3240'}
+              fill={win ? '#FFB020' : '#274064'}
             />
           );
         })}
@@ -531,8 +531,8 @@ const Progress: React.FC<{ frame: number }> = ({ frame }) => {
   const p = Math.min(1, frame / (DURATION_SECONDS * FPS));
   return (
     <div style={{ position: 'absolute', top: 1790, left: 60, width: 960, height: 6 }}>
-      <div style={{ position: 'absolute', width: 960, height: 6, background: '#2A3240' }} />
-      <div style={{ position: 'absolute', width: 960 * p, height: 6, background: '#22D3EE' }} />
+      <div style={{ position: 'absolute', width: 960, height: 6, background: '#274064' }} />
+      <div style={{ position: 'absolute', width: 960 * p, height: 6, background: '#00D6F7' }} />
     </div>
   );
 };
@@ -551,7 +551,7 @@ export const Shazam: React.FC = () => {
   );
 
   return (
-    <AbsoluteFill style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill style={{ backgroundColor: '#040E1F' }}>
       <Audio src={staticFile('reels/r001_audio.wav')} />
       <Header frame={frame} />
 
@@ -567,7 +567,7 @@ export const Shazam: React.FC = () => {
           textAlign: 'center',
           fontFamily: 'IBM Plex Sans',
           fontSize: 46,
-          color: '#8B94A7',
+          color: '#81A2C4',
         }}
       >
         You hold your phone up in a noisy café.
@@ -718,7 +718,7 @@ export const Shazam: React.FC = () => {
           style={{
             fontFamily: 'IBM Plex Sans',
             fontSize: 44,
-            color: '#8B94A7',
+            color: '#81A2C4',
             marginTop: 4,
           }}
         >

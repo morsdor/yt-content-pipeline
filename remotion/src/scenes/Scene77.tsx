@@ -21,7 +21,7 @@ export const Scene77: React.FC = () => {
     <AbsoluteFill
       name="Outro card"
       style={{
-        backgroundColor: '#0B0E14',
+        backgroundColor: '#040E1F',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -60,7 +60,7 @@ export const Scene77: React.FC = () => {
           fontFamily: 'IBM Plex Sans',
           fontWeight: 400,
           fontSize: 64,
-          color: '#8B94A7',
+          color: '#81A2C4',
           marginTop: 88,
           opacity: interpolate(frame, [44, 52], [0, 1], {
             extrapolateLeft: 'clamp',

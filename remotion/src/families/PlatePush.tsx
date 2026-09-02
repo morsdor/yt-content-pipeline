@@ -45,12 +45,12 @@ export type PlatePushProps = {
 };
 
 const ACCENT: Record<Domain, string> = {
-  infrastructure: '#22D3EE',
-  security: '#4ADE80',
-  data: '#A78BFA',
+  infrastructure: '#00D6F7',
+  security: '#3DDF7D',
+  data: '#AD88FF',
   ai: '#FFB020',
   failure: '#FF4D4D',
-  languages: '#60A5FA',
+  languages: '#51A4FF',
 };
 
 export const PlatePush: React.FC<PlatePushProps> = ({
@@ -102,7 +102,7 @@ export const PlatePush: React.FC<PlatePushProps> = ({
   });
 
   return (
-    <AbsoluteFill name="Scene" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene" style={{ backgroundColor: '#040E1F' }}>
       {plate ? (
         <Img
           name="Plate"
@@ -121,10 +121,10 @@ export const PlatePush: React.FC<PlatePushProps> = ({
         <AbsoluteFill
           name="Plate placeholder"
           style={{
-            backgroundColor: '#161B26',
+            backgroundColor: '#0E213E',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#2A3240',
+            color: '#274064',
             fontFamily: 'IBM Plex Mono',
             fontSize: 56,
           }}

@@ -25,7 +25,7 @@ Do not invent a topic.** 50 entries, ids `I01`–`I50`, grouped into six section
 | Reel | Backlog id | Subject | State |
 |:--|:--|:--|:--|
 | `r001` | `I02` | Shazam fingerprinting | **posted 2026-09-02** |
-| `r002` | `I08` | Autocorrect / edit distance | rendered, not posted |
+| `r002` | `I08` | Autocorrect / edit distance | **posted 2026-09-02** |
 
 Update this table and `brand_guide_software.md` §13 when one ships.
 
@@ -44,14 +44,18 @@ involved in a reel.** Keep it that way.
    Constants live in `remotion/src/reels/lib/chrome.tsx` (`SAFE`, `SAFE_TOP`, `SAFE_BOTTOM`,
    `SAFE_W`). Check the `*-safe` composition in Studio before posting. r001 shipped with its title
    inside Instagram's top bar — that is the bug this prevents.
-2. **Pacing: read → animate → hold.** Label alone ~1.5s, animation 2–3s, hold on the finished state
+2. **Ground is never a flat fill.** Use `<ReelGround accent={...} />` from the shared chrome, not
+   `backgroundColor`. Flat near-black left ~83% of the frame empty and ~90% greyscale, which is why
+   the first two reels read as pale — see `brand_guide_software.md` §3a, which supersedes §3's
+   10%-saturation rule for short-form. Amber stays one element per frame.
+3. **Pacing: read → animate → hold.** Label alone ~1.5s, animation 2–3s, hold on the finished state
    ~2s. ≈6.5s per idea. The 2s hold is the phase everyone drops, and dropping it is why a reel reads
    as "too fast to understand anything".
-3. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
-4. **Accuracy gate.** Every claim, figure and complexity bound is verified against a primary source
+4. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
+5. **Accuracy gate.** Every claim, figure and complexity bound is verified against a primary source
    before shipping (`content_backlog.md` closing section). Historical entries `I31 I48 I49 I50` carry
    figures from memory and *must* be checked. Treat every number in the backlog as a research lead.
-5. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
+6. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
 
 ---
 

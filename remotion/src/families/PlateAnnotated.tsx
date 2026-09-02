@@ -49,12 +49,12 @@ export type PlateAnnotatedProps = {
 };
 
 const ACCENT: Record<Domain, string> = {
-  infrastructure: '#22D3EE',
-  security: '#4ADE80',
-  data: '#A78BFA',
+  infrastructure: '#00D6F7',
+  security: '#3DDF7D',
+  data: '#AD88FF',
   ai: '#FFB020',
   failure: '#FF4D4D',
-  languages: '#60A5FA',
+  languages: '#51A4FF',
 };
 
 const H = 30;
@@ -117,7 +117,7 @@ export const PlateAnnotated: React.FC<PlateAnnotatedProps> = ({
   const elbowY = my - labelRise;
 
   return (
-    <AbsoluteFill name="Scene" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene" style={{ backgroundColor: '#040E1F' }}>
       {plate ? (
         <Img
           name="Plate"
@@ -127,10 +127,10 @@ export const PlateAnnotated: React.FC<PlateAnnotatedProps> = ({
       ) : (
         <AbsoluteFill
           style={{
-            backgroundColor: '#161B26',
+            backgroundColor: '#0E213E',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#2A3240',
+            color: '#274064',
             fontFamily: 'IBM Plex Mono',
             fontSize: 56,
           }}
@@ -181,8 +181,8 @@ export const PlateAnnotated: React.FC<PlateAnnotatedProps> = ({
               left: labelSide === 'right' ? endX : undefined,
               right: labelSide === 'left' ? 3840 - endX : undefined,
               top: elbowY - 96,
-              backgroundColor: '#161B26',
-              border: '1px solid #2A3240',
+              backgroundColor: '#0E213E',
+              border: '1px solid #274064',
               borderBottom: `4px solid ${accent}`,
               borderRadius: 8,
               padding: '20px 34px',
@@ -206,7 +206,7 @@ export const PlateAnnotated: React.FC<PlateAnnotatedProps> = ({
         <AbsoluteFill style={{ alignItems: 'flex-start', justifyContent: 'flex-end', padding: 150 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 24, opacity: 0.75 }}>
             <div style={{ width: 60, height: 3, backgroundColor: accent }} />
-            <div style={{ color: '#8B94A7', fontFamily: 'IBM Plex Mono', fontSize: 40, letterSpacing: '0.1em' }}>
+            <div style={{ color: '#81A2C4', fontFamily: 'IBM Plex Mono', fontSize: 40, letterSpacing: '0.1em' }}>
               {sceneMark}
             </div>
           </div>

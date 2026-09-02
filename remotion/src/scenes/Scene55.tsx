@@ -27,7 +27,7 @@ export const Scene55: React.FC = () => {
   });
 
   return (
-    <AbsoluteFill name="Scene 55" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene 55" style={{ backgroundColor: '#040E1F' }}>
       <Interactive.Div
         name="Plate"
         style={{

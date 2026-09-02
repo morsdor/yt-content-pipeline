@@ -19,7 +19,7 @@ export const Scene63: React.FC = () => {
   // this component, something has gone wrong — the payoff is supposed to be still.
 
   return (
-    <AbsoluteFill name="Scene 63" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene 63" style={{ backgroundColor: '#040E1F' }}>
       <Interactive.Div
         name="Plate"
         style={{

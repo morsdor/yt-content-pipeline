@@ -28,24 +28,33 @@
 
 // ── §3 Colour ───────────────────────────────────────────────────────────────
 
-/** Base palette. Ground is never pure #000 — it crushes on OLED and kills depth. */
+/**
+ * Base palette. Ground is never pure #000 — it crushes on OLED and kills depth.
+ *
+ * Revised 2026-09-03. The neutrals used to be true greys (ash C=0.030, graphite
+ * C=0.028, slate C=0.023 in OKLCH) which is what made short-form frames read as
+ * pale: measured on real reel frames, ~90% of every frame was effectively
+ * greyscale and under 2% was vivid. They now carry real chroma at the same
+ * lightness, so the frame is coloured without a single element being added.
+ */
 export const BASE = {
-  ink: '#0B0E14', // ground
-  slate: '#161B26', // surfaces, panels, callout bars
+  ink: '#040E1F', // ground
+  slate: '#0E213E', // surfaces, panels, callout bars
   bone: '#E8E6E1', // primary text (warm off-white, never pure #FFF)
-  ash: '#8B94A7', // secondary text, labels, axes
-  graphite: '#2A3240', // rules, grid, schematic lines
+  ash: '#81A2C4', // secondary text, labels, axes
+  graphite: '#274064', // rules, grid, schematic lines
+  mesh: '#0D1F3C', // SHORT-FORM ONLY — the drafting grid on the reel ground (§3a)
   amber: '#FFB020', // BRAND ANCHOR — max ONE amber element per frame
 } as const;
 
 /** One accent per video, chosen by subject domain. Mirrors EA's per-civilization system. */
 export const DOMAIN_ACCENT = {
-  infrastructure: '#22D3EE',
-  security: '#4ADE80',
-  data: '#A78BFA',
+  infrastructure: '#00D6F7',
+  security: '#3DDF7D',
+  data: '#AD88FF',
   ai: '#FFB020',
   failure: '#FF4D4D', // ONLY on the beat something breaks — decorative use destroys it
-  languages: '#60A5FA',
+  languages: '#51A4FF',
 } as const;
 
 export type Domain = keyof typeof DOMAIN_ACCENT;

@@ -29,7 +29,7 @@ export const Scene31: React.FC = () => {
   });
 
   return (
-    <AbsoluteFill name="Scene 31" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene 31" style={{ backgroundColor: '#040E1F' }}>
       <Interactive.Div
         name="Plate"
         style={{

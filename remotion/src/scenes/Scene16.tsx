@@ -60,13 +60,13 @@ export const Scene16: React.FC = () => {
   });
 
   return (
-    <AbsoluteFill name="Scene 16" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene 16" style={{ backgroundColor: '#040E1F' }}>
       <svg width="100%" height="100%" viewBox="0 0 3840 2160">
         {/* An isometric ground plane. Without it the bars float; with it they STAND on
             something, which is the whole difference between a chart and a scene. */}
         <polygon
           points={`760,${BASE_Y} 3300,${BASE_Y} ${3300 + DX},${BASE_Y - DY} ${760 + DX},${BASE_Y - DY}`}
-          fill="#161B26"
+          fill="#0E213E"
           opacity={grid}
         />
         <line
@@ -74,7 +74,7 @@ export const Scene16: React.FC = () => {
           y1={BASE_Y}
           x2={3300}
           y2={BASE_Y}
-          stroke="#2A3240"
+          stroke="#274064"
           strokeWidth={4}
           opacity={grid}
         />
@@ -89,14 +89,14 @@ export const Scene16: React.FC = () => {
                   y1={y}
                   x2={3180}
                   y2={y}
-                  stroke="#2A3240"
+                  stroke="#274064"
                   strokeWidth={tick === 0 ? 4 : 2}
                 />
                 <text
                   x={860}
                   y={y + 18}
                   textAnchor="end"
-                  fill="#8B94A7"
+                  fill="#81A2C4"
                   fontFamily="IBM Plex Mono"
                   fontSize={48}
                 >
@@ -109,7 +109,7 @@ export const Scene16: React.FC = () => {
             x={860}
             y={BASE_Y - MAX_H - 70}
             textAnchor="end"
-            fill="#8B94A7"
+            fill="#81A2C4"
             fontFamily="IBM Plex Mono"
             fontSize={44}
           >
@@ -130,9 +130,9 @@ export const Scene16: React.FC = () => {
           const x = XS[i];
           const y = BASE_Y - h;
           const hero = i === DATA.length - 1;
-          const face = hero ? '#22D3EE' : '#2A3240';
-          const top = hero ? '#22D3EE' : '#8B94A7';
-          const side = hero ? '#22D3EE' : '#161B26';
+          const face = hero ? '#00D6F7' : '#274064';
+          const top = hero ? '#00D6F7' : '#81A2C4';
+          const side = hero ? '#00D6F7' : '#0E213E';
 
           const counted = interpolate(frame, [start + 6, start + 30], [0, d.value], {
             extrapolateLeft: 'clamp',
@@ -172,7 +172,7 @@ export const Scene16: React.FC = () => {
                 x={x + BAR_W / 2}
                 y={y - DY - 46}
                 textAnchor="middle"
-                fill={hero ? '#22D3EE' : '#E8E6E1'}
+                fill={hero ? '#00D6F7' : '#E8E6E1'}
                 fontFamily="IBM Plex Mono"
                 fontSize={hero ? 108 : 76}
                 opacity={grow}
@@ -183,7 +183,7 @@ export const Scene16: React.FC = () => {
                 x={x + BAR_W / 2 + DX / 2}
                 y={BASE_Y + 76}
                 textAnchor="middle"
-                fill="#8B94A7"
+                fill="#81A2C4"
                 fontFamily="IBM Plex Sans"
                 fontSize={44}
                 opacity={grow}

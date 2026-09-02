@@ -44,7 +44,7 @@ const PLACEMENT: Record<
   center: { justifyContent: 'center', padding: 200 },
 };
 
-export const SceneText: React.FC<SceneTextProps> = ({ texts, accent = '#22D3EE' }) => {
+export const SceneText: React.FC<SceneTextProps> = ({ texts, accent = '#00D6F7' }) => {
   const frame = useCurrentFrame();
 
   return (
@@ -87,8 +87,8 @@ export const SceneText: React.FC<SceneTextProps> = ({ texts, accent = '#22D3EE' 
           >
             <div
               style={{
-                backgroundColor: '#161B26',
-                border: '1px solid #2A3240',
+                backgroundColor: '#0E213E',
+                border: '1px solid #274064',
                 borderLeft: `6px solid ${accent}`,
                 borderRadius: 8,
                 padding: '24px 40px',

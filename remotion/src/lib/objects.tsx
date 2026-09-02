@@ -16,9 +16,9 @@ import { isoBox, project } from './iso';
  * sequence without each one owning a clock.
  */
 
-const TOP = '#2A3240';
-const LEFT = '#161B26';
-const RIGHT = '#0B0E14';
+const TOP = '#274064';
+const LEFT = '#0E213E';
+const RIGHT = '#040E1F';
 
 export type IsoProps = {
   x: number;
@@ -32,7 +32,7 @@ export type IsoProps = {
 export const IsoRack: React.FC<
   IsoProps & { w?: number; d?: number; h?: number; leds?: number; ledProgress?: number }
 > = ({
-  x, y, lit = 1, accent = '#22D3EE', w = 90, d = 140, h = 200, leds = 7, ledProgress,
+  x, y, lit = 1, accent = '#00D6F7', w = 90, d = 140, h = 200, leds = 7, ledProgress,
 }) => {
   const hh = h * lit;
   const b = isoBox({ x, y, z: 0 }, w, d, hh);
@@ -70,7 +70,7 @@ export const IsoRack: React.FC<
 
 /** A house: pitched roof and one lit window. Reads at 40px. */
 export const IsoHouse: React.FC<IsoProps & { w?: number; h?: number }> = ({
-  x, y, lit = 1, accent = '#22D3EE', w = 165, h = 120,
+  x, y, lit = 1, accent = '#00D6F7', w = 165, h = 120,
 }) => {
   const wall = h * 0.58;
   const b = isoBox({ x, y, z: 0 }, w, w, wall);
@@ -101,7 +101,7 @@ export const IsoHouse: React.FC<IsoProps & { w?: number; h?: number }> = ({
 
 /** A hyperbolic cooling tower: waisted profile, lit rim, optional vapour. */
 export const IsoTower: React.FC<IsoProps & { r?: number; h?: number; vapour?: number }> = ({
-  x, y, lit = 1, accent = '#22D3EE', r = 90, h = 260, vapour = 0,
+  x, y, lit = 1, accent = '#00D6F7', r = 90, h = 260, vapour = 0,
 }) => {
   const [bx, by] = project({ x, y, z: 0 });
   const waist = r * 0.62;
@@ -132,7 +132,7 @@ export const IsoTower: React.FC<IsoProps & { r?: number; h?: number; vapour?: nu
 
 /** A datacenter hall: long low block with a band of lit windows. */
 export const IsoHall: React.FC<IsoProps & { w?: number; d?: number; h?: number; bays?: number }> = ({
-  x, y, lit = 1, accent = '#22D3EE', w = 520, d = 260, h = 130, bays = 9,
+  x, y, lit = 1, accent = '#00D6F7', w = 520, d = 260, h = 130, bays = 9,
 }) => {
   const b = isoBox({ x, y, z: 0 }, w, d, h);
   const wins = [];

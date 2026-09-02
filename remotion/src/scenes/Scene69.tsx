@@ -31,7 +31,7 @@ export const Scene69: React.FC = () => {
     <AbsoluteFill
       name="Scene 69"
       style={{
-        backgroundColor: '#0B0E14',
+        backgroundColor: '#040E1F',
         alignItems: 'center',
         justifyContent: 'center',
       }}
@@ -42,7 +42,7 @@ export const Scene69: React.FC = () => {
           position: 'absolute',
           left: 320,
           height: 4,
-          backgroundColor: '#22D3EE',
+          backgroundColor: '#00D6F7',
           width: `${draw * 3200}px`,
         }}
       />
@@ -81,15 +81,15 @@ export const Scene69: React.FC = () => {
                   width: 120,
                   height: 120,
                   borderRadius: 8,
-                  backgroundColor: '#161B26',
-                  border: '3px solid #22D3EE',
+                  backgroundColor: '#0E213E',
+                  border: '3px solid #00D6F7',
                 }}
               />
               <div
                 style={{
                   fontFamily: 'IBM Plex Mono',
                   fontSize: 48,
-                  color: '#8B94A7',
+                  color: '#81A2C4',
                 }}
               >
                 {node}

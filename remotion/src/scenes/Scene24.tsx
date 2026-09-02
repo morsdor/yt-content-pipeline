@@ -111,14 +111,14 @@ export const Scene24: React.FC = () => {
   const tcy = (((HCOLS - 1) * HGX + HW) / 2 + ((HROWS - 1) * HGY + HD) / 2) * 0.5;
 
   return (
-    <AbsoluteFill name="Scene 24" style={{ backgroundColor: '#0B0E14' }}>
+    <AbsoluteFill name="Scene 24" style={{ backgroundColor: '#040E1F' }}>
       <svg width="100%" height="100%" viewBox="0 0 3840 2160">
         {/* scale about the frame centre, then place the local origin */}
         <g transform={`translate(${FCX + shiftX} ${FCY}) scale(${zoom}) translate(${ox} ${oy})`}>
           <g opacity={hall}>
-            <polygon points={floor.top} fill="#161B26" />
-            <polygon points={floor.left} fill="#0B0E14" />
-            <polygon points={floor.right} fill="#0B0E14" />
+            <polygon points={floor.top} fill="#0E213E" />
+            <polygon points={floor.left} fill="#040E1F" />
+            <polygon points={floor.right} fill="#040E1F" />
           </g>
           {racks}
         </g>
@@ -149,7 +149,7 @@ export const Scene24: React.FC = () => {
           position: 'absolute',
           left: 260,
           bottom: 210,
-          color: '#8B94A7',
+          color: '#81A2C4',
           fontFamily: 'IBM Plex Sans',
           fontSize: 56,
           opacity: interpolate(frame, [t(6.6), t(7.1)], [0, 1], ease),

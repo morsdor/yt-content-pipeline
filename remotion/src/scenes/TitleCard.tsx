@@ -15,7 +15,7 @@ import { AbsoluteFill, Easing, Interactive, interpolate, useCurrentFrame } from 
  * (The previous horizontal underline belonged to the old working name and died with it.)
  *
  * Brand literals used (validated by `npm run brand:check`):
- *   #0B0E14 ink · #E8E6E1 bone · #FFB020 amber · #8B94A7 ash · Easing.bezier(0.4, 0, 0.2, 1)
+ *   #040E1F ink · #E8E6E1 bone · #FFB020 amber · #81A2C4 ash · Easing.bezier(0.4, 0, 0.2, 1)
  */
 
 export const TitleCard: React.FC = () => {
@@ -25,7 +25,7 @@ export const TitleCard: React.FC = () => {
     <AbsoluteFill
       name="Title card"
       style={{
-        backgroundColor: '#0B0E14',
+        backgroundColor: '#040E1F',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -88,7 +88,7 @@ export const TitleCard: React.FC = () => {
           fontFamily: 'IBM Plex Sans',
           fontWeight: 400,
           fontSize: 72,
-          color: '#8B94A7',
+          color: '#81A2C4',
           marginTop: 96,
           opacity: interpolate(frame, [44, 52], [0, 1], {
             extrapolateLeft: 'clamp',
