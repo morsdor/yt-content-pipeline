@@ -8,6 +8,7 @@ import {
   Autocorrect,
   DURATION_SECONDS as AUTOCORRECT_SECONDS,
 } from './reels/Autocorrect';
+import { SafeZones } from './reels/lib/chrome';
 import { TitleCard } from './scenes/TitleCard';
 import { Scene16 } from './scenes/Scene16';
 import { Scene24 } from './scenes/Scene24';
@@ -35,6 +36,13 @@ import { Scene77 } from './scenes/Scene77';
  * 3840×2160 @ 30fps, 30 frames of handles at BOTH ends. Content starts at frame 30.
  */
 
+const AutocorrectSafe: React.FC = () => (
+  <>
+    <Autocorrect />
+    <SafeZones />
+  </>
+);
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -54,6 +62,18 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="r002-autocorrect"
         component={Autocorrect}
+        durationInFrames={AUTOCORRECT_SECONDS * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* Same reel with Instagram's chrome painted over it. Red = covered by the
+          IG header / caption strip, amber = the like-comment-share rail. Scrub
+          this before posting: r001 shipped with its title inside the red band. */}
+      <Composition
+        id="r002-autocorrect-safe"
+        component={AutocorrectSafe}
         durationInFrames={AUTOCORRECT_SECONDS * 30}
         fps={30}
         width={1080}

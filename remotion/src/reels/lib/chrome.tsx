@@ -22,6 +22,35 @@ export const FPS = 30;
 export const REEL_W = 1080;
 export const REEL_H = 1920;
 
+/**
+ * ── Instagram safe area ─────────────────────────────────────────────────────
+ * Instagram paints its OWN chrome over the video: the status bar and "Reels"
+ * header across the top, the caption / username / audio strip across the bottom,
+ * and the like/comment/share rail down the right. Anything we put underneath is
+ * simply not read.
+ *
+ * r001 was authored to the raw 1080x1920 canvas, so its title sat at y=120 —
+ * entirely inside Instagram's top bar. Confirmed in the app 2026-09-02. The
+ * numbers below are the correction, and every reel from r002 on is laid out
+ * against them rather than against the canvas.
+ *
+ * Render `<SafeZones />` over any reel to check it before posting.
+ */
+export const SAFE = { top: 270, bottom: 380, side: 60, rail: 210 } as const;
+
+/** First y-coordinate Instagram does not cover. */
+export const SAFE_TOP = SAFE.top;                          // 270
+/** Last y-coordinate Instagram does not cover. */
+export const SAFE_BOTTOM = REEL_H - SAFE.bottom;           // 1540
+/** Usable height. This — not 1920 — is the canvas a reel is composed on. */
+export const SAFE_H = SAFE_BOTTOM - SAFE_TOP;              // 1270
+/** Full-bleed content width, for text that never reaches the action rail. */
+export const CONTENT_W = REEL_W - SAFE.side * 2;           // 960
+/** Width that also clears the right-hand action rail. Wide elements use this. */
+export const SAFE_W = REEL_W - SAFE.side - SAFE.rail;      // 810
+/** Centre-line of the rail-safe band. Wide elements centre on this, not 540. */
+export const SAFE_CX = SAFE.side + SAFE_W / 2;             // 465
+
 /** The only two sanctioned curves (brand_guide_software.md §5). */
 const E: [number, number, number, number] = [0.4, 0, 0.2, 1];
 export const ease = {
@@ -74,7 +103,7 @@ export const ReelHeader: React.FC<{
       <div
         style={{
           position: 'absolute',
-          top: 120,
+          top: 290,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -91,7 +120,7 @@ export const ReelHeader: React.FC<{
       <div
         style={{
           position: 'absolute',
-          top: 150,
+          top: 320,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -116,7 +145,7 @@ export const StepLabel: React.FC<{
   from: number;
   to: number;
 }> = ({ n, title, sub, from, to }) => (
-  <Fade from={from} to={to} style={{ position: 'absolute', top: 300, left: 60, width: 960 }}>
+  <Fade from={from} to={to} style={{ position: 'absolute', top: 470, left: 60, width: 960 }}>
     <div
       style={{
         fontFamily: 'IBM Plex Mono',
@@ -143,7 +172,7 @@ export const Readout: React.FC<{
   to: number;
   top?: number;
   rows: [string, string][];
-}> = ({ from, to, top = 1196, rows }) => (
+}> = ({ from, to, top = 1240, rows }) => (
   <Fade from={from} to={to} style={{ position: 'absolute', top, left: 60, width: 960 }}>
     {rows.map(([k, v]) => (
       <div
@@ -168,9 +197,52 @@ export const Progress: React.FC<{ seconds: number }> = ({ seconds }) => {
   const frame = useCurrentFrame();
   const p = Math.min(1, frame / (seconds * FPS));
   return (
-    <div style={{ position: 'absolute', top: 1790, left: 60, width: 960, height: 6 }}>
+    <div style={{ position: 'absolute', top: SAFE_BOTTOM - 6, left: 60, width: 960, height: 6 }}>
       <div style={{ position: 'absolute', width: 960, height: 6, background: '#2A3240' }} />
       <div style={{ position: 'absolute', width: 960 * p, height: 6, background: '#22D3EE' }} />
     </div>
   );
 };
+
+/**
+ * Debug overlay: paints Instagram's chrome zones over a reel so a layout can be
+ * checked before it is posted. Red = covered by IG. Amber = the action rail.
+ * Never rendered in a shipped composition — see the `*-safe` compositions in
+ * Root.tsx, which exist purely to eyeball this.
+ */
+export const SafeZones: React.FC = () => (
+  <>
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: REEL_W,
+        height: SAFE_TOP,
+        background: 'rgba(255,77,77,0.45)',
+        borderBottom: '4px solid #FF4D4D',
+      }}
+    />
+    <div
+      style={{
+        position: 'absolute',
+        top: SAFE_BOTTOM,
+        left: 0,
+        width: REEL_W,
+        height: SAFE.bottom,
+        background: 'rgba(255,77,77,0.45)',
+        borderTop: '4px solid #FF4D4D',
+      }}
+    />
+    <div
+      style={{
+        position: 'absolute',
+        top: 1050,
+        left: REEL_W - SAFE.rail,
+        width: SAFE.rail,
+        height: SAFE_BOTTOM - 1050,
+        background: 'rgba(255,176,32,0.38)',
+      }}
+    />
+  </>
+);

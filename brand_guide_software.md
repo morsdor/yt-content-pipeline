@@ -465,6 +465,37 @@ pipeline. Keep it.
 the profile grid a wall of *objects*, where every competing dev account shows code screenshots.
 Protect this deliberately when choosing cover frames.
 
+### Safe area — the reel canvas is 1080×1270, not 1080×1920
+
+Instagram paints its own chrome over the video and anything underneath is simply not read: the status
+bar and Reels header across the top, the caption / username / audio strip across the bottom, and the
+like-comment-share rail down the right.
+
+| Zone | Extent | Verdict |
+|:--|:--|:--|
+| Top | `y < 270` | Covered — never place content |
+| Bottom | `y > 1540` | Covered — never place content |
+| Right rail | `x > 870`, roughly `y` 1050–1540 | Avoid for **wide graphics**; short centred text is fine |
+| **Usable band** | **`y` 270 → 1540, `x` 60 → 870** | Compose here |
+
+Codified in `remotion/src/reels/lib/chrome.tsx` as `SAFE`, `SAFE_TOP`, `SAFE_BOTTOM`, `SAFE_H`,
+`SAFE_W`, `SAFE_CX`. The shared chrome components (`ReelHeader`, `StepLabel`, `Readout`, `Progress`)
+are positioned against them, so any reel built on the shared lib is safe by construction.
+
+**How this was found — r001 shipped broken.** It was authored against the raw canvas, putting its
+title at `y=120`, wholly inside Instagram's top bar; the progress bar at `y=1790` was likewise lost
+in the caption strip. Confirmed in the app 2026-09-02, after posting. `Shazam.tsx` predates the
+shared chrome and carries its own copies, so it is unaffected by the fix and was deliberately left
+alone — the reel is live and approved.
+
+**Verify before posting, every time.** Root.tsx carries a `*-safe` composition per reel that renders
+the reel under `<SafeZones />` — red for the covered bands, amber for the action rail. Scrub it in
+Studio. A reel whose title, final number, or answer touches red does not get posted.
+
+**The right-rail number is deliberately conservative.** 210px assumes the widest plausible button
+column; the icons themselves occupy nearer 140px. Hold wide graphics (tables, grids, charts) to
+`x < 870`; centred prose at the full 960 width is acceptable and looks better centred on the frame.
+
 ### Posted
 
 | Reel | Subject | Length | Posted |

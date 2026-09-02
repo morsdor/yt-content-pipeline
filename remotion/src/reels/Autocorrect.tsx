@@ -2,6 +2,7 @@ import { AbsoluteFill, Audio, interpolate, staticFile, useCurrentFrame } from 'r
 import {
   Fade,
   Progress,
+  SAFE_W,
   Readout,
   ReelHeader,
   StepLabel,
@@ -87,9 +88,14 @@ const T = {
 
 // ── table geometry ──────────────────────────────────────────────────────────
 // 12 visual columns: one row-letter gutter + 11 number columns (j = 0..10).
-const CELL = 72;
-const TX = (1080 - CELL * 12) / 2 + 26;
-const TY = 548;
+// Sized against the Instagram safe area, not the canvas: 12 columns of 58 is
+// 696px, which centres inside SAFE_W (810) leaving the right-hand action rail
+// clear, and stacks 12 rows from TY=690 to 1386 — inside SAFE_BOTTOM (1540)
+// with room for the "One substitution" line beneath it. The +26 is the
+// row-letter gutter.
+const CELL = 58;
+const TX = 60 + (SAFE_W - CELL * 12) / 2 + 26;
+const TY = 690;
 const cx = (j: number) => TX + (j + 1) * CELL;
 const cy = (i: number) => TY + (i + 1) * CELL;
 
@@ -154,7 +160,7 @@ const TypedWord: React.FC<{ frame: number }> = ({ frame }) => {
       <div
         style={{
           position: 'absolute',
-          top: 690,
+          top: 840,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -189,7 +195,7 @@ const DictScan: React.FC<{ frame: number }> = ({ frame }) => {
       <div
         style={{
           position: 'absolute',
-          top: 660,
+          top: 810,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -203,7 +209,7 @@ const DictScan: React.FC<{ frame: number }> = ({ frame }) => {
       <div
         style={{
           position: 'absolute',
-          top: 790,
+          top: 940,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -214,7 +220,7 @@ const DictScan: React.FC<{ frame: number }> = ({ frame }) => {
       >
         words checked
       </div>
-      <div style={{ position: 'absolute', top: 880, left: 160, width: 760, height: 8 }}>
+      <div style={{ position: 'absolute', top: 1030, left: 160, width: 760, height: 8 }}>
         <div style={{ position: 'absolute', width: 760, height: 8, background: '#2A3240' }} />
         <div style={{ position: 'absolute', width: 760 * p, height: 8, background: '#22D3EE' }} />
       </div>
@@ -349,7 +355,7 @@ const Ranking: React.FC<{ frame: number }> = ({ frame }) => {
   const out = interpolate(frame, [t(T.rankOut - 0.5), t(T.rankOut)], [1, 0], ease);
   if (frame < t(T.ranks) || out <= 0) return null;
   return (
-    <div style={{ position: 'absolute', top: 600, left: 60, width: 960, opacity: out }}>
+    <div style={{ position: 'absolute', top: 750, left: 60, width: 960, opacity: out }}>
       {CANDIDATES.map((c, k) => {
         const at = t(T.ranks) + k * 7;
         const o = interpolate(frame, [at, at + 8], [0, 1], ease);
@@ -426,7 +432,7 @@ export const Autocorrect: React.FC = () => {
         to={t(T.notAWord[1])}
         style={{
           position: 'absolute',
-          top: 860,
+          top: 1010,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -452,7 +458,7 @@ export const Autocorrect: React.FC = () => {
         to={t(T.noMatch[1])}
         style={{
           position: 'absolute',
-          top: 960,
+          top: 1110,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -487,7 +493,7 @@ export const Autocorrect: React.FC = () => {
         to={t(T.s2Label[1])}
         style={{
           position: 'absolute',
-          top: 1450,
+          top: 1420,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -522,7 +528,7 @@ export const Autocorrect: React.FC = () => {
         from={t(T.answer)}
         style={{
           position: 'absolute',
-          top: 700,
+          top: 850,
           left: 60,
           width: 960,
           textAlign: 'center',
@@ -546,7 +552,7 @@ export const Autocorrect: React.FC = () => {
         from={t(T.caveat)}
         style={{
           position: 'absolute',
-          top: 1080,
+          top: 1230,
           left: 60,
           width: 960,
           textAlign: 'center',
