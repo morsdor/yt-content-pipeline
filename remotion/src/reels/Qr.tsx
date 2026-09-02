@@ -23,89 +23,95 @@ import {
 } from './data/qr';
 
 /**
- * r003 · "How much of this can you destroy?"  (backlog I01)
+ * r003 · "How much of a QR code can you destroy?"  (backlog I01)
  *
- * Every number and every damaged module here is measured output from
+ * Every number and every damaged module is measured output from
  * projects/r003_qr/qr_damage.py, which encodes a real QR, rebuilds the
  * module -> codeword -> Reed-Solomon block mapping from the spec, proves it by
  * reconstructing the payload byte for byte, then damages the code and asks
- * OpenCV whether it still reads. Nothing on screen is drawn by hand.
+ * OpenCV whether it still reads. Nothing here is drawn by hand.
  *
- * The code on screen is live: it encodes https://instagram.com/thedepthfirst,
- * so a viewer who pauses and scans it lands on the account.
+ * ── Re-cut 2026-09-03, from the first Instagram retention data ───────────────
+ * r001 lost half its audience by ~3s and r002 by ~1.5s, while BOTH curves then
+ * flattened — so the body works and the opening does not. The first cut of this
+ * reel sat on a static code for 6.6s before anything happened, which on that
+ * evidence is fatal. Now the destruction starts at 0.3s and the payoff verdict
+ * lands at 2.5s, with the title riding over the damage instead of preceding it.
+ * Runtime 45s -> 35s.
  */
 
-export const DURATION_SECONDS = 45;
+export const DURATION_SECONDS = 35;
 
 const T = {
-  qrIn: 0.5,
-  titleOut: [4.4, 4.8] as [number, number],
-  titleIn: [4.8, 5.15] as [number, number],
+  // ── HOOK: destroy it first, explain afterwards ────────────────────────────
+  stain: [0.3, 2.4] as [number, number],
+  hookVerdict: 2.5,
+  titleOut: [5.5, 5.9] as [number, number],
+  titleIn: [5.9, 6.25] as [number, number],
+  hookOut: 6.5,
 
-  s1Label: [5.2, 13.6] as [number, number],
-  blobRun: [7.1, 10.4] as [number, number],
-  s1Verdict: 10.6,
-  s1Out: 13.5,
+  // ── 1. why it survived ────────────────────────────────────────────────────
+  s1Label: [6.5, 13.4] as [number, number],
+  sweep: [7.7, 10.7] as [number, number],
+  s1Read: 11.0,
+  s1Out: 13.2,
 
-  s2Label: [13.6, 22.2] as [number, number],
-  blockRun: [15.6, 18.4] as [number, number],
-  s2Read: 19.0,
-  s2Out: 22.1,
+  // ── 2. the same damage, scattered ─────────────────────────────────────────
+  s2Label: [13.4, 19.9] as [number, number],
+  speck: [14.6, 16.9] as [number, number],
+  s2Verdict: 17.1,
+  s2Out: 19.7,
 
-  s3Label: [22.2, 31.0] as [number, number],
-  speckRun: [24.3, 27.0] as [number, number],
-  s3Verdict: 27.2,
-  s3Out: 30.9,
+  // ── 3. the corner nobody expects ──────────────────────────────────────────
+  s3Label: [19.9, 26.3] as [number, number],
+  corner: [21.1, 22.4] as [number, number],
+  s3Verdict: 22.6,
+  s3Out: 26.1,
 
-  s4Label: [31.0, 39.0] as [number, number],
-  cornerRun: [32.8, 34.4] as [number, number],
-  s4Verdict: 34.6,
-  s4Out: 38.9,
-
-  answer: 39.2,
-  caveat: 41.6,
+  // ── 4/5. the answer, then something for the viewer to do ──────────────────
+  answer: 26.5,
+  ctaCode: 29.4,
+  cta: 30.2,
 };
 
-// ── geometry: 37 modules at 17px = 629, centred in the rail-safe band ────────
+// ── geometry ────────────────────────────────────────────────────────────────
 const CELL = 17;
 const QW = N * CELL;
-// Centred on the FRAME (540), not on the rail-safe band — at 657px total the
-// code's right edge lands at 868, still inside the 870 rail limit, so it clears
-// the action buttons without looking 75px off-centre.
-const QX = 540 - (QW + 28) / 2;
-const QY = 690;
 const PAD = 14;
-
-/**
- * The accent darkened for a highlighted block's DARK modules. Computed rather
- * than a new hex, so the palette stays closed — same rule the r001/r002 data
- * ramps follow (brand_guide_software.md §3a).
- */
-const ACCENT = [173, 136, 255] as const; // #AD88FF
-const ACCENT_DARK = `rgb(${ACCENT.map((v) => Math.round(v * 0.42)).join(',')})`;
+// Centred on the FRAME (540): at 657px total the right edge lands at 868, inside
+// the 870 action-rail limit, so it clears the buttons without looking off-centre.
+const QX = 540 - (QW + PAD * 2) / 2;
+const QY = 690;
 
 const at = (r: number, c: number) => r * N + c;
 const isDark = (r: number, c: number) => MATRIX[at(r, c)] === '1';
 const isFunc = (r: number, c: number) => FUNC[at(r, c)] === '1';
 
-/** The measured verdict at a given damage level — read from the sweep, not assumed. */
-const verdictAt = (steps: Step[], pct: number): boolean => {
-  let ok = true;
-  for (const s of steps) if (s.pct <= pct) ok = s.ok;
-  return ok;
+/**
+ * The Reed-Solomon block ramp — the domain accent through to cyan, one stop per
+ * block. Computed rgb() rather than new hex literals, so the palette stays
+ * closed (brand_guide_software.md §3a), and the colour ENCODES which of the four
+ * blocks owns each module rather than decorating it. Four interleaved colour
+ * populations, none of which owns a region, IS the beat.
+ */
+const RAMP_A = [173, 136, 255]; // #AD88FF violet — the domain accent
+const RAMP_B = [0, 214, 247]; // #00D6F7 cyan
+const blockColor = (block: number, light: boolean): string => {
+  const f = block / (STATS.blocks - 1);
+  const k = light ? 1 : 0.42; // dark modules take a deeper step of the same hue
+  const ch = RAMP_A.map((a, i) => Math.round((a + (RAMP_B[i] - a) * f) * k));
+  return `rgb(${ch.join(',')})`;
 };
 
 // ── damage models, recomputed exactly as qr_damage.py generated them ─────────
 const blobDamaged = (pct: number): Set<number> => {
   const out = new Set<number>();
   if (pct <= 0) return out;
-  const n = Math.round((STATS.dataModules * pct) / 100);
-  const rad2 = n / Math.PI;
+  const rad2 = Math.round((STATS.dataModules * pct) / 100) / Math.PI;
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
       if (isFunc(r, c)) continue;
-      const d = (r - BLOB_CY) ** 2 + (c - BLOB_CX) ** 2;
-      if (d <= rad2) out.add(at(r, c));
+      if ((r - BLOB_CY) ** 2 + (c - BLOB_CX) ** 2 <= rad2) out.add(at(r, c));
     }
   }
   return out;
@@ -128,56 +134,72 @@ const CORNER: number[] = (() => {
   return out;
 })();
 
-// ── the code itself ─────────────────────────────────────────────────────────
+/** The measured verdict at a damage level — read from the sweep, never assumed. */
+const verdictAt = (steps: Step[], pct: number): boolean => {
+  let ok = true;
+  for (const s of steps) if (s.pct <= pct) ok = s.ok;
+  return ok;
+};
+
+// ── the code ────────────────────────────────────────────────────────────────
 
 const Code: React.FC<{
   damaged: Set<number>;
-  highlightBlock: number | null;
-  blockReveal: number;
+  sweep: number;
   markCorner: number;
-}> = ({ damaged, highlightBlock, blockReveal, markCorner }) => {
+  pulse: number;
+}> = ({ damaged, sweep, markCorner, pulse }) => {
   const cells: React.ReactNode[] = [];
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
       const i = at(r, c);
       const dark = isDark(r, c);
-      const hit = damaged.has(i);
       let fill = dark ? '#040E1F' : '#E8E6E1';
-      if (highlightBlock !== null && OWNER[i] === String(highlightBlock)) {
-        // reveal this block's modules in reading order, so you watch one
-        // Reed-Solomon block scatter itself across the whole square
-        const rank = (r * N + c) / (N * N);
-        if (rank <= blockReveal) fill = dark ? ACCENT_DARK : '#AD88FF';
+      // a diagonal wipe lights the blocks as it crosses them
+      if (sweep > 0 && OWNER[i] !== '.') {
+        if ((r + c) / (2 * N - 2) <= sweep) fill = blockColor(Number(OWNER[i]), !dark);
       }
-      if (hit) fill = '#040E1F';
+      if (damaged.has(i)) fill = '#040E1F';
       cells.push(
         <rect key={i} x={c * CELL} y={r * CELL} width={CELL} height={CELL} fill={fill} />,
       );
     }
   }
+  const S = QW + PAD * 2;
   return (
-    <svg width={QW + PAD * 2} height={QW + PAD * 2} style={{ display: 'block' }}>
-      <rect width={QW + PAD * 2} height={QW + PAD * 2} fill="#E8E6E1" />
-      <g transform={`translate(${PAD},${PAD})`}>
-        {cells}
-        {markCorner > 0 ? (
-          <rect
-            x={2 * CELL - 5}
-            y={2 * CELL - 5}
-            width={3 * CELL + 10}
-            height={3 * CELL + 10}
-            fill="none"
-            stroke="#FF4D4D"
-            strokeWidth={5}
-            opacity={markCorner}
-          />
-        ) : null}
+    <svg width={S + 180} height={S + 180} style={{ display: 'block', margin: -90 }}>
+      <defs>
+        <radialGradient id="halo">
+          <stop offset="45%" stopColor="#AD88FF" stopOpacity={0.5} />
+          <stop offset="100%" stopColor="#AD88FF" stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      {pulse > 0 ? (
+        <rect width={S + 180} height={S + 180} fill="url(#halo)" opacity={pulse} />
+      ) : null}
+      <g transform="translate(90,90)">
+        <rect width={S} height={S} fill="#E8E6E1" />
+        <g transform={`translate(${PAD},${PAD})`}>
+          {cells}
+          {markCorner > 0 ? (
+            <rect
+              x={2 * CELL - 5}
+              y={2 * CELL - 5}
+              width={3 * CELL + 10}
+              height={3 * CELL + 10}
+              fill="none"
+              stroke="#FF4D4D"
+              strokeWidth={5}
+              opacity={markCorner}
+            />
+          ) : null}
+        </g>
       </g>
     </svg>
   );
 };
 
-/** The independent decoder's answer. This is OpenCV's verdict, not ours. */
+/** OpenCV's verdict on the damaged code — not ours. */
 const Verdict: React.FC<{ from: number; to?: number; ok: boolean; note: string }> = ({
   from,
   to,
@@ -192,7 +214,7 @@ const Verdict: React.FC<{ from: number; to?: number; ok: boolean; note: string }
     <div
       style={{
         fontFamily: 'Archivo Black',
-        fontSize: 60,
+        fontSize: 62,
         color: ok ? '#3DDF7D' : '#FF4D4D',
         letterSpacing: -0.5,
       }}
@@ -200,12 +222,7 @@ const Verdict: React.FC<{ from: number; to?: number; ok: boolean; note: string }
       {ok ? 'STILL SCANS' : "DOESN'T SCAN"}
     </div>
     <div
-      style={{
-        fontFamily: 'IBM Plex Mono',
-        fontSize: 38,
-        color: '#81A2C4',
-        marginTop: 12,
-      }}
+      style={{ fontFamily: 'IBM Plex Mono', fontSize: 38, color: '#81A2C4', marginTop: 12 }}
     >
       {note}
     </div>
@@ -217,111 +234,104 @@ const Verdict: React.FC<{ from: number; to?: number; ok: boolean; note: string }
 export const Qr: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const blobPct = interpolate(
+  const stainPct = interpolate(
     frame,
-    [t(T.blobRun[0]), t(T.blobRun[1])],
+    [t(T.stain[0]), t(T.stain[1])],
     [0, STATS.blobMax],
     ease,
   );
   const speckPct = interpolate(
     frame,
-    [t(T.speckRun[0]), t(T.speckRun[1])],
+    [t(T.speck[0]), t(T.speck[1])],
     [0, STATS.speckleMax + 2],
     ease,
   );
-  const blockReveal = interpolate(
-    frame,
-    [t(T.blockRun[0]), t(T.blockRun[1])],
-    [0, 1],
-    ease,
-  );
+  const sweep = interpolate(frame, [t(T.sweep[0]), t(T.sweep[1])], [0, 1], ease);
 
   // Each beat's visual outlives its label by half a second, so the code is never
-  // bare on screen while one step label hands over to the next. Without this the
-  // stage empties for ~0.2s at every seam — the same dead-beat bug r001 shipped.
+  // bare on screen while one step hands over to the next.
   const HOLD = 0.5;
-  const inBlob = frame >= t(T.blobRun[0]) && frame < t(T.s1Out + HOLD);
-  const inBlocks = frame >= t(T.blockRun[0]) && frame < t(T.s2Out + HOLD);
-  const inSpeck = frame >= t(T.speckRun[0]) && frame < t(T.s3Out + HOLD);
-  const inCorner = frame >= t(T.cornerRun[0]) && frame < t(T.s4Out);
+  const inStain = frame >= t(T.stain[0]) && frame < t(T.hookOut + HOLD);
+  const inSweep = frame >= t(T.sweep[0]) && frame < t(T.s1Out + HOLD);
+  const inSpeck = frame >= t(T.speck[0]) && frame < t(T.s2Out + HOLD);
+  const inCorner = frame >= t(T.corner[0]) && frame < t(T.s3Out);
 
   let damaged = new Set<number>();
-  if (inBlob) damaged = blobDamaged(blobPct);
+  if (inStain) damaged = blobDamaged(stainPct);
   else if (inSpeck) damaged = speckleDamaged(speckPct);
   else if (inCorner) {
     const k = Math.round(
-      interpolate(frame, [t(T.cornerRun[0]), t(T.cornerRun[1])], [0, 9], ease),
+      interpolate(frame, [t(T.corner[0]), t(T.corner[1])], [0, 9], ease),
     );
     damaged = new Set(CORNER.slice(0, k));
   }
 
-  const qrOpacity = interpolate(
+  // On screen from frame 0 — nothing to wait through — out for the answer, then
+  // back for the viewer to actually scan.
+  const codeOpacity = interpolate(
     frame,
-    [t(T.qrIn), t(T.qrIn + 0.6), t(T.answer - 0.4), t(T.answer)],
-    [0, 1, 1, 0],
+    [0, t(T.answer - 0.4), t(T.answer), t(T.ctaCode), t(T.ctaCode + 0.5)],
+    [1, 1, 0, 0, 1],
     ease,
   );
+  const pulse =
+    frame < t(T.ctaCode) ? 0 : 0.5 + 0.4 * Math.sin((frame - t(T.ctaCode)) / 5.2);
 
   return (
     <AbsoluteFill>
       <ReelGround accent="#AD88FF" />
 
       <ReelHeader
+        bigSize={64}
         big={
           <>
-            How much of this
+            How much of a QR code
             <br />
             can you <span style={{ color: '#AD88FF' }}>destroy</span>?
           </>
         }
         small={
           <>
-            How much of this can you <span style={{ color: '#AD88FF' }}>destroy</span>?
+            How much of a QR code can you{' '}
+            <span style={{ color: '#AD88FF' }}>destroy</span>?
           </>
         }
         out={T.titleOut}
         in_={T.titleIn}
       />
 
-      <div style={{ position: 'absolute', top: QY, left: QX, opacity: qrOpacity }}>
+      <div style={{ position: 'absolute', top: QY, left: QX, opacity: codeOpacity }}>
         <Code
           damaged={damaged}
-          highlightBlock={inBlocks ? 0 : null}
-          blockReveal={blockReveal}
+          sweep={inSweep ? sweep : 0}
           markCorner={
             inCorner
-              ? interpolate(frame, [t(T.cornerRun[0]), t(T.cornerRun[0] + 0.5)], [0, 1], ease)
+              ? interpolate(frame, [t(T.corner[0]), t(T.corner[0] + 0.4)], [0, 1], ease)
               : 0
           }
+          pulse={pulse}
         />
       </div>
 
-      {/* ── 1. spill something on it ──────────────────────────────────────── */}
+      {/* ── HOOK: no step label, no preamble. It is already being destroyed. ── */}
+      <Verdict
+        from={T.hookVerdict}
+        to={T.hookOut}
+        ok={verdictAt(BLOB, STATS.blobMax)}
+        note={`${STATS.blobMax}% of it is gone`}
+      />
+
+      {/* ── 1. why it survived ───────────────────────────────────────────── */}
       <StepLabel
         n="STEP 1"
-        title="Spill coffee on it"
-        sub="A stain grows over the code. Keep scanning."
+        title="Nothing is stored in one place"
+        sub="Four blocks of data, lit where they live."
         from={t(T.s1Label[0])}
         to={t(T.s1Label[1])}
       />
-      <Verdict
-        from={T.s1Verdict}
-        to={T.s1Out}
-        ok={verdictAt(BLOB, STATS.blobMax)}
-        note={`${STATS.blobMax}% of the code covered`}
-      />
-
-      {/* ── 2. why it survives ────────────────────────────────────────────── */}
-      <StepLabel
-        n="STEP 2"
-        title="Nothing is stored in one place"
-        sub="One block of the data, lit up where it actually lives."
-        from={t(T.s2Label[0])}
-        to={t(T.s2Label[1])}
-      />
       <Fade
-        from={t(T.s2Read)}
-        to={t(T.s2Out)}
+        from={t(T.s1Read)}
+        to={t(T.s1Out)}
         style={{
           position: 'absolute',
           top: 1358,
@@ -334,65 +344,66 @@ export const Qr: React.FC = () => {
           lineHeight: 1.3,
         }}
       >
-        {STATS.blocks} blocks, each smeared across the whole square.
+        Not one of them owns a corner of the square.
         <br />
         <span style={{ fontFamily: 'IBM Plex Mono', color: '#81A2C4' }}>
           any {STATS.correctsPerBlock} of {STATS.blockTotal} can be wrong
         </span>
       </Fade>
 
-      {/* ── 3. the same damage, scattered ─────────────────────────────────── */}
+      {/* ── 2. the same damage, scattered ────────────────────────────────── */}
       <StepLabel
-        n="STEP 3"
+        n="STEP 2"
         title="Now scatter the same damage"
         sub="Confetti instead of a stain. Far less of it."
-        from={t(T.s3Label[0])}
-        to={t(T.s3Label[1])}
+        from={t(T.s2Label[0])}
+        to={t(T.s2Label[1])}
       />
       <Verdict
-        from={T.s3Verdict}
-        to={T.s3Out}
+        from={T.s2Verdict}
+        to={T.s2Out}
         ok={verdictAt(SPECKLE, STATS.speckleMax + 2)}
         note={`dead at ${STATS.speckleMax}% — ${Math.round(
           STATS.blobMax / STATS.speckleMax,
         )}x less than the stain`}
       />
 
-      {/* ── 4. the part nobody expects ────────────────────────────────────── */}
+      {/* ── 3. the corner ────────────────────────────────────────────────── */}
       <StepLabel
-        n="STEP 4"
+        n="STEP 3"
         title="Now touch the corner"
         sub="Nine squares. Not one of them holds your data."
-        from={t(T.s4Label[0])}
-        to={t(T.s4Label[1])}
+        from={t(T.s3Label[0])}
+        to={t(T.s3Label[1])}
       />
       <Verdict
-        from={T.s4Verdict}
-        to={T.s4Out}
+        from={T.s3Verdict}
+        to={T.s3Out}
         ok={STATS.cornerOk}
         note={`${STATS.cornerModules} modules — ${STATS.cornerPct}% of the code`}
       />
 
-      {/* ── 5. the answer ─────────────────────────────────────────────────── */}
+      {/* ── 4. the answer ────────────────────────────────────────────────── */}
       <Fade
         from={t(T.answer)}
+        to={t(T.ctaCode)}
         style={{
           position: 'absolute',
-          top: 780,
+          top: 820,
           left: 60,
           width: 960,
           textAlign: 'center',
         }}
       >
-        <div style={{ fontFamily: 'Archivo Black', fontSize: 92, color: '#AD88FF' }}>
+        <div style={{ fontFamily: 'Archivo Black', fontSize: 94, color: '#AD88FF' }}>
           {STATS.blobMax}% survives
         </div>
         <div
           style={{
             fontFamily: 'IBM Plex Sans',
-            fontSize: 48,
+            fontSize: 50,
             color: '#E8E6E1',
-            marginTop: 26,
+            marginTop: 28,
             lineHeight: 1.35,
           }}
         >
@@ -401,23 +412,46 @@ export const Qr: React.FC = () => {
           Three corners are not.
         </div>
       </Fade>
+
+      {/* ── 5. give the viewer something to do ───────────────────────────── */}
       <Fade
-        from={t(T.caveat)}
+        from={t(T.cta)}
         style={{
           position: 'absolute',
-          top: 1160,
+          top: 470,
           left: 60,
           width: 960,
           textAlign: 'center',
-          fontFamily: 'IBM Plex Sans',
-          fontSize: 42,
-          color: '#81A2C4',
-          lineHeight: 1.35,
         }}
       >
-        Measured on a real code at the highest of four
-        <br />
-        error-correction levels. Your menu is probably lower.
+        <div style={{ fontFamily: 'Archivo Black', fontSize: 58, color: '#E8E6E1' }}>
+          This one is real.
+        </div>
+        <div
+          style={{
+            fontFamily: 'IBM Plex Sans',
+            fontSize: 44,
+            color: '#81A2C4',
+            marginTop: 14,
+          }}
+        >
+          Point your camera at it.
+        </div>
+      </Fade>
+      <Fade
+        from={t(T.cta + 0.6)}
+        style={{
+          position: 'absolute',
+          top: 1380,
+          left: 60,
+          width: 960,
+          textAlign: 'center',
+          fontFamily: 'IBM Plex Mono',
+          fontSize: 40,
+          color: '#AD88FF',
+        }}
+      >
+        @thedepthfirst
       </Fade>
 
       <Progress seconds={DURATION_SECONDS} />

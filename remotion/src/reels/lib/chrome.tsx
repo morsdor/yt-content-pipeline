@@ -94,7 +94,9 @@ export const ReelHeader: React.FC<{
   small: React.ReactNode;
   out: [number, number];
   in_: [number, number];
-}> = ({ big, small, out, in_ }) => {
+  /** Drop below 76 when the headline is long enough to orphan a word. */
+  bigSize?: number;
+}> = ({ big, small, out, in_, bigSize = 76 }) => {
   const frame = useCurrentFrame();
   const bigO = interpolate(frame, [t(out[0]), t(out[1])], [1, 0], ease);
   const smallO = interpolate(frame, [t(in_[0]), t(in_[1])], [0, 1], ease);
@@ -109,7 +111,7 @@ export const ReelHeader: React.FC<{
           textAlign: 'center',
           opacity: bigO,
           fontFamily: 'Archivo Black',
-          fontSize: 76,
+          fontSize: bigSize,
           lineHeight: 1.1,
           color: '#E8E6E1',
           letterSpacing: -1,

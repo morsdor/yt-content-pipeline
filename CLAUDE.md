@@ -26,7 +26,7 @@ Do not invent a topic.** 50 entries, ids `I01`–`I50`, grouped into six section
 |:--|:--|:--|:--|
 | `r001` | `I02` | Shazam fingerprinting | **posted 2026-09-02** |
 | `r002` | `I08` | Autocorrect / edit distance | **posted 2026-09-02** |
-| `r003` | `I01` | QR / Reed–Solomon damage tolerance | rendered 2026-09-03, not posted |
+| `r003` | `I01` | QR / Reed–Solomon damage tolerance | re-cut hook-first 2026-09-03, 35 s, not posted |
 
 Update this table and `brand_guide_software.md` §13 when one ships.
 
@@ -49,14 +49,20 @@ involved in a reel.** Keep it that way.
    `backgroundColor`. Flat near-black left ~83% of the frame empty and ~90% greyscale, which is why
    the first two reels read as pale — see `brand_guide_software.md` §3a, which supersedes §3's
    10%-saturation rule for short-form. Amber stays one element per frame.
-3. **Pacing: read → animate → hold.** Label alone ~1.5s, animation 2–3s, hold on the finished state
+3. **Hook: show before you tell — the first 2 seconds decide everything.** The payoff visual starts
+   moving by ~0.5s and the first surprising result lands by ~3s; the title rides *over* the action
+   rather than preceding it. No step label in the opening beat. Measured on r001/r002: half the
+   audience is gone by 1.5–3s, and both retention curves then FLATTEN — so the body works and the
+   opening is the only thing costing reach. Name a recognisable object in the title ("a QR code",
+   "Shazam"), never "this".
+4. **Pacing inside the body: read → animate → hold.** Label alone ~1.5s, animation 2–3s, hold on the finished state
    ~2s. ≈6.5s per idea. The 2s hold is the phase everyone drops, and dropping it is why a reel reads
    as "too fast to understand anything".
-4. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
-5. **Accuracy gate.** Every claim, figure and complexity bound is verified against a primary source
+5. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
+6. **Accuracy gate.** Every claim, figure and complexity bound is verified against a primary source
    before shipping (`content_backlog.md` closing section). Historical entries `I31 I48 I49 I50` carry
    figures from memory and *must* be checked. Treat every number in the backlog as a research lead.
-6. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
+7. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
 
 ---
 
