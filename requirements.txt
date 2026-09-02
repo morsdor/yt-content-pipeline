@@ -9,3 +9,5 @@ google-genai         # generate_images.py / generate_asset.py — Gemini images
 # no generative-video deps needed.
 pyyaml               # scripts/fetch_outliers.py — competitor channel list
 # anthropic          # optional: scripts/tag_outliers.py (formula tagging) — install if you use it
+segno                # projects/r003_qr — spec-correct QR encoding (pure python)
+opencv-python-headless  # projects/r003_qr — INDEPENDENT decoder, so damage verdicts are not self-reported

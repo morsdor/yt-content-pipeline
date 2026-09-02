@@ -44,7 +44,7 @@ them has seen the inside.*
 
 | ID | Hook (on-screen title) | They already know | They have never seen | On screen | Family |
 |:--|:--|:--|:--|:--|:--|
-| **I01** ★ | A QR code you've destroyed still scans | Every menu, every UPI payment | Up to 30% of the square can be missing and it reads perfectly — Reed–Solomon spreads the data across the whole code, so no region is essential | Real QR blacked out 10→20→30%, still decoding; then the error-correction blocks light up to show where the redundancy hid | PlateAnnotated + Diagram |
+| **I01** ★ | A QR code you've destroyed still scans — ✅ **produced as r003, 2026-09-03** | Every menu, every UPI payment | A stain over **24%** of the code still reads; the same damage as confetti dies at 4%; and nine modules in a finder corner — 0.7% — kill it outright | Real QR stained, speckled, then corner-hit, with OpenCV's verdict at every step; one Reed–Solomon block lit up to show it smeared across the whole square | Diagram |
 | **I02** ★ | Shazam names a song from three seconds of noise | You've held your phone up in a café | It never hears music. Spectrogram → loudest peaks only → match the *constellation of gaps* between them, which is why chatter doesn't break it | Audio → spectrogram → peaks igniting as stars → constellation locking onto a match | Diagram + Counter |
 | **I03** ★ | Watch a photograph assemble from 64 patterns | Every JPEG you've opened | A JPEG stores no pixels. It stores how much of each of 64 fixed wave patterns to mix — and discards the ones the eye can't resolve | The 8×8 DCT basis grid, then a real photo rebuilding coefficient by coefficient | PlateAnnotated |
 | **I04** | Ctrl+F across 10,000 pages, instantly | You do it every day | It doesn't read every letter. Boyer–Moore compares the *last* character first and skips by the whole pattern on a mismatch — often under a quarter of the text | Comparison window leaping in big jumps; counter of characters examined vs total | Diagram + Counter |
@@ -142,6 +142,17 @@ lane (`projects/s001_ai_physical_cost/README.md`), tested cheaply.*
 Every entry above states a mechanism as fact. `insta_strategy.md` §6 makes accuracy the
 differentiator in a lane full of approximately-right content, and that only holds if it is enforced
 rather than intended.
+
+### Verified corrections log
+
+- **`I01` — checked 2026-09-03, two claims were wrong.** "Up to 30%" is the *spec capacity* of error
+  level **H**, the highest of four, and only for codeword recovery. Measured with a real stain on a
+  real code and OpenCV as the decoder: **24%** of the data area. The failure point is exactly the
+  Reed–Solomon bound — at 24% the worst block has 11 corrupted codewords of a maximum 11; at 26% it
+  hits 13 and dies — so this is the math running out, not a decoder giving up. Separately, **"no
+  region is essential" is false**: nine modules inside a finder corner (0.7% of the code) kill it,
+  because finders, timing and format info are not Reed–Solomon protected at all. Also worth stating
+  on screen: most menu and UPI codes are level **L or M** (7% / 15%), not H.
 
 **Before any post ships, its claim, its figures and its complexity bounds are verified against a
 primary source, and the source is recorded** — the short-form equivalent of what

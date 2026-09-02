@@ -8,6 +8,7 @@ import {
   Autocorrect,
   DURATION_SECONDS as AUTOCORRECT_SECONDS,
 } from './reels/Autocorrect';
+import { DURATION_SECONDS as QR_SECONDS, Qr } from './reels/Qr';
 import { SafeZones } from './reels/lib/chrome';
 import { TitleCard } from './scenes/TitleCard';
 import { Scene16 } from './scenes/Scene16';
@@ -36,6 +37,13 @@ import { Scene77 } from './scenes/Scene77';
  * 3840×2160 @ 30fps, 30 frames of handles at BOTH ends. Content starts at frame 30.
  */
 
+const QrSafe: React.FC = () => (
+  <>
+    <Qr />
+    <SafeZones />
+  </>
+);
+
 const AutocorrectSafe: React.FC = () => (
   <>
     <Autocorrect />
@@ -63,6 +71,23 @@ export const RemotionRoot: React.FC = () => {
         id="r002-autocorrect"
         component={Autocorrect}
         durationInFrames={AUTOCORRECT_SECONDS * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      <Composition
+        id="r003-qr"
+        component={Qr}
+        durationInFrames={QR_SECONDS * 30}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="r003-qr-safe"
+        component={QrSafe}
+        durationInFrames={QR_SECONDS * 30}
         fps={30}
         width={1080}
         height={1920}

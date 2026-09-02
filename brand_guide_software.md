@@ -541,4 +541,5 @@ column; the icons themselves occupy nearer 140px. Hold wide graphics (tables, gr
 | Reel | Subject | Length | Posted |
 |:--|:--|:--|:--|
 | `r001` | How Shazam names a song in seconds | 40 s | **2026-09-02** |
-| `r002` | Autocorrect / edit distance | 43 s | not yet |
+| `r002` | Autocorrect / edit distance | 43 s | **2026-09-02** |
+| `r003` | QR codes / Reed–Solomon | 45 s | not yet |

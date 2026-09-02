@@ -26,6 +26,7 @@ Do not invent a topic.** 50 entries, ids `I01`–`I50`, grouped into six section
 |:--|:--|:--|:--|
 | `r001` | `I02` | Shazam fingerprinting | **posted 2026-09-02** |
 | `r002` | `I08` | Autocorrect / edit distance | **posted 2026-09-02** |
+| `r003` | `I01` | QR / Reed–Solomon damage tolerance | rendered 2026-09-03, not posted |
 
 Update this table and `brand_guide_software.md` §13 when one ships.
 
