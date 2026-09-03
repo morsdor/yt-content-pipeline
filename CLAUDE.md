@@ -59,7 +59,11 @@ involved in a reel.** Keep it that way.
    ~2s. ≈6.5s per idea. The 2s hold is the phase everyone drops, and dropping it is why a reel reads
    as "too fast to understand anything".
 5. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
-6. **Accuracy gate.** Every claim, figure and complexity bound is verified against a primary source
+6. **Accuracy gate — sentences, not just numbers.** Figures get checked because they visibly came
+   from a script; hand-written *mechanism* sentences slip through. r001 shipped "the cafe noise dies
+   here" — false: peak-picking yields MORE peaks on pure noise (224) than on the song (202). Any
+   on-screen "X happens because Y" needs an experiment that could falsify it. Give every percentage
+   one stated base and never compare two figures computed on different ones. Every claim, figure and complexity bound is verified against a primary source
    before shipping (`content_backlog.md` closing section). Historical entries `I31 I48 I49 I50` carry
    figures from memory and *must* be checked. Treat every number in the backlog as a research lead.
 7. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.

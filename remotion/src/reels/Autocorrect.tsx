@@ -450,7 +450,7 @@ export const Autocorrect: React.FC = () => {
       <StepLabel
         n="STEP 1"
         title="It isn't a word"
-        sub="Your phone checks every word it knows."
+        sub="So compare it against every word that is one."
         from={t(T.s1Label[0])}
         to={t(T.s1Label[1])}
       />
@@ -485,7 +485,7 @@ export const Autocorrect: React.FC = () => {
       <StepLabel
         n="STEP 2"
         title="How far is it from a real word?"
-        sub="Count the single-letter edits, one prefix at a time."
+        sub="Count the letters you'd add, drop or swap."
         from={t(T.s2Label[0])}
         to={t(T.s2Label[1])}
       />
@@ -512,7 +512,7 @@ export const Autocorrect: React.FC = () => {
       <StepLabel
         n="STEP 3"
         title="Rank every word within two edits"
-        sub="Out of 234,454, only five come close."
+        sub="Out of 234,454 words, only five come close."
         from={t(T.s3Label[0])}
         to={t(T.s3Label[1])}
       />
@@ -564,7 +564,7 @@ export const Autocorrect: React.FC = () => {
           lineHeight: 1.35,
         }}
       >
-        Distance gets you the shortlist.
+        Counting letters gets you the shortlist.
         <br />
         <span style={{ color: '#81A2C4' }}>
           How often people actually type a word picks the winner.

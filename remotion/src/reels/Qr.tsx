@@ -318,14 +318,14 @@ export const Qr: React.FC = () => {
         from={T.hookVerdict}
         to={T.hookOut}
         ok={verdictAt(BLOB, STATS.blobMax)}
-        note={`${STATS.blobMax}% of it is gone`}
+        note={`${STATS.blobMaxOfSquare}% of the square, painted out`}
       />
 
       {/* ── 1. why it survived ───────────────────────────────────────────── */}
       <StepLabel
         n="STEP 1"
         title="Nothing is stored in one place"
-        sub="Four blocks of data, lit where they live."
+        sub="Four blocks of data, coloured where they really sit."
         from={t(T.s1Label[0])}
         to={t(T.s1Label[1])}
       />
@@ -344,10 +344,10 @@ export const Qr: React.FC = () => {
           lineHeight: 1.3,
         }}
       >
-        Not one of them owns a corner of the square.
+        Every block is spread across the whole square.
         <br />
         <span style={{ fontFamily: 'IBM Plex Mono', color: '#81A2C4' }}>
-          any {STATS.correctsPerBlock} of {STATS.blockTotal} can be wrong
+          {STATS.correctsPerBlock} of its {STATS.blockTotal} pieces can be wrong
         </span>
       </Fade>
 
@@ -355,7 +355,7 @@ export const Qr: React.FC = () => {
       <StepLabel
         n="STEP 2"
         title="Now scatter the same damage"
-        sub="Confetti instead of a stain. Far less of it."
+        sub="The same damage, sprinkled instead of blobbed."
         from={t(T.s2Label[0])}
         to={t(T.s2Label[1])}
       />
@@ -363,9 +363,7 @@ export const Qr: React.FC = () => {
         from={T.s2Verdict}
         to={T.s2Out}
         ok={verdictAt(SPECKLE, STATS.speckleMax + 2)}
-        note={`dead at ${STATS.speckleMax}% — ${Math.round(
-          STATS.blobMax / STATS.speckleMax,
-        )}x less than the stain`}
+        note={`it dies at ${STATS.speckleMaxOfSquare}%, not ${STATS.blobMaxOfSquare}%`}
       />
 
       {/* ── 3. the corner ────────────────────────────────────────────────── */}
@@ -380,7 +378,7 @@ export const Qr: React.FC = () => {
         from={T.s3Verdict}
         to={T.s3Out}
         ok={STATS.cornerOk}
-        note={`${STATS.cornerModules} modules — ${STATS.cornerPct}% of the code`}
+        note={`nine squares — ${STATS.cornerPct}% of the code`}
       />
 
       {/* ── 4. the answer ────────────────────────────────────────────────── */}
@@ -396,7 +394,7 @@ export const Qr: React.FC = () => {
         }}
       >
         <div style={{ fontFamily: 'Archivo Black', fontSize: 94, color: '#AD88FF' }}>
-          {STATS.blobMax}% survives
+          {STATS.blobMaxOfSquare}% can vanish
         </div>
         <div
           style={{

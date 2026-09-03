@@ -594,7 +594,7 @@ export const Shazam: React.FC = () => {
       <StepLabel
         n="STEP 1"
         title="The sound becomes a picture"
-        sub="Frequency up, time across."
+        sub="High notes at the top, time left to right."
         from={t(T.s1Label[0])}
         to={t(T.s1Label[1])}
       />
@@ -612,7 +612,7 @@ export const Shazam: React.FC = () => {
       <StepLabel
         n="STEP 2"
         title="Keep only the loudest points"
-        sub="The café noise isn't loudest anywhere. It dies here."
+        sub="A few hundred dots survive. Everything else goes."
         from={t(T.s2Label[0])}
         to={t(T.s2Label[1])}
       />
@@ -639,8 +639,8 @@ export const Shazam: React.FC = () => {
         from={t(T.s3Read[0])}
         to={t(T.s3Read[1])}
         rows={[
-          ['hashes from 3 s', fmt(nHash)],
-          ['hashes in the track', fmt(STATS.db_hashes)],
+          ['numbers from 3 s', fmt(nHash)],
+          ['numbers in the track', fmt(STATS.db_hashes)],
         ]}
       />
 
@@ -648,7 +648,7 @@ export const Shazam: React.FC = () => {
       <StepLabel
         n="STEP 4"
         title="Do the numbers line up?"
-        sub="Compare every hash against the library."
+        sub="Compare every number against the library."
         from={t(T.s4Label[0])}
         to={t(T.s4Label[1])}
       />
@@ -695,8 +695,8 @@ export const Shazam: React.FC = () => {
       {/* ── 6. the answer ────────────────────────────────────────────────── */}
       <StepLabel
         n="STEP 5"
-        title="One offset wins"
-        sub="That spike is where in the track you were standing."
+        title="One answer stands out"
+        sub="Noise makes dots too — they just never agree on one answer."
         from={t(T.s5Label[0])}
         to={t(T.s5Label[1])}
       />
@@ -722,7 +722,7 @@ export const Shazam: React.FC = () => {
             marginTop: 4,
           }}
         >
-          into the song — found in {STATS.matched_pairs} matching hashes
+          into the song — found from {STATS.matched_pairs} matching numbers
         </div>
       </Fade>
       <Fade

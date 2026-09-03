@@ -36,6 +36,11 @@ export const STATS = {
   correctsPerBlock: 11,
   blockTotal: 33,
   blobMax: 24,
+  // blobMax is a share of the DATA-carrying area (1079 of 1369 modules). What a
+  // viewer actually sees covered is the share of the WHOLE square — so that is
+  // the number the reel puts on screen, computed here rather than by hand.
+  blobMaxOfSquare: 19,
+  speckleMaxOfSquare: 3,
   speckleMax: 4,
   cornerModules: 9,
   cornerPct: 0.7,
