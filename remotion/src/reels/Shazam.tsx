@@ -7,6 +7,7 @@ import {
   staticFile,
   useCurrentFrame,
 } from 'remotion';
+import { ReelGround, useBreath } from './lib/chrome';
 import { HIST, HIT, LINKS, MISS, PEAKS, STATS, WAVE } from './data/shazam';
 
 /**
@@ -541,6 +542,7 @@ const Progress: React.FC<{ frame: number }> = ({ frame }) => {
 
 export const Shazam: React.FC = () => {
   const frame = useCurrentFrame();
+  const breath = useBreath();
 
   // Counters tick up and STOP — they never idle.
   const nPeaks = Math.round(
@@ -551,8 +553,13 @@ export const Shazam: React.FC = () => {
   );
 
   return (
-    <AbsoluteFill style={{ backgroundColor: '#040E1F' }}>
+    <AbsoluteFill>
+      <ReelGround accent="#00D6F7" />
       <Audio src={staticFile('reels/r001_audio.wav')} />
+      {/* Everything except the ground and the progress bar breathes, so no beat
+          is ever a freeze frame. The ground must NOT scale — it is exactly the
+          frame size, and scaling below 1 would expose its edges. */}
+      <AbsoluteFill style={{ transform: breath, transformOrigin: 'center center' }}>
       <Header frame={frame} />
 
       {/* ── 1. the recording ─────────────────────────────────────────────── */}
@@ -744,6 +751,7 @@ export const Shazam: React.FC = () => {
         of a noisy room.
       </Fade>
 
+      </AbsoluteFill>
       <Progress frame={frame} />
     </AbsoluteFill>
   );

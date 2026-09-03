@@ -55,18 +55,24 @@ involved in a reel.** Keep it that way.
    audience is gone by 1.5–3s, and both retention curves then FLATTEN — so the body works and the
    opening is the only thing costing reach. Name a recognisable object in the title ("a QR code",
    "Shazam"), never "this".
-4. **Pacing inside the body: read → animate → hold.** Label alone ~1.5s, animation 2–3s, hold on the finished state
+4. **Nothing is ever perfectly still.** Apply `useBreath()` from the shared chrome to every graphic
+   stage (and to text-only beats). Measured on the shipped reels: **51–55% of each one had no visible
+   change at all**, in stretches up to 6.5s — a frozen frame on a feed reads as "this ended". The
+   ground must NOT scale: it is exactly frame-size, and scaling under 1 exposes its edges. Verify by
+   sampling at 4fps and checking mean inter-frame change never sits under ~0.35 for more than ~1.5s.
+5. **Pacing inside the body: read → animate → hold** — the hold keeps its reading time but never its
+   stillness (see 4). Label alone ~1.5s, animation 2–3s, hold on the finished state
    ~2s. ≈6.5s per idea. The 2s hold is the phase everyone drops, and dropping it is why a reel reads
    as "too fast to understand anything".
-5. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
-6. **Accuracy gate — sentences, not just numbers.** Figures get checked because they visibly came
+6. **Open on a civilian object, never a developer noun.** Never name the algorithm in the hook.
+7. **Accuracy gate — sentences, not just numbers.** Figures get checked because they visibly came
    from a script; hand-written *mechanism* sentences slip through. r001 shipped "the cafe noise dies
    here" — false: peak-picking yields MORE peaks on pure noise (224) than on the song (202). Any
    on-screen "X happens because Y" needs an experiment that could falsify it. Give every percentage
    one stated base and never compare two figures computed on different ones. Every claim, figure and complexity bound is verified against a primary source
    before shipping (`content_backlog.md` closing section). Historical entries `I31 I48 I49 I50` carry
    figures from memory and *must* be checked. Treat every number in the backlog as a research lead.
-7. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
+8. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
 
 ---
 

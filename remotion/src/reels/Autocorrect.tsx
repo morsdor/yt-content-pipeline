@@ -10,6 +10,7 @@ import {
   ease,
   fmt,
   t,
+  useBreath,
 } from './lib/chrome';
 import {
   CANDIDATES,
@@ -405,11 +406,16 @@ const Ranking: React.FC<{ frame: number }> = ({ frame }) => {
 
 export const Autocorrect: React.FC = () => {
   const frame = useCurrentFrame();
+  const breath = useBreath();
 
   return (
     <AbsoluteFill>
       <ReelGround accent="#00D6F7" />
       <Audio src={staticFile('reels/r002_audio.wav')} />
+      {/* Everything except the ground and the progress bar breathes, so no beat
+          is ever a freeze frame. The ground must NOT scale — it is exactly the
+          frame size, and scaling below 1 would expose its edges. */}
+      <AbsoluteFill style={{ transform: breath, transformOrigin: 'center center' }}>
       <ReelHeader
         big={
           <>
@@ -571,6 +577,7 @@ export const Autocorrect: React.FC = () => {
         </span>
       </Fade>
 
+      </AbsoluteFill>
       <Progress seconds={DURATION_SECONDS} />
     </AbsoluteFill>
   );

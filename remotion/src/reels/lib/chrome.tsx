@@ -263,6 +263,11 @@ export const SafeZones: React.FC = () => (
  * reel's DOMAIN_ACCENT, so the ground is tinted by subject.
  */
 export const ReelGround: React.FC<{ accent: string }> = ({ accent }) => {
+  const frame = useCurrentFrame();
+  // The glow drifts on a long, prime-ish period so it never visibly loops. This
+  // is what keeps the frame alive during a hold — see useBreath below.
+  const gx = 50 + 7 * Math.sin((2 * Math.PI * frame) / (FPS * 17));
+  const gy = 46 + 6 * Math.cos((2 * Math.PI * frame) / (FPS * 23));
   const mask =
     'radial-gradient(ellipse 68% 52% at 50% 46%, rgba(0,0,0,1) 0%, ' +
     'rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%)';
@@ -272,7 +277,7 @@ export const ReelGround: React.FC<{ accent: string }> = ({ accent }) => {
       <AbsoluteFill
         style={{
           opacity: 0.11,
-          backgroundImage: `radial-gradient(ellipse 78% 58% at 50% 46%, ${accent} 0%, transparent 70%)`,
+          backgroundImage: `radial-gradient(ellipse 78% 58% at ${gx}% ${gy}%, ${accent} 0%, transparent 70%)`,
         }}
       />
       <AbsoluteFill
@@ -286,4 +291,28 @@ export const ReelGround: React.FC<{ accent: string }> = ({ accent }) => {
       />
     </>
   );
+};
+
+/**
+ * Nothing in a reel is ever perfectly still.
+ *
+ * The pacing rule (label -> animate -> HOLD ~2s) exists because "too fast to
+ * understand anything" was real feedback. But the hold was implemented as a
+ * freeze frame, and measuring the shipped reels showed the cost: 51-55% of every
+ * one of them had no visible change at all, in stretches of up to 6.5s. On a
+ * feed a frozen frame reads as "this has ended", and the retention curves cliff
+ * at 1.5-3s — r003's first freeze began at 2.8s.
+ *
+ * So the hold keeps its reading time and loses its stillness. Apply this to the
+ * graphic stage of every reel: a slow drift and an almost imperceptible breath,
+ * on periods long enough that they never visibly repeat. It must never compete
+ * with the animation that carries the meaning — if you can consciously see it,
+ * it is too strong.
+ */
+export const useBreath = (): string => {
+  const frame = useCurrentFrame();
+  const scale = 1 + 0.012 * Math.sin((2 * Math.PI * frame) / (FPS * 9));
+  const x = 4 * Math.sin((2 * Math.PI * frame) / (FPS * 13));
+  const y = 5 * Math.sin((2 * Math.PI * frame) / (FPS * 11));
+  return `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) scale(${scale.toFixed(4)})`;
 };

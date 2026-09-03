@@ -5,6 +5,7 @@ import {
   ReelGround,
   ReelHeader,
   StepLabel,
+  useBreath,
   ease,
   t,
 } from './lib/chrome';
@@ -233,6 +234,7 @@ const Verdict: React.FC<{ from: number; to?: number; ok: boolean; note: string }
 
 export const Qr: React.FC = () => {
   const frame = useCurrentFrame();
+  const breath = useBreath();
 
   const stainPct = interpolate(
     frame,
@@ -300,7 +302,16 @@ export const Qr: React.FC = () => {
         in_={T.titleIn}
       />
 
-      <div style={{ position: 'absolute', top: QY, left: QX, opacity: codeOpacity }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: QY,
+          left: QX,
+          opacity: codeOpacity,
+          transform: breath,
+          transformOrigin: 'center center',
+        }}
+      >
         <Code
           damaged={damaged}
           sweep={inSweep ? sweep : 0}
@@ -393,6 +404,7 @@ export const Qr: React.FC = () => {
           textAlign: 'center',
         }}
       >
+        <div style={{ transform: breath, transformOrigin: 'center center' }}>
         <div style={{ fontFamily: 'Archivo Black', fontSize: 94, color: '#AD88FF' }}>
           {STATS.blobMaxOfSquare}% can vanish
         </div>
@@ -408,6 +420,7 @@ export const Qr: React.FC = () => {
           Most of the square is optional.
           <br />
           Three corners are not.
+        </div>
         </div>
       </Fade>
 
