@@ -41,7 +41,7 @@ import {
  * Runtime 45s -> 35s.
  */
 
-export const DURATION_SECONDS = 35;
+export const DURATION_SECONDS = 37;
 
 const T = {
   // ── HOOK: destroy it first, explain afterwards ────────────────────────────
@@ -49,30 +49,32 @@ const T = {
   hookVerdict: 2.5,
   titleOut: [5.5, 5.9] as [number, number],
   titleIn: [5.9, 6.25] as [number, number],
-  hookOut: 6.5,
+  hookOut: 6.0,
 
   // ── 1. why it survived ────────────────────────────────────────────────────
-  s1Label: [6.5, 13.4] as [number, number],
-  sweep: [7.7, 10.7] as [number, number],
-  s1Read: 11.0,
-  s1Out: 13.2,
+  s1Label: [6.0, 14.0] as [number, number],
+  sweep: [7.2, 10.2] as [number, number],
+  s1Read: 10.5,
+  s1Out: 13.8,
 
   // ── 2. the same damage, scattered ─────────────────────────────────────────
-  s2Label: [13.4, 19.9] as [number, number],
-  speck: [14.6, 16.9] as [number, number],
-  s2Verdict: 17.1,
-  s2Out: 19.7,
+  s2Label: [14.0, 21.2] as [number, number],
+  speck: [15.2, 17.5] as [number, number],
+  s2Verdict: 17.7,
+  s2Out: 21.0,
 
   // ── 3. the corner nobody expects ──────────────────────────────────────────
-  s3Label: [19.9, 26.3] as [number, number],
-  corner: [21.1, 22.4] as [number, number],
-  s3Verdict: 22.6,
-  s3Out: 26.1,
+  s3Label: [21.2, 28.2] as [number, number],
+  corner: [22.4, 23.7] as [number, number],
+  s3Verdict: 23.9,
+  s3Out: 28.0,
 
   // ── 4/5. the answer, then something for the viewer to do ──────────────────
-  answer: 26.5,
-  ctaCode: 29.4,
-  cta: 30.2,
+  // Every end-of-beat block now holds >= 3s. They were 2.0-2.7s, which is not
+  // long enough to read two lines including a mono figure.
+  answer: 28.4,
+  answerOut: 32.2,
+  cta: 32.4,
 };
 
 // ── geometry ────────────────────────────────────────────────────────────────
@@ -144,12 +146,20 @@ const verdictAt = (steps: Step[], pct: number): boolean => {
 
 // ── the code ────────────────────────────────────────────────────────────────
 
+/** The three finder patterns — the 7x7 squares that carry no data and cannot be lost. */
+const FINDERS: [number, number][] = [
+  [0, 0],
+  [0, N - 7],
+  [N - 7, 0],
+];
+
 const Code: React.FC<{
   damaged: Set<number>;
   sweep: number;
   markCorner: number;
+  cornerRings: number;
   pulse: number;
-}> = ({ damaged, sweep, markCorner, pulse }) => {
+}> = ({ damaged, sweep, markCorner, cornerRings, pulse }) => {
   const cells: React.ReactNode[] = [];
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
@@ -182,7 +192,22 @@ const Code: React.FC<{
         <rect width={S} height={S} fill="#E8E6E1" />
         <g transform={`translate(${PAD},${PAD})`}>
           {cells}
-          {markCorner > 0 ? (
+          {cornerRings > 0
+          ? FINDERS.map(([fr, fc]) => (
+              <rect
+                key={`f${fr}-${fc}`}
+                x={fc * CELL - 6}
+                y={fr * CELL - 6}
+                width={7 * CELL + 12}
+                height={7 * CELL + 12}
+                fill="none"
+                stroke="#AD88FF"
+                strokeWidth={5}
+                opacity={cornerRings}
+              />
+            ))
+          : null}
+        {markCorner > 0 ? (
             <rect
               x={2 * CELL - 5}
               y={2 * CELL - 5}
@@ -268,16 +293,16 @@ export const Qr: React.FC = () => {
     damaged = new Set(CORNER.slice(0, k));
   }
 
-  // On screen from frame 0 — nothing to wait through — out for the answer, then
-  // back for the viewer to actually scan.
-  const codeOpacity = interpolate(
+  // The code is on screen from frame 0 to the last frame. It used to fade out for
+  // the answer, which meant "three corners are not [optional]" was said over an
+  // empty stage — the one moment the corners most needed to be visible.
+  const cornerRings = interpolate(
     frame,
-    [0, t(T.answer - 0.4), t(T.answer), t(T.ctaCode), t(T.ctaCode + 0.5)],
-    [1, 1, 0, 0, 1],
+    [t(T.corner[0]), t(T.corner[0] + 0.5), t(T.s3Out), t(T.answer), t(T.answerOut)],
+    [0, 1, 1, 1, 1],
     ease,
   );
-  const pulse =
-    frame < t(T.ctaCode) ? 0 : 0.5 + 0.4 * Math.sin((frame - t(T.ctaCode)) / 5.2);
+  const pulse = frame < t(T.cta) ? 0 : 0.5 + 0.4 * Math.sin((frame - t(T.cta)) / 5.2);
 
   return (
     <AbsoluteFill>
@@ -307,7 +332,6 @@ export const Qr: React.FC = () => {
           position: 'absolute',
           top: QY,
           left: QX,
-          opacity: codeOpacity,
           transform: breath,
           transformOrigin: 'center center',
         }}
@@ -320,6 +344,7 @@ export const Qr: React.FC = () => {
               ? interpolate(frame, [t(T.corner[0]), t(T.corner[0] + 0.4)], [0, 1], ease)
               : 0
           }
+          cornerRings={frame >= t(T.corner[0]) && frame < t(T.answerOut) ? cornerRings : 0}
           pulse={pulse}
         />
       </div>
@@ -392,36 +417,42 @@ export const Qr: React.FC = () => {
         note={`nine squares — ${STATS.cornerPct}% of the code`}
       />
 
-      {/* ── 4. the answer ────────────────────────────────────────────────── */}
+      {/* ── 4. the answer — said over the code, with its corners ringed ── */}
       <Fade
         from={t(T.answer)}
-        to={t(T.ctaCode)}
+        to={t(T.answerOut)}
         style={{
           position: 'absolute',
-          top: 820,
+          top: 470,
           left: 60,
           width: 960,
           textAlign: 'center',
         }}
       >
         <div style={{ transform: breath, transformOrigin: 'center center' }}>
-        <div style={{ fontFamily: 'Archivo Black', fontSize: 94, color: '#AD88FF' }}>
-          {STATS.blobMaxOfSquare}% can vanish
+          <div style={{ fontFamily: 'Archivo Black', fontSize: 78, color: '#AD88FF' }}>
+            {STATS.blobMaxOfSquare}% can vanish
+          </div>
         </div>
-        <div
-          style={{
-            fontFamily: 'IBM Plex Sans',
-            fontSize: 50,
-            color: '#E8E6E1',
-            marginTop: 28,
-            lineHeight: 1.35,
-          }}
-        >
-          Most of the square is optional.
-          <br />
-          Three corners are not.
-        </div>
-        </div>
+      </Fade>
+      <Fade
+        from={t(T.answer + 0.5)}
+        to={t(T.answerOut)}
+        style={{
+          position: 'absolute',
+          top: 1358,
+          left: 60,
+          width: 960,
+          textAlign: 'center',
+          fontFamily: 'IBM Plex Sans',
+          fontSize: 48,
+          color: '#E8E6E1',
+          lineHeight: 1.35,
+        }}
+      >
+        Most of the square is optional.
+        <br />
+        <span style={{ color: '#AD88FF' }}>Three corners are not.</span>
       </Fade>
 
       {/* ── 5. give the viewer something to do ───────────────────────────── */}

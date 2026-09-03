@@ -571,6 +571,22 @@ Two diagnosable differences explain why r002 is twice as bad:
 r003 was re-cut on this basis: 45 s → 35 s, destruction begins at 0.3 s, verdict at 2.5 s (was
 10.6 s), and it closes on the live scannable code as a call to action, since follows were 0.
 
+### Reading time — end-of-beat text needs >= 3s
+
+A step label can be short; the **closing line of a beat carries the finding**, and it is usually two
+lines including a figure. Measured on r003 before the fix, three of five were 2.0-2.7s, the shortest
+being a two-line block with a mono number. Rule: **at least 3s of full opacity for any end-of-beat
+text**, and remember `Fade` begins its fade-out 5 frames before its `to`, so subtract ~0.17s from the
+nominal window when checking.
+
+### Show the thing the payoff line refers to
+
+r003 closed on "Three corners are not [optional]" while the code was faded out — the one moment the
+corners most needed to be on screen. The code now stays visible to the last frame with its three
+finder patterns ringed in the accent, and the answer text sits in the step-label and verdict slots
+around it rather than over it. If a line names something, that something is on screen while it is
+read.
+
 ### Posted
 
 | Reel | Subject | Length | Posted |
