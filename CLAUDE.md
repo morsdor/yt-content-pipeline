@@ -73,6 +73,9 @@ involved in a reel.** Keep it that way.
    before shipping (`content_backlog.md` closing section). Historical entries `I31 I48 I49 I50` carry
    figures from memory and *must* be checked. Treat every number in the backlog as a research lead.
 8. **Verify with video + filmstrip, never stills** — for *timing*. Stills are correct for *layout*.
+9. **End on a reason to follow.** Measured on r001 at 3 days: ~18% of 1,286 viewers reached the
+   last frame and **one** followed. The end frame is the most-watched dead space in the format —
+   close on a line naming what the next reel does, over the finished visual, held the full 3s.
 
 ---
 
