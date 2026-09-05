@@ -495,15 +495,21 @@ export const Qr: React.FC = () => {
       {/*
         ── 6. the reason to follow: what the NEXT one does ──────────────────
         Vertically this is the tightest block in the reel, so the numbers are
-        deliberate. The code's white square runs 690 -> 1347, and Progress sits
-        at SAFE_BOTTOM - 6 = 1534, which leaves 1358 -> 1534 and nothing else.
-        One 44px line (~55) + 14 + one 38px mono line (~46) ends at ~1473.
+        deliberate. The code's white square runs 690 -> 1347 and Progress sits at
+        SAFE_BOTTOM - 6 = 1534, leaving a 187px band and nothing else.
+
+        1358 was the first attempt and it was wrong: it clears the code on paper,
+        but the code and this block breathe INDEPENDENTLY (+-5px translate, and
+        the code's 1.012 scale adds ~4px to a 657px square), so at opposing
+        phases they touch. Rendering it is what caught that -- the arithmetic
+        said it fitted. 1382 centres the block in the band instead: ~35px of air
+        above at rest, ~25px worst case, and it ends at ~1497, clear of Progress.
       */}
       <Fade
         from={t(T.next)}
         style={{
           position: 'absolute',
-          top: 1358,
+          top: 1382,
           left: 60,
           width: 960,
           textAlign: 'center',
