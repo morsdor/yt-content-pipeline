@@ -26,9 +26,12 @@ Do not invent a topic.** 50 entries, ids `I01`–`I50`, grouped into six section
 |:--|:--|:--|:--|
 | `r001` | `I02` | Shazam fingerprinting | **posted 2026-09-02** |
 | `r002` | `I08` | Autocorrect / edit distance | **posted 2026-09-02** |
-| `r003` | `I01` | QR / Reed–Solomon damage tolerance | re-cut hook-first 2026-09-03, 35 s, not posted |
+| `r003` | `I01` | QR / Reed–Solomon damage tolerance | re-cut hook-first 2026-09-03, end beat 2026-09-05, 37 s, not posted |
 
 Update this table and `brand_guide_software.md` §13 when one ships.
+
+**r003's end card promises `I03` (a JPEG stores no pixels) as r004.** Build that next, or change
+the line in `Qr.tsx` before posting — the reel is on record either way.
 
 ### The method: compute the animation, don't author it
 
